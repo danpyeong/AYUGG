@@ -17,17 +17,32 @@ body {
   text-align: center;
 }
 
+input,
+button {
+  border: none;
+}
+
+input {
+  width: 100%;
+  margin: 0px 7px 0px 7px;
+}
+
+select {
+  border-radius: 4px;
+}
+
 .navbar {
   margin-top: -7px;
   margin-left: -8px;
   background-color: black;
   width: 100%;
+  display: flex;
   justify-content: space-between;
   height: 50px;
   padding: 5px 0;
 }
 
-.navbar button {
+.navbar > span > div button {
   background-color: black;
   color: #fff;
   border: 0;
@@ -36,7 +51,7 @@ body {
   font-size: 16px;
 }
 
-.navbar span button:hover::after {
+.navbar span > div button:hover::after {
   content: "";
   width: 100%;
   position: absolute;
@@ -46,23 +61,52 @@ body {
   bottom: -5px;
 }
 
-.input-area {
-  height: 80%;
-  margin-right: 20px;
-  padding: 0px 10px 0px 10px;
-}
-
-.input-area input {
-  border: 0;
-}
-
-.testbox {
+.main-box {
   padding-top: 50px;
+  padding-bottom: 50px;
   width: 80%;
   margin: 0 auto;
 }
 
-.button-box {
+.nav-search-box {
+  margin-right: 20px;
+  padding: 5px 10px 5px 10px;
+  height: 50%;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
+  border-radius: 4px;
+}
+
+.search-box {
+  margin: 0 auto;
+  padding: 5px 10px 5px 10px;
+  width: 700px;
+  height: 50px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+
+.notice-box {
+  margin: 50px auto;
+  background-color: rgb(137, 134, 134);
+  width: 720px;
+  height: 500px;
+  display: flex;
+}
+
+.match-box {
+  margin: 15px auto;
+  background-color: #fff;
+  width: 45%;
+  height: 100%-40;
+}
+
+.news-box {
+  margin: 15px auto;
+  background-color: #fff;
+  width: 45%;
+  height: 100%-40;
 }
