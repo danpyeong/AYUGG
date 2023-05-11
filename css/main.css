@@ -20,7 +20,7 @@ button {
 
 input {
   width: 100%;
-  margin: 0px 7px 0px 7px;
+  margin: 0px 10px;
 }
 
 input:focus {
@@ -46,10 +46,6 @@ select {
   font-size: 24px;
 }
 
-.buttonTest {
-  font-size: 20px;
-}
-
 .navbar > span > div button {
   padding-left: 20px;
   background-color: black;
@@ -61,6 +57,7 @@ select {
 }
 
 .navbar span > div button:hover::after {
+  padding-left: 16px;
   content: "";
   width: 100%;
   position: absolute;
