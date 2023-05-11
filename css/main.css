@@ -1,7 +1,3 @@
-.ft16 {
-  font-size: 16px;
-}
-
 .middle {
   display: flex;
   align-items: center;
@@ -27,6 +23,10 @@ input {
   margin: 0px 7px 0px 7px;
 }
 
+input:focus {
+  outline: none;
+}
+
 select {
   border-radius: 4px;
 }
@@ -38,17 +38,26 @@ select {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
   padding: 5px 0;
 }
 
+.navbar span div button {
+  font-size: 24px;
+}
+
+.buttonTest {
+  font-size: 20px;
+}
+
 .navbar > span > div button {
+  padding-left: 20px;
   background-color: black;
   color: #fff;
   border: 0;
   position: relative;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .navbar span > div button:hover::after {
@@ -69,6 +78,7 @@ select {
 }
 
 .nav-search-box {
+  width: 300px;
   margin-right: 20px;
   padding: 5px 10px 5px 10px;
   height: 50%;
@@ -76,6 +86,10 @@ select {
   display: flex;
   justify-content: space-between;
   border-radius: 4px;
+}
+
+.nav-search-box select {
+  font-size: 18px;
 }
 
 .search-box {
@@ -87,6 +101,11 @@ select {
   display: flex;
   justify-content: space-between;
   border-radius: 4px;
+}
+
+.search-box select,
+input {
+  font-size: 18px;
 }
 
 .notice-box {
