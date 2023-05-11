@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" />
+    <link rel="stylesheet" href="/css/champions.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <title>AYU-GG</title>
   </head>
@@ -43,32 +44,46 @@
         </div>
       </nav>
     </header>
-    <article class="main-box">
-      <!-- 메인메뉴 중앙 로고 -->
-      <div style="margin: 50px 0px 75px 0px">
-        <img
-          src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
-          style="width: 400px; height: 100px"
-        />
+
+    <article>
+      <!-- 중간 메뉴 -->
+      <div style="width: 800px; height: 30px"></div>
+      <div class="select-box">
+        <!-- 협곡 / 칼바람 -->
+        <div>
+          <button onclick="location.href='champions.html'">
+            소환사의 협곡
+          </button>
+          <button onclick="location.href='champions-gamemode-aram.html'">
+            칼바람의 나락
+          </button>
+        </div>
+        <!-- 티어별, 나라별, 버전별 -->
+        <div>
+          <select>
+            <option>마스터+</option>
+            <option>다이아+</option>
+            <option>플레티넘+</option>
+            <option>골드 이하</option>
+            <option>전체</option>
+          </select>
+          <select>
+            <option>KR</option>
+            <option>NA</option>
+          </select>
+          <select>
+            <option>v13.09</option>
+            <option>v13.08</option>
+            <option>v13.07</option>
+          </select>
+        </div>
       </div>
-      <!-- 소환사 전적 검색창 -->
-      <div class="search-box">
-        <select name="country">
-          <option value="KR">KR</option>
-          <option value="NA">NA</option>
-        </select>
-        <input type="text" />
-        <button type="button">
-          <img
-            src="https://svgsilh.com/svg/1093183.svg"
-            style="width: 30px; height: 30px"
-          />
-        </button>
-      </div>
-      <!-- 대회 소식 / 게임 소식 -->
-      <div class="notice-box">
-        <div class="match-box">대회 소식</div>
-        <div class="news-box">게임 소식</div>
+      <!-- 챔피언 -->
+      <div class="champions">
+        <!-- 챔피언 종류 -->
+        <div class="champion-left"></div>
+        <!-- 챔피언 순위 -->
+        <div class="champion-right"></div>
       </div>
     </article>
   </body>

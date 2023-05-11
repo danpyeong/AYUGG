@@ -1,0 +1,47 @@
+.select-box {
+  margin: 0px auto;
+  padding-left: 10px;
+  background-color: rgb(160, 160, 160);
+  width: 700px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-box button {
+  color: #fff;
+  background-color: rgb(160, 160, 160);
+  font-size: 16px;
+  margin-right: -5px;
+}
+.select-box select {
+  background-color: rgb(160, 160, 160);
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.champions {
+  margin: 30px auto;
+  padding: 0px 5px;
+  background-color: rgb(160, 160, 160);
+  width: 700px;
+  height: 800px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.champion-left {
+  margin: 13px 8px;
+  background-color: #fff;
+  width: 49%;
+  height: 500px;
+}
+
+.champion-right {
+  margin: 13px 8px;
+  background-color: #fff;
+  width: 49%;
+  height: 500px;
+}

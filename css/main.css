@@ -53,7 +53,7 @@ select {
   border: 0;
   position: relative;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .navbar span > div button:hover::after {
@@ -75,10 +75,10 @@ select {
 }
 
 .nav-search-box {
-  width: 300px;
+  width: 250px;
   margin-right: 20px;
   padding: 5px 10px 5px 10px;
-  height: 50%;
+  height: 40%;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
@@ -86,7 +86,7 @@ select {
 }
 
 .nav-search-box select {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .search-box {
@@ -101,8 +101,8 @@ select {
 }
 
 .search-box select,
-input {
-  font-size: 18px;
+.search-box input {
+  font-size: 16px;
 }
 
 .notice-box {
