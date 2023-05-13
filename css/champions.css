@@ -1,16 +1,17 @@
 .select-box {
   margin: 0px auto;
-  padding-left: 10px;
+  padding: 0px 20px;
   background-color: rgb(160, 160, 160);
   width: 700px;
   height: 60px;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
+  border-radius: 4px;
 }
 
 .select-box button {
-  color: #fff;
   background-color: rgb(160, 160, 160);
   font-size: 16px;
   margin-right: -5px;
@@ -29,19 +30,48 @@
   width: 700px;
   height: 800px;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
+  border-radius: 4px;
 }
 
-.champion-left {
+.champions-frame {
+  text-align: left;
+  padding: 15px 25px;
   margin: 13px 8px;
   background-color: #fff;
   width: 49%;
   height: 500px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.champion-right {
-  margin: 13px 8px;
-  background-color: #fff;
-  width: 49%;
-  height: 500px;
+.champions-left {
+}
+
+.champions-right {
+}
+
+.rift {
+  color: #fff;
+  font-weight: 600;
+}
+
+.aram {
+  color: rgb(87, 87, 87);
+}
+
+.aram:hover {
+  color: rgb(72, 38, 225);
+}
+
+.ft-st {
+  font-size: 16px;
+  color: rgb(160, 160, 160);
+}
+
+.champions-type {
+  background-color: #000000;
+  width: 30px;
+  height: 30px;
 }

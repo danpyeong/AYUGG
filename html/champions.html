@@ -51,10 +51,13 @@
       <div class="select-box">
         <!-- 협곡 / 칼바람 -->
         <div>
-          <button onclick="location.href='champions.html'">
+          <button class="rift" onclick="location.href='champions.html'">
             소환사의 협곡
           </button>
-          <button onclick="location.href='champions-gamemode-aram.html'">
+          <button
+            class="aram"
+            onclick="location.href='champions-gamemode-aram.html'"
+          >
             칼바람의 나락
           </button>
         </div>
@@ -81,9 +84,14 @@
       <!-- 챔피언 -->
       <div class="champions">
         <!-- 챔피언 종류 -->
-        <div class="champion-left"></div>
+        <div class="champions-left champions-frame">
+          <a class="ft-st">ㄱ</a><br />
+          <div>
+            <a><img /></a>
+          </div>
+        </div>
         <!-- 챔피언 순위 -->
-        <div class="champion-right"></div>
+        <div class="champions-right champions-frame"></div>
       </div>
     </article>
   </body>
