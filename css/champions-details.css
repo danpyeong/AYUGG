@@ -1,0 +1,28 @@
+/* 큰 틀 너비 */
+.champions-basic-info,
+.check-line,
+.champions-details-main,
+.champions-items-build {
+  width: 900px;
+}
+
+/* 챔피언 기본 정보 */
+.champions-basic-info {
+  background-color: aqua;
+  margin: 30px auto;
+  padding: 5px;
+  height: 300px;
+}
+
+/* 챔피언 최소 정보 */
+.champions-least-info {
+  width: 100%;
+  height: 50%;
+  box-sizing: border-box;
+}
+
+/* 챔피언 기본 스킬 */
+.champions-basic-skill img {
+  width: 24px;
+  height: 24px;
+}

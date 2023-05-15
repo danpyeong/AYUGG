@@ -2,9 +2,113 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/champions-detail.css" />
+    <link rel="stylesheet" href="/css/champions-details.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <title>AYU-GG</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <!-- 상단 메뉴바 -->
+      <nav class="navbar middle">
+        <span class="middle">
+          <img
+            src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
+            style="padding-left: 20px"
+          />
+          <div>
+            <button onclick="location.href='main.html'">홈</button>
+            <button onclick="location.href='champions-gamemode-rift.html'">
+              챔피언 분석
+            </button>
+            <button onclick="location.href=''">통계</button>
+            <button onclick="location.href=''">랭킹</button>
+            <button onclick="location.href='multi-search.html'">
+              멀티서치
+            </button>
+          </div>
+        </span>
+
+        <div class="nav-search-box">
+          <select name="country">
+            <option value="KR">KR</option>
+            <option value="NA">NA</option>
+          </select>
+          <input type="text" />
+          <button>
+            <img
+              src="https://svgsilh.com/svg/1093183.svg"
+              style="width: 10px; height: 10px"
+            />
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- 내용 -->
+    <article>
+      <!-- 챔피언 기본 정보 -->
+      <div class="champions-basic-info">
+        <!-- 챔피언 최소 정보 -->
+        <div class="champions-least-info">
+          <!-- 챔피언 초상화, 스킬, 라인 -->
+          <div>
+            <img
+              style="width: 64px; height: 64px"
+              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+            />
+            <div>
+              <div>
+                <div><span>가렌</span> <span>(탑)</span></div>
+                <div class="champions-basic-skill">
+                  <img
+                    id="skill-1"
+                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                  />
+                  <img
+                    id="skill-2"
+                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                  />
+                  <img
+                    id="skill-3"
+                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                  />
+                  <img
+                    id="skill-4"
+                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                  />
+                  <img
+                    id="skill-5"
+                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 승률, 픽률, 밴률 -->
+          <div>승률 픽률 밴률 들어감</div>
+        </div>
+        <!-- 상대하기 쉬운/어려운챔피언 -->
+        <div class="champions-counter"></div>
+      </div>
+      <!-- 라인 및 게임모드 선택 -->
+      <div class="check-line"></div>
+      <!-- 메인 세부사항 -->
+      <div class="champions-details-main">
+        <!-- 룬 -->
+        <div class="champions-rune"></div>
+        <!-- 스킬 -->
+        <div class="champions-skill-tree"></div>
+        <!-- 선호도-->
+        <div class="champions-preference">
+          <!-- 선호도별 소환사 주문 -->
+          <div class="champions-spell"></div>
+          <!-- 선호도별 시작아이템 -->
+          <div class="champions-items-start"></div>
+          <!-- 선호도별 신발 아이템 -->
+          <div class="champions-items-shoes"></div>
+        </div>
+        <!-- 아이템 빌드 -->
+        <div class="champions-items-build"></div>
+      </div>
+    </article>
+  </body>
 </html>
