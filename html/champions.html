@@ -84,35 +84,140 @@
       <!-- 챔피언 -->
       <div class="champions">
         <!-- 챔피언 종류 -->
-        <div class="champions-left info-frame">
-          <div>
-            <a class="ft-st">ㄱ</a>
+        <div class="info-frame left-info">
+          <!-- 챔피언 검색창 -->
+          <div class="champions-search flex">
+            <!-- 돋보기 이미지 -->
+            <img />
+            <!-- 챔피언 이름 입력창 -->
+            <input type="text" placeholder="챔피언 검색 (가렌, 갱플랭크)" />
           </div>
-          <div class="champions-frame">
-            <img
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1681967972734"
-            />
-
-            <img
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1681967972734"
-            />
-
-            <img
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1681967972734"
-            />
-
-            <img
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1681967972734"
-            />
-
-            <img
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1681967972734"
-            />
-          </div>
+          <ul class="champions-list">
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  가렌
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  갈리오
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  갱플랭크
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그라가스
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그레이브즈
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그웬
+                </a>
+              </span>
+            </li>
+          </ul>
         </div>
         <!-- 챔피언 순위 -->
-        <div class="champions-right info-frame"></div>
+        <div class="info-frame right-info">
+          <!-- 라인별 챔피언 -->
+          <nav class="line-box flex">
+            <button id="line-top">탑</button>
+            <button id="line-jg">정글</button>
+            <button id="line-mid">미드</button>
+            <button id="line-bot">바텀</button>
+            <button id="line-sup">서폿</button>
+          </nav>
+          <table class="champions-table">
+            <thead>
+              <th align="left" class="first-child">순위</th>
+              <th align="left">챔피언</th>
+              <th align="middle">티어</th>
+              <th align="middle">승률</th>
+              <th align="middle">픽률</th>
+              <th align="middle">밴률</th>
+              <th align="middle">카운터</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="first-child">
+                  <span>1</span>
+                  <span>=</span>
+                </td>
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <span>트위스티드페이트</span>
+                  </div>
+                </td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+      <script>
+        var btn = document.getElementById("line-top");
+        btn.onclick = function (e) {
+          document.getElementById("line-top").style.backgroundColor = "blue";
+          document.getElementById("line-top").style.color = "white";
+        };
+      </script>
     </article>
   </body>
 </html>
