@@ -8,17 +8,23 @@
   </head>
   <body>
     <header>
+      <!-- 상단 메뉴바 -->
       <nav class="navbar middle">
         <span class="middle">
           <img
             src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
+            style="padding-left: 20px"
           />
           <div>
-            <button>홈</button>
-            <button>챔피언 분석</button>
-            <button>통계</button>
-            <button>랭킹</button>
-            <button>멀티서치</button>
+            <button onclick="location.href='main.html'">홈</button>
+            <button onclick="location.href='champions.html'">
+              챔피언 분석
+            </button>
+            <button onclick="location.href=''">통계</button>
+            <button onclick="location.href=''">랭킹</button>
+            <button onclick="location.href='multi-search.html'">
+              멀티서치
+            </button>
           </div>
         </span>
 
@@ -38,13 +44,14 @@
       </nav>
     </header>
     <article class="main-box">
+      <!-- 메인메뉴 중앙 로고 -->
       <div style="margin: 50px 0px 75px 0px">
         <img
           src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
-          style="width: 500px; height: 150px"
+          style="width: 400px; height: 100px"
         />
       </div>
-
+      <!-- 소환사 전적 검색창 -->
       <div class="search-box">
         <select name="country">
           <option value="KR">KR</option>
@@ -58,7 +65,7 @@
           />
         </button>
       </div>
-
+      <!-- 대회 소식 / 게임 소식 -->
       <div class="notice-box">
         <div class="match-box">대회 소식</div>
         <div class="news-box">게임 소식</div>

@@ -1,0 +1,84 @@
+.select-box {
+  margin: 0px auto;
+  padding: 0px 20px;
+  background-color: rgb(160, 160, 160);
+  width: 700px;
+  height: 60px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.select-box button {
+  background-color: rgb(160, 160, 160);
+  font-size: 16px;
+  margin-right: -5px;
+}
+.select-box select {
+  background-color: rgb(160, 160, 160);
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+/* 칼바람 나락 기본 색상 */
+.aram {
+  color: rgb(87, 87, 87);
+}
+
+/* 칼바람 나락 마우스 올렸을 때 */
+.aram:hover {
+  color: rgb(72, 38, 225);
+  cursor: pointer;
+}
+
+/* 소환사의 협곡 창 - 챔피언 분석 */
+.champions {
+  margin: 30px auto;
+  padding: 0px 5px;
+  background-color: rgb(160, 160, 160);
+  width: 700px;
+  height: 800px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+
+.info-frame {
+  text-align: left;
+  padding: 15px 15px;
+  margin: 13px 8px;
+  background-color: #fff;
+  width: 49%;
+  height: 500px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.champions-left {
+}
+
+.champions-right {
+}
+
+.rift {
+  color: #fff;
+  font-weight: 600;
+}
+
+.ft-st {
+  font-size: 16px;
+  color: rgb(81, 81, 81);
+}
+
+.champions-frame {
+  padding: 10px 0px;
+}
+
+.champions-frame img {
+  width: 48px;
+  height: 48px;
+}
