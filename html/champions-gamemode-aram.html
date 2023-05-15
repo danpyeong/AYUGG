@@ -6,5 +6,220 @@
     <link rel="stylesheet" href="/css/main.css" />
     <title>AYU-GG</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <!-- 상단 메뉴바 -->
+      <nav class="navbar middle">
+        <span class="middle">
+          <img
+            src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
+            style="padding-left: 20px"
+          />
+          <div>
+            <button onclick="location.href='main.html'">홈</button>
+            <button onclick="location.href='champions-gamemode-rift.html'">
+              챔피언 분석
+            </button>
+            <button onclick="location.href=''">통계</button>
+            <button onclick="location.href=''">랭킹</button>
+            <button onclick="location.href='multi-search.html'">
+              멀티서치
+            </button>
+          </div>
+        </span>
+
+        <div class="nav-search-box">
+          <select name="country">
+            <option value="KR">KR</option>
+            <option value="NA">NA</option>
+          </select>
+          <input type="text" />
+          <button>
+            <img
+              src="https://svgsilh.com/svg/1093183.svg"
+              style="width: 10px; height: 10px"
+            />
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- 내용 -->
+    <article>
+      <!-- 중간 메뉴 -->
+      <div style="width: 800px; height: 30px"></div>
+      <div class="select-box">
+        <!-- 협곡 / 칼바람 -->
+        <div>
+          <button
+            class="rift"
+            onclick="location.href='champions-gamemode-rift.html'"
+          >
+            소환사의 협곡
+          </button>
+          <button
+            class="aram"
+            onclick="location.href='champions-gamemode-aram.html'"
+          >
+            칼바람의 나락
+          </button>
+        </div>
+        <!-- 티어별, 나라별, 버전별 -->
+        <div>
+          <select>
+            <option>마스터+</option>
+            <option>다이아+</option>
+            <option>플레티넘+</option>
+            <option>골드 이하</option>
+            <option>전체</option>
+          </select>
+          <select>
+            <option>KR</option>
+            <option>NA</option>
+          </select>
+          <select>
+            <option>v13.09</option>
+            <option>v13.08</option>
+            <option>v13.07</option>
+          </select>
+        </div>
+      </div>
+      <!-- 챔피언 -->
+      <div class="champions">
+        <!-- 챔피언 종류 -->
+        <div class="info-frame left-info">
+          <!-- 챔피언 검색창 -->
+          <div class="champions-search flex">
+            <!-- 돋보기 이미지 -->
+            <img />
+            <!-- 챔피언 이름 입력창 -->
+            <input type="text" placeholder="챔피언 검색 (가렌, 갱플랭크)" />
+          </div>
+          <ul class="champions-list">
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  가렌
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  갈리오
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  갱플랭크
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그라가스
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그레이브즈
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a href="#">
+                  <img
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  그웬
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!-- 챔피언 순위 -->
+        <div class="info-frame right-info">
+          <!-- 라인별 챔피언 -->
+          <nav class="line-box flex">
+            <button id="line-top">탑</button>
+            <button id="line-jg">정글</button>
+            <button id="line-mid">미드</button>
+            <button id="line-bot">바텀</button>
+            <button id="line-sup">서폿</button>
+          </nav>
+          <table class="champions-table">
+            <thead>
+              <th align="left" class="first-child">순위</th>
+              <th align="left">챔피언</th>
+              <th align="middle">티어</th>
+              <th align="middle">승률</th>
+              <th align="middle">픽률</th>
+              <th align="middle">밴률</th>
+              <th align="middle">카운터</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="first-child">
+                  <span>1</span>
+                  <span>=</span>
+                </td>
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <span>트위스티드페이트</span>
+                  </div>
+                </td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script>
+        var btn = document.getElementById("line-top");
+        btn.onclick = function (e) {
+          document.getElementById("line-top").style.backgroundColor = "blue";
+          document.getElementById("line-top").style.color = "white";
+        };
+      </script>
+    </article>
+  </body>
 </html>

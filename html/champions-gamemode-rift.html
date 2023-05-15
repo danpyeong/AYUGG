@@ -2,7 +2,6 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" />
     <link rel="stylesheet" href="/css/champions-gamemode-rift.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <title>AYU-GG</title>
@@ -18,7 +17,7 @@
           />
           <div>
             <button onclick="location.href='main.html'">홈</button>
-            <button onclick="location.href='champions.html'">
+            <button onclick="location.href='champions-gamemode-rift.html'">
               챔피언 분석
             </button>
             <button onclick="location.href=''">통계</button>
@@ -44,14 +43,17 @@
         </div>
       </nav>
     </header>
-
+    <!-- 내용 -->
     <article>
       <!-- 중간 메뉴 -->
       <div style="width: 800px; height: 30px"></div>
       <div class="select-box">
         <!-- 협곡 / 칼바람 -->
         <div>
-          <button class="rift" onclick="location.href='champions.html'">
+          <button
+            class="rift"
+            onclick="location.href='champions-gamemode-rift.html'"
+          >
             소환사의 협곡
           </button>
           <button
@@ -95,7 +97,7 @@
           <ul class="champions-list">
             <li>
               <span>
-                <a href="#">
+                <a href="/html/champions-details.html">
                   <img
                     src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                   />
@@ -166,6 +168,7 @@
             <button id="line-sup">서폿</button>
           </nav>
           <table class="champions-table">
+            <!-- 테이블 상단 -->
             <thead>
               <th align="left" class="first-child">순위</th>
               <th align="left">챔피언</th>
@@ -175,24 +178,32 @@
               <th align="middle">밴률</th>
               <th align="middle">카운터</th>
             </thead>
+            <!-- 테이블 내용 -->
             <tbody>
               <tr>
+                <!-- 순위 -->
                 <td class="first-child">
                   <span>1</span>
                   <span>=</span>
                 </td>
+                <!-- 챔피언 -->
                 <td>
                   <div>
                     <img
                       src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                     />
-                    <span>트위스티드페이트</span>
+                    <span>가렌</span>
                   </div>
                 </td>
+                <!-- 티어 -->
                 <td>10%</td>
+                <!-- 승률 -->
                 <td>10%</td>
+                <!-- 픽률 -->
                 <td>10%</td>
+                <!-- 밴률 -->
                 <td>10%</td>
+                <!-- 카운터 -->
                 <td>
                   <div>
                     <img
