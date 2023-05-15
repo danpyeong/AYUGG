@@ -1,14 +1,41 @@
+.flex {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* 상단 선택박스 - 소환사협곡, 칼바람나락, (나라, 티어, 시즌) 선택 */
 .select-box {
   margin: 0px auto;
   padding: 0px 20px;
   background-color: rgb(160, 160, 160);
-  width: 700px;
+  width: 1000px;
   height: 60px;
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
   border-radius: 4px;
+}
+
+/* 칼바람 나락 버튼 기본 색상 */
+.aram {
+  color: rgb(87, 87, 87);
+}
+
+/* 칼바람 나락 버튼 마우스 올렸을 때 */
+.aram:hover {
+  color: rgb(72, 38, 225);
+  cursor: pointer;
+}
+
+/* 소환사의 협곡 기본 색상 */
+.rift {
+  color: #fff;
+  font-weight: 600;
 }
 
 .select-box button {
@@ -23,23 +50,12 @@
   margin-right: 10px;
 }
 
-/* 칼바람 나락 기본 색상 */
-.aram {
-  color: rgb(87, 87, 87);
-}
-
-/* 칼바람 나락 마우스 올렸을 때 */
-.aram:hover {
-  color: rgb(72, 38, 225);
-  cursor: pointer;
-}
-
 /* 소환사의 협곡 창 - 챔피언 분석 */
 .champions {
   margin: 30px auto;
   padding: 0px 5px;
   background-color: rgb(160, 160, 160);
-  width: 700px;
+  width: 1000px;
   height: 800px;
   display: flex;
   box-sizing: border-box;
@@ -47,38 +63,144 @@
   border-radius: 4px;
 }
 
+/* 중간 흰 상자 */
 .info-frame {
   text-align: left;
   padding: 15px 15px;
   margin: 13px 8px;
   background-color: #fff;
-  width: 49%;
-  height: 500px;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-.champions-left {
+.left-info {
+  width: 35%;
+  height: 96%;
 }
 
-.champions-right {
+.right-info {
+  width: 65%;
+  height: 96%;
 }
 
-.rift {
-  color: #fff;
-  font-weight: 600;
+/* 왼쪽 상자 (챔피언 종류) */
+.champions-search {
+  width: 100%;
+  height: 30px;
+  margin: 5px 0px;
 }
 
-.ft-st {
+.champions-search input {
   font-size: 16px;
-  color: rgb(81, 81, 81);
 }
 
 .champions-frame {
-  padding: 10px 0px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
-.champions-frame img {
+.champions-list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.champions-list img {
   width: 48px;
   height: 48px;
 }
+
+.champions-list a {
+  width: 48px;
+  height: 70px;
+  font-size: 12px;
+  color: rgb(81, 81, 81);
+  overflow: hidden;
+  text-align: center;
+}
+
+.champions-list span {
+  width: 48px;
+  display: flex;
+  margin: 0px 3px;
+}
+
+.champions-list li {
+  display: inline-flex;
+}
+
+/* 테이블 전체 크기 */
+.champions-table {
+  width: 100%;
+  font-size: 12px;
+}
+
+/* 테이블 크기 조절 (순위) */
+.champions-table .first-child {
+  width: 40px;
+}
+
+/* 테이블 크기 조절 (챔피언) */
+.champions-table thead :nth-child(2),
+.champions-table thead :nth-child(7),
+.champions-table tbody tr td:nth-child(2),
+.champions-table tbody tr td:nth-child(7) {
+  width: 150px;
+}
+
+/* 테이블 크기 조절 (티어, 승률, 픽률, 밴률) */
+.champions-table thead th :nth-child(n + 3):nth-child(-n + 6),
+.champions-table tbody :nth-child(n + 3):nth-child(-n + 6) {
+  /* background-color: aqua; */
+  width: 60px;
+  text-align: center;
+}
+
+/* 챔피언 이미지 크기 */
+.champions-table tbody img,
+.champions-table tbody span {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* 왼쪽 상자 (챔피언 종류) */
+
+/* 오른쪽 상자 (챔피언 분석) */
+.line-box {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(160, 160, 160);
+  justify-content: space-evenly;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.line-box button {
+  background-color: #fff;
+  margin: auto 0px;
+  width: 100px;
+  height: 80%;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.select-line {
+  background-color: rgb(249, 139, 55);
+  margin: auto 0px;
+  width: 100px;
+  height: 80%;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: none;
+}
+
+.const-navbar {
+  background-color: rgb(160, 160, 160);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* 오른쪽 상자 (챔피언 분석) */
