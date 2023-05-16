@@ -19,13 +19,15 @@
             style="padding-left: 20px"
           />
           <div>
-            <button onclick="location.href='main.html'">홈</button>
-            <button onclick="location.href='champions-gamemode-rift.html'">
+            <button onclick="location.href='/html/main.html'">홈</button>
+            <button
+              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+            >
               챔피언 분석
             </button>
             <button onclick="location.href=''">통계</button>
             <button onclick="location.href=''">랭킹</button>
-            <button onclick="location.href='multi-search.html'">
+            <button onclick="location.href='/html/multi-search.html'">
               멀티서치
             </button>
           </div>
@@ -103,7 +105,14 @@
           </table>
         </div>
         <!-- 상대하기 쉬운/어려운챔피언 -->
-        <div class="champions-counter"></div>
+        <div class="champions-counter">
+          <div class="counter win-champions">상대하기 쉬운 챔피언</div>
+          <div class="rate-2">
+            <div style="height: 70%"></div>
+            <div style="height: 30%;"">승률
+          </div>
+        </div>
+        <div class="counter lose-champions">짐</div>
       </div>
       <!-- 라인 및 게임모드 선택 -->
       <div class="check-line"></div>
