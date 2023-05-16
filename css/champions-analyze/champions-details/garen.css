@@ -15,6 +15,10 @@ ul {
   background-color: rgb(90, 90, 90);
 }
 
+.bgc-2 {
+  background-color: rgb(230, 230, 230);
+}
+
 /* 큰 틀 너비 */
 .champions-basic-info,
 .champions-details-main,
@@ -161,14 +165,91 @@ ul {
 }
 
 .champions-rune {
-  background-color: blue;
   width: 100%;
   height: 68%;
   margin-bottom: 5px;
 }
 
+.champions-rune header {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  text-align: left;
+  border-bottom: 5px solid rgb(90, 90, 90);
+}
+
+.rune-recommend {
+  width: 100%;
+  height: 90%;
+  display: flex;
+}
+
+.rune-type {
+  width: 30%;
+  height: 100%;
+  background-color: aqua;
+}
+
+.type-frame {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rune-picture {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-top: 7px;
+}
+/* 주룬 부룬 */
+.main-rune {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.sub-rune {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  bottom: 10%;
+  right: 30%;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+/* 주룬 부룬 */
+
+.type-frame > table {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.type-frame > table tr td:nth-child(1) {
+  width: 30px;
+  font-size: 12px;
+}
+
+.type-frame > table tr td:nth-child(2) {
+  width: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rune-details {
+  width: 70%;
+  height: 100%;
+  background-color: aquamarine;
+}
+
 .champions-skill-tree {
-  background-color: blueviolet;
   width: 100%;
   height: 30%;
   margin-bottom: 5px;
