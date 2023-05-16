@@ -16,8 +16,10 @@ ul {
 }
 
 .bgc-2 {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(200, 200, 200);
 }
+
+/* --------------------------------- */
 
 /* 큰 틀 너비 */
 .champions-basic-info,
@@ -157,7 +159,7 @@ ul {
 }
 
 .details-main-left {
-  width: 60%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -187,9 +189,8 @@ ul {
 }
 
 .rune-type {
-  width: 30%;
+  width: 20%;
   height: 100%;
-  background-color: aqua;
 }
 
 .type-frame {
@@ -200,6 +201,14 @@ ul {
   justify-content: center;
 }
 
+.choose-rune-1 {
+  border-left: 2px solid red;
+}
+
+.choose-rune-2 {
+  border-left: none;
+}
+
 .rune-picture {
   position: relative;
   width: 100%;
@@ -207,7 +216,7 @@ ul {
   padding-top: 7px;
 }
 /* 주룬 부룬 */
-.main-rune {
+.main-rune-img {
   width: 36px;
   height: 36px;
   border: 1px solid #ffffff;
@@ -215,7 +224,7 @@ ul {
   background-color: black;
 }
 
-.sub-rune {
+.sub-rune-img {
   width: 24px;
   height: 24px;
   position: absolute;
@@ -230,6 +239,7 @@ ul {
 .type-frame > table {
   width: 100px;
   margin: 0 auto;
+  padding-top: 5px;
 }
 
 .type-frame > table tr td:nth-child(1) {
@@ -239,14 +249,17 @@ ul {
 
 .type-frame > table tr td:nth-child(2) {
   width: 30px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .rune-details {
-  width: 70%;
+  width: 80%;
   height: 100%;
-  background-color: aquamarine;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .champions-skill-tree {
@@ -258,4 +271,101 @@ ul {
 .details-main-right {
   width: 40%;
   height: 100%;
+}
+
+.rune-frame {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.rune-frame img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  padding-top: 4px;
+}
+
+.main-rune-box,
+.sub-rune-box,
+.char-box {
+  width: 32%;
+  height: 100%;
+}
+
+.main-rune-box,
+.sub-rune-box {
+  border-right: 1px solid rgb(90, 90, 90);
+  padding: 0px 5px;
+  box-sizing: border-box;
+}
+
+.rune-title-box {
+  width: 100%;
+  padding: 10px 40%;
+  box-sizing: border-box;
+}
+
+.rune-first-box {
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  padding: 10px 3px;
+}
+
+#main-first-rune-1,
+#main-first-rune-2,
+#main-first-rune-3 {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.rune-second-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.rune-second-box img {
+  width: 28x;
+  height: 28px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
+
+.line td {
+  padding: 10px 0px;
+}
+
+#main-first-line-1,
+#main-first-line-3,
+#main-second-line-1,
+#main-second-line-3,
+#main-third-line-1,
+#main-third-line-2,
+/*  */
+#sub-first-line-1,
+#sub-first-line-2,
+#sub-first-line-3,
+#sub-second-line-2,
+#sub-second-line-3,
+#sub-third-line-2,
+#sub-third-line-3,
+/*  */
+#char-first-line-2,
+#char-first-line-3,
+#char-second-line-2,
+#char-second-line-3,
+#char-third-line-1,
+#char-third-line-3 {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+#char-first-line-1,
+#char-second-line-1,
+#char-third-line-2 {
+  background-color: black;
 }

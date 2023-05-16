@@ -212,45 +212,320 @@
             <div class="rune-recommend">
               <nav class="rune-type bgc-2">
                 <!-- 추천 1 -->
-                <div id="rune-1" class="type-frame bgc-2">
+                <div id="rune-1" class="choose-rune-1 type-frame bgc-2">
                   <div class="rune-picture">
                     <img
-                      class="main-rune"
+                      id="main-rune-1"
+                      class="main-rune-img"
                       src="https://opgg-static.akamaized.net/meta/images/lol/perk/8010.png?image=q_auto,f_webp,w_56&v=1684221744815"
                     />
                     <img
-                      class="sub-rune"
+                      id="sub-rune-1"
+                      class="sub-rune-img"
                       src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8400.png?image=q_auto,f_webp,w_56&v=1684221744815"
                     />
                   </div>
                   <table>
                     <tr>
                       <td>픽률</td>
-                      <td>10%</td>
+                      <td id="rune-pick">10%</td>
                     </tr>
                     <tr>
                       <td>승률</td>
-                      <td>10%</td>
+                      <td id="rune-win">10%</td>
                     </tr>
                   </table>
                 </div>
                 <!-- 추천 2 -->
-                <div id="rune-2" class="type-frame bgc-1">
-                  <div>룬 그림</div>
-                  <div>픽률 승률</div>
+                <div id="rune-2" class="choose-rune-2 type-frame bgc-1">
+                  <div class="rune-picture">
+                    <img
+                      id="main-rune-2"
+                      class="main-rune-img"
+                      src="https://opgg-static.akamaized.net/meta/images/lol/perk/8010.png?image=q_auto,f_webp,w_56&v=1684221744815"
+                    />
+                    <img
+                      id="sub-rune-2"
+                      class="sub-rune-img"
+                      src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7202_Sorcery.png"
+                    />
+                  </div>
+                  <table>
+                    <tr>
+                      <td>픽률</td>
+                      <td id="rune-pick">10%</td>
+                    </tr>
+                    <tr>
+                      <td>승률</td>
+                      <td id="rune-win">10%</td>
+                    </tr>
+                  </table>
                 </div>
               </nav>
               <div class="rune-details">
                 <!-- 주룬 -->
-                <div>
-                  <div></div>
-                  <div></div>
-                  <table></table>
+                <div class="main-rune-box">
+                  <div class="rune-title-box">
+                    <div class="rune-frame">
+                      <img
+                        id="main-rune-title"
+                        src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8000.png?image=q_auto,f_webp,w_56&v=1684225762295"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="rune-first-box">
+                    <div id="main-first-rune-1" class="rune-frame">
+                      <img
+                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png"
+                      />
+                    </div>
+                    <div id="main-first-rune-2" class="rune-frame">
+                      <img
+                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png"
+                      />
+                    </div>
+                    <div id="main-first-rune-3" class="rune-frame">
+                      <img
+                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png"
+                      />
+                    </div>
+                    <div id="main-first-rune-4" class="rune-frame">
+                      <img
+                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png"
+                      />
+                    </div>
+                  </div>
+
+                  <table class="rune-second-box">
+                    <colgroup>
+                      <col width="33%" />
+                      <col width="33%" />
+                      <col width="33%" />
+                    </colgroup>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="main-first-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Overheal.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-first-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Triumph.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-first-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PresenceOfMind/PresenceOfMind.png"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="main-second-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-second-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendTenacity/LegendTenacity.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-second-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendBloodline/LegendBloodline.png"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="main-third-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-third-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CutDown/CutDown.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="main-third-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/LastStand/LastStand.png"
+                        />
+                      </td>
+                    </tr>
+                  </table>
                 </div>
-                <!-- 보조룬 -->
-                <div></div>
-                <!-- 특성 -->
-                <div></div>
+                <!-- 부룬 -->
+                <div class="sub-rune-box">
+                  <div class="rune-title-box">
+                    <div style="width: 100%; height: 32px"></div>
+                  </div>
+
+                  <div class="rune-first-box">
+                    <div id="sub-first-rune-1" class="rune-frame">
+                      <img
+                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png"
+                      />
+                    </div>
+                  </div>
+
+                  <table class="rune-second-box">
+                    <colgroup>
+                      <col width="33%" />
+                      <col width="33%" />
+                      <col width="33%" />
+                    </colgroup>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="sub-first-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Demolish/Demolish.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-first-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/FontOfLife/FontOfLife.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-first-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/MirrorShell/MirrorShell.png"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="sub-second-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Conditioning/Conditioning.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-second-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/SecondWind/SecondWind.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-second-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/BonePlating/BonePlating.png"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="sub-third-line-1"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Overgrowth/Overgrowth.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-third-line-2"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Revitalize/Revitalize.png"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="sub-third-line-3"
+                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Unflinching/Unflinching.png"
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="char-box">
+                  <div class="rune-title-box">
+                    <div style="width: 100%; height: 32px"></div>
+                  </div>
+
+                  <div class="rune-first-box">
+                    <div id="char-first-rune-1">
+                      <div style="width: 100%; height: 32px"></div>
+                    </div>
+                  </div>
+
+                  <table class="rune-second-box">
+                    <colgroup>
+                      <col width="33%" />
+                      <col width="33%" />
+                      <col width="33%" />
+                    </colgroup>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="char-first-line-1"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-first-line-2"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5005.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-first-line-3"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5007.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="char-second-line-1"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-second-line-2"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5002.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-second-line-3"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                    </tr>
+                    <tr class="line">
+                      <td>
+                        <img
+                          id="char-third-line-1"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5001.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-third-line-2"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5002.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          id="char-third-line-3"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -269,5 +544,27 @@
         <div class="champions-items-build"></div>
       </div>
     </article>
+    <script>
+      var rune = document.getElementById("rune-1");
+      rune.addEventListener("click", function (e) {
+        document.getElementById("rune-1").style.borderLeft = "3px solid red";
+        document.getElementById("rune-2").style.borderLeft = "none";
+        document.getElementById("rune-1").style.backgroundColor =
+          "rgb(200, 200, 200)";
+        document.getElementById("rune-2").style.backgroundColor =
+          "rgb(90, 90, 90)";
+      });
+
+      var rune2 = document.getElementById("rune-2");
+      rune2.addEventListener("click", function (e) {
+        document.getElementById("rune-2").style.borderLeft = "3px solid red";
+        document.getElementById("rune-1").style.borderLeft = "none";
+        document.getElementById("rune-2").style.backgroundColor =
+          "rgb(200, 200, 200)";
+        document.getElementById("rune-1").style.backgroundColor =
+          "rgb(90, 90, 90)";
+      });
+    </script>
+    <!-- <script type="text/javascript" src="/jsp/champions-details-jsp"></script> -->
   </body>
 </html>
