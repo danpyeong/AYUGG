@@ -50,14 +50,14 @@
         <!-- 챔피언 최소 정보 -->
         <div class="champions-least-info">
           <!-- 챔피언 초상화, 스킬, 라인 -->
-          <div>
+          <div style="display: flex">
             <img
               style="width: 64px; height: 64px; margin-right: 10px"
               src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
             />
-            <div>
+            <div class="skill-name-box">
               <div>
-                <div style="text-align: left; font-size: 12px">가렌</div>
+                <span>가렌</span>
                 <div class="champions-basic-skill">
                   <img
                     id="skill-1"
@@ -84,7 +84,20 @@
             </div>
           </div>
           <!-- 승률, 픽률, 밴률 -->
-          <div>승률 픽률 밴률 들어감</div>
+          <table class="rate-3">
+            <tr>
+              <td>승률</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>픽률</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>밴률</td>
+              <td>10%</td>
+            </tr>
+          </table>
         </div>
         <!-- 상대하기 쉬운/어려운챔피언 -->
         <div class="champions-counter"></div>
