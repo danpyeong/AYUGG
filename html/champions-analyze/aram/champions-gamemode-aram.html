@@ -2,8 +2,13 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/champions-gamemode-aram.css" />
+    <link
+      rel="stylesheet"
+      href="/css/champions-analyze/rift/champions-gamemode-rift.css"
+    />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/champions-analyze/line/line-top.css " />
+    <link rel="stylesheet" href="/css/champions-analyze/aram/text-aram.css " />
     <title>AYU-GG</title>
   </head>
   <body>
@@ -16,13 +21,15 @@
             style="padding-left: 20px"
           />
           <div>
-            <button onclick="location.href='main.html'">홈</button>
-            <button onclick="location.href='champions-gamemode-rift.html'">
+            <button onclick="location.href='/html/main.html'">홈</button>
+            <button
+              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+            >
               챔피언 분석
             </button>
             <button onclick="location.href=''">통계</button>
             <button onclick="location.href=''">랭킹</button>
-            <button onclick="location.href='multi-search.html'">
+            <button onclick="location.href='/html/multi-search.html'">
               멀티서치
             </button>
           </div>
@@ -35,6 +42,7 @@
           </select>
           <input type="text" />
           <button>
+            <!-- 이미지 변경 필요 -->
             <img
               src="https://svgsilh.com/svg/1093183.svg"
               style="width: 10px; height: 10px"
@@ -52,13 +60,13 @@
         <div>
           <button
             class="rift"
-            onclick="location.href='champions-gamemode-rift.html'"
+            onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
           >
             소환사의 협곡
           </button>
           <button
             class="aram"
-            onclick="location.href='champions-gamemode-aram.html'"
+            onclick="location.href='/html/champions-analyze/rift/champions-gamemode-aram.html.html'"
           >
             칼바람의 나락
           </button>
@@ -97,7 +105,7 @@
           <ul class="champions-list">
             <li>
               <span>
-                <a href="#">
+                <a href="/html/champions-analyze/champions-details/garen.html">
                   <img
                     src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                   />
@@ -161,13 +169,49 @@
         <div class="info-frame right-info">
           <!-- 라인별 챔피언 -->
           <nav class="line-box flex">
-            <button id="line-top">탑</button>
-            <button id="line-jg">정글</button>
-            <button id="line-mid">미드</button>
-            <button id="line-bot">바텀</button>
-            <button id="line-sup">서폿</button>
+            <button
+              id="line-top"
+              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+            >
+              탑
+            </button>
+            <button
+              id="line-jg"
+              onclick="location.href='/html/champions-analyze/rift/rift-jg.html'"
+            >
+              정글
+            </button>
+            <button
+              id="line-mid"
+              onclick="location.href='/html/champions-analyze/rift/rift-mid.html'"
+            >
+              미드
+            </button>
+            <button
+              id="line-bot"
+              onclick="location.href='/html/champions-analyze/rift/rift-bot.html'"
+            >
+              바텀
+            </button>
+            <button
+              id="line-sup"
+              onclick="location.href='/html/champions-analyze/rift/rift-sup.html'"
+            >
+              서폿
+            </button>
           </nav>
+          <!-- 테이블 -->
           <table class="champions-table">
+            <colgroup>
+              <col width="40px" />
+              <col width="150px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="150px" />
+            </colgroup>
+            <!-- 테이블 상단 -->
             <thead>
               <th align="left" class="first-child">순위</th>
               <th align="left">챔피언</th>
@@ -177,24 +221,32 @@
               <th align="middle">밴률</th>
               <th align="middle">카운터</th>
             </thead>
+            <!-- 테이블 내용 -->
             <tbody>
               <tr>
+                <!-- 순위 -->
                 <td class="first-child">
                   <span>1</span>
                   <span>=</span>
                 </td>
+                <!-- 챔피언 -->
                 <td>
                   <div>
                     <img
                       src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                     />
-                    <span>트위스티드페이트</span>
+                    <span>가렌</span>
                   </div>
                 </td>
+                <!-- 티어 -->
                 <td>10%</td>
+                <!-- 승률 -->
                 <td>10%</td>
+                <!-- 픽률 -->
                 <td>10%</td>
+                <!-- 밴률 -->
                 <td>10%</td>
+                <!-- 카운터 -->
                 <td>
                   <div>
                     <img
@@ -213,13 +265,6 @@
           </table>
         </div>
       </div>
-      <script>
-        var btn = document.getElementById("line-top");
-        btn.onclick = function (e) {
-          document.getElementById("line-top").style.backgroundColor = "blue";
-          document.getElementById("line-top").style.color = "white";
-        };
-      </script>
     </article>
   </body>
 </html>
