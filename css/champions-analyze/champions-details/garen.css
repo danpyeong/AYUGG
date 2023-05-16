@@ -1,11 +1,18 @@
 ul {
   list-style: none;
-  padding-left: 0px;
+  justify-content: space-evenly;
+}
+
+.txt-blue {
+  color: rgb(96, 96, 240);
+}
+
+.txt-red {
+  color: rgb(255, 26, 26);
 }
 
 /* 큰 틀 너비 */
 .champions-basic-info,
-.check-line,
 .champions-details-main,
 .champions-items-build {
   width: 900px;
@@ -13,7 +20,7 @@ ul {
 
 /* 챔피언 기본 정보 */
 .champions-basic-info {
-  background-color: #fff;
+  background-color: rgb(90, 90, 90);
   margin: 30px auto;
   padding: 5px;
   height: 300px;
@@ -22,16 +29,20 @@ ul {
 /* 챔피언 최소 정보 박스 */
 .champions-least-info {
   width: 100%;
-  height: 84px;
+  height: 100px;
   box-sizing: border-box;
-  padding: 11px;
+  padding: 0px 11px;
   display: flex;
   justify-content: space-between;
 }
 
+.champions-least-info-left {
+  display: flex;
+}
+
 /* 챔피언 이미지 옆 이름, 스킬 박스 */
 .skill-name-box {
-  margin: 10px 0px;
+  padding: 15px 0;
   text-align: left;
   width: 150px;
   height: 100%;
@@ -42,21 +53,29 @@ ul {
 .champions-basic-skill img {
   width: 16px;
   height: 16px;
+  vertical-align: middle;
 }
 
 /* 승률, 픽률, 밴률 테이블 */
-.rate-3 {
+.champions-least-info-right {
+  width: 80px;
+  height: 90%;
   margin-right: 5px;
   font-size: 14px;
-  font-weight: 600;
+}
+
+.champions-least-info-right tr td:nth-child(2) {
+  font-size: 16px;
+  font-weight: 900;
 }
 
 /* 챔피언 카운터 */
 .champions-counter {
+  padding: 0px 6.5px;
   width: 100%;
-  height: 60%;
-  margin: 5px 0px;
+  height: 65%;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .champions-counter .counter {
@@ -67,8 +86,14 @@ ul {
   box-sizing: border-box;
 }
 
+.counter-text {
+  font-size: 16px;
+  margin: 10px;
+  font-weight: 700;
+}
+
 .rate-2 {
-  background-color: rgb(188, 188, 188);
+  background-color: rgb(90, 90, 90);
   width: 5%;
   height: 100%;
   font-size: 12px;
@@ -76,22 +101,30 @@ ul {
 }
 
 .win-champions {
-  background-color: rgb(147, 147, 255);
+  background-color: rgb(49, 49, 79);
+  color: rgb(96, 96, 240);
 }
 
 .lose-champions {
-  background-color: rgb(255, 124, 124);
+  background-color: rgb(108, 65, 65);
+}
+
+.champions-list {
+  width: 80%;
+  height: 30%;
 }
 
 .champions-list img {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  display: block;
+  margin: 7px auto;
 }
 
 .champions-list span {
-  width: 24px;
-  height: 40px;
+  width: 70px;
+  height: 130px;
   font-size: 10px;
   color: #fff;
   overflow: hidden;
@@ -100,4 +133,13 @@ ul {
 
 .champions-list li {
   display: inline-flex;
+}
+
+.counter-name {
+  margin: 10px 0px;
+}
+
+.counter-rate {
+  font-size: 14px;
+  font-weight: 700;
 }

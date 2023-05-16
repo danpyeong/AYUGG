@@ -55,66 +55,97 @@
         <!-- 챔피언 최소 정보 -->
         <div class="champions-least-info">
           <!-- 챔피언 초상화, 스킬, 라인 -->
-          <div style="display: flex">
+          <div class="champions-least-info-left">
             <img
-              style="width: 64px; height: 64px; margin-right: 10px"
+              style="width: 64px; height: 64px; margin: auto 7px"
               src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
             />
             <div class="skill-name-box">
-              <div>
-                <span>가렌</span>
-                <div class="champions-basic-skill">
-                  <img
-                    id="skill-1"
-                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                  />
-                  <img
-                    id="skill-2"
-                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                  />
-                  <img
-                    id="skill-3"
-                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                  />
-                  <img
-                    id="skill-4"
-                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                  />
-                  <img
-                    id="skill-5"
-                    src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                  />
-                </div>
+              <span>가렌</span>
+              <div class="champions-basic-skill">
+                <img
+                  id="skill-1"
+                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                />
+                <img
+                  id="skill-2"
+                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                />
+                <img
+                  id="skill-3"
+                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                />
+                <img
+                  id="skill-4"
+                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                />
+                <img
+                  id="skill-5"
+                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
+                />
               </div>
             </div>
           </div>
           <!-- 승률, 픽률, 밴률 -->
-          <table class="rate-3">
+          <table class="champions-least-info-right">
             <tr>
               <td>승률</td>
-              <td>10%</td>
+              <td id="win-rate">10%</td>
             </tr>
             <tr>
               <td>픽률</td>
-              <td>10%</td>
+              <td id="pick-rate">10%</td>
             </tr>
             <tr>
               <td>밴률</td>
-              <td>10%</td>
+              <td id="ban-rate">10%</td>
             </tr>
           </table>
         </div>
         <!-- 상대하기 쉬운/어려운챔피언 -->
         <div class="champions-counter">
+          <!-- 상대하기 쉬움 -->
           <div class="counter win-champions">
-            <div>상대하기 쉬운 챔피언</div>
+            <div class="counter-text txt-blue">상대하기 쉬운 챔피언</div>
             <ul class="champions-list">
               <li>
                 <span>
                   <img
+                    id="win-counter-1"
                     src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                   />
-                  가렌
+                  <div id="win-counter-1-name" class="counter-name">가렌</div>
+                  <div id="win-rate-1" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="win-counter-2"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="win-counter-2-name" class="counter-name">가렌</div>
+                  <div id="win-rate-2" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="win-counter-3"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="win-counter-3-name" class="counter-name">가렌</div>
+                  <div id="win-rate-3" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="win-counter-4"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="win-counter-4-name" class="counter-name">가렌</div>
+                  <div id="win-rate-4" class="counter-rate">50%</div>
                 </span>
               </li>
             </ul>
@@ -123,23 +154,54 @@
             <div style="height: 70%"></div>
             <div style="height: 30%">승률</div>
           </div>
+          <!-- 상대하기 어려움 -->
           <div class="counter lose-champions">
-            <div>상대하기 어려운 챔피언</div>
+            <div class="counter-text txt-red">상대하기 어려운 챔피언</div>
             <ul class="champions-list">
               <li>
                 <span>
                   <img
+                    id="lose-counter-1"
                     src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
                   />
-                  가렌
+                  <div id="lose-counter-1-name" class="counter-name">가렌</div>
+                  <div id="lose-rate-1" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="lose-counter-2"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="lose-counter-2-name" class="counter-name">가렌</div>
+                  <div id="lose-rate-2" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="lose-counter-3"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="lose-counter-3-name" class="counter-name">가렌</div>
+                  <div id="lose-rate-3" class="counter-rate">50%</div>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <img
+                    id="lose-counter-1"
+                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                  />
+                  <div id="lose-counter-1-name" class="counter-name">가렌</div>
+                  <div id="lose-rate-1" class="counter-rate">50%</div>
                 </span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <!-- 라인 및 게임모드 선택 -->
-      <div class="check-line"></div>
       <!-- 메인 세부사항 -->
       <div class="champions-details-main">
         <!-- 룬 -->
