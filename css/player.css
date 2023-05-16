@@ -75,7 +75,7 @@ body {
     border: 0;
     position: relative;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }
 .container .bottom .match-type button:hover::after {
     padding-left: 16px;
@@ -88,18 +88,66 @@ body {
     bottom: -5px;
 }
 .container .bottom .statistics .st-list {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    border-top: 1px solid white;
-    height: 42px;
-    background: #626367;
     color: white;
+    border-collapse: collapse;
 }
-.container .bottom .statistics .st-list div {
+.container .bottom .statistics .st-list th {
+    text-align: left;
+    background: #626367;
+    border: 1px solid white;
     padding-left: 20px;
 }
-.container .bottom .statistics .st-list div+div {
-    border-left: 1px solid white;
+.container .bottom .statistics .st-list .info {
+    border-left: none;
 }
-/*  */
+.container .bottom .statistics .st-list .play-style {
+    border-right: none;
+}
+.container .bottom .statistics .st-list tr td {
+    text-align: left;
+    border: 1px solid white;
+}
+.container .bottom .statistics .st-list .info {
+    width: 250px;
+}
+.container .bottom .statistics .st-list .info .as .rate-box{
+     width: 150px;
+     height: 150px;
+}
+.container .bottom .statistics .st-list .info .as {
+    position: relative;
+}
+.container .bottom .statistics .st-list .info .ad {
+    display: flex;
+    justify-content: space-evenly;
+}
+.container .bottom .statistics .st-list .info .inline-text{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.container .bottom .statistics .st-list .info .ad .as .text-right {
+    flex-direction: column;
+    align-items: center;
+    margin: auto 0;
+
+}
+.container .bottom .statistics .st-list .most {
+    width: 500px;
+}
+.container .bottom .statistics .st-list .most .middle-sta {
+    width: 100%;
+}
+.container .bottom .statistics .st-list .most .middle-sta th{
+    border: none;
+    background: none;
+}
+.container .bottom .statistics .st-list .most .middle-sta tr td {
+    border: none;
+}
+.container .bottom .statistics .st-list .play-style {
+    width: 250px;
+}
