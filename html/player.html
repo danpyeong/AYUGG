@@ -85,7 +85,7 @@
                             <div class="ad">
                                 <div class="as">
                                     <div class="rate-box">
-                                        <canvas id="rate" style="width: 100%; height: 100%;"></canvas>
+                                        <canvas id="rate"></canvas>
                                     </div>
                                     <div class="inline-text">
                                         <div style="font-size: 16px;">50%</div>
@@ -173,14 +173,247 @@
                             </table>
                         </td>
                         <td class="play-style">
-                            3
+                            <div class="pl-box">
+                                <img src="/images/example.webp" alt="cham-icon"width="200px">
+                            </div>
                         </td>
                     </tr>
                 </table>
             </div>
+            <br>
+            <br>
             <!-- 게임별 -->
             <div class="matches">
-
+                <div class="match lose">
+                    <!-- 종류, 시간, 플레이타임 -->
+                    <div class="match-first">
+                        <div class="font1">솔로랭크</div>
+                        <div class="font2">1시간전</div>
+                        <div class="font2">30:00</div>
+                    </div>
+                    <!-- 챔,스펠,룬 -->
+                    <div class="match-second">
+                        <img src="/images/example.webp" alt="챔피언 아이콘" width="45px" height="45px"
+                            style="padding-right: 10px; align-items: center;">
+                        <span>
+                            <div>
+                                <img src="/images/example.webp" alt="스펠 아이콘" width="20px" height="20px">
+                                <img src="/images/example.webp" alt="스펠 아이콘" width="20px" height="20px">
+                            </div>
+                            <div>
+                                <img src="/images/example.webp" alt="룬 아이콘" width="20px" height="20px">
+                                <img src="/images/example.webp" alt="룬 아이콘" width="20px" height="20px">
+                            </div>
+                        </span>
+                    </div>
+                    <!-- kda 평균 -->
+                    <div class="match-third">
+                        <div class="font1">3/3/3</div>
+                        <div class="font2">2.0</div>
+                    </div>
+                    <!-- 킬관여, cs, 아이템 -->
+                    <div class="match-fourth">
+                        <div style="padding-bottom: 5px;">
+                            <span class="font2">킬관여 20%</span>
+                            <span class="font2">CS 200</span>
+                        </div>
+                        <span>
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px" style="border-radius: 50%;">                            
+                        </span>
+                    </div>
+                    <!-- players -->
+                    <div class="match-fifth">
+                        <ul>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 펼치기 아이콘 -->
+                    <button class="open">
+                        <img src="/images/example.webp" alt="펼치는 아이콘" width="20px" height="20px">
+                    </button>
+                </div>
+                <div class="match win">
+                    <!-- 종류, 시간, 플레이타임 -->
+                    <div class="match-first">
+                        <div class="font1">솔로랭크</div>
+                        <div class="font2">1시간전</div>
+                        <div class="font2">30:00</div>
+                    </div>
+                    <!-- 챔,스펠,룬 -->
+                    <div class="match-second">
+                        <img src="/images/example.webp" alt="챔피언 아이콘" width="45px" height="45px"
+                            style="padding-right: 10px; align-items: center;">
+                        <span>
+                            <div>
+                                <img src="/images/example.webp" alt="스펠 아이콘" width="20px" height="20px">
+                                <img src="/images/example.webp" alt="스펠 아이콘" width="20px" height="20px">
+                            </div>
+                            <div>
+                                <img src="/images/example.webp" alt="룬 아이콘" width="20px" height="20px">
+                                <img src="/images/example.webp" alt="룬 아이콘" width="20px" height="20px">
+                            </div>
+                        </span>
+                    </div>
+                    <!-- kda 평균 -->
+                    <div class="match-third">
+                        <div class="font1">3/3/3</div>
+                        <div class="font2">2.0</div>
+                    </div>
+                    <!-- 킬관여, cs, 아이템 -->
+                    <div class="match-fourth">
+                        <div style="padding-bottom: 5px;">
+                            <span class="font2">킬관여 20%</span>
+                            <span class="font2">CS 200</span>
+                        </div>
+                        <span>
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px">
+                            <img src="/images/example.webp" alt="아이템 아이콘" width="20px" height="20px" style="border-radius: 50%;">                            
+                        </span>
+                    </div>
+                    <!-- players -->
+                    <div class="match-fifth">
+                        <ul>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <img src="/images/example.webp" alt="펼치는 아이콘">
+                                    <span>닉네임닉네임</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 펼치기 아이콘 -->
+                    <button class="open">
+                        <img src="/images/example.webp" alt="펼치는 아이콘" width="20px" height="20px">
+                    </button>
+                </div>
             </div>
         </div>
     </div>

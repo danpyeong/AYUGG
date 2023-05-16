@@ -110,36 +110,46 @@ body {
 .container .bottom .statistics .st-list .info {
     width: 250px;
 }
-.container .bottom .statistics .st-list .info .as .rate-box{
-     width: 150px;
-     height: 150px;
-}
-.container .bottom .statistics .st-list .info .as {
+.container .bottom .statistics .st-list .info .ad .as{
     position: relative;
+    width: 150px;
+    height: 150px; 
 }
 .container .bottom .statistics .st-list .info .ad {
     display: flex;
     justify-content: space-evenly;
 }
+#rate {
+    width: 100%;
+    height: 100%;
+}
 .container .bottom .statistics .st-list .info .inline-text{
     position: absolute;
+    top: 0px;
+    left: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    align-content: center;
+    width: 100%;
+    height: 100%;
 }
-.container .bottom .statistics .st-list .info .ad .as .text-right {
+.container .bottom .statistics .st-list .info .ad .text-right {
+    display: flex;
     flex-direction: column;
-    align-items: center;
     margin: auto 0;
-
+    align-items: center;
+}
+.st-list {
+    
+    height: 250px;
 }
 .container .bottom .statistics .st-list .most {
     width: 500px;
 }
 .container .bottom .statistics .st-list .most .middle-sta {
     width: 100%;
+    padding-inline: 20px;
 }
 .container .bottom .statistics .st-list .most .middle-sta th{
     border: none;
@@ -150,4 +160,51 @@ body {
 }
 .container .bottom .statistics .st-list .play-style {
     width: 250px;
+}
+.pl-box {
+    display: flex;
+    justify-content: center;
+}
+.win {
+    background: rgba(0, 0, 255, 0.5);
+}
+.lose {
+    background: rgba(255, 0, 0, 0.5);
+}
+.match {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.font1{
+    color: white;
+    font-size: 14px;
+}
+.font2{
+    color: rgb(200, 200, 200);
+    font-size: 10px;    
+}
+.match-first {
+    text-align: left;
+}
+.match-second {
+    display: flex;
+    flex-direction: row;
+}
+.match-fifth {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 12px;
+}
+.match-fifth img {
+    width: 12px;
+    height: 12px;
+}
+.match-fifth ul {
+    list-style: none;
+}
+.open {
+    cursor: pointer;
 }
