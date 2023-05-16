@@ -1,3 +1,8 @@
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
 /* 큰 틀 너비 */
 .champions-basic-info,
 .check-line,
@@ -50,9 +55,8 @@
 .champions-counter {
   width: 100%;
   height: 60%;
-  margin: 20px 0px;
+  margin: 5px 0px;
   display: flex;
-  justify-content: space-evenly;
 }
 
 .champions-counter .counter {
@@ -77,4 +81,23 @@
 
 .lose-champions {
   background-color: rgb(255, 124, 124);
+}
+
+.champions-list img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.champions-list span {
+  width: 24px;
+  height: 40px;
+  font-size: 10px;
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.champions-list li {
+  display: inline-flex;
 }
