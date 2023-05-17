@@ -682,8 +682,19 @@ ul {
   padding: 10px;
 }
 
+.detail-box {
+  display: flex;
+}
+
 .detail-build {
   display: flex;
+  width: 70%;
+}
+
+.detail-rate {
+  width: 15%;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .detail-build img {
