@@ -7,6 +7,10 @@
   background-color: rgb(47, 47, 47);
 }
 
+.bgc-black {
+  background-color: #000000;
+}
+
 body {
   background-color: rgb(47, 47, 47);
   width: 100%;
@@ -34,37 +38,72 @@ select {
 .navbar {
   margin-top: -7px;
   margin-left: -8px;
-  background-color: black;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 50px;
   padding: 5px 0;
 }
 
-.navbar span div button {
-  font-size: 24px;
+.navbar-button-box {
+  height: 100%;
+  display: flex;
+  color: #fff;
+  align-items: center;
 }
 
-.navbar > span > div button {
+.navbar-button-box img {
+  width: 150px;
+  height: 50%;
   padding-left: 20px;
-  background-color: black;
-  color: #fff;
-  border: 0;
+  vertical-align: middle;
+}
+
+.navbar-button {
+  padding: 0px 10px;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.5);
   position: relative;
   cursor: pointer;
-  font-size: 16px;
 }
 
-.navbar span > div button:hover::after {
-  padding-left: 16px;
+.main {
+  width: 40px;
+  position: relative;
+}
+
+.statistics,
+.ranking {
+  width: 50px;
+  position: relative;
+}
+
+.analyze {
+  width: 100px;
+  position: relative;
+}
+
+.multi {
+  width: 80px;
+  position: relative;
+}
+
+.navbar-button:hover::after {
+  padding-left: 50%;
   content: "";
-  width: 100%;
+  width: 50%;
   position: absolute;
   height: 1px;
-  background-color: #fff;
-  left: 0;
+  left: 0px;
   bottom: -5px;
+  background-color: #fff;
+}
+
+.navbar-button:hover {
+  color: rgb(255, 255, 255);
 }
 
 .main-box {

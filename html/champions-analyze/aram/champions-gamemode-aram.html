@@ -8,32 +8,58 @@
     />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/champions-analyze/line/line-top.css " />
-    <link rel="stylesheet" href="/css/champions-analyze/aram/text-aram.css " />
+    <link rel="stylesheet" href="/css/champions-analyze/aram/text-aram.css" />
+    <script src="/jsp/champions-analyze.js"></script>
     <title>AYU-GG</title>
   </head>
   <body>
     <header>
       <!-- 상단 메뉴바 -->
-      <nav class="navbar middle">
-        <span class="middle">
+      <nav class="navbar middle bgc-black">
+        <div class="navbar-button-box">
           <img
             src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
-            style="padding-left: 20px"
           />
-          <div>
-            <button onclick="location.href='/html/main.html'">홈</button>
+          <div class="main">
+            <div class="navbar-border-box-main"></div>
             <button
+              class="navbar-button"
+              onclick="location.href='/html/main.html'"
+            >
+              홈
+            </button>
+          </div>
+          <div class="analyze">
+            <div class="navbar-border-box-analyze"></div>
+            <button
+              class="navbar-button"
               onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
             >
               챔피언 분석
             </button>
-            <button onclick="location.href=''">통계</button>
-            <button onclick="location.href=''">랭킹</button>
-            <button onclick="location.href='/html/multi-search.html'">
+          </div>
+          <div class="statistics">
+            <div class="navbar-border-box-statistics"></div>
+            <button class="navbar-button" onclick="location.href=''">
+              통계
+            </button>
+          </div>
+          <div class="ranking">
+            <div class="navbar-border-box-ranking"></div>
+            <button class="navbar-button" onclick="location.href=''">
+              랭킹
+            </button>
+          </div>
+          <div class="multi">
+            <div class="navbar-border-box-multi"></div>
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/multi-search.html'"
+            >
               멀티서치
             </button>
           </div>
-        </span>
+        </div>
 
         <div class="nav-search-box">
           <select name="country">
@@ -42,7 +68,6 @@
           </select>
           <input type="text" />
           <button>
-            <!-- 이미지 변경 필요 -->
             <img
               src="https://svgsilh.com/svg/1093183.svg"
               style="width: 10px; height: 10px"
@@ -66,7 +91,7 @@
           </button>
           <button
             class="aram"
-            onclick="location.href='/html/champions-analyze/rift/champions-gamemode-aram.html.html'"
+            onclick="location.href='/html/champions-analyze/aram/champions-gamemode-aram.html'"
           >
             칼바람의 나락
           </button>
@@ -213,7 +238,7 @@
             </colgroup>
             <!-- 테이블 상단 -->
             <thead>
-              <th align="left" class="first-child">순위</th>
+              <th align="left">순위</th>
               <th align="left">챔피언</th>
               <th align="middle">티어</th>
               <th align="middle">승률</th>

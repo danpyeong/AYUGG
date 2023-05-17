@@ -7,6 +7,22 @@ a {
   color: #000000;
 }
 
+/* 상단 메뉴바  */
+.navbar-border-box-analyze {
+  padding-left: 50%;
+  width: 50%;
+  position: absolute;
+  height: 1px;
+  background-color: #fff;
+  left: 0px;
+  bottom: -5px;
+}
+
+.analyze > button {
+  color: #fff;
+}
+/* 상단 메뉴바  */
+
 /* 상단 선택박스 - 소환사협곡, 칼바람나락, (나라, 티어, 시즌) 선택 */
 .select-box {
   margin: 0px auto;

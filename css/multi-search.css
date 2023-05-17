@@ -1,54 +1,71 @@
 body {
-    background: rgb(57, 58, 60);
+  background: rgb(57, 58, 60);
 }
+
+/* 상단 메뉴바  */
+.navbar-border-box-multi {
+  padding-left: 50%;
+  width: 50%;
+  position: absolute;
+  height: 1px;
+  background-color: #fff;
+  left: 0px;
+  bottom: -5px;
+}
+
+.multi > button {
+  color: #fff;
+}
+/* 상단 메뉴바  */
+
 .container {
-    text-align: center;
-    margin: 0 auto;
-    width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
 }
 .container .search-text {
-    background: #626367;
-    color: white;
-    font-size: 14px;
-    width: 300px;
-    height: 200px;
-    border-radius: 4px;
-    resize: none;
-    padding: 10px;
+  background: #626367;
+  color: white;
+  font-size: 14px;
+  width: 300px;
+  height: 200px;
+  border-radius: 4px;
+  resize: none;
+  padding: 10px;
 }
-::placeholder{
-    color: rgba(255, 255, 255, 0.6);
+::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 .container .buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .container .buttons select {
-    font-size: 14px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 /* select-option 스타일 변경 */
 .container .buttons .search {
-    font-size: 14px;
-    background: orange;
-    margin-right: -20px;
-    border-radius: 4px;
-    border: none;
-    padding: 5px 40px;
-    cursor: pointer;
+  font-size: 14px;
+  background: orange;
+  margin-right: -20px;
+  border-radius: 4px;
+  border: none;
+  padding: 5px 40px;
+  cursor: pointer;
 }
 .container .context {
-    font-size: 14px;
-    width: 300px;
-    height: 200px;
-    background: rgb(251, 190, 77);
-    color: white;
-    text-align: start;
-    border-radius: 4px;
-    padding: 10px;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.6);
-    border-style: solid;
+  font-size: 14px;
+  width: 300px;
+  height: 200px;
+  background: rgb(251, 190, 77);
+  color: white;
+  text-align: start;
+  border-radius: 4px;
+  padding: 10px;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-style: solid;
 }
