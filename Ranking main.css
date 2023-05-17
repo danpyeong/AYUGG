@@ -1,0 +1,39 @@
+ 
+  body {
+    background-color: rgb(47, 47, 47);
+    width: 100%;
+    margin: 0px;
+  }
+  
+   
+  .container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.contents {
+  display: flex;
+}
+.contents .left-side {
+  width: 60%;
+  height: 440px;
+  padding: auto;
+}
+
+
+.contents .right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 440px;
+}
+   
+.contents .right-side .left-side {
+  background-color: #434240;
+  border: 1px solid #3e3e3c;
+  padding: 18px 22px;
+  width: calc(100% - 46px);
+  
+}
