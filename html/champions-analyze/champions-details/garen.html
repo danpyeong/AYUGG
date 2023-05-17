@@ -721,7 +721,7 @@
         <header class="bgc-2">아이템 빌드</header>
         <!-- 상단 신화 아이템 선택 -->
         <nav class="mythic-item-box">
-          <div class="mythic-item choose-item-1 bgc-2">
+          <div id="mythic-item-box-1" class="mythic-item choose-item-1 bgc-2">
             <div>
               <img
                 id="mythic-item-1"
@@ -730,7 +730,8 @@
             </div>
             <div id="mythic-item-1-name">발걸음 분쇄기</div>
           </div>
-          <div class="mythic-item choose-item-2 bgc-3">
+
+          <div id="mythic-item-box-2" class="mythic-item choose-item-2 bgc-3">
             <div>
               <img
                 id="mythic-item-2"
@@ -740,7 +741,8 @@
             <div id="mythic-item-2-name">삼위일체</div>
           </div>
         </nav>
-        <div class="legend-item-box">
+        <!-- mythic 1일 경우 -->
+        <div id="mythic-1-detail" class="legend-item-box">
           <!-- 세부사항 왼쪽 -->
           <div class="legend-item-build">
             <table class="item-table">
@@ -760,6 +762,7 @@
                     <div class="detail-build">
                       <div>
                         <img
+                          id="detail-1-build-mythic"
                           class="img-mythic"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -772,6 +775,7 @@
                       </div>
                       <div>
                         <img
+                          id="detail-1-build-legend-1"
                           class="img-legend"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -785,6 +789,7 @@
                       </div>
                       <div>
                         <img
+                          id="detail-1-build-legend-2"
                           class="img-legend"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -803,6 +808,7 @@
                     <div class="detail-build">
                       <div>
                         <img
+                          id="detail-2-build-mythic-1"
                           class="img-mythic"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -816,6 +822,7 @@
                       </div>
                       <div>
                         <img
+                          id="detail-2-build-legend-1"
                           class="img-legend"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -828,6 +835,7 @@
                       </div>
                       <div>
                         <img
+                          id="detail-2-build-legend-2"
                           class="img-legend"
                           src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
@@ -900,31 +908,175 @@
             </table>
           </div>
         </div>
+        <!-- mythic 2일 경우 -->
+        <div id="mythic-2-detail" class="legend-item-box">
+          <!-- 세부사항 왼쪽 -->
+          <div class="legend-item-build">
+            <table class="item-table">
+              <colgroup>
+                <col width="60%" />
+                <col width="20%" />
+                <col width="20%" />
+              </colgroup>
+              <thead class="bgc-4">
+                <th>전설 아이템 빌드</th>
+                <th>픽률</th>
+                <th>승률</th>
+              </thead>
+              <tbody class="bgc-2">
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          id="detail-3-build-mythic-1"
+                          class="img-mythic"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3078.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          id="detail-3-build-legend-1"
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          style="border: none"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          id="detail-3-build-legend-2"
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          id="detail-4-build-mythic-1"
+                          class="img-mythic"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3078.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          style="border: none"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          id="detail-4-build-legend-1"
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          id="detail-4-build-legend-2"
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3053.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">3.5%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">65.1%</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 세부사항 오른쪽 -->
+          <div class="legend-item-build">
+            <table class="item-table">
+              <colgroup>
+                <col width="60%" />
+                <col width="20%" />
+                <col width="20%" />
+              </colgroup>
+              <thead class="bgc-4">
+                <th>전설 아이템</th>
+                <th>픽률</th>
+                <th>승률</th>
+              </thead>
+              <tbody class="bgc-2">
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div class="img-name">망자의 갑옷</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>칠흑의 양날도끼</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </article>
-    <script>
-      // 1 룬 세팅 선택에 따른 배경 변화
-      var rune = document.getElementById("rune-1");
-      rune.addEventListener("click", function (e) {
-        document.getElementById("rune-1").style.borderLeft = "3px solid red";
-        document.getElementById("rune-2").style.borderLeft = "none";
-        document.getElementById("rune-1").style.backgroundColor =
-          "rgb(200, 200, 200)";
-        document.getElementById("rune-2").style.backgroundColor =
-          "rgb(90, 90, 90)";
-      });
-
-      // 2 룬 세팅 선택에 따른 배경 변화
-      var rune2 = document.getElementById("rune-2");
-      rune2.addEventListener("click", function (e) {
-        document.getElementById("rune-2").style.borderLeft = "3px solid red";
-        document.getElementById("rune-1").style.borderLeft = "none";
-        document.getElementById("rune-2").style.backgroundColor =
-          "rgb(200, 200, 200)";
-        document.getElementById("rune-1").style.backgroundColor =
-          "rgb(90, 90, 90)";
-      });
-    </script>
-    <!-- <script type="text/javascript" src="/jsp/champions-details-jsp"></script> -->
+    <script src="/jsp/champions-details-jsp/details.js"></script>
   </body>
 </html>

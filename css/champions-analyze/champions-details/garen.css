@@ -702,3 +702,11 @@ ul {
   font-size: 12px;
   color: rgb(0, 0, 0);
 }
+
+#mythic-1-detail {
+  display: flex;
+}
+
+#mythic-2-detail {
+  display: none;
+}
