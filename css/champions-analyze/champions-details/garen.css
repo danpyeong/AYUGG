@@ -19,6 +19,10 @@ ul {
   background-color: rgb(200, 200, 200);
 }
 
+.bgc-3 {
+  background-color: rgb(55, 55, 55);
+}
+
 /* --------------------------------- */
 
 /* 큰 틀 너비 */
@@ -156,6 +160,8 @@ ul {
 
 .champions-details-main {
   height: 500px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .details-main-left {
@@ -261,11 +267,6 @@ ul {
   box-sizing: border-box;
   display: flex;
   justify-content: space-evenly;
-}
-
-.details-main-right {
-  width: 40%;
-  height: 100%;
 }
 
 .rune-frame {
@@ -377,15 +378,14 @@ ul {
 }
 
 .champions-skill-tree header {
-  width: 100%;
-  height: 25px;
-  text-align: left;
+  height: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 40px;
-  font-weight: 700;
+  text-align: left;
   border-bottom: 5px solid rgb(90, 90, 90);
+  font-weight: 700;
 }
 
 .skill-build {
@@ -477,4 +477,94 @@ ul {
 #skill-9 {
   background-color: rgb(255, 26, 26);
   color: #fff;
+}
+
+/* --------------------------------- */
+
+.details-main-right {
+  width: 29%;
+  height: 100%;
+  margin: 0 2px;
+  box-sizing: border-box;
+  border-bottom: 5.5 px solid rgb(90, 90, 90);
+}
+
+.like-spell,
+.like-start,
+.like-shoes {
+  width: 100%;
+  height: 25%;
+  margin-bottom: 5px;
+}
+
+.like-header {
+  width: 100%;
+  height: 25%;
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+}
+
+.like-body {
+  width: 100%;
+  height: 75%;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+}
+
+.build-like,
+.build-pick,
+.build-win {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.build-like {
+  width: 50%;
+  text-align: left;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.build-pick {
+  width: 25%;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: rgb(96, 96, 240);
+}
+
+.build-win {
+  background-color: rgb(255, 26, 26);
+  width: 25%;
+}
+
+.build-img {
+  width: 100%;
+  height: 32px;
+}
+
+.build-img img {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  vertical-align: middle;
+}
+
+.build-img div {
+  display: inline;
+  font-size: 10px;
+}
+
+.build-rate {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.build-rate div {
+  margin-bottom: 5px;
 }
