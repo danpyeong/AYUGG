@@ -1,0 +1,16 @@
+/* 칼바람 나락 버튼 기본 색상 */
+.aram {
+  color: rgb(87, 87, 87);
+}
+
+/* 칼바람 나락 버튼 마우스 올렸을 때 */
+.aram:hover {
+  color: rgb(72, 38, 225);
+  cursor: pointer;
+}
+
+/* 소환사의 협곡 기본 색상 */
+.rift {
+  color: #fff;
+  font-weight: 600;
+}

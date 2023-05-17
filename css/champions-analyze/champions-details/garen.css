@@ -1,0 +1,759 @@
+ul {
+  list-style: none;
+  justify-content: space-evenly;
+}
+
+.txt-blue {
+  color: rgb(96, 96, 240);
+}
+
+.txt-red {
+  color: rgb(255, 26, 26);
+}
+
+.bgc-1 {
+  background-color: rgb(90, 90, 90);
+}
+
+.bgc-2 {
+  background-color: rgb(200, 200, 200);
+}
+
+.bgc-3 {
+  background-color: rgb(55, 55, 55);
+}
+
+.bgc-4 {
+  background-color: rgba(113, 113, 113, 0.5);
+}
+
+.size-svg-1 {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+}
+
+/* .analyze {
+  border-bottom: 1px solid #fff;
+} */
+
+/* --------------------------------- */
+
+/* 큰 틀 너비 */
+.champions-basic-info,
+.champions-details-main,
+.champions-items-build {
+  width: 900px;
+  margin: 30px auto;
+  padding: 5px;
+}
+
+/* 챔피언 기본 정보 */
+.champions-basic-info {
+  height: 300px;
+}
+
+/* 챔피언 최소 정보 박스 */
+.champions-least-info {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 0px 11px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.champions-least-info-left {
+  display: flex;
+}
+
+/* 챔피언 이미지 옆 이름, 스킬 박스 */
+.skill-name-box {
+  padding: 15px 0;
+  text-align: left;
+  width: 150px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* 챔피언 기본 스킬 */
+.champions-basic-skill img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* 승률, 픽률, 밴률 테이블 */
+.champions-least-info-right {
+  width: 80px;
+  height: 90%;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.champions-least-info-right tr td:nth-child(2) {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* 챔피언 카운터 */
+.champions-counter {
+  padding: 0px 6.5px;
+  width: 100%;
+  height: 65%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.champions-counter .counter {
+  padding: 10px;
+  width: 45%;
+  height: 100%;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.counter-text {
+  font-size: 16px;
+  margin: 10px;
+  font-weight: 700;
+}
+
+.rate-2 {
+  width: 5%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.win-champions {
+  background-color: rgb(49, 49, 79);
+  color: rgb(96, 96, 240);
+}
+
+.lose-champions {
+  background-color: rgb(108, 65, 65);
+}
+
+.champions-list {
+  width: 80%;
+  height: 30%;
+}
+
+.champions-list img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: block;
+  margin: 7px auto;
+}
+
+.champions-list span {
+  width: 70px;
+  height: 130px;
+  font-size: 10px;
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.champions-list li {
+  display: inline-flex;
+}
+
+.counter-name {
+  margin: 10px 0px;
+}
+
+.counter-rate {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* --------------------------------- */
+
+.champions-details-main {
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-main-left {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.champions-rune {
+  width: 100%;
+  height: 68%;
+  margin-bottom: 5px;
+}
+
+.champions-rune header {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  text-align: left;
+  border-bottom: 5px solid rgb(90, 90, 90);
+  font-weight: 700;
+}
+
+.rune-recommend {
+  width: 100%;
+  height: 90%;
+  display: flex;
+}
+
+.rune-type {
+  width: 20%;
+  height: 99.9%;
+}
+
+.type-frame {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.choose-rune-1 {
+  border-left: 2px solid red;
+}
+
+.choose-rune-2 {
+  border-left: none;
+}
+
+.rune-picture {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-top: 7px;
+}
+/* 주룬 부룬 */
+.main-rune-img {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.sub-rune-img {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  bottom: 10%;
+  right: 30%;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+/* 주룬 부룬 */
+
+.type-frame > table {
+  width: 100px;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+
+.type-frame > table tr td:nth-child(1) {
+  width: 30px;
+  font-size: 12px;
+}
+
+.type-frame > table tr td:nth-child(2) {
+  width: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.rune-details {
+  width: 80%;
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.rune-frame {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.rune-frame img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  padding-top: 4px;
+}
+
+.main-rune-box,
+.sub-rune-box,
+.char-box {
+  width: 32%;
+  height: 100%;
+}
+
+.main-rune-box,
+.sub-rune-box {
+  border-right: 1px solid rgb(90, 90, 90);
+  padding: 0px 5px;
+  box-sizing: border-box;
+}
+
+.rune-title-box {
+  width: 100%;
+  padding: 10px 40%;
+  box-sizing: border-box;
+}
+
+.rune-first-box {
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  padding: 10px 3px;
+}
+
+#main-first-rune-1,
+#main-first-rune-2,
+#main-first-rune-3 {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.rune-second-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.rune-second-box img {
+  width: 28x;
+  height: 28px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
+
+.line td {
+  padding: 10px 0px;
+}
+
+/* 추천 1 룬 세부사항 */
+/* 추천 1 메인 룬 */
+#main-first-line-1-1,
+#main-first-line-1-3,
+#main-second-line-1-1,
+#main-second-line-1-3,
+#main-third-line-1-1,
+#main-third-line-1-2,
+/* 추천 1 두 번째 룬 */
+#sub-first-line-1-1,
+#sub-first-line-1-2,
+#sub-first-line-1-3,
+#sub-second-line-1-2,
+#sub-second-line-1-3,
+#sub-third-line-1-2,
+#sub-third-line-1-3,
+/* 추천 1 특성 */
+#char-first-line-1-2,
+#char-first-line-1-3,
+#char-second-line-1-2,
+#char-second-line-1-3,
+#char-third-line-1-1,
+#char-third-line-1-3 {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+/* 추천 1 특성 */
+#char-first-line-1-1,
+#char-second-line-1-1,
+#char-third-line-1-2 {
+  background-color: black;
+}
+
+/* 추천 2 룬 세부사항 */
+/* 추천 2 메인 룬 */
+#main-first-line-2-1,
+#main-first-line-2-3,
+#main-second-line-2-1,
+#main-second-line-2-3,
+#main-third-line-2-1,
+#main-third-line-2-2,
+/* 추천 2 두 번째 룬 */
+#sub-first-line-2-1,
+#sub-first-line-2-2,
+#sub-second-line-2-1,
+#sub-second-line-2-3,
+#sub-third-line-2-1,
+#sub-third-line-2-2,
+#sub-third-line-2-3,
+/* 추천 2 특성 */
+#char-first-line-2-2,
+#char-first-line-2-3,
+#char-second-line-2-2,
+#char-second-line-2-3,
+#char-third-line-2-1,
+#char-third-line-2-3 {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+/* 추천 2 특성 */
+#char-first-line-2-1,
+#char-second-line-2-1,
+#char-third-line-2-2 {
+  background-color: black;
+}
+
+/* --------------------------------- */
+
+.champions-skill-tree {
+  width: 100%;
+  height: 30%;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.champions-skill-tree header {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  text-align: left;
+  border-bottom: 5px solid rgb(90, 90, 90);
+  font-weight: 700;
+}
+
+.skill-build {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
+.skill-tree-simple {
+  width: 25%;
+  display: flex;
+  padding: 40px 5px;
+  box-sizing: border-box;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+}
+
+.skill-img {
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+
+.skill-tree-simple img {
+  width: 100%;
+  height: 100%;
+}
+
+.skill-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  color: #fff;
+  background-color: rgba(93, 93, 93, 0.782);
+}
+
+.skill-tree-detail {
+  width: 65%;
+  padding: 40px 5px;
+  box-sizing: border-box;
+}
+
+.skill-tree-top {
+  display: flex;
+}
+
+.skill-tree-bottom {
+  display: flex;
+}
+
+.skill-tree-top div {
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  color: #fff;
+  background-color: rgb(90, 90, 90);
+  margin: 2px;
+}
+
+.skill-tree-bottom div {
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  color: #000000;
+  background-color: rgb(220, 220, 220);
+  margin: 2px;
+}
+
+#skill-6,
+#skill-11 {
+  background-color: rgb(96, 96, 240);
+  color: #fff;
+}
+
+#skill-9 {
+  background-color: rgb(255, 26, 26);
+  color: #fff;
+}
+
+/* --------------------------------- */
+
+.details-main-right {
+  width: 29%;
+  height: 100%;
+  margin: 0 2px;
+  box-sizing: border-box;
+  border-bottom: 5.5 px solid rgb(90, 90, 90);
+}
+
+.like-spell,
+.like-start,
+.like-shoes {
+  width: 100%;
+  height: 25%;
+  margin-bottom: 5px;
+}
+
+.empty-box {
+  width: 100%;
+  height: 105px;
+}
+
+.like-header {
+  width: 100%;
+  height: 25%;
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+}
+
+.like-body {
+  width: 100%;
+  height: 75%;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+}
+
+.build-like,
+.build-pick,
+.build-win {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.build-like {
+  width: 50%;
+  text-align: left;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.build-pick {
+  width: 25%;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: rgb(96, 96, 240);
+}
+
+.build-win {
+  background-color: rgb(255, 26, 26);
+  width: 25%;
+}
+
+.build-img {
+  width: 100%;
+  height: 32px;
+}
+
+.build-img img {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  vertical-align: middle;
+}
+
+.build-img div {
+  display: inline;
+  font-size: 10px;
+}
+
+.build-rate {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.build-rate div {
+  margin-bottom: 5px;
+}
+
+.champions-items-build {
+  height: 250px;
+}
+
+.champions-items-build > header {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  text-align: left;
+  border-bottom: 5px solid rgb(90, 90, 90);
+  font-weight: 700;
+}
+
+/* --------------------------------- */
+
+.mythic-item-box {
+  width: 100%;
+  height: 50px;
+  display: flex;
+}
+
+.mythic-item {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.mythic-item img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  border: 2px solid rgb(255, 255, 115);
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.mythic-item div {
+  font-size: 12px;
+  margin: auto 0;
+  font-weight: 700;
+}
+
+.choose-item-1 {
+  border-top: 2px solid rgb(255, 255, 115);
+}
+
+.choose-item-2 {
+  color: #fff;
+  border-top: none;
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+/* --------------------------------- */
+
+.legend-item-box {
+  display: flex;
+}
+
+.legend-item-build {
+  width: 50%;
+  height: 150px;
+}
+
+.item-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgb(113, 113, 113);
+}
+
+.item-table thead th {
+  color: rgb(211, 211, 211);
+  font-size: 12px;
+}
+
+.item-table tbody tr {
+  border: 0.5px solid rgb(113, 113, 113);
+}
+
+.item-table tbody tr td:nth-child(1) {
+  padding: 10px;
+}
+
+.detail-build {
+  display: flex;
+}
+
+.img-mythic {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(255, 255, 115);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.img-legend {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(255, 255, 255);
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.detail-build > div {
+  font-size: 12px;
+  margin: auto 0;
+  font-weight: 700;
+}
+
+.item-rate {
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+}
+
+#mythic-1-detail {
+  display: flex;
+}
+
+#mythic-2-detail {
+  display: none;
+}
+
+#rune-1-detail {
+  display: none;
+}
+
+#rune-2-detail {
+  display: flex;
+}
