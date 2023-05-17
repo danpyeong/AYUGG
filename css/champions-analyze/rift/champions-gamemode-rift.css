@@ -135,6 +135,10 @@ a {
   font-size: 12px;
 }
 
+.champions-table tbody tr td:nth-child(n + 3):nth-child(-n + 7) {
+  text-align: center;
+}
+
 /* 챔피언 이미지 크기 */
 .champions-table tbody img,
 .champions-table tbody span {
