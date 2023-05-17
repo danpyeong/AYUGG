@@ -741,61 +741,163 @@
           </div>
         </nav>
         <div class="legend-item-box">
+          <!-- 세부사항 왼쪽 -->
           <div class="legend-item-build">
-            <header class="bgc-4">
-              <div class="legend-like">전설 아이템 빌드</div>
-              <div class="legend-pick">픽률</div>
-              <div class="legend-win">승률</div>
-            </header>
-            <div class="legend-item-detail bgc-2">
-              <div class="detail-build-box">
-                <div class="detail-box">
-                  <div class="detail-build">
-                    <div>
-                      <img
-                        src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                      />
+            <table class="item-table">
+              <colgroup>
+                <col width="60%" />
+                <col width="20%" />
+                <col width="20%" />
+              </colgroup>
+              <thead class="bgc-4">
+                <th>전설 아이템 빌드</th>
+                <th>픽률</th>
+                <th>승률</th>
+              </thead>
+              <tbody class="bgc-2">
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-mythic"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          style="border: none"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <img
-                        style="border: none"
-                        src="/images/arrow-icon-24.svg"
-                      />
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-mythic"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          style="border: none"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="size-svg-1"
+                          src="/images/arrow-icon-24.svg"
+                        />
+                      </div>
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <img
-                        src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        style="border: none"
-                        src="/images/arrow-icon-24.svg"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                      />
-                    </div>
-                  </div>
-                  <div class="detail-rate">50%</div>
-                  <div class="detail-rate">50%</div>
-                </div>
-              </div>
-              <div class="detail-build-box">
-                <div class="detail-build"></div>
-                <div class="detail-rate"></div>
-                <div class="detail-rate"></div>
-              </div>
-            </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">3.5%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">65.1%</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="legend-item-select">
-            <header class="bgc-4">
-              <div class="legend-like">전설 아이템</div>
-              <div class="legend-pick">픽률</div>
-              <div class="legend-win">승률</div>
-            </header>
+          <!-- 세부사항 오른쪽 -->
+          <div class="legend-item-build">
+            <table class="item-table">
+              <colgroup>
+                <col width="60%" />
+                <col width="20%" />
+                <col width="20%" />
+              </colgroup>
+              <thead class="bgc-4">
+                <th>전설 아이템</th>
+                <th>픽률</th>
+                <th>승률</th>
+              </thead>
+              <tbody class="bgc-2">
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div class="img-name">망자의 갑옷</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="detail-build">
+                      <div>
+                        <img
+                          class="img-legend"
+                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
+                        />
+                      </div>
+                      <div>칠흑의 양날도끼</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                  </td>
+                  <td>
+                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

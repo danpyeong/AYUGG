@@ -27,6 +27,12 @@ ul {
   background-color: rgba(113, 113, 113, 0.5);
 }
 
+.size-svg-1 {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+}
+
 /* --------------------------------- */
 
 /* 큰 틀 너비 */
@@ -579,7 +585,7 @@ ul {
 }
 
 .champions-items-build {
-  height: 300px;
+  height: 250px;
 }
 
 .champions-items-build > header {
@@ -613,7 +619,7 @@ ul {
   width: 24px;
   height: 24px;
   vertical-align: middle;
-  border: 3px solid rgb(255, 255, 115);
+  border: 2px solid rgb(255, 255, 115);
   border-radius: 4px;
   margin: 5px;
 }
@@ -635,72 +641,64 @@ ul {
   filter: grayscale(1);
 }
 
-.legend-item-build > header,
-.legend-item-select > header {
-  display: flex;
-  width: 100%;
-  height: 10%;
-  font-size: 10px;
-  color: #fff;
-}
-
-.legend-item-build > header > div,
-.legend-item-select > header > div {
-  margin: auto 0;
-}
+/* --------------------------------- */
 
 .legend-item-box {
-  width: 100%;
-  height: 70%;
   display: flex;
 }
 
-.legend-item-build,
-.legend-item-select {
+.legend-item-build {
   width: 50%;
-  height: 100%;
+  height: 150px;
 }
 
-.legend-like {
-  width: 60%;
-  text-align: left;
-  padding-left: 10px;
-  box-sizing: border-box;
-}
-
-.legend-pick,
-.legend-win {
-  width: 20%;
-}
-
-.legend-item-detail {
+.item-table {
   width: 100%;
-  height: 90%;
+  height: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgb(113, 113, 113);
 }
 
-.detail-build-box {
+.item-table thead th {
+  color: rgb(211, 211, 211);
+  font-size: 12px;
+}
+
+.item-table tbody tr {
+  border: 0.5px solid rgb(113, 113, 113);
+}
+
+.item-table tbody tr td:nth-child(1) {
   padding: 10px;
-}
-
-.detail-box {
-  display: flex;
 }
 
 .detail-build {
   display: flex;
-  width: 70%;
 }
 
-.detail-rate {
-  width: 15%;
+.img-mythic {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(255, 255, 115);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.img-legend {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(255, 255, 255);
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.detail-build > div {
   font-size: 12px;
+  margin: auto 0;
   font-weight: 700;
 }
 
-.detail-build img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  border: 1px solid #fff;
-  border-radius: 4px;
+.item-rate {
+  font-size: 12px;
+  color: rgb(0, 0, 0);
 }
