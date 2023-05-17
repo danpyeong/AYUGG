@@ -166,16 +166,17 @@ body {
     justify-content: center;
 }
 .win {
-    background: rgba(0, 0, 255, 0.5);
+    background: rgba(0, 0, 255, 0.3);
 }
 .lose {
-    background: rgba(255, 0, 0, 0.5);
+    background: rgba(255, 0, 0, 0.3);
 }
 .match {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    height: 104px;
 }
 .font1{
     color: white;
@@ -183,7 +184,7 @@ body {
 }
 .font2{
     color: rgb(200, 200, 200);
-    font-size: 10px;    
+    font-size: 10px;
 }
 .match-first {
     text-align: left;
@@ -207,4 +208,67 @@ body {
 }
 .open {
     cursor: pointer;
+}
+.detail-first {
+    background: #626367;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+    height: 40px;
+}
+.detail-first span {
+    display: flex;
+    align-items: center;
+}
+.padding3 img, .padding3 span, .padding3 b{
+    padding-right: 3px;
+    padding-left: 3px;
+}
+.detail-table {
+    width: 1000px;
+    color: white;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+.detail-table th {
+    padding-bottom: 10px;
+}
+.font3 {
+    color: rgb(200, 200, 200);
+    font-size: 12px;
+}
+.champ-icon {
+    display: flex;
+    align-items: center;
+}
+.c-l {
+    position: relative;
+    display: flex;
+    margin: auto 50px;
+}
+.level {
+    background: black;
+    color: white;
+    font-size: 6px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;    
+    top: 70%;
+    left: 70%;
+}
+.dt-first, .dt-first-first {
+    display: flex;
+    flex-direction: row;    
+}
+.blue tr {
+    background: #2F436E;
+}
+.red tr {
+    background: #703C47;
 }
