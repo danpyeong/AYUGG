@@ -9,7 +9,66 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/champions-analyze/line/line-top.css " />
     <link rel="stylesheet" href="/css/champions-analyze/rift/text-rift.css" />
-    <script src="/jsp/champions-analyze.js"></script>
+    <script type="moduel" src="/jsp/champions-details-jsp/details.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      window.onload = function () {
+        axios
+          .get(
+            "https://ddragon.leagueoflegends.com/cdn/13.10.1/data/ko_KR/champion.json"
+          )
+          .then(function (response) {
+            var championsData = response.data.data;
+            var championsDiv = document.getElementById("champions");
+
+            var championsArray = Object.values(championsData);
+            championsArray.sort(function (a, b) {
+              var nameA = getKoreanName(a);
+              var nameB = getKoreanName(b);
+              return nameA.localeCompare(nameB);
+            });
+
+            for (var i = 0; i < championsArray.length; i++) {
+              var champion = championsArray[i];
+              var championImage = champion.image;
+              var championName = getKoreanName(champion);
+              var championNameEng = champion.name;
+
+              var img = document.createElement("img");
+              img.src =
+                "https://ddragon.leagueoflegends.com/cdn/13.10.1/img/champion/" +
+                championImage.full;
+              img.width = 24;
+              img.height = 24;
+
+              var li = document.createElement("li");
+
+              var link = document.createElement("a");
+              link.href = "champions-details/${championName}.html";
+              link.appendChild(img);
+              link.appendChild(document.createElement("br"));
+
+              var nameSpan = document.createElement("span");
+              nameSpan.textContent = championName;
+              link.appendChild(nameSpan);
+
+              li.appendChild(link);
+              championsDiv.appendChild(li);
+            }
+          })
+          .catch(function (error) {
+            console.error("API 요청 중 오류가 발생:", error);
+          });
+      };
+
+      function getKoreanName(champion) {
+        var koreanName = "";
+        if (champion.hasOwnProperty("name")) {
+          koreanName = champion.name;
+        }
+        return koreanName;
+      }
+    </script>
     <title>AYU-GG</title>
   </head>
   <body>
@@ -131,7 +190,8 @@
               placeholder="챔피언 검색 (가렌, 갱플랭크)"
             />
           </div>
-          <ul class="champions-list">
+          <div id="champions" class="champions-list"></div>
+          <!-- <ul class="champions-list">
             <li>
               <span>
                 <a href="/html/champions-analyze/champions-details/garen.html">
@@ -190,7 +250,7 @@
                 </a>
               </span>
             </li>
-          </ul>
+          </ul> -->
         </div>
         <!-- 챔피언 순위 -->
         <div class="info-frame right-info">

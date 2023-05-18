@@ -9,7 +9,6 @@
   <body>
     <header>
       <!-- 상단 메뉴바 -->
-
       <nav class="navbar middle bgc-black">
         <div class="navbar-button-box">
           <img
@@ -108,9 +107,43 @@
       </div>
       <!-- 대회 소식 / 게임 소식 -->
       <div class="notice-box">
-        <div class="match-box">대회 소식</div>
-        <div class="news-box">게임 소식</div>
+        <div id="champions" class="match-box"></div>
+        <div class="news-box"></div>
       </div>
     </article>
+    <script>
+      // window.onload = function () {
+      //   axios
+      //     .get(
+      //       "https://ddragon.leagueoflegends.com/cdn/11.22.1/data/ko_KR/champion.json"
+      //     )
+      //     .then(function (response) {
+      //       var championsData = response.data.data;
+      //       var championsDiv = document.getElementById("champions");
+
+      //       for (var championKey in championsData) {
+      //         if (championsData.hasOwnProperty(championKey)) {
+      //           var champion = championsData[championKey];
+      //           var championImage = champion.image;
+
+      //           var img = document.createElement("img");
+      //           img.src =
+      //             "https://ddragon.leagueoflegends.com/cdn/11.22.1/img/champion/" +
+      //             championImage.full;
+      //           img.width = 24;
+      //           img.height = 24;
+
+      //           var li = document.createElement("li");
+      //           li.appendChild(img);
+
+      //           championsDiv.appendChild(li);
+      //         }
+      //       }
+      //     })
+      //     .catch(function (error) {
+      //       console.error("API 요청 오류 :", error);
+      //     });
+      // };
+    </script>
   </body>
 </html>
