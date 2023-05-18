@@ -2,32 +2,97 @@
 <html lang="ko">
   <head>
     <title>AYU-GG</title>
-    <link rel="stylesheet" href="/css/multi-search.css">
+    <link rel="stylesheet" href="/css/multi-search.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <div class="container">
-        <textarea placeholder="~~~~~~~~~~~~~ 님이 방에 참가했습니다.
+    <header>
+      <!-- 상단 메뉴바 -->
+      <nav class="navbar middle bgc-black">
+        <div class="navbar-button-box">
+          <img
+            src="https://cyber.anyang.ac.kr/lmsdata/img/template1/logo.png"
+          />
+          <div class="main">
+            <div class="navbar-border-box-main"></div>
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/main.html'"
+            >
+              홈
+            </button>
+          </div>
+          <div class="analyze">
+            <div class="navbar-border-box-analyze"></div>
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+            >
+              챔피언 분석
+            </button>
+          </div>
+          <div class="statistics">
+            <div class="navbar-border-box-statistics"></div>
+            <button class="navbar-button" onclick="location.href=''">
+              통계
+            </button>
+          </div>
+          <div class="ranking">
+            <div class="navbar-border-box-ranking"></div>
+            <button class="navbar-button" onclick="location.href=''">
+              랭킹
+            </button>
+          </div>
+          <div class="multi">
+            <div class="navbar-border-box-multi"></div>
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/multi-search.html'"
+            >
+              멀티서치
+            </button>
+          </div>
+        </div>
 
-~~~~~~~~~~~~~ 님이 방에 참가했습니다.
-
-~~~~~~~~~~~~~ 님이 방에 참가했습니다.
-
-~~~~~~~~~~~~~ 님이 방에 참가했습니다.
-
-~~~~~~~~~~~~~ 님이 방에 참가했습니다." class="search-text"></textarea>
-        <br>
-        <br>
-        <div class="buttons">
+        <div class="nav-search-box">
           <select name="country">
-              <option class="option" value="KR">KR</option>
-              <option class="option" value="NA">NA</option>
+            <option value="KR">KR</option>
+            <option value="NA">NA</option>
           </select>
-          <button class="search">검색</button>
+          <input type="text" />
+          <button>
+            <img
+              src="https://svgsilh.com/svg/1093183.svg"
+              style="width: 10px; height: 10px"
+            />
+          </button>
         </div>
-        <br>
-        <div class="context">
-          결과
-        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <textarea
+        placeholder="~~~~~~~~~~~~~ 님이 방에 참가했습니다.
+
+~~~~~~~~~~~~~ 님이 방에 참가했습니다.
+
+~~~~~~~~~~~~~ 님이 방에 참가했습니다.
+
+~~~~~~~~~~~~~ 님이 방에 참가했습니다.
+
+~~~~~~~~~~~~~ 님이 방에 참가했습니다."
+        class="search-text"
+      ></textarea>
+      <br />
+      <br />
+      <div class="buttons">
+        <select name="country">
+          <option class="option" value="KR">KR</option>
+          <option class="option" value="NA">NA</option>
+        </select>
+        <button class="search">검색</button>
+      </div>
+      <br />
+      <div class="context">결과</div>
     </div>
   </body>
 </html>

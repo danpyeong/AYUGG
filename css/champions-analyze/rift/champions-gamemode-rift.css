@@ -7,6 +7,22 @@ a {
   color: #000000;
 }
 
+/* 상단 메뉴바  */
+.navbar-border-box-analyze {
+  padding-left: 50%;
+  width: 50%;
+  position: absolute;
+  height: 1px;
+  background-color: #fff;
+  left: 0px;
+  bottom: -5px;
+}
+
+.analyze > button {
+  color: #fff;
+}
+/* 상단 메뉴바  */
+
 /* 상단 선택박스 - 소환사협곡, 칼바람나락, (나라, 티어, 시즌) 선택 */
 .select-box {
   margin: 0px auto;
@@ -19,23 +35,6 @@ a {
   justify-content: space-between;
   align-items: center;
   border-radius: 4px;
-}
-
-/* 칼바람 나락 버튼 기본 색상 */
-.aram {
-  color: rgb(87, 87, 87);
-}
-
-/* 칼바람 나락 버튼 마우스 올렸을 때 */
-.aram:hover {
-  color: rgb(72, 38, 225);
-  cursor: pointer;
-}
-
-/* 소환사의 협곡 기본 색상 */
-.rift {
-  color: #fff;
-  font-weight: 600;
 }
 
 .select-box button {
@@ -63,7 +62,7 @@ a {
   border-radius: 4px;
 }
 
-/* 중간 흰 상자 */
+/* 중간 (양쪽 공통) 흰 상자 */
 .info-frame {
   text-align: left;
   padding: 15px 15px;
@@ -73,17 +72,19 @@ a {
   box-sizing: border-box;
 }
 
+/* 왼쪽 흰색 상자 */
 .left-info {
   width: 35%;
-  height: 96%;
+  height: 100%;
 }
 
+/* 오른쪽 흰색 상자 */
 .right-info {
   width: 65%;
   height: 96%;
 }
 
-/* 왼쪽 상자 (챔피언 종류) */
+/*시작 왼쪽 상자 (챔피언 종류) */
 .champions-search {
   width: 100%;
   height: 30px;
@@ -134,24 +135,7 @@ a {
   font-size: 12px;
 }
 
-/* 테이블 크기 조절 (순위) */
-.champions-table .first-child {
-  width: 40px;
-}
-
-/* 테이블 크기 조절 (챔피언) */
-.champions-table thead :nth-child(2),
-.champions-table thead :nth-child(7),
-.champions-table tbody tr td:nth-child(2),
-.champions-table tbody tr td:nth-child(7) {
-  width: 150px;
-}
-
-/* 테이블 크기 조절 (티어, 승률, 픽률, 밴률) */
-.champions-table thead th :nth-child(n + 3):nth-child(-n + 6),
-.champions-table tbody :nth-child(n + 3):nth-child(-n + 6) {
-  /* background-color: aqua; */
-  width: 60px;
+.champions-table tbody tr td:nth-child(n + 3):nth-child(-n + 7) {
   text-align: center;
 }
 
@@ -164,9 +148,9 @@ a {
   vertical-align: middle;
   margin-right: 5px;
 }
-/* 왼쪽 상자 (챔피언 종류) */
+/* 왼쪽 상자 (챔피언 종류) 끝*/
 
-/* 오른쪽 상자 (챔피언 분석) */
+/*시작 오른쪽 상자 (챔피언 분석) */
 .line-box {
   width: 100%;
   height: 50px;
@@ -202,5 +186,4 @@ a {
   border-radius: 4px;
   font-size: 14px;
 }
-
-/* 오른쪽 상자 (챔피언 분석) */
+/* 오른쪽 상자 (챔피언 분석) 끝*/

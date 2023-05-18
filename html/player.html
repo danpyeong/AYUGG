@@ -2,89 +2,90 @@
 <html lang="ko">
   <head>
     <title>AYU-GG</title>
-    <link rel="stylesheet" href="/css/player.css">
+    <link rel="stylesheet" href="/css/player.css" />
   </head>
   <body>
     <div class="container">
-        <!-- 내용 상단 -->
-        <div class="top">
-            <div class="exc-button">
-                <div class="first">
-                    <span class="nickname">닉네임닉네임</span>
-                    <img class="player-icon" src="/images/example.webp" alt="소환사 아이콘" width="46" height="46">
+      <!-- 내용 상단 -->
+      <div class="top">
+        <div class="exc-button">
+          <div class="first">
+            <span class="nickname">닉네임닉네임</span>
+            <img
+              class="player-icon"
+              src="/images/example.webp"
+              alt="소환사 아이콘"
+              width="46"
+              height="46"
+            />
+          </div>
+          <div class="second">
+            <div class="tier">
+              <div class="box">
+                <img
+                  class="tier-icon"
+                  src="/images/example.webp"
+                  alt="티어 아이콘"
+                  width="46"
+                  height="46"
+                />
+                <div class="text">
+                  <div class="tier-name">랭크 티어</div>
+                  <div>100LP</div>
+                  <div>승률 100% (1승0패)</div>
                 </div>
-                <div class="second">
-                    <div class="tier">
-                        <div class="box">
-                            <img class="tier-icon" src="/images/example.webp" alt="티어 아이콘" width="46" height="46">
-                            <div class="text">
-                                <div class="tier-name">랭크 티어</div>
-                                <div>100LP</div>
-                                <div>승률 100% (1승0패)</div>
-                            </div>
-                        </div>
-                        <ul class="tier-list">
-                            <li class="tier-box">
-                                <b>S22</b>
-                                <span>Gold 1</span>
-                            </li>
-                            <li class="tier-box">
-                                <b>S21</b>
-                                <span>Gold 1</span>
-                            </li>
-                            <li class="tier-box">
-                                <b>S20</b>
-                                <span>Gold 1</span>
-                            </li>
-                            <li>
-                                <div class="select">
-                                    <div class="label">
-                                        <b>MORE</b>
-                                        <img src="/images/arrow-down-icon-original.svg" alt="더많은시즌" width="10px" height="10px""></img>
-                                    </div>                                
-                                    <ul class="more-list">
-                                        <li class="optionItem">
-                                            <b>S9</b>
-                                            <span>Gold 1</span>                                        
-                                        </li>
-                                        <li class="optionItem">
-                                            <b>S8</b>
-                                            <span>Gold 1</span>                                        
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <img class="tier-graph" src="/images/example.webp" alt="티어 그래프" width="100" height="69">
-                </div>
+              </div>
+              <ul class="tier-list">
+                <li>
+                  <b>S20</b>
+                  <span>Gold 1</span>
+                </li>
+                <li>
+                  <b>S21</b>
+                  <span>Gold 1</span>
+                </li>
+                <li>
+                  <b>S22</b>
+                  <span>Gold 1</span>
+                </li>
+                <li>
+                  <b>MORE</b>
+                  <button></button>
+                </li>
+              </ul>
             </div>
-            <button class="reset">
-                <img class="reset-icon" src="/images/reset-icon.svg" width="30" height="30">
-            </button>
+            <img
+              class="tier-graph"
+              src="/images/example.webp"
+              alt="티어 그래프"
+              width="100"
+              height="69"
+            />
+          </div>
         </div>
-        <br>
-        <!-- 전적 내용 -->
-        <div class="bottom">
-            <div class="match-type">
-                <button>
-                    전체
-                </button>
-                <button>
-                    솔로랭크
-                </button>
-                <button>
-                    자유랭크
-                </button>
-                <button>
-                    일반
-                </button>
-            </div>
-            <br>
-            <!-- 통계 -->
-            <div class="statistics">
-                <table class="st-list">
-                    <!-- <colgroup>
+        <button class="reset">
+          <img
+            class="reset-icon"
+            src="/images/reset-icon.svg"
+            width="30"
+            height="30"
+          />
+        </button>
+      </div>
+      <br />
+      <!-- 전적 내용 -->
+      <div class="bottom">
+        <div class="match-type">
+          <button>전체</button>
+          <button>솔로랭크</button>
+          <button>자유랭크</button>
+          <button>일반</button>
+        </div>
+        <br />
+        <!-- 통계 -->
+        <div class="statistics">
+          <table class="st-list">
+            <!-- <colgroup>
                         <col width="25%">
                         <col width="50%">
                         <col width="25%">
@@ -1010,14 +1011,16 @@
                         </ul>
                     </div>
                     <!-- 펼치기 아이콘 -->
-                    <div class="open">
-                        <img src="/images/down-arrow.svg" alt="펼치는 아이콘" width="30px" height="30px">
-                    </div>
+                    <button class="open">
+                        <img src="/images/example.webp" alt="펼치는 아이콘" width="20px" height="20px">
+                    </button>
                 </div>
             </div>
         </div>
+        <!-- 게임별 -->
+        <div class="matches"></div>
+      </div>
     </div>
-    <script src="/js/more-season.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/charts.js"></script>
   </body>
