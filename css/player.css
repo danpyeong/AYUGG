@@ -48,11 +48,28 @@ body {
   color: white;
   padding-inline-start: 0px;
 }
-.container .top .exc-button .second .tier-list li {
-  background: #626367;
-  margin-right: 10px;
-  border-radius: 4px;
-  padding: 0 5px;
+.tier-box, .label, .optionItem{
+    background: #626367;
+    margin-right: 10px;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+/* ------------------ */
+.selectBox2 {
+    display: inline;
+}
+.label {
+    display: flex;
+    cursor: pointer;
+    max-width: 13.6;
+}
+.more-list {
+    flex-direction: row;
+    list-style-type: none;
+}
+/* -------------------------- */
+.more-list li, .label{
+    margin-bottom: 2px;
 }
 .container .top .reset {
   display: flex;
