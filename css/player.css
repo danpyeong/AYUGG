@@ -47,6 +47,7 @@ body {
   font-size: 10px;
   color: white;
   padding-inline-start: 0px;
+  max-height: 13.6px;
 }
 .tier-box, .label, .optionItem{
     background: #626367;
@@ -55,17 +56,17 @@ body {
     padding: 0 5px;
 }
 /* ------------------ */
-.selectBox2 {
-    display: inline;
-}
 .label {
     display: flex;
     cursor: pointer;
-    max-width: 13.6;
+    max-width: 45.513px;
+    justify-content: space-between;
+
 }
 .more-list {
     flex-direction: row;
     list-style-type: none;
+    padding: 0;
 }
 /* -------------------------- */
 .more-list li, .label{
