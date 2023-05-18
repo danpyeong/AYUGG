@@ -59,14 +59,16 @@ body {
 .label {
     display: flex;
     cursor: pointer;
-    max-width: 45.513px;
+    width: 45.513px;
     justify-content: space-between;
-
 }
 .more-list {
-    flex-direction: row;
     list-style-type: none;
     padding: 0;
+    display: none;
+}
+.select.active .more-list {
+    display: initial;
 }
 /* -------------------------- */
 .more-list li, .label{
@@ -108,6 +110,7 @@ body {
 .container .bottom .statistics .st-list {
   color: white;
   border-collapse: collapse;
+  max-height: 200px;
 }
 .container .bottom .statistics .st-list th {
   text-align: left;
@@ -224,8 +227,24 @@ body {
 .match-fifth ul {
     list-style: none;
 }
+.game {
+    position: relative;
+}
 .open {
+    display: flex;
     cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 37px 10px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.detail {
+    display: none;
+}
+.game.active .detail {
+    display: initial;
+
 }
 .detail-first {
     background: #626367;

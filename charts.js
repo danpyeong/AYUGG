@@ -17,6 +17,7 @@ new Chart(rate, {
     type: 'doughnut',
     data: data,
     options: {
+      borderColor: 'rgb(57, 58, 60)',
     responsive: true,
     plugins: {
       legend: {
