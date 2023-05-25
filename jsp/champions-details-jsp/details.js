@@ -1,37 +1,48 @@
-const axios = require("axios");
+const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
 
-window.onload = function () {
-  axios
-    .get(
-      "https://ddragon.leagueoflegends.com/cdn/11.22.1/data/ko_KR/champion.json"
-    )
-    .then(function (response) {
-      var championsData = response.data.data;
-      var championsDiv = document.getElementById("champions");
+const championUrl = version + "data/ko_KR/champion.json";
 
-      for (var championKey in championsData) {
-        if (championsData.hasOwnProperty(championKey)) {
-          var champion = championsData[championKey];
-          var championImage = champion.image;
+fetch(championUrl)
+  .then((response) => response.json())
+  .then(function (data) {
+    // 모든 챔피언 데이터
+    var champData = data.data;
 
-          var img = document.createElement("img");
-          img.src =
-            "https://ddragon.leagueoflegends.com/cdn/11.22.1/img/champion/" +
-            championImage.full;
-          img.width = 24;
-          img.height = 24;
+    // 위 데이터를 담은 배열
+    var champDataList = Object.values(champData);
+    var champList = document.getElementById("champions-list");
 
-          var li = document.createElement("li");
-          li.appendChild(img);
+    for (var i = 0; i < champDataList.length; i++) {
+      // console.log(champDataList[i]);
 
-          championsDiv.appendChild(li);
-        }
-      }
-    })
-    .catch(function (error) {
-      console.error("API 요청 오류 :", error);
-    });
-};
+      const childLi = document.createElement("li");
+      const childSpan = document.createElement("span");
+      const childImg = document.createElement("img");
+      const childDiv = document.createElement("div");
+      const champName = champDataList[i].id.toString().toLowerCase();
+
+      // 챔피언 초상화
+      childImg.src = version + "img/champion/" + champDataList[i].image.full;
+      childImg.width = 24;
+      childImg.height = 24;
+
+      // 챔피언 이름
+      childDiv.textContent = champDataList[i].name;
+
+      childSpan.onclick = function () {
+        // fs.rename("details.html", champName + ".html", function (err) {
+        //   if (err) throw err;
+        //   console.log("File Renamed.");
+        // });
+        window.location.href = champName + ".html";
+      };
+
+      childSpan.appendChild(childImg);
+      childSpan.appendChild(childDiv);
+      childLi.appendChild(childSpan);
+      champList.appendChild(childLi);
+    }
+  });
 
 // 1 룬 세팅 선택에 따른 배경 변화
 var rune = document.getElementById("rune-1");
