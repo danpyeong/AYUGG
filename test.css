@@ -1,0 +1,29 @@
+.champions-list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.champions-list li {
+  display: inline-flex;
+}
+
+.champions-list span {
+  width: 48px;
+  height: 62px;
+  margin: 3px;
+}
+
+.champions-list span > img {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.champions-list span > div {
+  width: 48px;
+  max-height: 14px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
