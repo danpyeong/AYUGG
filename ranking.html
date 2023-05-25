@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" />
+        <link rel="stylesheet" href="ranking.css" />
+        <title>AYU-GG</title>
+      </head>
+    <body>
+        <header>
+         
+            <nav class="navbar middle bgc-black">
+              <div class="navbar-button-box">
+                <div style="width: 150px; height: 100%; padding-left: 20px">
+                  <img src="navbar-logo.png" />
+                </div>
+                <div class="main">
+                  <div
+                    class="navbar-border-box-main"
+                     
+                  ></div>
+                  <button
+                    class="navbar-button"
+                   
+                    onclick="location.href='/html/main.html'"
+                  >
+                    홈
+                  </button>
+                </div>
+                <div class="analyze">
+                  <div class="navbar-border-box-analyze"></div>
+                  <button
+                    class="navbar-button"
+                    onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+                  >
+                    챔피언 분석
+                  </button>
+                </div>
+                <div class="statistics">
+                  <div class="navbar-border-box-statistics"
+                  
+                  ></div>
+                  <button class="navbar-button"  
+                    onclick="location.href=''">
+                    통계
+                  </button>
+                </div>
+                <div class="ranking">
+                  <div class="navbar-border-box-ranking"
+                  style="
+                  padding-left: 50%;
+                  width: 50%;
+                  position: absolute;
+                  height: 1px;
+                  background-color: #fff;
+                  left: 0px;
+                  bottom: -4.5px;
+                "
+                  ></div>
+                  <button class="navbar-button"   style = "color: #fff; " onclick="location.href=''">
+                    랭킹
+                  </button>
+                </div>
+                <div class="multi">
+                  <div class="navbar-border-box-multi"></div>
+                  <button
+                    class="navbar-button"
+                    onclick="location.href='/html/multi-search.html'"
+                  >
+                    멀티서치
+                  </button>
+                </div>
+              </div>
+      
+              <div class="nav-search-box">
+                <select name="country">
+                  <option value="KR">KR</option>
+                  <option value="NA">NA</option>
+                </select>
+                <input type="text" />
+                <button>
+                  <img
+                    src="search-icon-16.svg"
+                    style="width: 12px; height: 12px"
+                  />
+                </button>
+              </div>
+            </nav>
+          </header>
+
+          <article class ="main page">
+            <div class = "ranking-title"style = "color: #fff;"> </div>
+          </div>
+             
+            <div class = "pro-ranking">
+                프로 선수 랭킹
+            </div>
+
+            <div class = "celeb-ranking">
+                 인기 플레이어 랭킹
+            </div>
+
+            <div class = "recommend-ranking">
+                 추천 플레이어 랭킹
+            </div>
+          </article>
+    </body>
+</html>
