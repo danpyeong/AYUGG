@@ -47,7 +47,6 @@ body {
   font-size: 10px;
   color: white;
   padding-inline-start: 0px;
-  max-height: 13.6px;
 }
 .tier-box, .label, .optionItem{
     background: #626367;
@@ -55,26 +54,22 @@ body {
     border-radius: 4px;
     padding: 0 5px;
 }
+/* ------------------ */
+.selectBox2 {
+    display: inline;
+}
 .label {
     display: flex;
     cursor: pointer;
-    width: 45.513px;
-    justify-content: space-between;
+    max-width: 13.6;
 }
 .more-list {
+    flex-direction: row;
     list-style-type: none;
-    padding: 0;
-    display: none;
 }
-.select.active .more-list {
-    display: initial;
-}
+/* -------------------------- */
 .more-list li, .label{
     margin-bottom: 2px;
-}
-#tier-graph {
-    width: 100%;
-    height: 100%;
 }
 .container .top .reset {
   display: flex;
@@ -112,9 +107,8 @@ body {
 .container .bottom .statistics .st-list {
   color: white;
   border-collapse: collapse;
-  max-height: 200px;
 }
-.container .bottom .statistics .st-list th {
+.container .bottom .statistics .st-listz th {
   text-align: left;
   background: #626367;
   border: 1px solid white;
@@ -142,12 +136,8 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-.graph-box {
-    width: auto;
-    max-height: 80px;
-}
-#tier-graph {
-    width: auto;
+#rate {
+    width: 100%;
     height: 100%;
 }
 .container .bottom .statistics .st-list .info .inline-text{
@@ -233,24 +223,8 @@ body {
 .match-fifth ul {
     list-style: none;
 }
-.game {
-    position: relative;
-}
 .open {
-    display: flex;
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 37px 10px;
-    background: rgba(255, 255, 255, 0.5);
-}
-.detail {
-    display: none;
-}
-.game.active .detail {
-    display: initial;
-
 }
 .detail-first {
     background: #626367;
