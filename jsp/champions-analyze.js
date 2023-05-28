@@ -21,7 +21,7 @@ fetch(championUrl)
     });
 
     for (var i = 0; i < champDataList.length; i++) {
-      // console.log(champDataList[i]);
+      console.log(champDataList[i]);
 
       const childLi = document.createElement("li");
       const childSpan = document.createElement("span");
