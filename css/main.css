@@ -108,9 +108,7 @@ select {
 }
 
 .main-box {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -174,12 +172,17 @@ select {
 .match-info {
   border-radius: 4px;
   box-sizing: border-box;
-  height: calc(100% - 55px);
-  overflow: hidden;
+  height: 78%;
+  overflow-x: auto;
+  -ms-overflow-style: none;
 }
 
-.match-info nav {
-  height: 30px;
+.match-info::-webkit-scrollbar {
+  display: none;
+}
+
+.notice-box nav {
+  height: 50px;
   background-color: rgb(47, 47, 47);
   border-radius: 4px;
   color: #fff;
@@ -188,6 +191,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .match-list {
@@ -199,8 +203,42 @@ select {
 }
 
 .match-list li {
-  height: 50px;
+  height: 60px;
+  padding: 3px 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #fff;
+}
+
+.match-list li:nth-last-child(1) {
+  border-bottom: 0px solid #000000;
+}
+
+.match-list li > header,
+.match-list li > article,
+.match-list li > footer,
+.match-list li > header div,
+.match-list li > article div,
+.match-list li > footer div {
+  display: flex;
+  margin: 0px 10px;
+}
+
+.match-list li > article img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.match-list li > article {
+  width: 55%;
+  justify-content: space-between;
+}
+
+.match-list li > article > :nth-child(1),
+.match-list li > article > :nth-child(3) {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
 }

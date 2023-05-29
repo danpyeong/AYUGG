@@ -86,7 +86,7 @@
     <!-- 내용 -->
     <article class="main-box">
       <!-- 메인메뉴 중앙 로고 -->
-      <div style="margin: 50px 0px 75px 0px">
+      <div style="margin: 50px 0px 50px 0px">
         <img
           src="/images/logo/body-logo.png"
           style="width: 400px; height: 200px"
@@ -108,35 +108,11 @@
       </div>
       <!-- 대회 소식 -->
       <div class="notice-box">
-        <header class="match-header"><a>e-sports 일정</a></header>
+        <div class="match-header"><a>e-sports 일정</a></div>
+        <nav><a>오늘의 매치 -</a> <a id="today-date">today-date</a></nav>
         <article class="match-info">
-          <nav><a>오늘의 매치 -</a> <a id="today-date">today-date</a></nav>
           <div>
-            <ul class="match-list">
-              <li>
-                <header>
-                  <div id="game-state">종료</div>
-                  <div id="game-time">21:00</div>
-                </header>
-                <article>
-                  <div id="game-team-1">SKT T1</div>
-                  <div id="game-score"></div>
-                  <div id="game-team-2">Gen G</div>
-                </article>
-                <footer>
-                  <div id="game-result">결과</div>
-                </footer>
-              </li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-              <li>d</li>
-            </ul>
+            <ul id="match-list" class="match-list"></ul>
           </div>
         </article>
       </div>
