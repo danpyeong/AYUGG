@@ -120,7 +120,7 @@ a {
 
 .champions-list span > div {
   width: 48px;
-  max-height: 14px;
+  max-height: 16px;
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/main.css" />
     <title>AYU-GG</title>
     <script src="/jsp/main.js"></script>
+    <script src="/jsp/select.js"></script>
   </head>
   <body>
     <header>
@@ -98,7 +99,16 @@
           <option value="KR">KR</option>
           <option value="NA">NA</option>
         </select>
-        <input type="text" />
+        <div id="select-box" class="select-box">
+          <input class="user-input-box" type="text" />
+          <div id="option-list" class="option-list">
+            <nav>
+              <div id="recent" class="recent-search">최근 검색</div>
+              <div id="favorites" class="favorites">즐겨찾기</div>
+            </nav>
+            <article class="option-box"></article>
+          </div>
+        </div>
         <button>
           <img
             src="/images/search-icon/search-icon-24.svg"

@@ -4,34 +4,68 @@ let todayDate = date.getDate();
 let todayDay = date.getDay();
 const WEEKDAY = ["일", "월", "화", "수", "목", "금", "토"];
 
-// window.onload = function () {
-//   document.getElementById("today-date").innerText =
-//     todayMonth + "월 " + todayDate + "일" + " (" + WEEKDAY[todayDay] + ")";
-// };
-matchUrl = "../test_junwan/test.json";
-fetch(matchUrl)
-  .then((response) => response.json())
-  .then(function (data) {});
-
 window.onload = function () {
+  const body = document.querySelector("body");
+  const select = document.querySelector("#select-box");
+  const option = document.querySelector("#option-list");
+
+  select.addEventListener("click", function (e) {
+    e.currentTarget.querySelector("#option-list").style.display = "block";
+  });
+
+  body.addEventListener("click", function (e) {
+    var target = e.target;
+
+    if (target == e.currentTarget.querySelector("#select-box")) return;
+    if (target == e.currentTarget.querySelector("#option-list")) return;
+    if (target == e.currentTarget.querySelector(".recent-search")) return;
+    if (target == e.currentTarget.querySelector(".favorites")) return;
+    if (target == e.currentTarget.querySelector(".option-box")) return;
+    if (target == e.currentTarget.querySelector(".user-input-box")) return;
+
+    option.style.display = "none";
+  });
+
+  // const body = document.
+
+  const recentSearch = document.getElementById("recent");
+  const favorites = document.getElementById("favorites");
+
+  const recentSearchBox = document.getElementById("recent-box");
+  const favoritesBox = document.getElementById("favorites-box");
+
+  recentSearch.addEventListener("click", function () {
+    favorites.style.backgroundColor = "rgb(137, 134, 134)";
+    recentSearch.style.backgroundColor = "#fff";
+    favoritesBox.style.display = "none";
+    recentSearchBox.style.display = "block";
+  });
+
+  favorites.addEventListener("click", function () {
+    recentSearch.style.backgroundColor = "rgb(137, 134, 134)";
+    favorites.style.backgroundColor = "#fff";
+    recentSearchBox.style.display = "none";
+    favoritesBox.style.display = "block";
+  });
+
   document.getElementById("today-date").innerText =
     todayMonth + "월 " + todayDate + "일" + " (" + WEEKDAY[todayDay] + ")";
 
+  matchUrl = "../test_junwan/test.json";
+
   const matchList = document.getElementById("match-list");
-  let gameNum = 0;
+  let gameNum;
 
   fetch(matchUrl)
     .then((response) => response.json())
     .then(function (data) {
-      console.log(data[0]);
-
       for (let i = 0; i < data.length; i++) {
         matchData = Object.values(data[i]);
-        for (let i = 0; i < matchData.length; i++) {
-          console.log(matchData[i]);
-        }
+
         // gameNum = i;
         gameNum = matchData[0];
+        let leftMatchScore = matchData[6];
+        let rightMatchScore = matchData[9];
         const childLi = document.createElement("li");
         const childHead = document.createElement("header");
         const childArti = document.createElement("article");
@@ -68,12 +102,9 @@ window.onload = function () {
         const leftTeamBox = document.createElement("div");
         const imgLeftTeam = document.createElement("img");
         imgLeftTeam.id = gameNum + "-left-team-img";
-        // imgLeftTeam.src =
-        //   "https://s-qwer.op.gg/images/lol/teams/385_1672191948431.png?image=q_auto,f_webp,w_80&v=1684919904860";
         imgLeftTeam.src = matchData[4];
         const nameLeftTeam = document.createElement("div");
         imgLeftTeam.id = gameNum + "-left-team-img";
-        // nameLeftTeam.innerText = "SKT T1";
         nameLeftTeam.innerText = matchData[5];
 
         leftTeamBox.appendChild(imgLeftTeam);
@@ -84,6 +115,7 @@ window.onload = function () {
         const scoreLeft = document.createElement("div");
         scoreLeft.id = gameNum + "-left-team-score";
         scoreLeft.innerText = "?";
+        // scoreLeft.innerText = matchData[6];
 
         const scoreMiddle = document.createElement("div");
         scoreMiddle.innerText = ":";
@@ -91,6 +123,7 @@ window.onload = function () {
         const scoreRight = document.createElement("div");
         scoreRight.id = gameNum + "-right-team-score";
         scoreRight.innerText = "?";
+        // scoreRight.innerText = matchData[9];
 
         scoreBox.appendChild(scoreLeft);
         scoreBox.appendChild(scoreMiddle);
@@ -99,13 +132,10 @@ window.onload = function () {
         // --third div
         const rightTeamBox = document.createElement("div");
         const imgRightTeam = document.createElement("img");
-        // imgRightTeam.id = gameNum + "-right-team-img";
-        // imgRightTeam.src =
-        //   "https://s-qwer.op.gg/images/lol/teams/385_1672191948431.png?image=q_auto,f_webp,w_80&v=1684919904860";
+        imgRightTeam.id = gameNum + "-right-team-img";
         imgRightTeam.src = matchData[7];
         const nameRightTeam = document.createElement("div");
         nameRightTeam.id = gameNum + "-right-team-name";
-        // nameRightTeam.innerText = "Gen G";
         nameRightTeam.innerText = matchData[8];
 
         rightTeamBox.appendChild(nameRightTeam);
@@ -117,9 +147,28 @@ window.onload = function () {
         // article ********************************************************
 
         // footer ********************************************************
-        resultBox = document.createElement("div");
+        const resultBox = document.createElement("button");
         resultBox.id = gameNum + "-result";
+        resultBox.value = 0;
         resultBox.innerText = "결과";
+        resultBox.onclick = function () {
+          if (matchGameState == 0) {
+            if (resultBox.value == 0) {
+              document.getElementById(scoreLeft.id).innerText = leftMatchScore;
+              document.getElementById(scoreRight.id).innerText =
+                rightMatchScore;
+              document.getElementById(resultBox.id).innerText = "숨기기";
+              document.getElementById(resultBox.id).value = 1;
+            } else {
+              document.getElementById(scoreLeft.id).innerText = "?";
+              document.getElementById(scoreRight.id).innerText = "?";
+              document.getElementById(resultBox.id).innerText = "결과";
+              document.getElementById(resultBox.id).value = 0;
+            }
+          } else {
+            alert("종료된 게임이 아닙니다.");
+          }
+        };
 
         childFoot.appendChild(resultBox);
         // footer ********************************************************

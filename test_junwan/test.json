@@ -66,21 +66,21 @@
     "gameTime": "19:00",
     "imgLeftTeam": "https://s-qwer.op.gg/images/lol/teams/g2_light_l.png?image=q_auto,f_webp,w_80&v=1684919904860",
     "nameLeftTeam": "G2",
-    "leftScore": 2,
+    "leftScore": 11,
     "imgRightTeam": "https://s-qwer.op.gg/images/lol/teams/GEN_light_l.png?image=q_auto,f_webp,w_80&v=1684919904860",
     "nameRightTeam": "Gen G",
-    "rightScore": 2
+    "rightScore": 12
   },
   {
     "gameNum": 6,
     "gameDate": "2023-05-29",
-    "gameState": 0,
+    "gameState": 1,
     "gameTime": "21:00",
     "imgLeftTeam": "https://s-qwer.op.gg/images/lol/teams/g2_light_l.png?image=q_auto,f_webp,w_80&v=1684919904860",
     "nameLeftTeam": "G2",
-    "leftScore": 2,
+    "leftScore": 13,
     "imgRightTeam": "https://s-qwer.op.gg/images/lol/teams/632_1672191537262.png?image=q_auto,f_webp,w_40&v=1684919904860",
     "nameRightTeam": "BLG",
-    "rightScore": 2
+    "rightScore": 14
   }
 ]
