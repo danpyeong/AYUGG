@@ -105,21 +105,21 @@
         </div>
         <!-- 티어별, 나라별, 버전별 -->
         <div>
-          <select>
-            <option>마스터+</option>
-            <option>다이아+</option>
-            <option>플레티넘+</option>
-            <option>골드 이하</option>
-            <option>전체</option>
+          <select name="tier">
+            <option value="master">마스터+</option>
+            <option value="diamond">다이아+</option>
+            <option value="platinum" selected>플레티넘+</option>
+            <option value="goldUnder">골드 이하</option>
+            <option value="all">전체</option>
           </select>
-          <select>
-            <option>KR</option>
-            <option>NA</option>
+          <select name="lang">
+            <option value="kr" selected>KR</option>
+            <option value="na">NA</option>
           </select>
-          <select>
-            <option>v13.09</option>
-            <option>v13.08</option>
-            <option>v13.07</option>
+          <select name="version">
+            <option value="13_09" selected>v13.09</option>
+            <option value="13_08">v13.08</option>
+            <option value="13_07">v13.07</option>
           </select>
         </div>
       </div>

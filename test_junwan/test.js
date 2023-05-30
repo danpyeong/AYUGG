@@ -1,143 +1,128 @@
-const apiKey = "RGAPI-4624feaa-1d58-4aab-be76-e920e419f2a9";
+const apiKey = "RGAPI-847853ca-e3b9-473b-9208-b46d19196339";
 const functionCount = 3;
 // 티어별 유저 정보
-const tierUserStartUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/";
-const division = ["I", "II", "III", "IV"];
-const tier = ["IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "DIAMOND"];
-const queue = ["RANKED_SOLO_5x5", "RANKED_FLEX_SR", "RANKED_FLEX_TT"];
-const page = "?page=";
+const tierUserStartUrl = "https://kr.api.riotgames.com/lol/league/v4/entries";
+const division = ["/I", "/II", "/III", "/IV"];
+const tier = ["/IRON", "/BRONZE", "/SILVER", "/GOLD", "/PLATINUM", "/DIAMOND"];
+const queue = ["/RANKED_SOLO_5x5", "/RANKED_FLEX_SR", "/RANKED_FLEX_TT"];
+const pageCount = 1;
 
 let tierUserUrl =
   tierUserStartUrl +
   queue[0] +
-  "/" +
   tier[4] +
-  "/" +
   division[0] +
-  page +
-  "250" +
+  "?page=" +
+  pageCount +
   "&api_key=" +
   apiKey;
 
-// 유저 정보별 puuid
-const puuidStartUrl =
-  "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
-let userName = [];
+async function loadData() {
+  // 티어에 따른 유저 닉네임 뽑아내는 함수
+  var response = await fetch(tierUserUrl);
+  var tierUserRawData = response.json();
+  let tierUserList = [];
+  // -----promise 객체에서 데이터 뽑아내기
+  const tierUserData = tierUserRawData;
+  const gettierUserData = () => {
+    tierUserData.then(async (rawData) => {
+      let data = [];
+      let encodedName = [];
+      for (let i = 0; i < 10; i++) {
+        data.push(Object.values(rawData[i]));
+        tierUserList.push(data[i][5]);
+        encodedName.push(encodeURI(tierUserList[i]));
+      }
 
-// 변수
-let summeronerpuuIdList = [];
-let summeronerNameList = [];
-let puuidUrlList = [];
-let puuidList = [];
+      //#region 유저별 puuid
+      const uidStartUrl =
+        "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
+      let uidDataList = [];
+      let uidList = [];
 
-function getUser() {
-  const response = fetch(tierUserUrl, {
-    method: "GET",
-  });
-  // console.log(response);
-  return response;
+      for (let i = 0; i < 10; i++) {
+        const uidUrl = uidStartUrl + encodedName[i] + "?api_key=" + apiKey;
+        var response = await fetch(uidUrl);
+        var uidRawData = response.json();
+        uidDataList.push(uidRawData);
+        const getUidData = () => {
+          uidDataList[i].then(async (rawData) => {
+            let data = Object.values(rawData);
+            uidList.push(data[2]);
+            // console.log(uidList[i]);
+          });
+        };
+        getUidData();
+      }
+      //#endregion
+
+      //#region 유저당 20개의 matchID 추출
+      const matchStartUrl =
+        "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/";
+      const matchCount = 20;
+      let matchList = [];
+
+      for (let i = 0; i < uidList.length; i++) {
+        const matchUrl =
+          matchStartUrl +
+          uidList[i] +
+          "/ids?queue=420&start=0&count=" +
+          matchCount +
+          "&api_key=" +
+          apiKey;
+
+        var response = await fetch(matchUrl);
+        var matchRawData = response.json();
+        const getMatchData = () => {
+          matchRawData.then(async (rawData) => {
+            let data = Object.values(rawData);
+            for (let i = 0; i < data.length; i++) {
+              if (matchList.includes(data[i]) == false) {
+                matchList.push(data[i]);
+              }
+            }
+          });
+        };
+        getMatchData();
+      }
+      //#endregion
+
+      //#region matchList를 이용해서 게임 내역을 받고 거기서 데이터 빼오기
+      const inGameStartUrl =
+        "https://asia.api.riotgames.com/lol/match/v5/matches/";
+
+      let gameDataList = [];
+      let userListData = [];
+      for (let i = 0; i < 1; i++) {
+        const inGameUrl = inGameStartUrl + matchList[i] + "?api_key=" + apiKey;
+        var response = await fetch(inGameUrl);
+        var inGameRawData = response.json();
+        const getInGameData = () => {
+          inGameRawData.then(async (rawData) => {
+            let data = Object.values(rawData);
+            gameDataList.push(Object.values(data[1]));
+            // console.log(gameDataList[i]);
+            userListData = gameDataList[i][10];
+            // console.log(userListData);
+            // let
+            for (let i = 0; userListData.length; i++) {}
+          });
+        };
+        getInGameData();
+      }
+      //#endregion
+    });
+  };
+  gettierUserData();
 }
 
-async function exec() {
-  var text;
-  try {
-    text = await getUser();
-    console.log(text.json());
-  } catch (error) {
-    console.log(error);
-  }
-}
+loadData();
 
-exec();
-
-// getUser()
-//   .then((res) => res.json())
-//   .then((data) => {
-//     let matchRawData = Object.values(data);
-
-//     // 티어별 소환사ID 추출
-//     for (let i = 0; i < functionCount; i++) {
-//       summeronerNameList[i] = Object.values(matchRawData[i])[5];
+// for (let i = 0; i < 1; i++) {
+//   let values = userListData[i];
+//   let keys = Object.keys(userListData[i]);
+//     for (let j = 0; j < keys.length; j++) {
+//       var key = keys[j];
+//       console.log("key : " + key + "/ value : " + values[key]);
 //     }
-
-//     console.log(summeronerNameList);
-//     return summeronerNameList;
-//   });
-// summeronerNameList = getUser();
-// console.log(summeronerNameList);
-
-const tierResponse = fetch(tierUserUrl, {
-  method: "GET",
-})
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    // console.log(data);
-
-    let matchRawData = Object.values(data);
-
-    // 티어별 소환사ID 추출
-    for (let i = 0; i < functionCount; i++) {
-      summeronerNameList[i] = Object.values(matchRawData[i])[5];
-    }
-
-    // console.log(summeronerNameList);
-
-    // // 얻어낸 소환사ID로 최근 게임 추출
-    // for (let i = 0; i < functionCount; i++) {
-    //   userName[i] = encodeURI(summeronerNameList[i]);
-
-    //   let puuidUrl = puuidStartUrl + userName[i] + "?api_key=" + apiKey;
-    //   puuidUrlList[i] = puuidUrl;
-    //   // console.log(puuidUrlList[i]);
-
-    //   // puuid 얻고 리스트에 담기
-    //   function getPuuid() {
-    //     fetch(puuidUrlList[i], {
-    //       method: "GET",
-    //     })
-    //       .then((response) => {
-    //         return response.json();
-    //       })
-    //       .then((data) => {
-    //         puuidList = Object.values(data)[2];
-    //         console.log(puuidList);
-    //       });
-    //   }
-    //   getPuuid();
-    // }
-  });
-
-// console.log(tierResponse);
-
-// const tierResult = tierResponse.json();
-// console.log(tierResult);
-
-// 유저별 최근 3게임 정보
-// 순서 : 기본주소 + puuid + "ids?" + Start
-
-const matchStartUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/";
-let matchCount;
-const matchUrl =
-  matchStartUrl + "puuid" + "/ids?Start-0&count" + matchCount + "&api_key=";
-
-function getMatch() {
-  // console.log(puuidList);
-}
-getMatch();
-
-// fetch 기본 구조
-
-// function example() {
-// fetch('', {
-//   method: 'GET',
-// })
-// .then(response => {
-//   return response.json();
-// })
-// .then(data => {
-//   console.log(data);
-//   });
-// }
-// example();
+//   }

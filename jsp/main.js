@@ -66,8 +66,9 @@ window.onload = function () {
         return;
       } else {
         // window.location.href =
-        //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-        window.location.href = "/html/summoners/player.html";
+        //   "/html/player/" + encodeURI(mainInput.value) + ".html";
+        window.location.href =
+          "/html/summoners/player.html?query=" + encodeURI(mainInput.value);
       }
     }
   });
@@ -234,5 +235,9 @@ window.onload = function () {
         matchList.appendChild(childLi);
       }
     });
+  //#endregion
+
+  //#region 롤 API 받아오기
+
   //#endregion
 };
