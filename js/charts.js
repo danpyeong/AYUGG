@@ -26,29 +26,6 @@ new Chart(rate, {
 });
 
 //티어변화 그래프
-// var tierGraphData = {
-//   datasets: [{
-//     label: '티어',
-//     data: [10, 20, 30, 25, 35],
-//     borderColor: 'red',
-//     fill: false
-//   }]
-// };
-
-// var tierGraph = document.getElementById('tier-graph').getContext('2d');
-
-// new Chart(tierGraph, {
-//   type: 'line',
-//   data: tierGraphData,
-//   options: {
-//     responsive: true,
-//     plugins: {
-//       legend: {
-//         display: false,
-//       },
-//     }
-//   }
-// });
 var tierGraphData = {
   labels: ['1월', '2월', '3월', '4월'],
   datasets: [{
