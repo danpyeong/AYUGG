@@ -9,7 +9,7 @@ label.addEventListener('click', () => {
 });
 
 function toggleSelectBox(selectBox) {	
-    selectBox.classList.toggle("active");	
+    selectBox.classList.toggle("active");
 }	
 
 const selectBoxElements = document.querySelectorAll(".select");	

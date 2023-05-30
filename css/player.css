@@ -68,7 +68,7 @@ body {
   padding: 0;
   display: none;
 }
-.select.active .more-list {
+.selection.active .more-list {
   display: initial;
 }
 .more-list li,
