@@ -96,7 +96,7 @@ body {
   flex-direction: row;
   padding-left: 20px;
   color: white;
-  background: rgb(57, 58, 60);
+  background: rgb(47, 47, 47);
   border: 0;
   position: relative;
   cursor: pointer;
@@ -132,9 +132,6 @@ body {
 .container .bottom .statistics .st-list tr td {
   text-align: left;
   border: 1px solid white;
-}
-.container .bottom .statistics .st-list .info {
-  width: 250px;
 }
 .container .bottom .statistics .st-list .info .ad .as {
   position: relative;
@@ -173,9 +170,6 @@ body {
 .st-list {
   height: 250px;
 }
-.container .bottom .statistics .st-list .most {
-  width: 500px;
-}
 .container .bottom .statistics .st-list .most .middle-sta {
   width: 100%;
   padding-inline: 20px;
@@ -186,9 +180,6 @@ body {
 }
 .container .bottom .statistics .st-list .most .middle-sta tr td {
   border: none;
-}
-.container .bottom .statistics .st-list .play-style {
-  width: 250px;
 }
 .pl-box {
   display: flex;
