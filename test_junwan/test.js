@@ -102,10 +102,49 @@ async function loadData() {
             let data = Object.values(rawData);
             gameDataList.push(Object.values(data[1]));
             // console.log(gameDataList[i]);
+
+            // 유저 10명 list
             userListData = gameDataList[i][10];
             // console.log(userListData);
-            // let
-            for (let i = 0; userListData.length; i++) {}
+
+            let tatalChampionList = [];
+            let redChampionNameList = [];
+            let blueChampionNameList = [];
+            let laneList = [];
+            let finallyItemList = [];
+            let runeList = [];
+            let spellList1 = [];
+            let spellList2 = [];
+
+            let user;
+            let userList = [];
+            for (let i = 0; i < userListData.length; i++) {
+              // if (
+              //   tatalChampionList.includes(userListData[i].championName) != true
+              // ) {
+              //   tatalChampionList.push(userListData[i].championName);
+              // }
+              // if (userListData[i].teamId == 100) {
+              //   redChampionNameList.push(userListData[i].championName);
+              // } else {
+              //   blueChampionNameList.push(userListData[i].championName);
+              // }
+              // laneList.push(userListData[i].lane);
+              // runeList.push(userListData[i].perk);
+              // spellList1.push(userListData[i].summoner1Id);
+              // spellList2.push(userListData[i].summoner2Id);
+
+              user = [
+                { champName: userListData[i].championName },
+                { teamId: userListData[i].teamId },
+                { lane: userListData[i].lane },
+                // {rune : userListData[i].} 좀 더 세분화 시켜야함
+                { spell1: userListData[i].summoner1Id },
+                { spell2: userListData[i].summoner2Id },
+              ];
+              userList.push(user);
+            }
+            console.log(userList);
           });
         };
         getInGameData();
