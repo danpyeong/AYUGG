@@ -23,7 +23,6 @@ new Chart(rate, {
         position: 'top',
       },
     }
-<<<<<<< HEAD:js/charts.js
   }
 });
 
@@ -102,7 +101,4 @@ new Chart(radarGraph, {
       }
     }
   }
-=======
-  },
->>>>>>> 7ae2cbf5f6e4301ad6c3548e4a345d9c36c7abbd:charts.js
 });
