@@ -25,6 +25,7 @@ button {
 
 input {
   width: 100%;
+  height: 100%;
   margin: 0px 10px;
 }
 
@@ -108,9 +109,7 @@ select {
 }
 
 .main-box {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -146,9 +145,52 @@ select {
   cursor: pointer;
 }
 
-.search-box select,
-.search-box input {
+.search-box select {
+  font-size: 14px;
+}
+
+.select-box {
+  position: relative;
+  width: 85%;
+}
+
+.option-list {
+  display: none;
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid rgb(47, 47, 47);
+  border-radius: 4px;
+  top: 55px;
+}
+
+.option-list nav {
+  width: 100%;
+  display: flex;
+}
+
+.option-list nav div {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.recent-search {
+  border-right: 0.5px solid rgb(47, 47, 47);
+}
+
+.favorites {
+  background-color: rgb(137, 134, 134);
+}
+
+.favorites div {
+  display: none;
 }
 
 .notice-box {
@@ -156,19 +198,122 @@ select {
   background-color: rgb(137, 134, 134);
   width: 720px;
   height: 500px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+}
+
+.match-header {
+  width: 100%;
+  height: 50px;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  padding-left: 5px;
+}
+
+.match-info {
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 78%;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+}
+
+.match-info::-webkit-scrollbar {
+  display: none;
+}
+
+.notice-box nav {
+  height: 50px;
+  background-color: rgb(47, 47, 47);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.match-box {
-  margin: 15px auto;
-  background-color: #fff;
-  width: 45%;
-  height: 100%-40px;
+.match-list {
+  list-style: none;
+  padding-left: 0px;
+  background-color: rgb(47, 47, 47);
+  border-radius: 4px;
+  color: #fff;
 }
 
-.news-box {
-  margin: 15px auto;
+.match-list li {
+  height: 60px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #fff;
+}
+
+.match-list li:nth-last-child(1) {
+  border-bottom: 0px solid #000000;
+}
+
+.match-list li > header,
+.match-list li > article,
+.match-list li > footer,
+.match-list li > header div,
+.match-list li > article div,
+.match-list li > footer div {
+  display: flex;
+  margin: 0px 10px;
+}
+
+.match-list li > header div {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  /* background-color: #fff; */
+}
+
+.match-list li > article img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  border: 0.5px solid yellow;
+  border-radius: 50%;
   background-color: #fff;
-  width: 45%;
-  height: 100%-40;
+}
+
+.match-list li > article {
+  width: 55%;
+  justify-content: space-between;
+}
+
+.match-list li > article > :nth-child(1),
+.match-list li > article > :nth-child(3) {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.match-list li > article > :nth-child(2) {
+  width: 20%;
+  margin-right: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.match-list li > article > :nth-child(2) div {
+  max-width: 5px;
+}
+
+.match-list li > footer > button {
+  width: 70px;
+  font-size: 14px;
+  background-color: rgb(47, 47, 47);
+  color: #fff;
+  cursor: pointer;
 }

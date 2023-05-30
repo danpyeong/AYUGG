@@ -1,27 +1,29 @@
-//승률그래프
-var rateData = {  
+const DATA_COUNT = 5;
+const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
+const data = {  
   datasets: [
     {
       label: 'Dataset 1',
-      data: [50,50],
+      data: [40,60],
       backgroundColor: ["#0000ff", "#626367"],
     }
   ]
 };
 
-var rate = document.querySelector("#rate");
+const rate = document.querySelector("#rate");
 
 new Chart(rate, {
     type: 'doughnut',
-    data: rateData,
+    data: data,
     options: {
-      borderColor: 'rgb(57, 58, 60)',
     responsive: true,
     plugins: {
       legend: {
         position: 'top',
       },
     }
+<<<<<<< HEAD:js/charts.js
   }
 });
 
@@ -100,4 +102,7 @@ new Chart(radarGraph, {
       }
     }
   }
+=======
+  },
+>>>>>>> 7ae2cbf5f6e4301ad6c3548e4a345d9c36c7abbd:charts.js
 });

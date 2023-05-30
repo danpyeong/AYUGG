@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/statistics.css" />
     <title>AYU-GG</title>
-    <script src="/jsp/main.js"></script>
-    <script src="/jsp/select.js"></script>
   </head>
   <body>
     <header>
@@ -17,18 +16,7 @@
             <img src="/images/logo/navbar-logo.png" />
           </div>
           <div class="main">
-            <div
-              class="navbar-border-box-main"
-              style="
-                padding-left: 50%;
-                width: 50%;
-                position: absolute;
-                height: 1px;
-                background-color: #fff;
-                left: 0px;
-                bottom: -5px;
-              "
-            ></div>
+            <div class="navbar-border-box-main"></div>
             <button
               class="navbar-button"
               style="color: #fff"
@@ -48,13 +36,19 @@
           </div>
           <div class="statistics">
             <div class="navbar-border-box-statistics"></div>
-            <button class="navbar-button" onclick="location.href=''">
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/statistics.html'"
+            >
               통계
             </button>
           </div>
           <div class="ranking">
             <div class="navbar-border-box-ranking"></div>
-            <button class="navbar-button" onclick="location.href=''">
+            <button
+              class="navbar-button"
+              onclick="location.href='/html/ranking.html'"
+            >
               랭킹
             </button>
           </div>
@@ -74,8 +68,8 @@
             <option value="KR">KR</option>
             <option value="NA">NA</option>
           </select>
-          <input id="nav-input" type="text" />
-          <button id="nav-button">
+          <input type="text" />
+          <button>
             <img
               src="/images/search-icon/search-icon-16.svg"
               style="width: 12px; height: 12px"
@@ -84,47 +78,40 @@
         </div>
       </nav>
     </header>
-    <!-- 내용 -->
-    <article class="main-box">
-      <!-- 메인메뉴 중앙 로고 -->
-      <div style="margin: 50px 0px 50px 0px">
-        <img
-          src="/images/logo/body-logo.png"
-          style="width: 400px; height: 200px"
-        />
+
+    <article class="main-story">
+      <div class="main-title" style="color: #fff">통계</div>
+
+      <div class="champions-statistics">
+        <button class="champions-button">챔피언 별 게임통계</button>
       </div>
-      <!-- 소환사 전적 검색창 -->
-      <div class="search-box">
-        <select name="country">
-          <option value="KR">KR</option>
-          <option value="NA">NA</option>
-        </select>
-        <div id="select-box" class="select-box">
-          <input id="main-input" class="user-input-box" type="text" />
-          <div id="option-list" class="option-list">
-            <nav>
-              <div id="recent" class="recent-search">최근 검색</div>
-              <div id="favorites" class="favorites">즐겨찾기</div>
-            </nav>
-            <article class="option-box"></article>
-          </div>
+
+      <div class="tier-statistics">
+        <botton class="tier-button">티어 별 게임통계</botton>
+      </div>
+
+      <div class="button-box">
+        <div class="button-box-title" style="color: rgb(70, 65, 65)">
+          <div>큐타입</div>
+          <div>리그</div>
+          <div>서버선택</div>
+          <div>시간</div>
+          <div>포지션</div>
         </div>
-        <button id="main-button">
-          <img
-            src="/images/search-icon/search-icon-24.svg"
-            style="width: 30px; height: 30px"
-          />
-        </button>
       </div>
-      <!-- 대회 소식 -->
-      <div class="notice-box">
-        <div class="match-header"><a>e-sports 일정</a></div>
-        <nav><a>오늘의 매치 -</a> <a id="today-date">today-date</a></nav>
-        <article class="match-info">
-          <div>
-            <ul id="match-list" class="match-list"></ul>
-          </div>
-        </article>
+
+      <div class="stastistics-box">
+        <div class="stastistics-box-title" style="color: rgb(70, 65, 65)">
+          <span># </span>
+          <span> 챔피언 </span>
+          <span>플레이수</span>
+          <span>평점</span>
+          <span>승률</span>
+          <span>게임당픽률</span>
+          <span>게임당밴률</span>
+          <span>CS</span>
+          <span>GOLD</span>
+        </div>
       </div>
     </article>
   </body>

@@ -11,9 +11,8 @@ fetch(championUrl)
     // 위 데이터를 담은 배열
     var champDataList = Object.values(champData);
     var champList = document.getElementById("champions-list");
-
     for (var i = 0; i < champDataList.length; i++) {
-      // console.log(champDataList[i]);
+      console.log(champDataList[i]);
 
       const childLi = document.createElement("li");
       const childSpan = document.createElement("span");

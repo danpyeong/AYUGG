@@ -24,7 +24,7 @@ a {
 /* 상단 메뉴바  */
 
 /* 상단 선택박스 - 소환사협곡, 칼바람나락, (나라, 티어, 시즌) 선택 */
-.select-box {
+.mode-select-box {
   margin: 0px auto;
   padding: 0px 20px;
   background-color: rgb(160, 160, 160);
@@ -37,12 +37,12 @@ a {
   border-radius: 4px;
 }
 
-.select-box button {
+.mode-select-box button {
   background-color: rgb(160, 160, 160);
   font-size: 16px;
   margin-right: -5px;
 }
-.select-box select {
+.mode-select-box select {
   background-color: rgb(160, 160, 160);
   color: #fff;
   font-size: 16px;
@@ -120,7 +120,7 @@ a {
 
 .champions-list span > div {
   width: 48px;
-  max-height: 14px;
+  max-height: 16px;
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
