@@ -1,4 +1,4 @@
-const apiKey = "RGAPI-1ace2ecc-1c17-4ece-9c82-60b963cef222";
+const apiKey = "RGAPI-59bd3bfa-e353-4b80-ba69-7b8ccda9f761";
 const testnick = "Hide on Bush";
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
