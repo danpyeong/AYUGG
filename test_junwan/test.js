@@ -167,12 +167,22 @@ async function loadData() {
               //#endregion
               user = [
                 { championName: userListData[i].championName },
-                { versus: userListData[Math.abs(i - 5)].championName },
+                {
+                  versusChampionName:
+                    userListData[Math.abs(i - 5)].championName,
+                },
                 { teamId: userListData[i].teamId },
                 { lane: userListData[i].lane },
                 { rune: rune },
                 { spell1: userListData[i].summoner1Id },
                 { spell2: userListData[i].summoner2Id },
+                { item1: userListData[i].item0 },
+                { item2: userListData[i].item1 },
+                { item3: userListData[i].item2 },
+                { item4: userListData[i].item3 },
+                { item5: userListData[i].item4 },
+                { item6: userListData[i].item5 },
+                { item7: userListData[i].item6 },
                 { win: userListData[i].win },
               ];
               userList.push(user);

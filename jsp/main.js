@@ -107,7 +107,7 @@ window.onload = function () {
   //#endregion
 
   //#region 경기 내역
-  matchUrl = "../test_junwan/test.json";
+  matchUrl = "../json/matchList.json";
 
   const matchList = document.getElementById("match-list");
   let gameNum;
