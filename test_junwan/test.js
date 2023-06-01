@@ -1,4 +1,4 @@
-const apiKey = "RGAPI-847853ca-e3b9-473b-9208-b46d19196339";
+const apiKey = "RGAPI-366c270e-4b31-42f7-adb4-45684302839e";
 const functionCount = 3;
 // 티어별 유저 정보
 const tierUserStartUrl = "https://kr.api.riotgames.com/lol/league/v4/entries";
@@ -25,7 +25,7 @@ async function loadData() {
   // -----promise 객체에서 데이터 뽑아내기
   const tierUserData = tierUserRawData;
   const gettierUserData = () => {
-    tierUserData.then(async (rawData) => {
+    tierUserRawData.then(async (rawData) => {
       let data = [];
       let encodedName = [];
       for (let i = 0; i < 10; i++) {
@@ -105,42 +105,70 @@ async function loadData() {
 
             // 유저 10명 list
             userListData = gameDataList[i][10];
-            // console.log(userListData);
-
-            let tatalChampionList = [];
-            let redChampionNameList = [];
-            let blueChampionNameList = [];
-            let laneList = [];
-            let finallyItemList = [];
-            let runeList = [];
-            let spellList1 = [];
-            let spellList2 = [];
+            console.log(userListData);
 
             let user;
             let userList = [];
             for (let i = 0; i < userListData.length; i++) {
-              // if (
-              //   tatalChampionList.includes(userListData[i].championName) != true
-              // ) {
-              //   tatalChampionList.push(userListData[i].championName);
-              // }
-              // if (userListData[i].teamId == 100) {
-              //   redChampionNameList.push(userListData[i].championName);
-              // } else {
-              //   blueChampionNameList.push(userListData[i].championName);
-              // }
-              // laneList.push(userListData[i].lane);
-              // runeList.push(userListData[i].perk);
-              // spellList1.push(userListData[i].summoner1Id);
-              // spellList2.push(userListData[i].summoner2Id);
-
+              //#region runeData 정리하기
+              const stats = [
+                {
+                  defense: userListData[i].perks.statPerks.defense,
+                },
+                {
+                  flex: userListData[i].perks.statPerks.flex,
+                },
+                {
+                  offense: userListData[i].perks.statPerks.offense,
+                },
+              ];
+              const mainRune = [
+                {
+                  styleRune: userListData[i].perks.styles[0].style,
+                },
+                {
+                  titleRune: userListData[i].perks.styles[0].selections[0].perk,
+                },
+                {
+                  firstRune: userListData[i].perks.styles[0].selections[1].perk,
+                },
+                {
+                  secondRune:
+                    userListData[i].perks.styles[0].selections[2].perk,
+                },
+                {
+                  thirdRune: userListData[i].perks.styles[0].selections[3].perk,
+                },
+              ];
+              const subRune = [
+                {
+                  styleRune: userListData[i].perks.styles[1].style,
+                },
+                {
+                  firstRune: userListData[i].perks.styles[1].selections[0].perk,
+                },
+                {
+                  secondRune:
+                    userListData[i].perks.styles[1].selections[1].perk,
+                },
+              ];
+              const rune = [
+                {
+                  stats: stats,
+                },
+                { mainRune: mainRune },
+                { subRune: subRune },
+              ];
+              //#endregion
               user = [
-                { champName: userListData[i].championName },
+                { championName: userListData[i].championName },
+                { versus: userListData[Math.abs(i - 5)].championName },
                 { teamId: userListData[i].teamId },
                 { lane: userListData[i].lane },
-                // {rune : userListData[i].} 좀 더 세분화 시켜야함
+                { rune: rune },
                 { spell1: userListData[i].summoner1Id },
                 { spell2: userListData[i].summoner2Id },
+                { win: userListData[i].win },
               ];
               userList.push(user);
             }
