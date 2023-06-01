@@ -93,6 +93,11 @@ async function loadData() {
 
       let gameDataList = [];
       let userListData = [];
+      //
+      //
+      //    아래 for 문 i < 1 을 i < matchList.length 로 바꾸면 됨.
+      //
+      //
       for (let i = 0; i < 1; i++) {
         const inGameUrl = inGameStartUrl + matchList[i] + "?api_key=" + apiKey;
         var response = await fetch(inGameUrl);
