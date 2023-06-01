@@ -87,7 +87,7 @@
     <article>
       <!-- 중간 메뉴 -->
       <div style="width: 800px; height: 30px"></div>
-      <div class="select-box">
+      <div class="mode-select-box">
         <!-- 협곡 / 칼바람 -->
         <div>
           <button
@@ -105,97 +105,40 @@
         </div>
         <!-- 티어별, 나라별, 버전별 -->
         <div>
-          <select>
-            <option>마스터+</option>
-            <option>다이아+</option>
-            <option>플레티넘+</option>
-            <option>골드 이하</option>
-            <option>전체</option>
+          <select name="tier">
+            <option value="master">마스터+</option>
+            <option value="diamond">다이아+</option>
+            <option value="platinum" selected>플레티넘+</option>
+            <option value="goldUnder">골드 이하</option>
+            <option value="all">전체</option>
           </select>
-          <select>
-            <option>KR</option>
-            <option>NA</option>
+          <select name="lang">
+            <option value="kr" selected>KR</option>
+            <option value="na">NA</option>
           </select>
-          <select>
-            <option>v13.09</option>
-            <option>v13.08</option>
-            <option>v13.07</option>
+          <select name="version">
+            <option value="13_09" selected>v13.09</option>
+            <option value="13_08">v13.08</option>
+            <option value="13_07">v13.07</option>
           </select>
         </div>
       </div>
       <!-- 챔피언 -->
       <div class="champions">
-        <!-- 챔피언 종류 -->
         <div class="info-frame left-info">
           <!-- 챔피언 검색창 -->
           <div class="champions-search flex">
             <!-- 돋보기 이미지 -->
             <img />
             <!-- 챔피언 이름 입력창 -->
-            <input type="text" placeholder="챔피언 검색 (가렌, 갱플랭크)" />
+            <input
+              class="champions-search-box"
+              type="text"
+              placeholder="챔피언 검색 (가렌, 갱플랭크)"
+            />
           </div>
-          <ul class="champions-list">
-            <li>
-              <span>
-                <a href="/html/champions-analyze/champions-details/garen.html">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  가렌
-                </a>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  갈리오
-                </a>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  갱플랭크
-                </a>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  그라가스
-                </a>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  그레이브즈
-                </a>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#">
-                  <img
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  그웬
-                </a>
-              </span>
-            </li>
-          </ul>
+          <!-- 챔피언 종류 -->
+          <ul id="champions-list" class="champions-list"></ul>
         </div>
         <!-- 챔피언 순위 -->
         <div class="info-frame right-info">
@@ -232,10 +175,10 @@
               서폿
             </button>
           </nav>
-          <!-- 테이블 -->
+          <!-- 라인별 챔피언 랭킹 테이블 -->
           <table class="champions-table">
             <colgroup>
-              <col width="40px" />
+              <col width="50px" />
               <col width="150px" />
               <col width="60px" />
               <col width="60px" />
