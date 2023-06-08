@@ -46,6 +46,7 @@ ul {
   width: 900px;
   margin: 30px auto;
   padding: 5px;
+  border-radius: 4px;
 }
 
 /* 챔피언 기본 정보 */
@@ -61,6 +62,7 @@ ul {
   padding: 0px 11px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .champions-least-info-left {
@@ -78,9 +80,10 @@ ul {
 
 /* 챔피언 기본 스킬 */
 .champions-basic-skill img {
-  width: 16px;
-  height: 16px;
+  width: 21px;
+  height: 21px;
   vertical-align: middle;
+  border-radius: 4px;
 }
 
 /* 승률, 픽률, 밴률 테이블 */
@@ -88,21 +91,25 @@ ul {
   width: 80px;
   height: 90%;
   margin-right: 5px;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
-.champions-least-info-right tr td:nth-child(2) {
+.champions-least-info-table tr td:nth-child(2) {
   font-size: 16px;
-  font-weight: 900;
+  color: #fff;
 }
 
 /* 챔피언 카운터 */
 .champions-counter {
   padding: 0px 6.5px;
   width: 100%;
-  height: 65%;
+  height: 60%;
   display: flex;
   justify-content: space-evenly;
+  box-sizing: border-box;
 }
 
 .champions-counter .counter {
@@ -111,6 +118,7 @@ ul {
   height: 100%;
   color: #fff;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .counter-text {

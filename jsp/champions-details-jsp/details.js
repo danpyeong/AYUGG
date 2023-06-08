@@ -1,52 +1,55 @@
-const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
-
+const version = "https://ddragon.leagueoflegends.com/cdn/13.11.1/";
 const championUrl = version + "data/ko_KR/champion.json";
 
-fetch(championUrl)
+window.onload = fetch(championUrl)
   .then((response) => response.json())
   .then(function (data) {
-    // 모든 챔피언 데이터
-    var champData = data.data;
-
     // 위 데이터를 담은 배열
-    var champDataList = Object.values(champData);
-    var champList = document.getElementById("champions-list");
-    for (var i = 0; i < champDataList.length; i++) {
-      console.log(champDataList[i]);
+    var champDataList = Object.values(data.data);
 
-      const childLi = document.createElement("li");
-      const childSpan = document.createElement("span");
-      const childImg = document.createElement("img");
-      const childDiv = document.createElement("div");
-      const champName = champDataList[i].id.toString().toLowerCase();
+    // 한글 기준 오름차순 정렬
+    champDataList.sort(function (a, b) {
+      var nameA = a.name;
+      var nameB = b.name;
+      return nameA.localeCompare(nameB);
+    });
 
-      // 챔피언 초상화
-      childImg.src = version + "img/champion/" + champDataList[i].image.full;
-      childImg.width = 24;
-      childImg.height = 24;
+    var champion = champDataList[0];
 
-      // 챔피언 이름
-      childDiv.textContent = champDataList[i].name;
+    const championImg = document.getElementById("championImg");
+    championImg.src = version + "img/champion/" + champion.image.full;
 
-      childSpan.onclick = function () {
-        // fs.rename("details.html", champName + ".html", function (err) {
-        //   if (err) throw err;
-        //   console.log("File Renamed.");
-        // });
-        window.location.href = champName + ".html";
-      };
+    const championName = champion.id;
+    const championDetailUrl =
+      version + "data/ko_KR/champion/" + championName + ".json";
 
-      childSpan.appendChild(childImg);
-      childSpan.appendChild(childDiv);
-      childLi.appendChild(childSpan);
-      champList.appendChild(childLi);
-    }
+    fetch(championDetailUrl)
+      .then((response) => response.json())
+      .then(function (rawData) {
+        var detailData = Object.values(rawData.data);
+        var championDetail = detailData[0];
+        var spell = detailData[0].spells;
+
+        const passiveImg = document.getElementById("passiveImg");
+        passiveImg.src =
+          version + "img/passive/" + championDetail.passive.image.full;
+
+        const QImg = document.getElementById("skill-Q");
+        QImg.src = version + "img/spell/" + spell[0].image.full;
+        const WImg = document.getElementById("skill-W");
+        WImg.src = version + "img/spell/" + spell[1].image.full;
+        const EImg = document.getElementById("skill-E");
+        EImg.src = version + "img/spell/" + spell[2].image.full;
+        const RImg = document.getElementById("skill-R");
+        RImg.src = version + "img/spell/" + spell[3].image.full;
+      });
   });
 
 // 1 룬 세팅 선택에 따른 배경 변화
-var rune = document.getElementById("rune-1");
-rune.addEventListener("click", function (e) {
-  document.getElementById("rune-1").style.borderLeft = "3px solid red";
+var rune1 = document.getElementById("rune-1");
+var rune2 = document.getElementById("rune-2");
+rune1.addEventListener("click", function (e) {
+  rune1.style.borderLeft = "3px solid red";
   document.getElementById("rune-1").style.backgroundColor =
     "rgb(200, 200, 200)";
   document.getElementById("rune-2").style.borderLeft = "none";
@@ -57,7 +60,6 @@ rune.addEventListener("click", function (e) {
 });
 
 // 2 룬 세팅 선택에 따른 배경 변화
-var rune2 = document.getElementById("rune-2");
 rune2.addEventListener("click", function (e) {
   document.getElementById("rune-2").style.borderLeft = "3px solid red";
   document.getElementById("rune-2").style.backgroundColor =

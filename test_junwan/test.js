@@ -1,5 +1,5 @@
-const apiKey = "RGAPI-366c270e-4b31-42f7-adb4-45684302839e";
-// 챔피언 정보
+const apiKey = "RGAPI-1371cb0a-3e13-4bd5-92b2-2767df486728";
+
 const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
 const championUrl = version + "data/ko_KR/champion.json";
 
@@ -22,8 +22,8 @@ let tierUserUrl =
 
 async function loadData() {
   // 티어에 따른 유저 닉네임 뽑아내는 함수
-  var response = await fetch(tierUserUrl);
-  var tierUserRawData = response.json();
+  var tierUserUrlResponse = await fetch(tierUserUrl);
+  var tierUserRawData = tierUserUrlResponse.json();
   let tierUserList = [];
   // -----promise 객체에서 데이터 뽑아내기
   const tierUserData = tierUserRawData;
@@ -31,11 +31,11 @@ async function loadData() {
     tierUserRawData.then(async (rawData) => {
       let data = [];
       let encodedName = [];
-      //  tierUserList에 담긴 205명 중 10명만
+      //  tierUserList에 담긴 205명 중 10명만 - 최대 : i < data.length
       for (let i = 0; i < 10; i++) {
         data.push(Object.values(rawData[i]));
         tierUserList.push(data[i][5]);
-        encodedName.push(encodeURI(tierUserList[i]));
+        encodedName.push(encodeURI(data[i][5]));
       }
 
       //#region 유저별 puuid
@@ -46,8 +46,8 @@ async function loadData() {
 
       for (let i = 0; i < encodedName.length; i++) {
         const uidUrl = uidStartUrl + encodedName[i] + "?api_key=" + apiKey;
-        var response = await fetch(uidUrl);
-        var uidRawData = response.json();
+        var uidUrlResponse = await fetch(uidUrl);
+        var uidRawData = uidUrlResponse.json();
         uidDataList.push(uidRawData);
         const getUidData = () => {
           uidDataList[i].then(async (rawData) => {
@@ -59,7 +59,7 @@ async function loadData() {
       }
       //#endregion
 
-      //#region 유저당 5개의 matchID 추출
+      //#region 유저당 5개의 matchID 추출 - 최대 : matchCount = 100
       const matchStartUrl =
         "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/";
       const matchCount = 5;
@@ -74,8 +74,8 @@ async function loadData() {
           "&api_key=" +
           apiKey;
 
-        var response = await fetch(matchUrl);
-        var matchRawData = response.json();
+        var matchUrlResponse = await fetch(matchUrl);
+        var matchRawData = matchUrlResponse.json();
         const getMatchData = () => {
           matchRawData.then(async (rawData) => {
             let data = Object.values(rawData);
@@ -89,6 +89,7 @@ async function loadData() {
         getMatchData();
       }
       //#endregion
+      console.log(matchList);
 
       //#region matchList를 이용해서 게임 내역을 받고 거기서 데이터 빼오기
       const inGameStartUrl =
@@ -98,23 +99,21 @@ async function loadData() {
       let userListData = [];
       let userList = [];
       let banChampionIdList = [];
-      for (let i = 0; i < matchList.length; i++) {
+
+      for (let i = 0; i < 5; i++) {
         const inGameUrl = inGameStartUrl + matchList[i] + "?api_key=" + apiKey;
-        var response = await fetch(inGameUrl);
-        var inGameRawData = response.json();
+        var inGameUrlResponse = await fetch(inGameUrl);
+        var inGameRawData = inGameUrlResponse.json();
         const getInGameData = () => {
           inGameRawData.then(async (rawData) => {
             let data = Object.values(rawData);
             gameDataList.push(Object.values(data[1]));
 
-            const index = new Map();
             //#region  밴 챔피언 List
             for (let j = 0; j < 5; j++) {
               banChampionIdList.push(gameDataList[i][13][0].bans[j].championId);
               banChampionIdList.push(gameDataList[i][13][1].bans[j].championId);
             }
-            // console.log(banChampionIdList);
-
             //#endregion
 
             userListData = gameDataList[i][10];
@@ -201,33 +200,72 @@ async function loadData() {
 
               userList.push(userMap);
             }
-            // console.log(userList[0].get("teamId"));
           });
         };
         getInGameData();
       }
-      //#endregio
+      //#endregion
+      console.log(banChampionIdList);
+      console.log(userList);
+      //#region 롤 챔피언 정보
+      let championNameList = [];
+      let championKeyList = [];
+      let championIdList = [];
+
+      // const championRawData = fetch(championUrl)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then(function (rawdata) {
+      //     return rawdata.data;
+      //   });
+
+      // const championResponse = await fetch(championUrl);
+      // const championRawData = championResponse.json();
+
+      // const getChampionData = () => {
+      //   championRawData.then((rawData) => {
+      //     let dataList = Object.values(rawData.data);
+      //     // console.log(dataList);
+      //     dataList.sort(function (a, b) {
+      //       var nameA = a.name;
+      //       var nameB = b.name;
+      //       return nameA.localeCompare(nameB);
+      //     });
+
+      //     for (var i = 0; i < dataList.length; i++) {
+      //       // key
+      //       championKeyList.push(dataList[i].key);
+      //       // name
+      //       championNameList.push(dataList[i].name);
+      //       // console.log(championNameList);
+      //     }
+      //     console.log(championNameList);
+      //     console.log(championKeyList);
+      //   });
+      // };
+      // getChampionData();
+
+      // setTimeout(function () {
+      //   console.log(championKeyList);
+      //   console.log(championNameList);
+      // }, 10);
+
+      //#endregion
 
       // 챔피언 확률 계산
+      let pickCount;
       let pickChampionRate;
+      let banCount;
       let banChampionRate;
-      for (let i = 0; i < userList.length; i++) {
-        // console.log(userList[0].get('championName'));
+      for (let i = 0; i < banChampionIdList.length; i++) {
+        for (let j = 0; i < banChampionIdList.length; j++) {}
+        console.log(userList[0].get("championName"));
       }
     });
   };
   gettierUserData();
 }
-
 loadData();
 
 // test
-
-// for (let i = 0; i < 1; i++) {
-//   let values = userListData[i];
-//   let keys = Object.keys(userListData[i]);
-//     for (let j = 0; j < keys.length; j++) {
-//       var key = keys[j];
-//       console.log("key : " + key + "/ value : " + values[key]);
-//     }
-//   }

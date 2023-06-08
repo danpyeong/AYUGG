@@ -1,16 +1,13 @@
 // const fs = require("fs");
-const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
+const version = "https://ddragon.leagueoflegends.com/cdn/13.11.1/";
 
 const championUrl = version + "data/ko_KR/champion.json";
 
 fetch(championUrl)
   .then((response) => response.json())
   .then(function (data) {
-    // 모든 챔피언 데이터
-    var champData = data.data;
-
     // 위 데이터를 담은 배열
-    var champDataList = Object.values(champData);
+    var champDataList = Object.values(data.data);
     var champList = document.getElementById("champions-list");
 
     // 한글 기준 오름차순 정렬
