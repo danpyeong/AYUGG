@@ -18,7 +18,10 @@ var data = {
 
 const rate = document.querySelector("#rate");
 
-var makeChart = new Chart(rate, {
+
+
+setTimeout(function(){
+  new Chart(rate, {
     type: 'doughnut',
     data: data,
     options: {
@@ -30,6 +33,7 @@ var makeChart = new Chart(rate, {
     }
   }
 });
+},810);
 
 //티어변화 그래프
 var tierGraphData = {

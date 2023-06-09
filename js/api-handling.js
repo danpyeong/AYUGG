@@ -1,4 +1,5 @@
 const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
+// const testnick = "2U35";
 const testnick = "hideonbush";
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
@@ -290,14 +291,27 @@ setTimeout(function(){
         }
         var text11 = document.getElementById("CS");
         text11.innerText = "CS "+ (owner.totalMinionsKilled + owner.neutralMinionsKilled);
-        
-        document.getElementById("item1").src = version +"img/item/"+ owner.item0 +".png";
-        document.getElementById("item2").src = version +"img/item/"+ owner.item1 +".png";
-        document.getElementById("item3").src = version +"img/item/"+ owner.item2 +".png";
-        document.getElementById("item4").src = version +"img/item/"+ owner.item3 +".png";
-        document.getElementById("item5").src = version +"img/item/"+ owner.item4 +".png";
-        document.getElementById("item6").src = version +"img/item/"+ owner.item5 +".png";
-        document.getElementById("item7").src = version +"img/item/"+ owner.item6 +".png";
+        if(owner.item0 != 0){
+          document.getElementById("item1").src = version +"img/item/"+ owner.item0 +".png";
+        }
+        if(owner.item1 != 0){
+          document.getElementById("item2").src = version +"img/item/"+ owner.item1 +".png";
+        }
+        if(owner.item2 != 0){
+          document.getElementById("item3").src = version +"img/item/"+ owner.item2 +".png";
+        }
+        if(owner.item3 != 0){
+          document.getElementById("item4").src = version +"img/item/"+ owner.item3 +".png";
+        }
+        if(owner.item4 != 0){
+          document.getElementById("item5").src = version +"img/item/"+ owner.item4 +".png";
+        }
+        if(owner.item5 != 0){
+          document.getElementById("item6").src = version +"img/item/"+ owner.item5 +".png";
+        }
+        if(owner.item6 != 0){
+          document.getElementById("item7").src = version +"img/item/"+ owner.item6 +".png";
+        }
       }
     }
     // var twice=0;
@@ -340,4 +354,4 @@ setTimeout(function(){
 
   }
 
-}, 1000);
+}, 800);
