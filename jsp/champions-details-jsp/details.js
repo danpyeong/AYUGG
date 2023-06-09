@@ -1,6 +1,9 @@
 const version = "https://ddragon.leagueoflegends.com/cdn/13.11.1/";
 const championUrl = version + "data/ko_KR/champion.json";
 
+const rune = "data/ko_KR/runesReforged.json";
+const runeUrl = version + rune;
+
 window.onload = fetch(championUrl)
   .then((response) => response.json())
   .then(function (data) {
@@ -14,6 +17,7 @@ window.onload = fetch(championUrl)
       return nameA.localeCompare(nameB);
     });
 
+    // 분석 페이지에서 데이터를 받아와서 해당 챔피언 이름 넣어야함.
     var champion = champDataList[0];
 
     const championImg = document.getElementById("championImg");
@@ -42,6 +46,12 @@ window.onload = fetch(championUrl)
         EImg.src = version + "img/spell/" + spell[2].image.full;
         const RImg = document.getElementById("skill-R");
         RImg.src = version + "img/spell/" + spell[3].image.full;
+      });
+
+    fetch(runeUrl)
+      .then((response) => response.json())
+      .then(function (rawData) {
+        console.log(rawData);
       });
 
     const counterUrl = "../../../json/counter.json";

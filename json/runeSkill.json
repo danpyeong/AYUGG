@@ -1,0 +1,67 @@
+{
+  "Garen": {
+    "id": "Garen",
+    "version": "13.11.1",
+    "data": {
+      "rune": {
+        "version1": {
+          "id": "8000",
+          "mainRune": {
+            "id": "8010",
+            "line1": "9111",
+            "line2": "9105",
+            "line3": "8299"
+          },
+          "subRune": {
+            "id": "",
+            "line1": "",
+            "line2": ""
+          },
+          "stats": {
+            "line1": "",
+            "line2": "",
+            "line3": ""
+          }
+        },
+        "version2": {
+          "id": "6000",
+          "mainRune": {
+            "id": "",
+            "line1": "",
+            "line2": "",
+            "line3": ""
+          },
+          "subRune": {
+            "id": "",
+            "line1": "",
+            "line2": ""
+          },
+          "stats": {
+            "line1": "",
+            "line2": "",
+            "line3": ""
+          }
+        }
+      },
+      "skill": {
+        "master": {
+          "1": {
+            "id": "GarenE.png",
+            "name": "심판",
+            "key": "E"
+          },
+          "2": {
+            "id": "GarenQ.png",
+            "name": "결정타",
+            "key": "Q"
+          },
+          "3": {
+            "id": "GarenW.png",
+            "name": "용기",
+            "key": "W"
+          }
+        }
+      }
+    }
+  }
+}

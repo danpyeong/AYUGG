@@ -15,7 +15,6 @@ fetch(itemUrl)
         break;
       }
     }
-    console.log(championData);
 
     const spellUrl =
       "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/spell/";
