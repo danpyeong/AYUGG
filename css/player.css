@@ -185,12 +185,6 @@ body {
   display: flex;
   justify-content: center;
 }
-.win {
-  background: rgba(0, 0, 255, 0.3);
-}
-.lose {
-  background: rgba(255, 0, 0, 0.3);
-}
 .match {
   display: flex;
   justify-content: space-evenly;

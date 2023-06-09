@@ -1,4 +1,4 @@
-const apiKey = "RGAPI-59bd3bfa-e353-4b80-ba69-7b8ccda9f761";
+const apiKey = "RGAPI-b876827d-580a-4587-885b-d0529c1a916f";
 const testnick = "Hide on Bush";
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
@@ -63,7 +63,7 @@ function loadingData() {
     };
     getData2 = () => {
       example2.then((appData) => {
-        console.log(appData);
+        // console.log(appData);
         dataSet.set('gameEndTimestamp', appData.gameEndTimestamp);
         dataSet.set('gameDuration', appData.gameDuration);
         for(let i=0;i<10;i++){
@@ -106,7 +106,7 @@ function loadingData() {
           };
           getData3();          
         }
-        console.log(dataSet);
+        // console.log(dataSet);
       });
     };
     getData1();
@@ -114,5 +114,3 @@ function loadingData() {
 
   })
 }
-
-loadingData();
