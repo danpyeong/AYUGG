@@ -1,4 +1,4 @@
-const apiKey = "RGAPI-1371cb0a-3e13-4bd5-92b2-2767df486728";
+const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
 
 const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
 const championUrl = version + "data/ko_KR/champion.json";

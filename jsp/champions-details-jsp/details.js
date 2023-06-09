@@ -43,6 +43,48 @@ window.onload = fetch(championUrl)
         const RImg = document.getElementById("skill-R");
         RImg.src = version + "img/spell/" + spell[3].image.full;
       });
+
+    const counterUrl = "../../../json/counter.json";
+
+    fetch(counterUrl)
+      .then((response) => response.json())
+      .then(function (rawData) {
+        var data = Object.values(rawData);
+
+        var winNumber = 0;
+        var loseNumber = 0;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].win == true) {
+            winNumber++;
+            const counterImg = document.getElementById(
+              "win-counter-" + winNumber
+            );
+            counterImg.src = data[i].championImg;
+            const counterName = document.getElementById(
+              "win-counter-" + winNumber + "-name"
+            );
+            counterName.innerHTML = data[i].championName;
+            const counterRate = document.getElementById(
+              "win-rate-" + winNumber
+            );
+            counterRate.innerHTML = data[i].winRate;
+          } else {
+            loseNumber++;
+            const counterImg = document.getElementById(
+              "lose-counter-" + loseNumber
+            );
+            counterImg.src = data[i].championImg;
+            const counterName = document.getElementById(
+              "lose-counter-" + loseNumber + "-name"
+            );
+            counterName.innerHTML = data[i].championName;
+            const counterRate = document.getElementById(
+              "lose-rate-" + loseNumber
+            );
+            counterRate.innerHTML = data[i].winRate;
+          }
+        }
+      });
   });
 
 // 1 룬 세팅 선택에 따른 배경 변화
