@@ -22,6 +22,85 @@ fetch(itemUrl)
     const itemUrl = "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/item/";
 
     //#region 스펠 선호도
+    const spellAData = championData.spell.version1;
+    const spellBData = championData.spell.version2;
+
+    //#region 스펠 이미지
+    const spellA1 = document.getElementById("spell-1-1");
+    spellA1.src = spellUrl + spellAData.spell1.id + ".png";
+    const spellA2 = document.getElementById("spell-1-2");
+    spellA2.src = spellUrl + spellAData.spell2.id + ".png";
+    const spellB1 = document.getElementById("spell-2-1");
+    spellB1.src = spellUrl + spellBData.spell1.id + ".png";
+    const spellB2 = document.getElementById("spell-2-2");
+    spellB2.src = spellUrl + spellBData.spell2.id + ".png";
+    //#endregion
+
+    //#region 스펠 픽/승률
+    const spellPick1 = document.getElementById("spell-pick-1");
+    spellPick1.innerText = spellAData.pickRate;
+    const spellPick2 = document.getElementById("spell-pick-2");
+    spellPick2.innerText = spellBData.pickRate;
+    const spellWin1 = document.getElementById("spell-win-1");
+    spellWin1.innerText = spellAData.winRate;
+    const spellWin2 = document.getElementById("spell-win-2");
+    spellWin2.innerText = spellBData.winRate;
+    //#endregion
+    //#endregion
+
+    //#region 시작 아이템 선호도
+    const startItemAData = championData.startItem.version1;
+    const startItemBData = championData.startItem.version2;
+
+    //#region 시작 아이템 이미지
+    const itemA1 = document.getElementById("item-1-1");
+    itemA1.src = itemUrl + startItemAData.item1.id + ".png";
+    const itemA2 = document.getElementById("item-1-2");
+    itemA2.src = itemUrl + startItemAData.item2.id + ".png";
+    const itemB1 = document.getElementById("item-2-1");
+    itemB1.src = itemUrl + startItemBData.item1.id + ".png";
+    const itemB2 = document.getElementById("item-2-2");
+    itemB2.src = itemUrl + startItemBData.item2.id + ".png";
+    //#endregion
+
+    //#region 시작 아이템 승/픽률
+    const itemPick1 = document.getElementById("item-pick-1");
+    itemPick1.innerText = startItemAData.pickRate;
+    const itemPick2 = document.getElementById("item-pick-2");
+    itemPick2.innerText = startItemAData.winRate;
+    const itemWin1 = document.getElementById("item-win-1");
+    itemWin1.innerText = startItemBData.pickRate;
+    const itemWin2 = document.getElementById("item-win-2");
+    itemWin2.innerText = startItemBData.winRate;
+    //#endregion
+    //#endregion
+
+    //#region 신발 선호도
+    const shoesAData = championData.shoes.version1;
+    const shoesBData = championData.shoes.version2;
+
+    //#region 신발 이미지
+    const shoes1 = document.getElementById("shoes-1");
+    shoes1.src = itemUrl + shoesAData.id + ".png";
+    const shoesName1 = document.getElementById("shoes-name-1");
+    shoesName1.innerText = shoesAData.name;
+    const shoes2 = document.getElementById("shoes-2");
+    shoes2.src = itemUrl + shoesBData.id + ".png";
+    const shoesName2 = document.getElementById("shoes-name-2");
+    shoesName2.innerText = shoesBData.name;
+    //#endregion
+
+    //#region 신발 승/픽률
+    const shoesPick1 = document.getElementById("shoes-pick-1");
+    shoesPick1.innerText = shoesAData.pickRate;
+    const shoesPick2 = document.getElementById("shoes-pick-2");
+    shoesPick2.innerText = shoesBData.pickRate;
+    const shoesWin1 = document.getElementById("shoes-win-1");
+    shoesWin1.innerText = shoesAData.winRate;
+    const shoesWin2 = document.getElementById("shoes-win-2");
+    shoesWin2.innerText = shoesBData.winRate;
+
+    //#endregion
 
     //#endregion
 
