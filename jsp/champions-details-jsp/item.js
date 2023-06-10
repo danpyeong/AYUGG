@@ -5,8 +5,8 @@ fetch(itemUrl)
   .then(function (rawData) {
     // 데이터를 받아서 .Garen 자리에 .변수 하여 해당 값을 넣는다.
     // 이때 변수는 챔피언 id(영어이름)이 들어간다.
-    const championId = "Garen";
-    const data = Object.values(rawData);
+    let championId = "Garen";
+    let data = Object.values(rawData);
     let championData;
 
     for (let i = 0; i < data.length; i++) {

@@ -5,7 +5,8 @@
     "data": {
       "rune": {
         "version1": {
-          "id": "8000",
+          "mainTitle": "8000",
+          "subTitle": "8200",
           "mainRune": {
             "id": "8010",
             "line1": "9111",
@@ -13,34 +14,37 @@
             "line3": "8299"
           },
           "subRune": {
-            "id": "",
-            "line1": "",
-            "line2": ""
+            "line1": "8275",
+            "line2": "8234"
           },
           "stats": {
-            "line1": "",
-            "line2": "",
-            "line3": ""
-          }
+            "line1": "5008",
+            "line2": "5008",
+            "line3": "5002"
+          },
+          "pickRate": "45.23%",
+          "winRate": "53.95%"
         },
         "version2": {
-          "id": "6000",
+          "mainTitle": "8010",
+          "subTitle": "8210",
           "mainRune": {
-            "id": "",
-            "line1": "",
-            "line2": "",
-            "line3": ""
+            "id": "8012",
+            "line1": "9111",
+            "line2": "9105",
+            "line3": "8299"
           },
           "subRune": {
-            "id": "",
-            "line1": "",
-            "line2": ""
+            "line1": "8275",
+            "line2": "8234"
           },
           "stats": {
-            "line1": "",
-            "line2": "",
-            "line3": ""
-          }
+            "line1": "5008",
+            "line2": "5008",
+            "line3": "5002"
+          },
+          "pickRate": "26.44%",
+          "winRate": "55.27%"
         }
       },
       "skill": {
