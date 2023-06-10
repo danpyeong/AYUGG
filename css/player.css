@@ -212,10 +212,12 @@ body {
   flex-direction: row;
   color: white;
   font-size: 12px;
+  text-align: left  ;
 }
 .match-fifth img {
   width: 12px;
   height: 12px;
+  padding-right: 5px;
 }
 .match-fifth ul {
   list-style: none;

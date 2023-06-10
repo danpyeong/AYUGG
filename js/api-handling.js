@@ -184,7 +184,7 @@ setTimeout(function(){
   var text2 = document.getElementById("tier-name");
   var text3 = document.getElementById("point");
   var text4 = document.getElementById("winRate");
-  // var text5 = document.getElementById("??");
+  var text5 = document.getElementById("queueType"); 
   var text6 = document.getElementById("matchDate");
   var text7 = document.getElementById("matchTime");
   var whole = parseInt(dataSet.get('wins'))+parseInt(dataSet.get('losses'));
@@ -209,14 +209,18 @@ setTimeout(function(){
     text4.innerHTML = "승률을 위한 데이터수 부족"
   }
   eta = new Date();
-  // console.log(eta.getTime()); 
-  // console.log(Math.floor((eta.getTime() - match[0].get('matchData').gameEndTimestamp)/3600000)); 
-  // console.log(match[0].get('matchData').gameEndTimestamp); 
-  // console.log(Math.floor(match[0].get('matchData').gameDuration/60));  
-  // console.log(match[0].get('matchData').gameDuration%60); 
   for(let k=0; k<1; k++){//match 1개
+    if(match[k].get('matchData').queueId == 420){
+      text5.innerText = "솔로 랭크";
+    } else if(match[k].get('matchData').queueId == 430){
+      text5.innerText = "일반 게임";
+    } else if(match[k].get('matchData').queueId == 440){
+      text5.innerText = "자유 랭크";
+    } else{
+      text5.innerText = "기타 게임";
+    }
     text6.innerHTML = Math.floor((eta.getTime() - match[k].get('matchData').gameEndTimestamp)/3600000) + "시간전";
-    text7.innerText = Math.floor(match[k].get('matchData').gameDuration/60) + ":" + match[k].get('matchData').gameDuration%60;
+    text7.innerText = Math.floor(match[k].get('matchData').gameDuration/60) + ":" + (match[k].get('matchData').gameDuration%60).toString().padStart(2, '0');
     for(let finduser=0; finduser<10; finduser++){
       if(dataSet.get('id') == match[k].get('matchData').participants[finduser].summonerId){
         let owner = match[k].get('matchData').participants[finduser];
@@ -243,7 +247,6 @@ setTimeout(function(){
           }
           document.getElementById("spell1").src = version + "img/spell/" + findSpellKey(owner.summoner1Id);
           document.getElementById("spell2").src = version + "img/spell/" + findSpellKey(owner.summoner2Id);
-        
         })
 
         fetch(runeUrl)
@@ -314,44 +317,115 @@ setTimeout(function(){
         }
       }
     }
-    // var twice=0;
-    // var partiList = document.getElementById("partiList");
-    // while(twice<2){
-    //   const childUl = document.createElement("ul");
-    //   const childLi = document.createElement("li");
-    //   const childSpan1 = document.createElement("span");
-    //   const childSpan2 = document.createElement("span");
-    //   const childImg = document.createElement("img");
+    partiListMaking1("partiList1",k);
+    partiListMaking2("partiList2",k);
 
-    //   for(let parti=0; parti<10; parti++){
-    //     childImg.src = version + "img/champion/" + match[k].get('matchData').participants[parti].championName + ".png";
-    //     childSpan2.textContent = match[k].get('matchData').participants[parti].summonerName;
-        
-    //     childSpan1.appendChild(childImg);
-    //     childSpan1.appendChild(childSpan2);
-    //     childLi.appendChild(childSpan1);
+    
+    var text12 = document.getElementById("teamBlueWL");
+    var text13 = document.getElementById("teamRedWL");
+    if(match[k].get('matchData').teams[0].win){
+      text12.innerText = "승리";
+      text12.style.color= "rgba(0, 0, 255, 0.5)"
+      text13.innerText = "패배";
+      text13.style.color= "rgba(255, 0, 0, 0.5)"
+    } else{
+      text12.innerText = "패배";
+      text12.style.color= "rgba(255, 0, 0, 0.5)"
+      text13.innerText = "승리";
+      text13.style.color= "rgba(0, 0, 255, 0.5)"
+    }    
+    console.log(match[k].get('matchData').teams[0]);
+    var text14 = document.getElementById("towerBlue");
+    var text15 = document.getElementById("dragonBlue");
+    var text16 = document.getElementById("baronBlue");
+    var text17 = document.getElementById("towerRed");
+    var text18 = document.getElementById("dragonRed");
+    var text19 = document.getElementById("baronRed");
+    var text20 = document.getElementById("goldBlue");
+    var text21 = document.getElementById("goldRed");
+    var text22 = document.getElementById("killsBlue");
+    var text23 = document.getElementById("killsRed");
 
-    //     // console.log(match[k].get('matchData').participants[parti].championName);
-    //     // console.log(match[k].get('matchData').participants[parti].summonerName);
-    //   }
-      
-    //   childUl.appendChild(childLi);
-    // }
-    // partiList.appendChild(childUl);
+    let goldBlue = 0;
+    let goldRed = 0;
+    for(let p=0;p<5;p++){
+      goldBlue += match[k].get('matchData').participants[p].goldEarned;
+      goldRed += match[k].get('matchData').participants[p+5].goldEarned;
+    }
+    text14.innerText = match[k].get('matchData').teams[0].objectives.tower.kills;
+    text15.innerText = match[k].get('matchData').teams[0].objectives.dragon.kills;
+    text16.innerText = match[k].get('matchData').teams[0].objectives.baron.kills;
+    text17.innerText = match[k].get('matchData').teams[1].objectives.tower.kills;
+    text18.innerText = match[k].get('matchData').teams[1].objectives.dragon.kills;
+    text19.innerText = match[k].get('matchData').teams[1].objectives.baron.kills;
+    text20.innerText = Math.floor(goldBlue/100)/10  + "K";
+    text21.innerText = Math.floor(goldRed/100)/10 + "K";
+    text22.innerText = match[k].get('matchData').teams[0].objectives.champion.kills;
+    text23.innerText = match[k].get('matchData').teams[1].objectives.champion.kills;
 
-    for(let parti=0; parti<10; parti++){
-      document.getElementById("ex1").src = version + "img/champion/" + match[k].get('matchData').participants[parti].championName + ".png";
-      var text12 = document.getElementById("ex2");
-      text12.textContent = match[k].get('matchData').participants[parti].summonerName;
-          
-      //     childSpan1.appendChild(childImg);
-      //     childSpan1.appendChild(childSpan2);
-      //     childLi.appendChild(childSpan1);
-  
-      //     // console.log(match[k].get('matchData').participants[parti].championName);
-      //     // console.log(match[k].get('matchData').participants[parti].summonerName);
+    // var text8 = document.getElementById("KDA");
+    // text8.innerText = owner.kills +"/"+ owner.deaths +"/"+ owner.assists;
+
+    // matchDetailFirst(datailFirst,k);
     }
 
-  }
-
 }, 800);
+
+
+function partiListMaking1(id,k){
+  var ulId = document.getElementById(id);
+  for(let i=0;i<5;i++){
+    var childLi = document.createElement("li");
+    var childSpan = document.createElement("span");
+    var childSpan2 = document.createElement("span");
+    var childImg = document.createElement("img");
+
+    childImg.src = version + "img/champion/" + match[k].get('matchData').participants[i].championName + ".png";
+    childSpan2.textContent = match[k].get('matchData').participants[i].summonerName;
+    
+    childSpan.appendChild(childImg);
+    childSpan.appendChild(childSpan2);
+    childLi.appendChild(childSpan);
+    ulId.appendChild(childLi);
+  }
+}
+function partiListMaking2(id,k){
+  var ulId = document.getElementById(id);
+  for(let i=5;i<10;i++){
+    var childLi = document.createElement("li");
+    var childSpan = document.createElement("span");
+    var childSpan2 = document.createElement("span");
+    var childImg = document.createElement("img");
+
+    childImg.src = version + "img/champion/" + match[k].get('matchData').participants[i].championName + ".png";
+    childSpan2.textContent = match[k].get('matchData').participants[i].summonerName;
+    
+    childSpan.appendChild(childImg);
+    childSpan.appendChild(childSpan2);
+    childLi.appendChild(childSpan);
+    ulId.appendChild(childLi);
+  }
+}
+
+// function matchDetailFirst(id,k){
+//   var divId = document.getElementById(id);
+
+//   var childB = document.createElement("b");
+//   var childSpan = document.createElement("span");
+//   var childSpan0 = document.createElement("span");
+//   var childSpan1 = document.createElement("span");
+//   var childSpan2 = document.createElement("span");
+//   var childSpan3 = document.createElement("span");
+//   var childSpan4 = document.createElement("span");
+//   var childSpan5 = document.createElement("span");
+//   var childImg = document.createElement("img");
+
+//   divId.appendChild(childSpan0);
+//   childSpan0.appendChild(childB)
+//   divId.appendChild(childSpan1);
+//   divId.appendChild(childSpan2);
+//   divId.appendChild(childSpan3);
+//   divId.appendChild(childSpan4);
+//   divId.appendChild(childSpan5);
+//   divId.appendChild(childSpan6);
+// }

@@ -319,7 +319,7 @@
             <div class="match" id="matchStyle">
               <!-- 종류, 시간, 플레이타임 -->
               <div class="match-first">
-                <div class="font1">?솔로랭크?</div>
+                <div class="font1" id="queueType">솔로랭크</div>
                 <div class="font2" id="matchDate">1시간전</div>
                 <div class="font2" id="matchTime">30:00</div>
               </div>
@@ -433,12 +433,12 @@
                 </span>
               </div>
               <!-- players -->
-              <div class="match-fifth" id="partiList">
-                <ul>
-                  <li>
+              <div class="match-fifth">
+                <ul id="partiList1">
+                  <!-- <li>
                     <span>
-                      <img id="ex1" src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span id="ex2">닉네임닉네임</span>
+                      <img id="ex0" src="/images/example.webp" alt="챔피언 아이콘" />
+                      <span id="ex01">닉네임닉네임</span>
                     </span>
                   </li>
                   <li>
@@ -464,10 +464,10 @@
                       <img src="/images/example.webp" alt="챔피언 아이콘" />
                       <span>닉네임닉네임</span>
                     </span>
-                  </li>
+                  </li> -->
                 </ul>
-                <ul>
-                  <li>
+                <ul id="partiList2">
+                  <!-- <li>
                     <span>
                       <img src="/images/example.webp" alt="챔피언 아이콘" />
                       <span>닉네임닉네임</span>
@@ -496,7 +496,7 @@
                       <img src="/images/example.webp" alt="챔피언 아이콘" />
                       <span>닉네임닉네임</span>
                     </span>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
               <div></div>
@@ -512,7 +512,7 @@
             <div class="detail">
               <div class="detail-first">
                 <span>
-                  <b style="font-size: 20px; padding-right: 10px">패배</b>
+                  <b id="teamBlueWL" style="font-size: 20px; padding-right: 10px"></b>
                   <span class="font1">블루팀</span>
                 </span>
                 <span class="padding3">
@@ -522,21 +522,21 @@
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="towerBlue">0</span>
                   <img
                     src="/images/example.webp"
                     alt="드레곤 아이콘"
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="dragonBlue">0</span>
                   <img
                     src="/images/example.webp"
                     alt="바론 아이콘"
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="baronBlue">0</span>
                 </span>
                 <span class="padding3">
                   <img
@@ -545,11 +545,11 @@
                     width="20px"
                     height="20px"
                   />
-                  <b class="font1">00.0K</b>
+                  <b class="font1" id="goldBlue">00.0K</b>
                 </span>
-                <b class="font1" style="font-size: 20px">00</b>
+                <b class="font1" style="font-size: 20px" id="killsBlue">00</b>
                 <b>VS</b>
-                <b class="font1" style="font-size: 20px">00</b>
+                <b class="font1" style="font-size: 20px" id="killsRed">00</b>
                 <span class="padding3">
                   <img
                     src="/images/yellow-coin-icon-original.svg"
@@ -557,7 +557,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <b class="font1">00.0K</b>
+                  <b class="font1" id="goldRed">00.0K</b>
                 </span>
                 <span class="padding3">
                   <img
@@ -566,25 +566,25 @@
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="towerRed">0</span>
                   <img
                     src="/images/example.webp"
                     alt="드레곤 아이콘"
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="dragonRed">0</span>
                   <img
                     src="/images/example.webp"
                     alt="바론 아이콘"
                     width="20px"
                     height="20px"
                   />
-                  <span class="font1">0</span>
+                  <span class="font1" id="baronRed">0</span>
                 </span>
                 <span>
                   <span>레드팀</span>
-                  <b style="font-size: 20px; padding-left: 10px">승리</b>
+                  <b id="teamRedWL" style="font-size: 20px; padding-left: 10px"></b>
                 </span>
               </div>
               <div class="detail-second">
@@ -3450,6 +3450,7 @@
         </div>
       </div>
     </div>
+    <ul id="test"></ul>
     <script src="/js/click.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/charts.js"></script>

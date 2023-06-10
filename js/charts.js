@@ -33,7 +33,7 @@ setTimeout(function(){
     }
   }
 });
-},810);
+},850);
 
 //티어변화 그래프
 var tierGraphData = {
