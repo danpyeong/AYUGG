@@ -21,7 +21,6 @@
             <div class="navbar-border-box-main"></div>
             <button
               class="navbar-button"
-              style="color: #fff"
               onclick="location.href='/html/main.html'"
             >
               홈
@@ -89,50 +88,42 @@
           <!-- 챔피언 초상화, 스킬, 라인 -->
           <div class="champions-least-info-left">
             <img
-              style="width: 64px; height: 64px; margin: auto 7px"
-              src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+              id="championImg"
+              style="
+                width: 72px;
+                height: 72px;
+                margin: auto 7px;
+                border-radius: 4px;
+              "
             />
             <div class="skill-name-box">
-              <span>가렌</span>
+              <div style="color: #fff; font-weight: 500">가렌</div>
               <div class="champions-basic-skill">
-                <img
-                  id="skill-1"
-                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                />
-                <img
-                  id="skill-2"
-                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                />
-                <img
-                  id="skill-3"
-                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                />
-                <img
-                  id="skill-4"
-                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                />
-                <img
-                  id="skill-5"
-                  src="https://ddragon.leagueoflegends.com/cdn/13.9.1/img/passive/Garen_Passive.png"
-                />
+                <img id="passiveImg" />
+                <img id="skill-Q" />
+                <img id="skill-W" />
+                <img id="skill-E" />
+                <img id="skill-R" />
               </div>
             </div>
           </div>
           <!-- 승률, 픽률, 밴률 -->
-          <table class="champions-least-info-right">
-            <tr>
-              <td>승률</td>
-              <td id="win-rate">10%</td>
-            </tr>
-            <tr>
-              <td>픽률</td>
-              <td id="pick-rate">10%</td>
-            </tr>
-            <tr>
-              <td>밴률</td>
-              <td id="ban-rate">10%</td>
-            </tr>
-          </table>
+          <div class="champions-least-info-right">
+            <table class="champions-least-info-table">
+              <tr>
+                <td>승률</td>
+                <td id="win-rate">10%</td>
+              </tr>
+              <tr>
+                <td>픽률</td>
+                <td id="pick-rate">10%</td>
+              </tr>
+              <tr>
+                <td>밴률</td>
+                <td id="ban-rate">10%</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <!-- 상대하기 쉬운/어려운챔피언 -->
         <div class="champions-counter">
@@ -142,42 +133,30 @@
             <ul class="champions-list">
               <li>
                 <span>
-                  <img
-                    id="win-counter-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="win-counter-1-name" class="counter-name">가렌</div>
-                  <div id="win-rate-1" class="counter-rate">50%</div>
+                  <img id="win-counter-1" />
+                  <div id="win-counter-1-name" class="counter-name"></div>
+                  <div id="win-rate-1" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="win-counter-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="win-counter-2-name" class="counter-name">가렌</div>
-                  <div id="win-rate-2" class="counter-rate">50%</div>
+                  <img id="win-counter-2" />
+                  <div id="win-counter-2-name" class="counter-name"></div>
+                  <div id="win-rate-2" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="win-counter-3"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="win-counter-3-name" class="counter-name">가렌</div>
-                  <div id="win-rate-3" class="counter-rate">50%</div>
+                  <img id="win-counter-3" />
+                  <div id="win-counter-3-name" class="counter-name"></div>
+                  <div id="win-rate-3" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="win-counter-4"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="win-counter-4-name" class="counter-name">가렌</div>
-                  <div id="win-rate-4" class="counter-rate">50%</div>
+                  <img id="win-counter-4" />
+                  <div id="win-counter-4-name" class="counter-name"></div>
+                  <div id="win-rate-4" class="counter-rate"></div>
                 </span>
               </li>
             </ul>
@@ -192,42 +171,30 @@
             <ul class="champions-list">
               <li>
                 <span>
-                  <img
-                    id="lose-counter-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="lose-counter-1-name" class="counter-name">가렌</div>
-                  <div id="lose-rate-1" class="counter-rate">50%</div>
+                  <img id="lose-counter-1" />
+                  <div id="lose-counter-1-name" class="counter-name"></div>
+                  <div id="lose-rate-1" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="lose-counter-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="lose-counter-2-name" class="counter-name">가렌</div>
-                  <div id="lose-rate-2" class="counter-rate">50%</div>
+                  <img id="lose-counter-2" />
+                  <div id="lose-counter-2-name" class="counter-name"></div>
+                  <div id="lose-rate-2" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="lose-counter-3"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="lose-counter-3-name" class="counter-name">가렌</div>
-                  <div id="lose-rate-3" class="counter-rate">50%</div>
+                  <img id="lose-counter-3" />
+                  <div id="lose-counter-3-name" class="counter-name"></div>
+                  <div id="lose-rate-3" class="counter-rate"></div>
                 </span>
               </li>
               <li>
                 <span>
-                  <img
-                    id="lose-counter-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                  />
-                  <div id="lose-counter-1-name" class="counter-name">가렌</div>
-                  <div id="lose-rate-1" class="counter-rate">50%</div>
+                  <img id="lose-counter-4" />
+                  <div id="lose-counter-4-name" class="counter-name"></div>
+                  <div id="lose-rate-4" class="counter-rate"></div>
                 </span>
               </li>
             </ul>
@@ -246,50 +213,42 @@
                 <!-- 추천 1 -->
                 <div id="rune-1" class="choose-rune-1 type-frame bgc-2">
                   <div class="rune-picture">
-                    <img
-                      id="main-rune-1"
-                      class="main-rune-img"
-                      src="https://opgg-static.akamaized.net/meta/images/lol/perk/8010.png?image=q_auto,f_webp,w_56&v=1684221744815"
-                    />
-                    <img
-                      id="sub-rune-1"
-                      class="sub-rune-img"
-                      src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8400.png?image=q_auto,f_webp,w_56&v=1684221744815"
-                    />
+                    <div class="main-rune-img">
+                      <img id="main-rune-1" />
+                    </div>
+                    <div class="sub-rune-img">
+                      <img id="sub-rune-1" />
+                    </div>
                   </div>
                   <table>
                     <tr>
                       <td>픽률</td>
-                      <td id="rune-pick">10%</td>
+                      <td id="rune-pick-1"></td>
                     </tr>
                     <tr>
                       <td>승률</td>
-                      <td id="rune-win">10%</td>
+                      <td id="rune-win-1"></td>
                     </tr>
                   </table>
                 </div>
                 <!-- 추천 2 -->
                 <div id="rune-2" class="choose-rune-2 type-frame bgc-1">
                   <div class="rune-picture">
-                    <img
-                      id="main-rune-2"
-                      class="main-rune-img"
-                      src="https://opgg-static.akamaized.net/meta/images/lol/perk/8010.png?image=q_auto,f_webp,w_56&v=1684221744815"
-                    />
-                    <img
-                      id="sub-rune-2"
-                      class="sub-rune-img"
-                      src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7202_Sorcery.png"
-                    />
+                    <div class="main-rune-img">
+                      <img id="main-rune-2" />
+                    </div>
+                    <div class="sub-rune-img">
+                      <img id="sub-rune-2" />
+                    </div>
                   </div>
                   <table>
                     <tr>
                       <td>픽률</td>
-                      <td id="rune-pick">10%</td>
+                      <td id="rune-pick-2"></td>
                     </tr>
                     <tr>
                       <td>승률</td>
-                      <td id="rune-win">10%</td>
+                      <td id="rune-win-2"></td>
                     </tr>
                   </table>
                 </div>
@@ -300,33 +259,22 @@
                 <div class="main-rune-box">
                   <div class="rune-title-box">
                     <div class="rune-frame">
-                      <img
-                        id="main-rune-title-1"
-                        src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8000.png?image=q_auto,f_webp,w_56&v=1684225762295"
-                      />
+                      <img id="main-rune-title-1" />
                     </div>
                   </div>
 
                   <div class="rune-first-box">
-                    <div id="main-first-rune-1-1" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png"
-                      />
+                    <div id="main-rune-frame-1" class="rune-frame">
+                      <img id="main-first-rune-1-1" />
                     </div>
-                    <div id="main-first-rune-1-2" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png"
-                      />
+                    <div id="main-rune-frame-2" class="rune-frame">
+                      <img id="main-first-rune-1-2" />
                     </div>
-                    <div id="main-first-rune-1-3" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png"
-                      />
+                    <div id="main-rune-frame-3" class="rune-frame">
+                      <img id="main-first-rune-1-3" />
                     </div>
-                    <div id="main-first-rune-1-4" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png"
-                      />
+                    <div id="main-rune-frame-4" class="rune-frame">
+                      <img id="main-first-rune-1-4" />
                     </div>
                   </div>
 
@@ -338,62 +286,35 @@
                     </colgroup>
                     <tr class="line">
                       <td>
-                        <img
-                          id="main-first-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Overheal.png"
-                        />
+                        <img id="main-first-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="main-first-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Triumph.png"
-                        />
+                        <img id="main-first-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="main-first-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PresenceOfMind/PresenceOfMind.png"
-                        />
+                        <img id="main-first-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="main-second-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png"
-                        />
+                        <img id="main-second-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="main-second-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendTenacity/LegendTenacity.png"
-                        />
+                        <img id="main-second-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="main-second-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendBloodline/LegendBloodline.png"
-                        />
+                        <img id="main-second-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="main-third-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png"
-                        />
+                        <img id="main-third-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="main-third-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CutDown/CutDown.png"
-                        />
+                        <img id="main-third-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="main-third-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/LastStand/LastStand.png"
-                        />
+                        <img id="main-third-line-1-3" />
                       </td>
                     </tr>
                   </table>
@@ -405,10 +326,8 @@
                   </div>
 
                   <div class="rune-first-box">
-                    <div id="sub-first-rune-1-1" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png"
-                      />
+                    <div class="rune-frame">
+                      <img id="sub-rune-title-1" />
                     </div>
                   </div>
 
@@ -420,62 +339,35 @@
                     </colgroup>
                     <tr class="line">
                       <td>
-                        <img
-                          id="sub-first-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Demolish/Demolish.png"
-                        />
+                        <img id="sub-first-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="sub-first-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/FontOfLife/FontOfLife.png"
-                        />
+                        <img id="sub-first-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="sub-first-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/MirrorShell/MirrorShell.png"
-                        />
+                        <img id="sub-first-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="sub-second-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Conditioning/Conditioning.png"
-                        />
+                        <img id="sub-second-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="sub-second-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/SecondWind/SecondWind.png"
-                        />
+                        <img id="sub-second-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="sub-second-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/BonePlating/BonePlating.png"
-                        />
+                        <img id="sub-second-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="sub-third-line-1-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Overgrowth/Overgrowth.png"
-                        />
+                        <img id="sub-third-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="sub-third-line-1-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/Revitalize/Revitalize.png"
-                        />
+                        <img id="sub-third-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="sub-third-line-1-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Unflinching/Unflinching.png"
-                        />
+                        <img id="sub-third-line-1-3" />
                       </td>
                     </tr>
                   </table>
@@ -500,329 +392,35 @@
                     </colgroup>
                     <tr class="line">
                       <td>
-                        <img
-                          id="char-first-line-1-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
-                        />
+                        <img id="char-first-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="char-first-line-1-2"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5005.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-first-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="char-first-line-1-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5007.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-first-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="char-second-line-1-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
-                        />
+                        <img id="char-second-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="char-second-line-1-2"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5002.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-second-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="char-second-line-1-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-second-line-1-3" />
                       </td>
                     </tr>
                     <tr class="line">
                       <td>
-                        <img
-                          id="char-third-line-1-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5001.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-third-line-1-1" />
                       </td>
                       <td>
-                        <img
-                          id="char-third-line-1-2"
-                          src="https://cdn.dak.gg/lol/images/rune-chads/armor.png"
-                        />
+                        <img id="char-third-line-1-2" />
                       </td>
                       <td>
-                        <img
-                          id="char-third-line-1-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <!-- 추천 2 룬 세부사항 -->
-              <div id="rune-2-detail" class="rune-details">
-                <!-- 주룬 -->
-                <div class="main-rune-box">
-                  <div class="rune-title-box">
-                    <div class="rune-frame">
-                      <img
-                        id="main-rune-title-2"
-                        src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8000.png?image=q_auto,f_webp,w_56&v=1684225762295"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="rune-first-box">
-                    <div id="main-first-rune-2-1" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png"
-                      />
-                    </div>
-                    <div id="main-first-rune-2-2" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png"
-                      />
-                    </div>
-                    <div id="main-first-rune-2-3" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png"
-                      />
-                    </div>
-                    <div id="main-first-rune-2-4" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png"
-                      />
-                    </div>
-                  </div>
-
-                  <table class="rune-second-box">
-                    <colgroup>
-                      <col width="33%" />
-                      <col width="33%" />
-                      <col width="33%" />
-                    </colgroup>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="main-first-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Overheal.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-first-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Triumph.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-first-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/PresenceOfMind/PresenceOfMind.png"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="main-second-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-second-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendTenacity/LegendTenacity.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-second-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/LegendBloodline/LegendBloodline.png"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="main-third-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-third-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/CutDown/CutDown.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="main-third-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/LastStand/LastStand.png"
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <!-- 부룬 -->
-                <div class="sub-rune-box">
-                  <div class="rune-title-box">
-                    <div style="width: 100%; height: 32px"></div>
-                  </div>
-
-                  <div class="rune-first-box">
-                    <div id="sub-first-rune-2-1" class="rune-frame">
-                      <img
-                        src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7202_Sorcery.png"
-                      />
-                    </div>
-                  </div>
-
-                  <table class="rune-second-box">
-                    <colgroup>
-                      <col width="33%" />
-                      <col width="33%" />
-                      <col width="33%" />
-                    </colgroup>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="sub-first-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/NullifyingOrb/Pokeshield.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-first-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/ManaflowBand/ManaflowBand.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-first-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/NimbusCloak/6361.png"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="sub-second-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Transcendence/Transcendence.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-second-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Celerity/CelerityTemp.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-second-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/AbsoluteFocus/AbsoluteFocus.png"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="sub-third-line-2-1"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Scorch/Scorch.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-third-line-2-2"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/Waterwalking/Waterwalking.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="sub-third-line-2-3"
-                          src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/GatheringStorm/GatheringStorm.png"
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <!-- 특성 -->
-                <div class="char-box">
-                  <div class="rune-title-box">
-                    <div style="width: 100%; height: 32px"></div>
-                  </div>
-
-                  <div class="rune-first-box">
-                    <div id="char-first-rune-2-1">
-                      <div style="width: 100%; height: 32px"></div>
-                    </div>
-                  </div>
-
-                  <table class="rune-second-box">
-                    <colgroup>
-                      <col width="33%" />
-                      <col width="33%" />
-                      <col width="33%" />
-                    </colgroup>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="char-first-line-2-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-first-line-2-2"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5005.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-first-line-2-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5007.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="char-second-line-2-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5008.png?image=q_auto,f_webp,w_48&v=1684225762295"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-second-line-2-2"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5002.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-second-line-2-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                    </tr>
-                    <tr class="line">
-                      <td>
-                        <img
-                          id="char-third-line-2-1"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5001.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-third-line-2-2"
-                          src="https://cdn.dak.gg/lol/images/rune-chads/armor.png"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          id="char-third-line-2-3"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/5003.png?image=q_auto,f_webp,w_48,e_grayscale&v=1684225762295"
-                        />
+                        <img id="char-third-line-1-3" />
                       </td>
                     </tr>
                   </table>
@@ -897,6 +495,7 @@
             </div>
           </div>
         </div>
+        <!-- 선호도 -->
         <div class="details-main-right">
           <!-- 선호도별 소환사 주문 -->
           <div class="like-spell bgc-2">
@@ -908,33 +507,21 @@
             <div class="like-body">
               <div class="build-like">
                 <div class="build-img">
-                  <img
-                    id="spell-1-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerDot.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <img
-                    id="spell-1-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerFlash.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
+                  <img id="spell-1-1" />
+                  <img id="spell-1-2" />
                 </div>
                 <div class="build-img">
-                  <img
-                    id="spell-2-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerTeleport.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <img
-                    id="spell-2-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerFlash.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
+                  <img id="spell-2-1" />
+                  <img id="spell-2-2" />
                 </div>
               </div>
               <div class="build-rate">
-                <div id="spell-pick-1">50%</div>
-                <div id="spell-pick-2">50%</div>
+                <div id="spell-pick-1"></div>
+                <div id="spell-pick-2"></div>
               </div>
               <div class="build-rate">
-                <div id="spell-win-1">50%</div>
-                <div id="spell-win-2">50%</div>
+                <div id="spell-win-1"></div>
+                <div id="spell-win-2"></div>
               </div>
             </div>
           </div>
@@ -948,33 +535,21 @@
             <div class="like-body">
               <div class="build-like">
                 <div class="build-img">
-                  <img
-                    id="item-1-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/1054.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <img
-                    id="item-1-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/2003.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
+                  <img id="item-1-1" />
+                  <img id="item-1-2" />
                 </div>
                 <div class="build-img">
-                  <img
-                    id="item-2-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/1055.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <img
-                    id="item-2-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/2003.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
+                  <img id="item-2-1" />
+                  <img id="item-2-2" />
                 </div>
               </div>
               <div class="build-rate">
-                <div id="item-pick-1">50%</div>
-                <div id="item-pick-2">50%</div>
+                <div id="item-pick-1"></div>
+                <div id="item-pick-2"></div>
               </div>
               <div class="build-rate">
-                <div id="item-win-1">50%</div>
-                <div id="item-win-2">50%</div>
+                <div id="item-win-1"></div>
+                <div id="item-win-2"></div>
               </div>
             </div>
           </div>
@@ -988,27 +563,21 @@
             <div class="like-body">
               <div class="build-like">
                 <div class="build-img">
-                  <img
-                    id="shoes-1"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3006.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <div>광전사의 군화</div>
+                  <img id="shoes-1" />
+                  <div id="shoes-name-1"></div>
                 </div>
                 <div class="build-img">
-                  <img
-                    id="shoes-2"
-                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3047.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                  />
-                  <div>판금 장화</div>
+                  <img id="shoes-2" />
+                  <div id="shoes-name-2"></div>
                 </div>
               </div>
               <div class="build-rate">
-                <div id="shoes-pick-1">50%</div>
-                <div id="shoes-pick-2">50%</div>
+                <div id="shoes-pick-1"></div>
+                <div id="shoes-pick-2"></div>
               </div>
               <div class="build-rate">
-                <div id="shoes-win-1">50%</div>
-                <div id="shoes-win-2">50%</div>
+                <div id="shoes-win-1"></div>
+                <div id="shoes-win-2"></div>
               </div>
             </div>
           </div>
@@ -1023,22 +592,16 @@
         <nav class="mythic-item-box">
           <div id="mythic-item-box-1" class="mythic-item choose-item-1 bgc-2">
             <div>
-              <img
-                id="mythic-item-1"
-                src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
-              />
+              <img id="mythic-item-1" />
             </div>
-            <div id="mythic-item-1-name">발걸음 분쇄기</div>
+            <div id="mythic-item-1-name"></div>
           </div>
 
           <div id="mythic-item-box-2" class="mythic-item choose-item-2 bgc-3">
             <div>
-              <img
-                id="mythic-item-2"
-                src="https://opgg-static.akamaized.net/meta/images/lol/item/3078.png?image=q_auto,f_webp,w_64&v=1684282791608"
-              />
+              <img id="mythic-item-2" />
             </div>
-            <div id="mythic-item-2-name">삼위일체</div>
+            <div id="mythic-item-2-name"></div>
           </div>
         </nav>
         <!-- mythic 1일 경우 -->
@@ -1061,11 +624,7 @@
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          id="detail-1-build-mythic"
-                          class="img-mythic"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="detail-1-build-mythic-a" class="img-mythic" />
                       </div>
                       <div>
                         <img
@@ -1075,9 +634,8 @@
                       </div>
                       <div>
                         <img
-                          id="detail-1-build-legend-1"
+                          id="detail-1-build-legend-a-1"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                       <div>
@@ -1089,29 +647,24 @@
                       </div>
                       <div>
                         <img
-                          id="detail-1-build-legend-2"
+                          id="detail-1-build-legend-a-2"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                    <div id="item-pick-rate-a-1" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                    <div id="item-win-rate-a-1" class="item-rate"></div>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          id="detail-2-build-mythic-1"
-                          class="img-mythic"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/6631.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="detail-2-build-mythic-a" class="img-mythic" />
                       </div>
                       <div>
                         <img
@@ -1122,9 +675,8 @@
                       </div>
                       <div>
                         <img
-                          id="detail-2-build-legend-1"
+                          id="detail-2-build-legend-a-1"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                       <div>
@@ -1135,18 +687,17 @@
                       </div>
                       <div>
                         <img
-                          id="detail-2-build-legend-2"
+                          id="detail-2-build-legend-a-2"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">3.5%</div>
+                    <div id="item-pick-rate-a-2" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">65.1%</div>
+                    <div id="item-win-rate-a-2" class="item-rate"></div>
                   </td>
                 </tr>
               </tbody>
@@ -1170,38 +721,32 @@
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="img-legend-a-1" class="img-legend" />
                       </div>
-                      <div class="img-name">망자의 갑옷</div>
+                      <div id="img-legend-name-a-1" class="img-name"></div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                    <div id="legend-item-pick-rate-a-1" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                    <div id="legend-item-win-rate-a-1" class="item-rate"></div>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="img-legend-a-2" class="img-legend" />
                       </div>
-                      <div>칠흑의 양날도끼</div>
+                      <div id="img-legend-name-a-2" class="img-name"></div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                    <div id="legend-item-pick-rate-a-2" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                    <div id="legend-item-win-rate-a-2" class="item-rate"></div>
                   </td>
                 </tr>
               </tbody>
@@ -1228,11 +773,7 @@
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          id="detail-3-build-mythic-1"
-                          class="img-mythic"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3078.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="detail-1-build-mythic-b" class="img-mythic" />
                       </div>
                       <div>
                         <img
@@ -1242,9 +783,8 @@
                       </div>
                       <div>
                         <img
-                          id="detail-3-build-legend-1"
+                          id="detail-1-build-legend-b-1"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                       <div>
@@ -1256,18 +796,17 @@
                       </div>
                       <div>
                         <img
-                          id="detail-3-build-legend-2"
+                          id="detail-1-build-legend-b-2"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">9.8%</div>
+                    <div id="item-pick-rate-b-1" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">58.3%</div>
+                    <div id="item-win-rate-b-1" class="item-rate"></div>
                   </td>
                 </tr>
                 <tr>
@@ -1275,9 +814,8 @@
                     <div class="detail-build">
                       <div>
                         <img
-                          id="detail-4-build-mythic-1"
+                          id="detail-2-build-mythic-b-1"
                           class="img-mythic"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3078.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                       <div>
@@ -1289,9 +827,8 @@
                       </div>
                       <div>
                         <img
-                          id="detail-4-build-legend-1"
+                          id="detail-2-build-legend-b-1"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                       <div>
@@ -1302,18 +839,17 @@
                       </div>
                       <div>
                         <img
-                          id="detail-4-build-legend-2"
+                          id="detail-2-build-legend-b-2"
                           class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3053.png?image=q_auto,f_webp,w_64&v=1684282791608"
                         />
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.7%</div>
+                    <div id="item-pick-rate-b-2" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">50.1%</div>
+                    <div id="item-win-rate-b-2" class="item-rate"></div>
                   </td>
                 </tr>
               </tbody>
@@ -1337,38 +873,32 @@
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3742.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="img-legend-b-1" class="img-legend" />
                       </div>
-                      <div class="img-name">망자의 갑옷</div>
+                      <div id="img-legend-name-b-1" class="img-name"></div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                    <div id="legend-item-pick-rate-b-1" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                    <div id="legend-item-win-rate-b-1" class="item-rate"></div>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <div class="detail-build">
                       <div>
-                        <img
-                          class="img-legend"
-                          src="https://opgg-static.akamaized.net/meta/images/lol/item/3071.png?image=q_auto,f_webp,w_64&v=1684282791608"
-                        />
+                        <img id="img-legend-b-2" class="img-legend" />
                       </div>
-                      <div>칠흑의 양날도끼</div>
+                      <div id="img-legend-name-b-2" class="img-name"></div>
                     </div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">5.8%</div>
+                    <div id="legend-item-pick-rate-b-2" class="item-rate"></div>
                   </td>
                   <td>
-                    <div id="item-pick-rate-1" class="item-rate">61.3%</div>
+                    <div id="legend-item-win-rate-b-2" class="item-rate"></div>
                   </td>
                 </tr>
               </tbody>
@@ -1378,5 +908,7 @@
       </div>
     </article>
     <script src="/jsp/champions-details-jsp/details.js"></script>
+    <script src="/jsp/champions-details-jsp/item.js"></script>
+    <script src="/jsp/champions-details-jsp/runeSkill.js"></script>
   </body>
 </html>

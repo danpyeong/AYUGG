@@ -1,0 +1,58 @@
+[
+  {
+    "win": true,
+    "championName": "람머스",
+    "championId": "Rammus",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Rammus.png",
+    "winRate": "57.78%"
+  },
+  {
+    "win": true,
+    "championName": "사일러스",
+    "championId": "Sylas",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Sylas.png",
+    "winRate": "57.24%"
+  },
+  {
+    "win": true,
+    "championName": "카시오페아",
+    "championId": "Cassiopeia",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Cassiopeia.png",
+    "winRate": "57.14%"
+  },
+  {
+    "win": true,
+    "championName": "제드",
+    "championId": "Zed",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Zed.png",
+    "winRate": "55.83%"
+  },
+  {
+    "win": false,
+    "championName": "케일",
+    "championId": "Kayle",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Kayle.png",
+    "winRate": "44.81%"
+  },
+  {
+    "win": false,
+    "championName": "우디르",
+    "championId": "Udyr",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Udyr.png",
+    "winRate": "45.19%"
+  },
+  {
+    "win": false,
+    "championName": "블라디미르",
+    "championId": "Vladimir",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Vladimir.png",
+    "winRate": "45.41%"
+  },
+  {
+    "win": false,
+    "championName": "렝가",
+    "championId": "Rengar",
+    "championImg": "https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/Rengar.png",
+    "winRate": "46.32%"
+  }
+]

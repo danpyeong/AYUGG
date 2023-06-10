@@ -236,8 +236,4 @@ window.onload = function () {
       }
     });
   //#endregion
-
-  //#region 롤 API 받아오기
-
-  //#endregion
 };

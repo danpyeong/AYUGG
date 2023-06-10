@@ -46,6 +46,7 @@ ul {
   width: 900px;
   margin: 30px auto;
   padding: 5px;
+  border-radius: 4px;
 }
 
 /* 챔피언 기본 정보 */
@@ -61,6 +62,7 @@ ul {
   padding: 0px 11px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .champions-least-info-left {
@@ -78,9 +80,10 @@ ul {
 
 /* 챔피언 기본 스킬 */
 .champions-basic-skill img {
-  width: 16px;
-  height: 16px;
+  width: 21px;
+  height: 21px;
   vertical-align: middle;
+  border-radius: 4px;
 }
 
 /* 승률, 픽률, 밴률 테이블 */
@@ -88,21 +91,25 @@ ul {
   width: 80px;
   height: 90%;
   margin-right: 5px;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
-.champions-least-info-right tr td:nth-child(2) {
+.champions-least-info-table tr td:nth-child(2) {
   font-size: 16px;
-  font-weight: 900;
+  color: #fff;
 }
 
 /* 챔피언 카운터 */
 .champions-counter {
   padding: 0px 6.5px;
   width: 100%;
-  height: 65%;
+  height: 60%;
   display: flex;
   justify-content: space-evenly;
+  box-sizing: border-box;
 }
 
 .champions-counter .counter {
@@ -111,6 +118,7 @@ ul {
   height: 100%;
   color: #fff;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .counter-text {
@@ -190,6 +198,7 @@ ul {
   width: 100%;
   height: 68%;
   margin-bottom: 5px;
+  border-radius: 4px;
 }
 
 .champions-rune header {
@@ -235,6 +244,9 @@ ul {
   width: 100%;
   height: 50px;
   padding-top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* 주룬 부룬 */
 .main-rune-img {
@@ -245,15 +257,28 @@ ul {
   background-color: black;
 }
 
+.main-rune-img img {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  padding-top: 4px;
+}
+
 .sub-rune-img {
   width: 24px;
   height: 24px;
   position: absolute;
-  bottom: 10%;
+  bottom: -3px;
   right: 30%;
   border: 1px solid #ffffff;
   border-radius: 50%;
   background-color: black;
+}
+
+.sub-rune-img img {
+  width: 18px;
+  height: 18px;
+  padding-top: 3.5px;
 }
 /* 주룬 부룬 */
 
@@ -325,13 +350,6 @@ ul {
   padding: 10px 3px;
 }
 
-#main-first-rune-1,
-#main-first-rune-2,
-#main-first-rune-3 {
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-
 .rune-second-box {
   width: 100%;
   box-sizing: border-box;
@@ -349,72 +367,15 @@ ul {
   padding: 10px 0px;
 }
 
-/* 추천 1 룬 세부사항 */
-/* 추천 1 메인 룬 */
-#main-first-line-1-1,
-#main-first-line-1-3,
-#main-second-line-1-1,
-#main-second-line-1-3,
-#main-third-line-1-1,
-#main-third-line-1-2,
-/* 추천 1 두 번째 룬 */
-#sub-first-line-1-1,
-#sub-first-line-1-2,
-#sub-first-line-1-3,
-#sub-second-line-1-2,
-#sub-second-line-1-3,
-#sub-third-line-1-2,
-#sub-third-line-1-3,
-/* 추천 1 특성 */
-#char-first-line-1-2,
-#char-first-line-1-3,
-#char-second-line-1-2,
-#char-second-line-1-3,
-#char-third-line-1-1,
-#char-third-line-1-3 {
+.rune-visible {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.rune-invisible {
   opacity: 0.3;
   filter: grayscale(1);
 }
-/* 추천 1 특성 */
-#char-first-line-1-1,
-#char-second-line-1-1,
-#char-third-line-1-2 {
-  background-color: black;
-}
-
-/* 추천 2 룬 세부사항 */
-/* 추천 2 메인 룬 */
-#main-first-line-2-1,
-#main-first-line-2-3,
-#main-second-line-2-1,
-#main-second-line-2-3,
-#main-third-line-2-1,
-#main-third-line-2-2,
-/* 추천 2 두 번째 룬 */
-#sub-first-line-2-1,
-#sub-first-line-2-2,
-#sub-second-line-2-1,
-#sub-second-line-2-3,
-#sub-third-line-2-1,
-#sub-third-line-2-2,
-#sub-third-line-2-3,
-/* 추천 2 특성 */
-#char-first-line-2-2,
-#char-first-line-2-3,
-#char-second-line-2-2,
-#char-second-line-2-3,
-#char-third-line-2-1,
-#char-third-line-2-3 {
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-/* 추천 2 특성 */
-#char-first-line-2-1,
-#char-second-line-2-1,
-#char-third-line-2-2 {
-  background-color: black;
-}
-
 /* --------------------------------- */
 
 .champions-skill-tree {
@@ -424,6 +385,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 4px;
 }
 
 .champions-skill-tree header {
@@ -467,6 +429,10 @@ ul {
   width: 36px;
   height: 36px;
   position: relative;
+}
+
+.skill-img img {
+  border-radius: 4px;
 }
 
 .skill-tree-simple img {
@@ -544,11 +510,13 @@ ul {
   width: 100%;
   height: 25%;
   margin-bottom: 5px;
+  border-radius: 4px;
 }
 
 .empty-box {
   width: 100%;
   height: 105px;
+  border-radius: 4px;
 }
 
 .like-header {
@@ -604,6 +572,7 @@ ul {
   height: 24px;
   padding: 4px;
   vertical-align: middle;
+  border-radius: 8px;
 }
 
 .build-img div {
@@ -636,13 +605,14 @@ ul {
   text-align: left;
   border-bottom: 5px solid rgb(90, 90, 90);
   font-weight: 700;
+  border-radius: 4px;
 }
 
 /* --------------------------------- */
 
 .mythic-item-box {
   width: 100%;
-  height: 50px;
+  height: 65px;
   display: flex;
 }
 
@@ -652,6 +622,7 @@ ul {
   display: flex;
   padding-left: 10px;
   box-sizing: border-box;
+  border-start-start-radius: 4px;
 }
 
 .mythic-item img {
@@ -748,12 +719,4 @@ ul {
 
 #mythic-2-detail {
   display: none;
-}
-
-#rune-1-detail {
-  display: none;
-}
-
-#rune-2-detail {
-  display: flex;
 }

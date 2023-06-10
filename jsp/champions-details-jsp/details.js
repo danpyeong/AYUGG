@@ -1,73 +1,92 @@
-const version = "https://ddragon.leagueoflegends.com/cdn/13.10.1/";
-
+const version = "https://ddragon.leagueoflegends.com/cdn/13.11.1/";
 const championUrl = version + "data/ko_KR/champion.json";
 
-fetch(championUrl)
+window.onload = fetch(championUrl)
   .then((response) => response.json())
-  .then(function (data) {
-    // 모든 챔피언 데이터
-    var champData = data.data;
-
+  .then(async function (data) {
     // 위 데이터를 담은 배열
-    var champDataList = Object.values(champData);
-    var champList = document.getElementById("champions-list");
-    for (var i = 0; i < champDataList.length; i++) {
-      console.log(champDataList[i]);
+    var champDataList = Object.values(data.data);
 
-      const childLi = document.createElement("li");
-      const childSpan = document.createElement("span");
-      const childImg = document.createElement("img");
-      const childDiv = document.createElement("div");
-      const champName = champDataList[i].id.toString().toLowerCase();
+    // 한글 기준 오름차순 정렬
+    champDataList.sort(function (a, b) {
+      var nameA = a.name;
+      var nameB = b.name;
+      return nameA.localeCompare(nameB);
+    });
 
-      // 챔피언 초상화
-      childImg.src = version + "img/champion/" + champDataList[i].image.full;
-      childImg.width = 24;
-      childImg.height = 24;
+    // 분석 페이지에서 데이터를 받아와서 해당 챔피언 이름 넣어야함.
+    var champion = champDataList[0];
 
-      // 챔피언 이름
-      childDiv.textContent = champDataList[i].name;
+    const championImg = document.getElementById("championImg");
+    championImg.src = version + "img/champion/" + champion.image.full;
 
-      childSpan.onclick = function () {
-        // fs.rename("details.html", champName + ".html", function (err) {
-        //   if (err) throw err;
-        //   console.log("File Renamed.");
-        // });
-        window.location.href = champName + ".html";
-      };
+    const championName = champion.id;
+    const championDetailUrl =
+      version + "data/ko_KR/champion/" + championName + ".json";
 
-      childSpan.appendChild(childImg);
-      childSpan.appendChild(childDiv);
-      childLi.appendChild(childSpan);
-      champList.appendChild(childLi);
-    }
+    fetch(championDetailUrl)
+      .then((response) => response.json())
+      .then(function (rawData) {
+        var detailData = Object.values(rawData.data);
+        var championDetail = detailData[0];
+        var spell = detailData[0].spells;
+
+        const passiveImg = document.getElementById("passiveImg");
+        passiveImg.src =
+          version + "img/passive/" + championDetail.passive.image.full;
+
+        const QImg = document.getElementById("skill-Q");
+        QImg.src = version + "img/spell/" + spell[0].image.full;
+        const WImg = document.getElementById("skill-W");
+        WImg.src = version + "img/spell/" + spell[1].image.full;
+        const EImg = document.getElementById("skill-E");
+        EImg.src = version + "img/spell/" + spell[2].image.full;
+        const RImg = document.getElementById("skill-R");
+        RImg.src = version + "img/spell/" + spell[3].image.full;
+      });
+
+    const counterUrl = "../../../json/counter.json";
+
+    fetch(counterUrl)
+      .then((response) => response.json())
+      .then(function (rawData) {
+        var data = Object.values(rawData);
+
+        var winNumber = 0;
+        var loseNumber = 0;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].win == true) {
+            winNumber++;
+            const counterImg = document.getElementById(
+              "win-counter-" + winNumber
+            );
+            counterImg.src = data[i].championImg;
+            const counterName = document.getElementById(
+              "win-counter-" + winNumber + "-name"
+            );
+            counterName.innerHTML = data[i].championName;
+            const counterRate = document.getElementById(
+              "win-rate-" + winNumber
+            );
+            counterRate.innerHTML = data[i].winRate;
+          } else {
+            loseNumber++;
+            const counterImg = document.getElementById(
+              "lose-counter-" + loseNumber
+            );
+            counterImg.src = data[i].championImg;
+            const counterName = document.getElementById(
+              "lose-counter-" + loseNumber + "-name"
+            );
+            counterName.innerHTML = data[i].championName;
+            const counterRate = document.getElementById(
+              "lose-rate-" + loseNumber
+            );
+            counterRate.innerHTML = data[i].winRate;
+          }
+        }
+      });
   });
-
-// 1 룬 세팅 선택에 따른 배경 변화
-var rune = document.getElementById("rune-1");
-rune.addEventListener("click", function (e) {
-  document.getElementById("rune-1").style.borderLeft = "3px solid red";
-  document.getElementById("rune-1").style.backgroundColor =
-    "rgb(200, 200, 200)";
-  document.getElementById("rune-2").style.borderLeft = "none";
-  document.getElementById("rune-2").style.backgroundColor = "rgb(90, 90, 90)";
-
-  document.getElementById("rune-1-detail").style.display = "flex";
-  document.getElementById("rune-2-detail").style.display = "none";
-});
-
-// 2 룬 세팅 선택에 따른 배경 변화
-var rune2 = document.getElementById("rune-2");
-rune2.addEventListener("click", function (e) {
-  document.getElementById("rune-2").style.borderLeft = "3px solid red";
-  document.getElementById("rune-2").style.backgroundColor =
-    "rgb(200, 200, 200)";
-  document.getElementById("rune-1").style.borderLeft = "none";
-  document.getElementById("rune-1").style.backgroundColor = "rgb(90, 90, 90)";
-
-  document.getElementById("rune-2-detail").style.display = "flex";
-  document.getElementById("rune-1-detail").style.display = "none";
-});
 
 // 1 신화 아이템 선택에 따른 배경 변화
 var mythicItem1 = document.getElementById("mythic-item-box-1");
