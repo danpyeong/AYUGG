@@ -3,6 +3,9 @@ const runeUrl = version + runeJson;
 
 const runeImgUrl = "https://ddragon.leagueoflegends.com/cdn/img/";
 const statsImgUrl = "../../../images/perk/";
+
+const skillImgUrl = "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/spell/";
+
 // 1 룬 세팅 선택에 따른 배경 변화
 const rune1 = document.getElementById("rune-1");
 const rune2 = document.getElementById("rune-2");
@@ -27,15 +30,13 @@ rune2.addEventListener("click", function (e) {
 window.onload = fetch(runeUrl)
   .then((response) => response.json())
   .then(async function (rawData) {
-    console.log(rawData);
     const allData = rawData;
     let runeMap;
-
+    let skillTree;
     const runeSkillUrl = "../../../json/runeSkill.json";
     await fetch(runeSkillUrl)
       .then((response) => response.json())
       .then(function (rawData) {
-        console.log(rawData);
         let championId = "Garen";
         let data = Object.values(rawData);
         let championData;
@@ -47,6 +48,7 @@ window.onload = fetch(runeUrl)
           }
         }
 
+        skillTree = championData.skill;
         let runeData = championData.rune.version1;
         let mainRune = runeData.mainRune;
         let subRune = runeData.subRune;
@@ -367,4 +369,37 @@ window.onload = fetch(runeUrl)
       }
     }
     runePage(runeMap);
+
+    // 스킬
+    let skillMaster = Object.values(skillTree.master);
+    let skillOrder = Object.values(skillTree.order);
+    console.log(skillOrder);
+
+    for (let i = 0; i < skillMaster.length; i++) {
+      var skill = document.getElementById("skillImg-" + (i + 1));
+      var skillKey = document.getElementById("skill-" + (i + 1) + "-position");
+      skill.src = skillImgUrl + skillMaster[i].id;
+      skillKey.innerText = skillMaster[i].key;
+    }
+
+    for (let i = 0; i < skillOrder.length; i++) {
+      var order = document.getElementById("skill-" + (i + 1));
+      var orderKey = document.getElementById("skillKey-" + (i + 1));
+      orderKey.innerText = skillOrder[i];
+      // if (skillOrder[i] == "Q") {
+      //   orderKey.style.color = "rgb(255, 92, 92)";
+      // }
+      // if (skillOrder[i] == "W") {
+      //   orderKey.style.color = "rgb(255, 92, 92)";
+      // }
+      // if (skillOrder[i] == "E") {
+      //   orderKey.style.color = "rgb(255, 92, 92)";
+      // }
+      if (skillOrder[i] == "R") {
+        order.style.backgroundColor = "rgb(96, 96, 240)";
+        order.style.color = "#fff";
+        orderKey.style.backgroundColor = "rgb(96, 96, 240)";
+        orderKey.style.color = "#fff";
+      }
+    }
   });
