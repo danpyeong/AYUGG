@@ -6,7 +6,7 @@
       "rune": {
         "version1": {
           "mainTitle": "8000",
-          "subTitle": "8200",
+          "subTitle": "8400",
           "mainRune": {
             "id": "8010",
             "line1": "9111",
@@ -14,8 +14,8 @@
             "line3": "8299"
           },
           "subRune": {
-            "line1": "8275",
-            "line2": "8234"
+            "line1": "8429",
+            "line2": "8451"
           },
           "stats": {
             "line1": "5008",
@@ -26,17 +26,17 @@
           "winRate": "53.95%"
         },
         "version2": {
-          "mainTitle": "8010",
-          "subTitle": "8210",
+          "mainTitle": "8200",
+          "subTitle": "8400",
           "mainRune": {
-            "id": "8012",
-            "line1": "9111",
-            "line2": "9105",
-            "line3": "8299"
+            "id": "8230",
+            "line1": "8275",
+            "line2": "8234",
+            "line3": "8236"
           },
           "subRune": {
-            "line1": "8275",
-            "line2": "8234"
+            "line1": "8429",
+            "line2": "8451"
           },
           "stats": {
             "line1": "5008",

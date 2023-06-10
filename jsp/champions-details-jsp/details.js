@@ -88,32 +88,6 @@ window.onload = fetch(championUrl)
       });
   });
 
-// 1 룬 세팅 선택에 따른 배경 변화
-const rune1 = document.getElementById("rune-1");
-const rune2 = document.getElementById("rune-2");
-rune1.addEventListener("click", function (e) {
-  rune1.style.borderLeft = "3px solid red";
-  document.getElementById("rune-1").style.backgroundColor =
-    "rgb(200, 200, 200)";
-  document.getElementById("rune-2").style.borderLeft = "none";
-  document.getElementById("rune-2").style.backgroundColor = "rgb(90, 90, 90)";
-
-  document.getElementById("rune-1-detail").style.display = "flex";
-  document.getElementById("rune-2-detail").style.display = "none";
-});
-
-// 2 룬 세팅 선택에 따른 배경 변화
-rune2.addEventListener("click", function (e) {
-  document.getElementById("rune-2").style.borderLeft = "3px solid red";
-  document.getElementById("rune-2").style.backgroundColor =
-    "rgb(200, 200, 200)";
-  document.getElementById("rune-1").style.borderLeft = "none";
-  document.getElementById("rune-1").style.backgroundColor = "rgb(90, 90, 90)";
-
-  document.getElementById("rune-2-detail").style.display = "flex";
-  document.getElementById("rune-1-detail").style.display = "none";
-});
-
 // 1 신화 아이템 선택에 따른 배경 변화
 var mythicItem1 = document.getElementById("mythic-item-box-1");
 mythicItem1.addEventListener("click", function (e) {
