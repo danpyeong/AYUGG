@@ -4,7 +4,7 @@ const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
 var exData = new Map();
 exData.set('wins', sessionStorage.getItem('wins'));
 exData.set('losses', sessionStorage.getItem('losses'));
-console.log(exData);
+// console.log(exData);
 
 var data = {  
   datasets: [

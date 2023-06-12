@@ -1,6 +1,6 @@
 const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
-// const testnick = "2U35";
-const testnick = "hideonbush";
+// const testnick = "hideonbush";
+const testnick = sessionStorage.getItem('nickname');
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 let UserUrl = SereachByNickStartUrl + encodedName + "?api_key=" + apiKey;
@@ -296,24 +296,45 @@ setTimeout(function(){
         text11.innerText = "CS "+ (owner.totalMinionsKilled + owner.neutralMinionsKilled);
         if(owner.item0 != 0){
           document.getElementById("item1").src = version +"img/item/"+ owner.item0 +".png";
+        } else {
+          document.getElementById("item1").src = "/images/item-none.jpg";
+          document.getElementById("item1").style.opacity = '0.3';
         }
         if(owner.item1 != 0){
           document.getElementById("item2").src = version +"img/item/"+ owner.item1 +".png";
+        } else {
+          document.getElementById("item2").src = "/images/item-none.jpg";
+          document.getElementById("item2").style.opacity = '0.3';
         }
         if(owner.item2 != 0){
           document.getElementById("item3").src = version +"img/item/"+ owner.item2 +".png";
+        } else {
+          document.getElementById("item3").src = "/images/item-none.jpg";
+          document.getElementById("item3").style.opacity = '0.3';
         }
         if(owner.item3 != 0){
           document.getElementById("item4").src = version +"img/item/"+ owner.item3 +".png";
+        } else {
+          document.getElementById("item4").src = "/images/item-none.jpg";
+          document.getElementById("item4").style.opacity = '0.3';
         }
         if(owner.item4 != 0){
           document.getElementById("item5").src = version +"img/item/"+ owner.item4 +".png";
+        } else {
+          document.getElementById("item5").src = "/images/item-none.jpg";
+          document.getElementById("item5").style.opacity = '0.3';
         }
         if(owner.item5 != 0){
           document.getElementById("item6").src = version +"img/item/"+ owner.item5 +".png";
+        } else {
+          document.getElementById("item6").src = "/images/item-none.jpg";
+          document.getElementById("item6").style.opacity = '0.3';
         }
         if(owner.item6 != 0){
           document.getElementById("item7").src = version +"img/item/"+ owner.item6 +".png";
+        } else {
+          document.getElementById("item7").src = "/images/item-none.jpg";
+          document.getElementById("item7").style.opacity = '0.3';
         }
       }
     }
@@ -368,10 +389,10 @@ setTimeout(function(){
 
     matchDtFirstBlue("dtPartiBlue",k);
     matchDtFirstRed("dtPartiRed",k);
-    }
-    // matchDtFirst("test",0);
     
-}, 1000);
+    }
+    
+}, 1500);
 
 
 function partiListMaking1(id,k){
@@ -419,7 +440,7 @@ function matchDtFirstBlue(id,k){
     var childDiv3 = document.createElement("div");
     var childDiv4 = document.createElement("div");
     var childDiv5 = document.createElement("div");
-    var childDiv6 = document.createElement("div");
+    const childDiv6 = document.createElement("div");
     var childDiv7 = document.createElement("div");
     var childDiv8 = document.createElement("div");
     var childDiv9 = document.createElement("div");
@@ -428,6 +449,8 @@ function matchDtFirstBlue(id,k){
     var childDiv12 = document.createElement("div");
     var childDiv13 = document.createElement("div");
     var childDiv14 = document.createElement("div");
+    var childDiv15 = document.createElement("div");
+    var childDiv16 = document.createElement("div");
     
     var childSpan0 = document.createElement("span");
     var childSpan1 = document.createElement("span");
@@ -440,19 +463,19 @@ function matchDtFirstBlue(id,k){
     var childTd4 = document.createElement("td");
     var childTd5 = document.createElement("td");
   
-    var childImg0 = document.createElement("img");
-    var childImg1 = document.createElement("img");
-    var childImg2 = document.createElement("img");
-    var childImg3 = document.createElement("img");
-    var childImg4 = document.createElement("img");
-    var childImg5 = document.createElement("img");
-    var childImg6 = document.createElement("img");
-    var childImg7 = document.createElement("img");
-    var childImg8 = document.createElement("img");
-    var childImg9 = document.createElement("img");
-    var childImg10 = document.createElement("img");
-    var childImg11 = document.createElement("img");
-    var childImg12 = document.createElement("img");
+    const childImg0 = document.createElement("img");
+    const childImg1 = document.createElement("img");
+    const childImg2 = document.createElement("img");
+    const childImg3 = document.createElement("img");
+    const childImg4 = document.createElement("img");
+    const childImg5 = document.createElement("img");
+    const childImg6 = document.createElement("img");
+    const childImg7 = document.createElement("img");
+    const childImg8 = document.createElement("img");
+    const childImg9 = document.createElement("img");
+    const childImg10 = document.createElement("img");
+    const childImg11 = document.createElement("img");
+    const childImg12 = document.createElement("img");
   
     childTd0.classList.add('dt-first');
     childDiv0.classList.add('dt-first-first');
@@ -520,8 +543,9 @@ function matchDtFirstBlue(id,k){
     childDiv6.textContent = match[k].get('matchUser')[i];
     childDiv6.classList.add('font3');
     childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
-    childImg5.classList.add('damage-graph');
-    childImg5.src = "/images/example.webp";
+    childDiv15.classList.add('damage-graph');
+    childDiv16.classList.add('bar');
+    childDiv16.style.width = match[k].get('matchData').participants[i].totalDamageDealtToChampions/(mostDamage(k))*60+'px';
     childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
     childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
     childDiv10.classList.add('font3');
@@ -538,14 +562,49 @@ function matchDtFirstBlue(id,k){
     childImg10.classList.add('dt-smallItem-img');
     childImg11.classList.add('dt-smallItem-img');
     childImg12.classList.add('dt-smallItem-img');
-    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
-    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
-    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
-    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
-    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
-    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
-    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
-    childImg12.style.borderRadius = '50%'
+    if(match[k].get('matchData').participants[i].item0 == 0){
+      childImg6.src = "/images/item-none.jpg";
+      childImg6.style.opacity = '0.3';
+    }else {
+      childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item1 == 0){
+      childImg7.src = "/images/item-none.jpg";
+      childImg7.style.opacity = '0.3';
+    }else {
+      childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    }
+    if(match[k].get('matchData').participants[i].item2 == 0){
+      childImg8.src = "/images/item-none.jpg";
+      childImg8.style.opacity = '0.3';
+    }else {
+      childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item3 == 0){
+      childImg9.src = "/images/item-none.jpg";
+      childImg9.style.opacity = '0.3';
+    }else {
+      childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item4 == 0){
+      childImg10.src = "/images/item-none.jpg";
+      childImg10.style.opacity = '0.3';
+    }else {
+      childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item5 == 0){
+      childImg11.src = "/images/item-none.jpg";
+      childImg11.style.opacity = '0.3';
+    }else {
+      childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item6 == 0){
+      childImg12.src = "/images/item-none.jpg";
+      childImg12.style.opacity = '0.3';
+    }else {
+      childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";     
+    }
+    childImg12.style.borderRadius = '50%';
   
     childTr.appendChild(childTd0);
     childTd0.appendChild(childDiv0);
@@ -565,7 +624,8 @@ function matchDtFirstBlue(id,k){
     childTr.appendChild(childTd1);
     childTd1.appendChild(childDiv7);
     childTd1.appendChild(childDiv8);
-    childDiv8.appendChild(childImg5);
+    childDiv8.appendChild(childDiv15);
+    childDiv15.appendChild(childDiv16);
     childTr.appendChild(childTd2);
     childTd2.appendChild(childDiv9);
     childTd2.appendChild(childDiv10);
@@ -604,6 +664,8 @@ function matchDtFirstRed(id,k){
     var childDiv12 = document.createElement("div");
     var childDiv13 = document.createElement("div");
     var childDiv14 = document.createElement("div");
+    var childDiv15 = document.createElement("div");
+    var childDiv16 = document.createElement("div");
     
     var childSpan0 = document.createElement("span");
     var childSpan1 = document.createElement("span");
@@ -616,19 +678,19 @@ function matchDtFirstRed(id,k){
     var childTd4 = document.createElement("td");
     var childTd5 = document.createElement("td");
   
-    var childImg0 = document.createElement("img");
-    var childImg1 = document.createElement("img");
-    var childImg2 = document.createElement("img");
-    var childImg3 = document.createElement("img");
-    var childImg4 = document.createElement("img");
-    var childImg5 = document.createElement("img");
-    var childImg6 = document.createElement("img");
-    var childImg7 = document.createElement("img");
-    var childImg8 = document.createElement("img");
-    var childImg9 = document.createElement("img");
-    var childImg10 = document.createElement("img");
-    var childImg11 = document.createElement("img");
-    var childImg12 = document.createElement("img");
+    const childImg0 = document.createElement("img");
+    const childImg1 = document.createElement("img");
+    const childImg2 = document.createElement("img");
+    const childImg3 = document.createElement("img");
+    const childImg4 = document.createElement("img");
+    const childImg5 = document.createElement("img");
+    const childImg6 = document.createElement("img");
+    const childImg7 = document.createElement("img");
+    const childImg8 = document.createElement("img");
+    const childImg9 = document.createElement("img");
+    const childImg10 = document.createElement("img");
+    const childImg11 = document.createElement("img");
+    const childImg12 = document.createElement("img");
   
     childTd0.classList.add('dt-first');
     childDiv0.classList.add('dt-first-first');
@@ -695,8 +757,9 @@ function matchDtFirstRed(id,k){
     childDiv6.textContent = match[k].get('matchUser')[i];
     childDiv6.classList.add('font3');
     childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
-    childImg5.classList.add('damage-graph');
-    childImg5.src = "/images/example.webp";
+    childDiv15.classList.add('damage-graph');
+    childDiv16.classList.add('bar');
+    childDiv16.style.width = match[k].get('matchData').participants[i].totalDamageDealtToChampions/(mostDamage(k))*60+'px';
     childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
     childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
     childDiv10.classList.add('font3');
@@ -713,14 +776,49 @@ function matchDtFirstRed(id,k){
     childImg10.classList.add('dt-smallItem-img');
     childImg11.classList.add('dt-smallItem-img');
     childImg12.classList.add('dt-smallItem-img');
-    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
-    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
-    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
-    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
-    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
-    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
-    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
-    childImg12.style.borderRadius = '50%'
+    if(match[k].get('matchData').participants[i].item0 == 0){
+      childImg6.src = "/images/item-none.jpg";
+      childImg6.style.opacity = '0.3';
+    }else {
+      childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item1 == 0){
+      childImg7.src = "/images/item-none.jpg";
+      childImg7.style.opacity = '0.3';
+    }else {
+      childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    }
+    if(match[k].get('matchData').participants[i].item2 == 0){
+      childImg8.src = "/images/item-none.jpg";
+      childImg8.style.opacity = '0.3';
+    }else {
+      childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item3 == 0){
+      childImg9.src = "/images/item-none.jpg";
+      childImg9.style.opacity = '0.3';
+    }else {
+      childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item4 == 0){
+      childImg10.src = "/images/item-none.jpg";
+      childImg10.style.opacity = '0.3';
+    }else {
+      childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item5 == 0){
+      childImg11.src = "/images/item-none.jpg";
+      childImg11.style.opacity = '0.3';
+    }else {
+      childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item6 == 0){
+      childImg12.src = "/images/item-none.jpg";
+      childImg12.style.opacity = '0.3';
+    }else {
+      childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";     
+    }
+    childImg12.style.borderRadius = '50%';
   
     childTr.appendChild(childTd0);
     childTd0.appendChild(childDiv0);
@@ -740,7 +838,8 @@ function matchDtFirstRed(id,k){
     childTr.appendChild(childTd1);
     childTd1.appendChild(childDiv7);
     childTd1.appendChild(childDiv8);
-    childDiv8.appendChild(childImg5);
+    childDiv8.appendChild(childDiv15);
+    childDiv15.appendChild(childDiv16);
     childTr.appendChild(childTd2);
     childTd2.appendChild(childDiv9);
     childTd2.appendChild(childDiv10);
@@ -760,4 +859,14 @@ function matchDtFirstRed(id,k){
     childTd5.appendChild(childImg12);
     Id.appendChild(childTr);
   }
+}
+
+function mostDamage(k){
+  let mostDamage = match[k].get('matchData').participants[0].totalDamageDealtToChampions;
+  for(let i=1;i<10;i++){
+    if(mostDamage < match[k].get('matchData').participants[i].totalDamageDealtToChampions){
+      mostDamage = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
+    }
+  }
+  return mostDamage;
 }
