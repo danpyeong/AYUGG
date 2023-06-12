@@ -275,6 +275,23 @@ body {
 .champ-icon {
   display: flex;
   align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.dt-small-img {
+  width: 15px;
+  height: 15px;
+  padding-right: 2px;
+}
+.nick-tier {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.damage-graph {
+  width: 30px;
+  height: 10px;
 }
 .c-l {
   position: relative;
@@ -294,6 +311,11 @@ body {
   position: absolute;
   top: 70%;
   left: 70%;
+}
+.dt-smallItem-img{
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
 }
 .dt-first,
 .dt-first-first {

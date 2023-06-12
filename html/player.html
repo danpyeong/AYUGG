@@ -588,7 +588,7 @@
                 </span>
               </div>
               <div class="detail-second">
-                <table class="detail-table blue">
+                <table class="detail-table blue"  id="dtPartiBlue">
                   <colgroup>
                     <col width="30%" />
                     <col width="10%" />
@@ -610,7 +610,7 @@
                     <th>와드</th>
                     <th>아이템</th>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td class="dt-first">
                       <div class="dt-first-first">
                         <span class="c-l">
@@ -618,8 +618,6 @@
                             class="champ-icon"
                             src="/images/example.webp"
                             alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
                           />
                           <div class="level">00</div>
                         </span>
@@ -628,40 +626,31 @@
                             <img
                               src="/images/example.webp"
                               alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
+                              class="dt-small-img"
                             />
                             <img
                               src="/images/example.webp"
                               alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
+                              class="dt-small-img"
                             />
                           </div>
                           <div>
                             <img
                               src="/images/example.webp"
                               alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
+                              class="dt-small-img"
                             />
                             <img
                               src="/images/example.webp"
                               alt="룬 아이콘"
                               width="15px"
                               height="15px"
+                              class="dt-small-img"
                             />
                           </div>
                         </span>
                       </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
+                      <div class="nick-tier">
                         <div>닉네임닉네임</div>
                         <div class="font3">Gold</div>
                       </div>
@@ -670,10 +659,9 @@
                       <div>0000</div>
                       <div>
                         <img
+                          class="damage-graph"
                           src="/images/example.webp"
                           alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
                         />
                       </div>
                     </td>
@@ -1234,9 +1222,9 @@
                         style="border-radius: 50%"
                       />
                     </td>
-                  </tr>
+                  </tr> -->
                 </table>
-                <table class="detail-table red">
+                <table class="detail-table red" id="dtPartiRed">
                   <colgroup>
                     <col width="30%" />
                     <col width="10%" />
@@ -1258,7 +1246,7 @@
                     <th>와드</th>
                     <th>아이템</th>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td class="dt-first">
                       <div class="dt-first-first">
                         <span class="c-l">
@@ -1882,7 +1870,7 @@
                         style="border-radius: 50%"
                       />
                     </td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
             </div>
@@ -3449,8 +3437,8 @@
           </div>
         </div>
       </div>
+      <table id="test"></table>
     </div>
-    <ul id="test"></ul>
     <script src="/js/click.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/charts.js"></script>

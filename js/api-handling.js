@@ -334,7 +334,7 @@ setTimeout(function(){
       text13.innerText = "승리";
       text13.style.color= "rgba(0, 0, 255, 0.5)"
     }    
-    console.log(match[k].get('matchData').teams[0]);
+    // console.log(match[k].get('matchData').teams[0]);
     var text14 = document.getElementById("towerBlue");
     var text15 = document.getElementById("dragonBlue");
     var text16 = document.getElementById("baronBlue");
@@ -366,10 +366,12 @@ setTimeout(function(){
     // var text8 = document.getElementById("KDA");
     // text8.innerText = owner.kills +"/"+ owner.deaths +"/"+ owner.assists;
 
-    // matchDetailFirst(datailFirst,k);
+    matchDtFirstBlue("dtPartiBlue",k);
+    matchDtFirstRed("dtPartiRed",k);
     }
-
-}, 800);
+    // matchDtFirst("test",0);
+    
+}, 1000);
 
 
 function partiListMaking1(id,k){
@@ -405,27 +407,357 @@ function partiListMaking2(id,k){
     childLi.appendChild(childSpan);
     ulId.appendChild(childLi);
   }
+  // console.log(ulId);
 }
 
-// function matchDetailFirst(id,k){
-//   var divId = document.getElementById(id);
-
-//   var childB = document.createElement("b");
-//   var childSpan = document.createElement("span");
-//   var childSpan0 = document.createElement("span");
-//   var childSpan1 = document.createElement("span");
-//   var childSpan2 = document.createElement("span");
-//   var childSpan3 = document.createElement("span");
-//   var childSpan4 = document.createElement("span");
-//   var childSpan5 = document.createElement("span");
-//   var childImg = document.createElement("img");
-
-//   divId.appendChild(childSpan0);
-//   childSpan0.appendChild(childB)
-//   divId.appendChild(childSpan1);
-//   divId.appendChild(childSpan2);
-//   divId.appendChild(childSpan3);
-//   divId.appendChild(childSpan4);
-//   divId.appendChild(childSpan5);
-//   divId.appendChild(childSpan6);
-// }
+function matchDtFirstBlue(id,k){
+  var Id = document.getElementById(id);
+  for(let i=0;i<5;i++){
+    var childDiv0 = document.createElement("div");
+    var childDiv1 = document.createElement("div");
+    var childDiv2 = document.createElement("div");
+    var childDiv3 = document.createElement("div");
+    var childDiv4 = document.createElement("div");
+    var childDiv5 = document.createElement("div");
+    var childDiv6 = document.createElement("div");
+    var childDiv7 = document.createElement("div");
+    var childDiv8 = document.createElement("div");
+    var childDiv9 = document.createElement("div");
+    var childDiv10 = document.createElement("div");
+    var childDiv11 = document.createElement("div");
+    var childDiv12 = document.createElement("div");
+    var childDiv13 = document.createElement("div");
+    var childDiv14 = document.createElement("div");
+    
+    var childSpan0 = document.createElement("span");
+    var childSpan1 = document.createElement("span");
+    
+    var childTr = document.createElement("tr");
+    var childTd0 = document.createElement("td");
+    var childTd1 = document.createElement("td");
+    var childTd2 = document.createElement("td");
+    var childTd3 = document.createElement("td");
+    var childTd4 = document.createElement("td");
+    var childTd5 = document.createElement("td");
+  
+    var childImg0 = document.createElement("img");
+    var childImg1 = document.createElement("img");
+    var childImg2 = document.createElement("img");
+    var childImg3 = document.createElement("img");
+    var childImg4 = document.createElement("img");
+    var childImg5 = document.createElement("img");
+    var childImg6 = document.createElement("img");
+    var childImg7 = document.createElement("img");
+    var childImg8 = document.createElement("img");
+    var childImg9 = document.createElement("img");
+    var childImg10 = document.createElement("img");
+    var childImg11 = document.createElement("img");
+    var childImg12 = document.createElement("img");
+  
+    childTd0.classList.add('dt-first');
+    childDiv0.classList.add('dt-first-first');
+    childSpan0.classList.add('c-l');
+    childImg0.classList.add('champ-icon');
+    childImg0.src =  version + "img/champion/" + match[k].get('matchData').participants[i].championName + ".png";
+    childDiv1.textContent = match[k].get('matchData').participants[i].champLevel;
+    childDiv1.classList.add('level');
+    fetch(spellUrl)
+    .then(response => response.json())
+    .then(data => {
+      var spellData = data.data;
+      // console.log(spellData);
+      function findSpellKey(value) {
+        for (let a in spellData) {
+          if (spellData[a].key == value) {
+            // console.log(spellData[a].image.full);
+            return spellData[a].image.full;
+          }
+        }
+        return null;
+      }
+      childImg1.src = version + "img/spell/" + findSpellKey(match[k].get('matchData').participants[i].summoner1Id);
+      childImg1.classList.add('dt-small-img');
+      childImg2.src = version + "img/spell/" + findSpellKey(match[k].get('matchData').participants[i].summoner2Id);
+      childImg2.classList.add('dt-small-img');
+    })
+    fetch(runeUrl)
+    .then(response => response.json())
+    .then(data => {
+      var runeData = data;
+      // console.log(runeData);
+      function findRuneKey(value) {
+        for (let a = 0; a < runeData.length; a++) {
+          if (runeData[a].id == value) {
+            // console.log(runeData[a].icon);
+            return runeData[a].icon;
+          }
+        }
+        return null;
+      }
+      function findMainRuneKey(value1,value2) {
+        for (let a = 0; a < runeData.length; a++) {
+          if (runeData[a].id == value1) {
+            // console.log(runeData[a].slots[0].runes.length);
+            for (let b = 0; b < runeData[a].slots[0].runes.length; b++) {
+              if (runeData[a].slots[0].runes[b].id == value2) {
+                // console.log(runeData[a].slots[0].runes[b].icon);
+                return runeData[a].slots[0].runes[b].icon;
+              }
+            }
+            return null;
+          }
+        }
+        return null;
+      }
+      childImg3.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findMainRuneKey(match[k].get('matchData').participants[i].perks.styles[0].style,match[k].get('matchData').participants[i].perks.styles[0].selections[0].perk);
+      childImg3.classList.add('dt-small-img');
+      childImg4.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findRuneKey(match[k].get('matchData').participants[i].perks.styles[1].style);
+      childImg4.classList.add('dt-small-img');
+    })
+    
+    childDiv4.classList.add('nick-tier');
+    childDiv5.textContent = match[k].get('matchData').participants[i].summonerName;
+    childDiv6.textContent = match[k].get('matchUser')[i];
+    childDiv6.classList.add('font3');
+    childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
+    childImg5.classList.add('damage-graph');
+    childImg5.src = "/images/example.webp";
+    childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
+    childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
+    childDiv10.classList.add('font3');
+    childDiv11.textContent = match[k].get('matchData').participants[i].totalMinionsKilled + match[k].get('matchData').participants[i].neutralMinionsKilled;
+    childDiv12.textContent = "("+((match[k].get('matchData').participants[i].totalMinionsKilled + match[k].get('matchData').participants[i].neutralMinionsKilled) / match[k].get('matchData').gameDuration *60).toFixed(1)+")";
+    childDiv12.classList.add('font3');
+    childDiv13.textContent = match[k].get('matchData').participants[i].wardsPlaced;
+    childDiv14.textContent ="("+ (match[k].get('matchData').participants[i].wardsPlaced-match[k].get('matchData').participants[i].visionWardsBoughtInGame) +"/"+match[k].get('matchData').participants[i].visionWardsBoughtInGame+")";
+    childDiv14.classList.add('font3');
+    childImg6.classList.add('dt-smallItem-img');
+    childImg7.classList.add('dt-smallItem-img');
+    childImg8.classList.add('dt-smallItem-img');
+    childImg9.classList.add('dt-smallItem-img');
+    childImg10.classList.add('dt-smallItem-img');
+    childImg11.classList.add('dt-smallItem-img');
+    childImg12.classList.add('dt-smallItem-img');
+    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
+    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
+    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
+    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
+    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
+    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
+    childImg12.style.borderRadius = '50%'
+  
+    childTr.appendChild(childTd0);
+    childTd0.appendChild(childDiv0);
+    childDiv0.appendChild(childSpan0);
+    childSpan0.appendChild(childImg0);
+    childSpan0.appendChild(childDiv1);
+    childDiv0.appendChild(childSpan1);
+    childSpan1.appendChild(childDiv2);
+    childDiv2.appendChild(childImg1);
+    childDiv2.appendChild(childImg2);
+    childSpan1.appendChild(childDiv3);
+    childDiv3.appendChild(childImg3);
+    childDiv3.appendChild(childImg4);
+    childTd0.appendChild(childDiv4);
+    childDiv4.appendChild(childDiv5);
+    childDiv4.appendChild(childDiv6);
+    childTr.appendChild(childTd1);
+    childTd1.appendChild(childDiv7);
+    childTd1.appendChild(childDiv8);
+    childDiv8.appendChild(childImg5);
+    childTr.appendChild(childTd2);
+    childTd2.appendChild(childDiv9);
+    childTd2.appendChild(childDiv10);
+    childTr.appendChild(childTd3);
+    childTd3.appendChild(childDiv11);
+    childTd3.appendChild(childDiv12);
+    childTr.appendChild(childTd4);
+    childTd4.appendChild(childDiv13);
+    childTd4.appendChild(childDiv14);
+    childTr.appendChild(childTd5);
+    childTd5.appendChild(childImg6);
+    childTd5.appendChild(childImg7);
+    childTd5.appendChild(childImg8);
+    childTd5.appendChild(childImg9);
+    childTd5.appendChild(childImg10);
+    childTd5.appendChild(childImg11);
+    childTd5.appendChild(childImg12);
+    Id.appendChild(childTr);
+  }
+}
+function matchDtFirstRed(id,k){
+  var Id = document.getElementById(id);
+  for(let i=5;i<10;i++){
+    var childDiv0 = document.createElement("div");
+    var childDiv1 = document.createElement("div");
+    var childDiv2 = document.createElement("div");
+    var childDiv3 = document.createElement("div");
+    var childDiv4 = document.createElement("div");
+    var childDiv5 = document.createElement("div");
+    var childDiv6 = document.createElement("div");
+    var childDiv7 = document.createElement("div");
+    var childDiv8 = document.createElement("div");
+    var childDiv9 = document.createElement("div");
+    var childDiv10 = document.createElement("div");
+    var childDiv11 = document.createElement("div");
+    var childDiv12 = document.createElement("div");
+    var childDiv13 = document.createElement("div");
+    var childDiv14 = document.createElement("div");
+    
+    var childSpan0 = document.createElement("span");
+    var childSpan1 = document.createElement("span");
+    
+    var childTr = document.createElement("tr");
+    var childTd0 = document.createElement("td");
+    var childTd1 = document.createElement("td");
+    var childTd2 = document.createElement("td");
+    var childTd3 = document.createElement("td");
+    var childTd4 = document.createElement("td");
+    var childTd5 = document.createElement("td");
+  
+    var childImg0 = document.createElement("img");
+    var childImg1 = document.createElement("img");
+    var childImg2 = document.createElement("img");
+    var childImg3 = document.createElement("img");
+    var childImg4 = document.createElement("img");
+    var childImg5 = document.createElement("img");
+    var childImg6 = document.createElement("img");
+    var childImg7 = document.createElement("img");
+    var childImg8 = document.createElement("img");
+    var childImg9 = document.createElement("img");
+    var childImg10 = document.createElement("img");
+    var childImg11 = document.createElement("img");
+    var childImg12 = document.createElement("img");
+  
+    childTd0.classList.add('dt-first');
+    childDiv0.classList.add('dt-first-first');
+    childSpan0.classList.add('c-l');
+    childImg0.classList.add('champ-icon');
+    childImg0.src =  version + "img/champion/" + match[k].get('matchData').participants[i].championName + ".png";
+    childDiv1.textContent = match[k].get('matchData').participants[i].champLevel;
+    childDiv1.classList.add('level');
+    fetch(spellUrl)
+    .then(response => response.json())
+    .then(data => {
+      var spellData = data.data;
+      // console.log(spellData);
+      function findSpellKey(value) {
+        for (let a in spellData) {
+          if (spellData[a].key == value) {
+            // console.log(spellData[a].image.full);
+            return spellData[a].image.full;
+          }
+        }
+        return null;
+      }
+      childImg1.src = version + "img/spell/" + findSpellKey(match[k].get('matchData').participants[i].summoner1Id);
+      childImg1.classList.add('dt-small-img');
+      childImg2.src = version + "img/spell/" + findSpellKey(match[k].get('matchData').participants[i].summoner2Id);
+      childImg2.classList.add('dt-small-img');
+    })
+    fetch(runeUrl)
+    .then(response => response.json())
+    .then(data => {
+      var runeData = data;
+      // console.log(runeData);
+      function findRuneKey(value) {
+        for (let a = 0; a < runeData.length; a++) {
+          if (runeData[a].id == value) {
+            // console.log(runeData[a].icon);
+            return runeData[a].icon;
+          }
+        }
+        return null;
+      }
+      function findMainRuneKey(value1,value2) {
+        for (let a = 0; a < runeData.length; a++) {
+          if (runeData[a].id == value1) {
+            // console.log(runeData[a].slots[0].runes.length);
+            for (let b = 0; b < runeData[a].slots[0].runes.length; b++) {
+              if (runeData[a].slots[0].runes[b].id == value2) {
+                // console.log(runeData[a].slots[0].runes[b].icon);
+                return runeData[a].slots[0].runes[b].icon;
+              }
+            }
+            return null;
+          }
+        }
+        return null;
+      }
+      childImg3.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findMainRuneKey(match[k].get('matchData').participants[i].perks.styles[0].style,match[k].get('matchData').participants[i].perks.styles[0].selections[0].perk);
+      childImg3.classList.add('dt-small-img');
+      childImg4.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findRuneKey(match[k].get('matchData').participants[i].perks.styles[1].style);
+      childImg4.classList.add('dt-small-img');
+    })
+    childDiv4.classList.add('nick-tier');
+    childDiv5.textContent = match[k].get('matchData').participants[i].summonerName;
+    childDiv6.textContent = match[k].get('matchUser')[i];
+    childDiv6.classList.add('font3');
+    childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
+    childImg5.classList.add('damage-graph');
+    childImg5.src = "/images/example.webp";
+    childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
+    childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
+    childDiv10.classList.add('font3');
+    childDiv11.textContent = match[k].get('matchData').participants[i].totalMinionsKilled + match[k].get('matchData').participants[i].neutralMinionsKilled;
+    childDiv12.textContent = "("+((match[k].get('matchData').participants[i].totalMinionsKilled + match[k].get('matchData').participants[i].neutralMinionsKilled) / match[k].get('matchData').gameDuration *60).toFixed(1)+")";
+    childDiv12.classList.add('font3');
+    childDiv13.textContent = match[k].get('matchData').participants[i].wardsPlaced;
+    childDiv14.textContent ="("+ (match[k].get('matchData').participants[i].wardsPlaced-match[k].get('matchData').participants[i].visionWardsBoughtInGame) +"/"+match[k].get('matchData').participants[i].visionWardsBoughtInGame+")";
+    childDiv14.classList.add('font3');
+    childImg6.classList.add('dt-smallItem-img');
+    childImg7.classList.add('dt-smallItem-img');
+    childImg8.classList.add('dt-smallItem-img');
+    childImg9.classList.add('dt-smallItem-img');
+    childImg10.classList.add('dt-smallItem-img');
+    childImg11.classList.add('dt-smallItem-img');
+    childImg12.classList.add('dt-smallItem-img');
+    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
+    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
+    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
+    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
+    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
+    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
+    childImg12.style.borderRadius = '50%'
+  
+    childTr.appendChild(childTd0);
+    childTd0.appendChild(childDiv0);
+    childDiv0.appendChild(childSpan0);
+    childSpan0.appendChild(childImg0);
+    childSpan0.appendChild(childDiv1);
+    childDiv0.appendChild(childSpan1);
+    childSpan1.appendChild(childDiv2);
+    childDiv2.appendChild(childImg1);
+    childDiv2.appendChild(childImg2);
+    childSpan1.appendChild(childDiv3);
+    childDiv3.appendChild(childImg3);
+    childDiv3.appendChild(childImg4);
+    childTd0.appendChild(childDiv4);
+    childDiv4.appendChild(childDiv5);
+    childDiv4.appendChild(childDiv6);
+    childTr.appendChild(childTd1);
+    childTd1.appendChild(childDiv7);
+    childTd1.appendChild(childDiv8);
+    childDiv8.appendChild(childImg5);
+    childTr.appendChild(childTd2);
+    childTd2.appendChild(childDiv9);
+    childTd2.appendChild(childDiv10);
+    childTr.appendChild(childTd3);
+    childTd3.appendChild(childDiv11);
+    childTd3.appendChild(childDiv12);
+    childTr.appendChild(childTd4);
+    childTd4.appendChild(childDiv13);
+    childTd4.appendChild(childDiv14);
+    childTr.appendChild(childTd5);
+    childTd5.appendChild(childImg6);
+    childTd5.appendChild(childImg7);
+    childTd5.appendChild(childImg8);
+    childTd5.appendChild(childImg9);
+    childTd5.appendChild(childImg10);
+    childTd5.appendChild(childImg11);
+    childTd5.appendChild(childImg12);
+    Id.appendChild(childTr);
+  }
+}
