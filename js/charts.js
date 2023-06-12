@@ -1,11 +1,16 @@
 const DATA_COUNT = 5;
 const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
 
-const data = {  
+var exData = new Map();
+exData.set('wins', sessionStorage.getItem('wins'));
+exData.set('losses', sessionStorage.getItem('losses'));
+console.log(exData);
+
+var data = {  
   datasets: [
     {
       label: 'Dataset 1',
-      data: [40,60],
+      data: [exData.get('wins'),exData.get('losses')],
       backgroundColor: ["#0000ff", "#626367"],
     }
   ]
@@ -13,7 +18,10 @@ const data = {
 
 const rate = document.querySelector("#rate");
 
-new Chart(rate, {
+
+
+setTimeout(function(){
+  new Chart(rate, {
     type: 'doughnut',
     data: data,
     options: {
@@ -25,6 +33,7 @@ new Chart(rate, {
     }
   }
 });
+},1050);
 
 //티어변화 그래프
 var tierGraphData = {
