@@ -210,44 +210,21 @@ async function loadData() {
         await getInGameData();
       }
       console.log(userList);
-      // //#endregion
-
-      // setTimeout(function () {
-      //   console.log(championKeyList);
-      //   console.log(championNameList);
-      // }, 10);
-
       //#endregion
 
-      // 챔피언 확률 계산
-      let pickCount;
-      let pickChampionRate;
-      let banCount;
-      let banChampionRate;
+      //#endregion
 
       for (let i = 0; i < banChampionIdList.length; i++) {
         localStorage.setItem("ban" + banSize, banChampionIdList[i]);
         console.log("ban Success");
         banSize++;
       }
-      // banCount 1
-      let test;
       for (let i = 0; i < userList.length; i++) {
         localStorage.setItem("user" + userSize, JSON.stringify(userList[i]));
         console.log("userData Success");
         userSize++;
       }
-      // userCount 1
       localStorage.setItem("dataCount", dataCount);
-
-      // var items = localStorage.getItem("aaaa");
-      // if (!items) {
-      //   // API로 가져옴
-      //   items = [];
-      //   localStorage.setItem("aaaa", JSON.stringify(items));
-      // } else {
-      //   items = JSON.parse(items);
-      // }
     });
   };
   function wait(sec) {
@@ -283,7 +260,7 @@ async function loadData() {
 var length = localStorage.length;
 let banList = [];
 let userList = [];
-let etc;
+let etc = [];
 
 for (let i = 0; i < length; i++) {
   if (localStorage.key(i).charAt(0) == "u") {
@@ -291,7 +268,7 @@ for (let i = 0; i < length; i++) {
   } else if (localStorage.key(i).charAt(0) == "b") {
     banList.push(localStorage.key(i));
   } else {
-    etc = localStorage.key(i);
+    etc.push(localStorage.key(i));
   }
 }
 
@@ -381,7 +358,9 @@ fetch(championUrl)
 
     //#region  > 픽률
     let champPickData = [];
-    console.log(userDataList[0]);
+
+    console.log(userDataList);
+
     for (let i = 0; i < champDataList.length; i++) {
       let champCount = 0;
       for (let j = 0; j < userDataList.length; j++) {
@@ -397,7 +376,7 @@ fetch(championUrl)
 
       champPickData.push(data);
     }
-    console.log(champPickData);
+    // console.log(champPickData);
     //#endregion 픽률
 
     //#region  > 승률
@@ -405,19 +384,38 @@ fetch(championUrl)
 
     for (let i = 0; i < champDataList.length; i++) {
       let winCount = 0;
+      let pickCount = 0;
+      let winVersusList = [];
+      let loseVersusList = [];
       for (let j = 0; j < userDataList.length; j++) {
-        if (userDataList[j].win == "true") winCount++;
+        if (champDataList[i].id == userDataList[j].championName) pickCount++;
+        if (
+          champDataList[i].id == userDataList[j].championName &&
+          userDataList[j].win == true
+        ) {
+          winVersusList.push(userDataList[j].versus);
+          winCount++;
+        }
+        if (
+          champDataList[i].id == userDataList[j].championName &&
+          userDataList[j].win == false
+        ) {
+          loseVersusList.push(userDataList[j].versus);
+        }
       }
-      var percent = ((winCount / userDataList.length) * 100).toFixed(2);
+      var percent = ((winCount / pickCount) * 100).toFixed(2);
 
       var data = {
         id: champDataList[i].id,
         name: champDataList[i].name,
-        count: percent,
+        winRate: percent,
+        winVersus: winVersusList,
+        loseVersus: loseVersusList,
       };
 
       champWinData.push(data);
     }
+    console.log(champWinData);
     //#endregion 승률
 
     //#endregion
