@@ -32,7 +32,7 @@ async function loadData() {
       let data = [];
       let encodedName = [];
       //  tierUserList에 담긴 205명 중 10명만 - 최대 : i < data.length
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < data.length; i++) {
         data.push(Object.values(rawData[i]));
         tierUserList.push(data[i][5]);
         encodedName.push(encodeURI(data[i][5]));
@@ -89,7 +89,6 @@ async function loadData() {
         getMatchData();
       }
       //#endregion
-      console.log(matchList);
 
       //#region matchList를 이용해서 게임 내역을 받고 거기서 데이터 빼오기
       const inGameStartUrl =
@@ -207,44 +206,6 @@ async function loadData() {
       //#endregion
       console.log(banChampionIdList);
       console.log(userList);
-      //#region 롤 챔피언 정보
-      let championNameList = [];
-      let championKeyList = [];
-      let championIdList = [];
-
-      // const championRawData = fetch(championUrl)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then(function (rawdata) {
-      //     return rawdata.data;
-      //   });
-
-      // const championResponse = await fetch(championUrl);
-      // const championRawData = championResponse.json();
-
-      // const getChampionData = () => {
-      //   championRawData.then((rawData) => {
-      //     let dataList = Object.values(rawData.data);
-      //     // console.log(dataList);
-      //     dataList.sort(function (a, b) {
-      //       var nameA = a.name;
-      //       var nameB = b.name;
-      //       return nameA.localeCompare(nameB);
-      //     });
-
-      //     for (var i = 0; i < dataList.length; i++) {
-      //       // key
-      //       championKeyList.push(dataList[i].key);
-      //       // name
-      //       championNameList.push(dataList[i].name);
-      //       // console.log(championNameList);
-      //     }
-      //     console.log(championNameList);
-      //     console.log(championKeyList);
-      //   });
-      // };
-      // getChampionData();
 
       // setTimeout(function () {
       //   console.log(championKeyList);
@@ -258,10 +219,18 @@ async function loadData() {
       let pickChampionRate;
       let banCount;
       let banChampionRate;
-      for (let i = 0; i < banChampionIdList.length; i++) {
-        for (let j = 0; i < banChampionIdList.length; j++) {}
-        console.log(userList[0].get("championName"));
-      }
+      // for (let i = 0; i < banChampionIdList.length; i++) {
+      //   for (let j = 0; i < banChampionIdList.length; j++) {}
+      //   console.log(userList[0].get("championName"));
+      // }
+      // var items = localStorage.getItem("aaaa");
+      // if (!items) {
+      //   // API로 가져옴
+      //   items = [];
+      //   localStorage.setItem("aaaa", JSON.stringify(items));
+      // } else {
+      //   items = JSON.parse(items);
+      // }
     });
   };
   gettierUserData();
