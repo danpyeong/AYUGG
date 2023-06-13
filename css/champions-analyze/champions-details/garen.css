@@ -367,6 +367,10 @@ ul {
   padding: 10px 0px;
 }
 
+.line td img {
+  background-color: rgb(171, 171, 171);
+}
+
 .rune-visible {
   opacity: 1;
   filter: grayscale(0);
@@ -479,19 +483,8 @@ ul {
   height: 18px;
   font-size: 12px;
   color: #000000;
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 255, 255);
   margin: 2px;
-}
-
-#skill-6,
-#skill-11 {
-  background-color: rgb(96, 96, 240);
-  color: #fff;
-}
-
-#skill-9 {
-  background-color: rgb(255, 26, 26);
-  color: #fff;
 }
 
 /* --------------------------------- */
