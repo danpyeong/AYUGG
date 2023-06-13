@@ -1,6 +1,6 @@
 const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
-// const testnick = "2U35";
 const testnick = "hideonbush";
+// const testnick = sessionStorage.getItem('nickname');
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 let UserUrl = SereachByNickStartUrl + encodedName + "?api_key=" + apiKey;
@@ -36,7 +36,7 @@ function loadingData() {
     .then((response2) => {
       return response2.json();
     })
-    .then(async(rawData2)=>{
+    .then((rawData2)=>{
       let data2 = Object.values(rawData2);
       for(let i=0;i<10;i++){
         match[i] = new Map();
@@ -78,38 +78,8 @@ function loadingData() {
         let matchUser = new Array();
         for(let j=0;j<1;j++){
           let appData = data[j].get('matchData');
-          // console.log(appData);
-          // dataSet.set('gameEndTimestamp', appData.gameEndTimestamp);
-          // dataSet.set('gameDuration', appData.gameDuration);
           let userTier = new Array();
           matchUser[j] = userTier
-          // for(let i=0;i<10;i++){
-          //   user[i] = new Map();
-
-          //   user[i].set('championName', appData.participants[i].championName);
-          //   user[i].set('primaryStyle', appData.participants[i].perks.styles[0].style);
-          //   user[i].set('subStyle', appData.participants[i].perks.styles[1].style);
-          //   user[i].set('summoner1Id', appData.participants[i].summoner1Id);
-          //   user[i].set('summoner2Id', appData.participants[i].summoner2Id);
-          //   user[i].set('assists', appData.participants[i].assists);
-          //   user[i].set('deaths', appData.participants[i].deaths);
-          //   user[i].set('kills', appData.participants[i].kills);
-          //   user[i].set('teamId', appData.participants[i].teamId);
-          //   user[i].set('killParticipation', appData.participants[i].challenges.killParticipation);
-          //   user[i].set('cs', appData.participants[i].totalMinionsKilled + appData.participants[0].neutralMinionsKilled);
-          //   user[i].set('item0', appData.participants[i].item0);
-          //   user[i].set('item1', appData.participants[i].item1);
-          //   user[i].set('item2', appData.participants[i].item2);
-          //   user[i].set('item3', appData.participants[i].item3);
-          //   user[i].set('item4', appData.participants[i].item4);
-          //   user[i].set('item5', appData.participants[i].item5);
-          //   user[i].set('item6', appData.participants[i].item6);
-          //   user[i].set('summonerName', appData.participants[i].summonerName);
-          //   user[i].set('wardsPlaced', appData.participants[i].wardsPlaced);//총와드
-          //   user[i].set('visionWardsBoughtInGame', appData.participants[i].visionWardsBoughtInGame);//핑와
-          //   user[i].set('totalDamageDealtToChampions', appData.participants[i].totalDamageDealtToChampions);
-          //   user[i].set('summonerId', appData.participants[i].summonerId);
-          //   user[i].set('champLevel', appData.participants[i].champLevel);
 
           for(let i=0;i<10;i++){
             let UidguestUrl =  TierUrl + appData.participants[i].summonerId + "?api_key=" + apiKey;
@@ -165,15 +135,77 @@ setTimeout(function(){
   sessionStorage.setItem('losses', dataSet.get('losses'));
 
   var statitext1 = document.getElementById("statiRate");
-  statitext1.innerHTML = Math.floor(dataSet.get('wins') / (dataSet.get('wins')+dataSet.get('losses')) *100) +"%";
+  statitext1.innerHTML = Math.floor(dataSet.get('wins') / (dataSet.get('wins') + dataSet.get('losses')) *100) +"%";
   var statitext2 = document.getElementById("statiWL");
   statitext2.innerHTML = dataSet.get('wins')+"승 "+dataSet.get('losses')+"패";
-  // var statitext3 = document.getElementById("statiKDA");
-  // statitext3.innerHTML = dataSet.get('nickname');
-  // var statitext4 = document.getElementById("statiKda");
-  // statitext4.innerHTML = dataSet.get('nickname');
-  // var statitext5 = document.getElementById("statiKillRate");
-  // statitext5.innerHTML = dataSet.get('nickname');
+
+  var statiMost = statiMostChamp();
+  var statiMostWhole = statiMostWholeChamp();
+  console.log(statiMost);
+  
+  var SMWtext1 = document.getElementById("SMWKDARate");
+  SMWtext1.innerText = "KDA " + ((statiMostWhole.get('kills') + statiMostWhole.get('assists')) / statiMostWhole.get('deaths')).toFixed(2);
+  var SMWtext2 = document.getElementById("SMWKDA");
+  SMWtext2.innerText = (statiMostWhole.get('kills') / statiMostWhole.get('games')).toFixed(1) +"/"+(statiMostWhole.get('deaths') / statiMostWhole.get('games')).toFixed(1) +"/"+(statiMostWhole.get('assists') / statiMostWhole.get('games')).toFixed(1);
+  var SMWtext3 = document.getElementById("SMWCS");
+  SMWtext3.innerText = "CS " + Math.floor(statiMostWhole.get('CS') / statiMostWhole.get('games'));
+  var SMWtext4 = document.getElementById("SMWRate");
+  SMWtext4.innerText = Math.floor(statiMostWhole.get('win') / statiMostWhole.get('games') *100) +"%";
+  var SMWtext5 = document.getElementById("SMWGames");
+  SMWtext5.innerText = statiMostWhole.get('games') +"전";
+  
+  var SMtext0 = document.getElementById("SMChamp");
+  SMtext0.innerText = statiMost[0].get('champname');
+  document.getElementById("SMChampIcon").src = version + "img/champion/" + statiMost[0].get('champname') + ".png";
+  var SMtext1 = document.getElementById("SMKDARate");
+  SMtext1.innerText = "KDA " + ((statiMost[0].get('kills') + statiMost[0].get('assists')) / statiMost[0].get('deaths')).toFixed(2);
+  var SMtext2 = document.getElementById("SMKDA");
+  SMtext2.innerText = (statiMost[0].get('kills') / statiMost[0].get('games')).toFixed(1) +"/"+(statiMost[0].get('deaths') / statiMost[0].get('games')).toFixed(1) +"/"+(statiMost[0].get('assists') / statiMost[0].get('games')).toFixed(1);
+  var SMtext3 = document.getElementById("SMCS");
+  SMtext3.innerText = "CS " + Math.floor(statiMost[0].get('CS') / statiMost[0].get('games'));
+  var SMtext4 = document.getElementById("SMRate");
+  SMtext4.innerText = Math.floor(statiMost[0].get('win') / statiMost[0].get('games') *100) +"%";
+  var SMtext5 = document.getElementById("SMGames");
+  SMtext5.innerText = statiMost[0].get('games') +"전";
+  
+  var SMtext01 = document.getElementById("SMChamp1");
+  SMtext01.innerText = statiMost[1].get('champname');
+  document.getElementById("SMChampIcon1").src = version + "img/champion/" + statiMost[1].get('champname') + ".png";
+  var SMtext11 = document.getElementById("SMKDARate1");
+  SMtext11.innerText = "KDA " + ((statiMost[1].get('kills') + statiMost[1].get('assists')) / statiMost[1].get('deaths')).toFixed(2);
+  var SMtext21 = document.getElementById("SMKDA1");
+  SMtext21.innerText = (statiMost[1].get('kills') / statiMost[1].get('games')).toFixed(1) +"/"+(statiMost[1].get('deaths') / statiMost[1].get('games')).toFixed(1) +"/"+(statiMost[1].get('assists') / statiMost[1].get('games')).toFixed(1);
+  var SMtext31 = document.getElementById("SMCS1");
+  SMtext31.innerText = "CS " + Math.floor(statiMost[1].get('CS') / statiMost[1].get('games'));
+  var SMtext41 = document.getElementById("SMRate1");
+  SMtext41.innerText = Math.floor(statiMost[1].get('win') / statiMost[1].get('games') *100) +"%";
+  var SMtext51 = document.getElementById("SMGames1");
+  SMtext51.innerText = statiMost[1].get('games') +"전";
+  
+  var SMtext02 = document.getElementById("SMChamp2");
+  SMtext02.innerText = statiMost[2].get('champname');
+  document.getElementById("SMChampIcon2").src = version + "img/champion/" + statiMost[2].get('champname') + ".png";
+  var SMtext12 = document.getElementById("SMKDARate2");
+  SMtext12.innerText = "KDA " + ((statiMost[2].get('kills') + statiMost[2].get('assists')) / statiMost[2].get('deaths')).toFixed(2);
+  var SMtext22 = document.getElementById("SMKDA2");
+  SMtext22.innerText = (statiMost[2].get('kills') / statiMost[2].get('games')).toFixed(1) +"/"+(statiMost[2].get('deaths') / statiMost[2].get('games')).toFixed(1) +"/"+(statiMost[2].get('assists') / statiMost[2].get('games')).toFixed(1);
+  var SMtext32 = document.getElementById("SMCS2");
+  SMtext32.innerText = "CS " + Math.floor(statiMost[2].get('CS') / statiMost[2].get('games'));
+  var SMtext42 = document.getElementById("SMRate2");
+  SMtext42.innerText = Math.floor(statiMost[2].get('win') / statiMost[2].get('games') *100) +"%";
+  var SMtext52 = document.getElementById("SMGames2");
+  SMtext52.innerText = statiMost[2].get('games') +"전";
+
+
+  var ad = statiMost[0].get('champname');
+  fetch(version + "data/ko_KR/champion/"+ad+".json")
+  .then((response) => response.json())
+  .then((data) => {
+    var champData = data.data;
+    var we = Object.values(champData);
+    SMtext0.innerText = we[0].name;
+  })
+  
 
   console.log(dataSet);
   console.log(match);
@@ -184,11 +216,6 @@ setTimeout(function(){
   var text2 = document.getElementById("tier-name");
   var text3 = document.getElementById("point");
   var text4 = document.getElementById("winRate");
-  var text5 = document.getElementById("queueType"); 
-  var text6 = document.getElementById("matchDate");
-  var text7 = document.getElementById("matchTime");
-  var whole = parseInt(dataSet.get('wins'))+parseInt(dataSet.get('losses'));
-  var matchStyle = document.getElementById("matchStyle");
 
   if (dataSet.has('tier')){
     exTier = dataSet.get('tier');
@@ -204,12 +231,16 @@ setTimeout(function(){
   }
 
   if(dataSet.has('wins')&&dataSet.has('losses')){
-    text4.innerHTML = "승률 "+ Math.floor(dataSet.get('wins') / whole *100) +"% ("+dataSet.get('wins')+"승"+dataSet.get('losses')+"패)";
+    text4.innerHTML = "승률 "+ Math.floor(dataSet.get('wins') / (dataSet.get('wins') + dataSet.get('losses')) *100) +"% ("+dataSet.get('wins')+"승"+dataSet.get('losses')+"패)";
   }else{
     text4.innerHTML = "승률을 위한 데이터수 부족"
   }
   eta = new Date();
   for(let k=0; k<1; k++){//match 1개
+    var text5 = document.getElementById("queueType"); 
+    var text6 = document.getElementById("matchDate");
+    var text7 = document.getElementById("matchTime");
+    var matchStyle = document.getElementById("matchStyle");
     if(match[k].get('matchData').queueId == 420){
       text5.innerText = "솔로 랭크";
     } else if(match[k].get('matchData').queueId == 430){
@@ -296,43 +327,81 @@ setTimeout(function(){
         text11.innerText = "CS "+ (owner.totalMinionsKilled + owner.neutralMinionsKilled);
         if(owner.item0 != 0){
           document.getElementById("item1").src = version +"img/item/"+ owner.item0 +".png";
+        } else {
+          document.getElementById("item1").src = "/images/item-none.jpg";
+          document.getElementById("item1").style.opacity = '0.3';
         }
         if(owner.item1 != 0){
           document.getElementById("item2").src = version +"img/item/"+ owner.item1 +".png";
+        } else {
+          document.getElementById("item2").src = "/images/item-none.jpg";
+          document.getElementById("item2").style.opacity = '0.3';
         }
         if(owner.item2 != 0){
           document.getElementById("item3").src = version +"img/item/"+ owner.item2 +".png";
+        } else {
+          document.getElementById("item3").src = "/images/item-none.jpg";
+          document.getElementById("item3").style.opacity = '0.3';
         }
         if(owner.item3 != 0){
           document.getElementById("item4").src = version +"img/item/"+ owner.item3 +".png";
+        } else {
+          document.getElementById("item4").src = "/images/item-none.jpg";
+          document.getElementById("item4").style.opacity = '0.3';
         }
         if(owner.item4 != 0){
           document.getElementById("item5").src = version +"img/item/"+ owner.item4 +".png";
+        } else {
+          document.getElementById("item5").src = "/images/item-none.jpg";
+          document.getElementById("item5").style.opacity = '0.3';
         }
         if(owner.item5 != 0){
           document.getElementById("item6").src = version +"img/item/"+ owner.item5 +".png";
+        } else {
+          document.getElementById("item6").src = "/images/item-none.jpg";
+          document.getElementById("item6").style.opacity = '0.3';
         }
         if(owner.item6 != 0){
           document.getElementById("item7").src = version +"img/item/"+ owner.item6 +".png";
+        } else {
+          document.getElementById("item7").src = "/images/item-none.jpg";
+          document.getElementById("item7").style.opacity = '0.3';
         }
       }
     }
     partiListMaking1("partiList1",k);
     partiListMaking2("partiList2",k);
-
     
     var text12 = document.getElementById("teamBlueWL");
     var text13 = document.getElementById("teamRedWL");
+    var pathTB = document.getElementById("towerBluePath");
+    var pathTR = document.getElementById("towerRedPath");
+    var pathDB = document.getElementById("dragonBluePath");
+    var pathDR = document.getElementById("dragonRedPath");
+    var pathBB = document.getElementById("baronBluePath");
+    var pathBR = document.getElementById("baronRedPath");
     if(match[k].get('matchData').teams[0].win){
       text12.innerText = "승리";
-      text12.style.color= "rgba(0, 0, 255, 0.5)"
+      text12.style.color = "rgba(0, 0, 255, 0.5)";
+      pathTB.style.fill = "rgba(0, 0, 255, 0.5)";
+      pathDB.style.fill = "rgba(0, 0, 255, 0.5)";
+      pathBB.style.fill = "rgba(0, 0, 255, 0.5)";
       text13.innerText = "패배";
-      text13.style.color= "rgba(255, 0, 0, 0.5)"
+      text13.style.color = "rgba(255, 0, 0, 0.5)";
+      pathTR.style.fill = "rgba(255, 0, 0, 0.5)";
+      pathDR.style.fill = "rgba(255, 0, 0, 0.5)";
+      pathBR.style.fill = "rgba(255, 0, 0, 0.5)";
     } else{
       text12.innerText = "패배";
-      text12.style.color= "rgba(255, 0, 0, 0.5)"
+      text12.style.color = "rgba(255, 0, 0, 0.5)";
+      pathTB.style.fill = "rgba(255, 0, 0, 0.5)";
+      pathDB.style.fill = "rgba(255, 0, 0, 0.5)";
+      pathBB.style.fill = "rgba(255, 0, 0, 0.5)";
       text13.innerText = "승리";
-      text13.style.color= "rgba(0, 0, 255, 0.5)"
+      text13.style.color = "rgba(0, 0, 255, 0.5)";
+      pathTR.style.fill = "rgba(0, 0, 255, 0.5)";
+      pathDR.style.fill = "rgba(0, 0, 255, 0.5)";
+      pathBR.style.fill = "rgba(0, 0, 255, 0.5)";
     }    
     // console.log(match[k].get('matchData').teams[0]);
     var text14 = document.getElementById("towerBlue");
@@ -368,10 +437,9 @@ setTimeout(function(){
 
     matchDtFirstBlue("dtPartiBlue",k);
     matchDtFirstRed("dtPartiRed",k);
-    }
-    // matchDtFirst("test",0);
     
-}, 1000);
+    }
+}, 1800);
 
 
 function partiListMaking1(id,k){
@@ -419,7 +487,7 @@ function matchDtFirstBlue(id,k){
     var childDiv3 = document.createElement("div");
     var childDiv4 = document.createElement("div");
     var childDiv5 = document.createElement("div");
-    var childDiv6 = document.createElement("div");
+    const childDiv6 = document.createElement("div");
     var childDiv7 = document.createElement("div");
     var childDiv8 = document.createElement("div");
     var childDiv9 = document.createElement("div");
@@ -428,6 +496,8 @@ function matchDtFirstBlue(id,k){
     var childDiv12 = document.createElement("div");
     var childDiv13 = document.createElement("div");
     var childDiv14 = document.createElement("div");
+    var childDiv15 = document.createElement("div");
+    var childDiv16 = document.createElement("div");
     
     var childSpan0 = document.createElement("span");
     var childSpan1 = document.createElement("span");
@@ -440,19 +510,19 @@ function matchDtFirstBlue(id,k){
     var childTd4 = document.createElement("td");
     var childTd5 = document.createElement("td");
   
-    var childImg0 = document.createElement("img");
-    var childImg1 = document.createElement("img");
-    var childImg2 = document.createElement("img");
-    var childImg3 = document.createElement("img");
-    var childImg4 = document.createElement("img");
-    var childImg5 = document.createElement("img");
-    var childImg6 = document.createElement("img");
-    var childImg7 = document.createElement("img");
-    var childImg8 = document.createElement("img");
-    var childImg9 = document.createElement("img");
-    var childImg10 = document.createElement("img");
-    var childImg11 = document.createElement("img");
-    var childImg12 = document.createElement("img");
+    const childImg0 = document.createElement("img");
+    const childImg1 = document.createElement("img");
+    const childImg2 = document.createElement("img");
+    const childImg3 = document.createElement("img");
+    const childImg4 = document.createElement("img");
+    const childImg5 = document.createElement("img");
+    const childImg6 = document.createElement("img");
+    const childImg7 = document.createElement("img");
+    const childImg8 = document.createElement("img");
+    const childImg9 = document.createElement("img");
+    const childImg10 = document.createElement("img");
+    const childImg11 = document.createElement("img");
+    const childImg12 = document.createElement("img");
   
     childTd0.classList.add('dt-first');
     childDiv0.classList.add('dt-first-first');
@@ -520,8 +590,9 @@ function matchDtFirstBlue(id,k){
     childDiv6.textContent = match[k].get('matchUser')[i];
     childDiv6.classList.add('font3');
     childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
-    childImg5.classList.add('damage-graph');
-    childImg5.src = "/images/example.webp";
+    childDiv15.classList.add('damage-graph');
+    childDiv16.classList.add('bar');
+    childDiv16.style.width = match[k].get('matchData').participants[i].totalDamageDealtToChampions/(mostDamage(k))*60+'px';
     childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
     childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
     childDiv10.classList.add('font3');
@@ -538,14 +609,49 @@ function matchDtFirstBlue(id,k){
     childImg10.classList.add('dt-smallItem-img');
     childImg11.classList.add('dt-smallItem-img');
     childImg12.classList.add('dt-smallItem-img');
-    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
-    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
-    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
-    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
-    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
-    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
-    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
-    childImg12.style.borderRadius = '50%'
+    if(match[k].get('matchData').participants[i].item0 == 0){
+      childImg6.src = "/images/item-none.jpg";
+      childImg6.style.opacity = '0.3';
+    }else {
+      childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item1 == 0){
+      childImg7.src = "/images/item-none.jpg";
+      childImg7.style.opacity = '0.3';
+    }else {
+      childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    }
+    if(match[k].get('matchData').participants[i].item2 == 0){
+      childImg8.src = "/images/item-none.jpg";
+      childImg8.style.opacity = '0.3';
+    }else {
+      childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item3 == 0){
+      childImg9.src = "/images/item-none.jpg";
+      childImg9.style.opacity = '0.3';
+    }else {
+      childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item4 == 0){
+      childImg10.src = "/images/item-none.jpg";
+      childImg10.style.opacity = '0.3';
+    }else {
+      childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item5 == 0){
+      childImg11.src = "/images/item-none.jpg";
+      childImg11.style.opacity = '0.3';
+    }else {
+      childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item6 == 0){
+      childImg12.src = "/images/item-none.jpg";
+      childImg12.style.opacity = '0.3';
+    }else {
+      childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";     
+    }
+    childImg12.style.borderRadius = '50%';
   
     childTr.appendChild(childTd0);
     childTd0.appendChild(childDiv0);
@@ -565,7 +671,8 @@ function matchDtFirstBlue(id,k){
     childTr.appendChild(childTd1);
     childTd1.appendChild(childDiv7);
     childTd1.appendChild(childDiv8);
-    childDiv8.appendChild(childImg5);
+    childDiv8.appendChild(childDiv15);
+    childDiv15.appendChild(childDiv16);
     childTr.appendChild(childTd2);
     childTd2.appendChild(childDiv9);
     childTd2.appendChild(childDiv10);
@@ -604,6 +711,8 @@ function matchDtFirstRed(id,k){
     var childDiv12 = document.createElement("div");
     var childDiv13 = document.createElement("div");
     var childDiv14 = document.createElement("div");
+    var childDiv15 = document.createElement("div");
+    var childDiv16 = document.createElement("div");
     
     var childSpan0 = document.createElement("span");
     var childSpan1 = document.createElement("span");
@@ -616,19 +725,19 @@ function matchDtFirstRed(id,k){
     var childTd4 = document.createElement("td");
     var childTd5 = document.createElement("td");
   
-    var childImg0 = document.createElement("img");
-    var childImg1 = document.createElement("img");
-    var childImg2 = document.createElement("img");
-    var childImg3 = document.createElement("img");
-    var childImg4 = document.createElement("img");
-    var childImg5 = document.createElement("img");
-    var childImg6 = document.createElement("img");
-    var childImg7 = document.createElement("img");
-    var childImg8 = document.createElement("img");
-    var childImg9 = document.createElement("img");
-    var childImg10 = document.createElement("img");
-    var childImg11 = document.createElement("img");
-    var childImg12 = document.createElement("img");
+    const childImg0 = document.createElement("img");
+    const childImg1 = document.createElement("img");
+    const childImg2 = document.createElement("img");
+    const childImg3 = document.createElement("img");
+    const childImg4 = document.createElement("img");
+    const childImg5 = document.createElement("img");
+    const childImg6 = document.createElement("img");
+    const childImg7 = document.createElement("img");
+    const childImg8 = document.createElement("img");
+    const childImg9 = document.createElement("img");
+    const childImg10 = document.createElement("img");
+    const childImg11 = document.createElement("img");
+    const childImg12 = document.createElement("img");
   
     childTd0.classList.add('dt-first');
     childDiv0.classList.add('dt-first-first');
@@ -695,8 +804,9 @@ function matchDtFirstRed(id,k){
     childDiv6.textContent = match[k].get('matchUser')[i];
     childDiv6.classList.add('font3');
     childDiv7.textContent = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
-    childImg5.classList.add('damage-graph');
-    childImg5.src = "/images/example.webp";
+    childDiv15.classList.add('damage-graph');
+    childDiv16.classList.add('bar');
+    childDiv16.style.width = match[k].get('matchData').participants[i].totalDamageDealtToChampions/(mostDamage(k))*60+'px';
     childDiv9.textContent = match[k].get('matchData').participants[i].kills +"/"+ match[k].get('matchData').participants[i].deaths +"/"+ match[k].get('matchData').participants[i].assists;
     childDiv10.textContent = "("+((match[k].get('matchData').participants[i].kills + match[k].get('matchData').participants[i].assists) / match[k].get('matchData').participants[i].deaths).toFixed(1)+")";
     childDiv10.classList.add('font3');
@@ -713,14 +823,49 @@ function matchDtFirstRed(id,k){
     childImg10.classList.add('dt-smallItem-img');
     childImg11.classList.add('dt-smallItem-img');
     childImg12.classList.add('dt-smallItem-img');
-    childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";
-    childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
-    childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";
-    childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";
-    childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";
-    childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";
-    childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";
-    childImg12.style.borderRadius = '50%'
+    if(match[k].get('matchData').participants[i].item0 == 0){
+      childImg6.src = "/images/item-none.jpg";
+      childImg6.style.opacity = '0.3';
+    }else {
+      childImg6.src = version +"img/item/"+ match[k].get('matchData').participants[i].item0 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item1 == 0){
+      childImg7.src = "/images/item-none.jpg";
+      childImg7.style.opacity = '0.3';
+    }else {
+      childImg7.src = version +"img/item/"+ match[k].get('matchData').participants[i].item1 +".png";
+    }
+    if(match[k].get('matchData').participants[i].item2 == 0){
+      childImg8.src = "/images/item-none.jpg";
+      childImg8.style.opacity = '0.3';
+    }else {
+      childImg8.src = version +"img/item/"+ match[k].get('matchData').participants[i].item2 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item3 == 0){
+      childImg9.src = "/images/item-none.jpg";
+      childImg9.style.opacity = '0.3';
+    }else {
+      childImg9.src = version +"img/item/"+ match[k].get('matchData').participants[i].item3 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item4 == 0){
+      childImg10.src = "/images/item-none.jpg";
+      childImg10.style.opacity = '0.3';
+    }else {
+      childImg10.src = version +"img/item/"+ match[k].get('matchData').participants[i].item4 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item5 == 0){
+      childImg11.src = "/images/item-none.jpg";
+      childImg11.style.opacity = '0.3';
+    }else {
+      childImg11.src = version +"img/item/"+ match[k].get('matchData').participants[i].item5 +".png";      
+    }
+    if(match[k].get('matchData').participants[i].item6 == 0){
+      childImg12.src = "/images/item-none.jpg";
+      childImg12.style.opacity = '0.3';
+    }else {
+      childImg12.src = version +"img/item/"+ match[k].get('matchData').participants[i].item6 +".png";     
+    }
+    childImg12.style.borderRadius = '50%';
   
     childTr.appendChild(childTd0);
     childTd0.appendChild(childDiv0);
@@ -740,7 +885,8 @@ function matchDtFirstRed(id,k){
     childTr.appendChild(childTd1);
     childTd1.appendChild(childDiv7);
     childTd1.appendChild(childDiv8);
-    childDiv8.appendChild(childImg5);
+    childDiv8.appendChild(childDiv15);
+    childDiv15.appendChild(childDiv16);
     childTr.appendChild(childTd2);
     childTd2.appendChild(childDiv9);
     childTd2.appendChild(childDiv10);
@@ -760,4 +906,98 @@ function matchDtFirstRed(id,k){
     childTd5.appendChild(childImg12);
     Id.appendChild(childTr);
   }
+}
+
+function mostDamage(k){
+  let mostDamage = match[k].get('matchData').participants[0].totalDamageDealtToChampions;
+  for(let i=1;i<10;i++){
+    if(mostDamage < match[k].get('matchData').participants[i].totalDamageDealtToChampions){
+      mostDamage = match[k].get('matchData').participants[i].totalDamageDealtToChampions;
+    }
+  }
+  return mostDamage;
+}
+
+function statiMostChamp(){
+  //champ kda killrate cs win
+  let statiexMostChamp = new Array();
+  const Num = 4;
+  for(let i=0; i<Num; i++){
+    for(let finduser=0; finduser<10; finduser++){
+      if(dataSet.get('id') == match[i].get('matchData').participants[finduser].summonerId){
+        let owner = match[i].get('matchData').participants[finduser];
+        let statiexSet = new Map();
+        statiexSet.set('champname', owner.championName);
+        statiexSet.set('kills', owner.kills);
+        statiexSet.set('deaths', owner.deaths);
+        statiexSet.set('assists', owner.assists);
+        statiexSet.set('CS', (owner.totalMinionsKilled + owner.neutralMinionsKilled));
+        if(owner.win == true){
+          statiexSet.set('win', 1);
+        } else {
+          statiexSet.set('win', 0);
+        }
+        statiexSet.set('games', 1);
+        statiexMostChamp[i] = statiexSet;
+      }
+    }
+  }
+  for(let b = 0; b<Num-1; b++){
+    for(let a=b; a<Num-1; a++){
+      if(statiexMostChamp[a].get('champname') == statiexMostChamp[a+1].get('champname')){
+        statiexMostChamp[a+1].set('kills', statiexMostChamp[a].get('kills')+statiexMostChamp[a+1].get('kills'));
+        statiexMostChamp[a+1].set('deaths', statiexMostChamp[a].get('deaths')+statiexMostChamp[a+1].get('deaths'));
+        statiexMostChamp[a+1].set('assists', statiexMostChamp[a].get('assists')+statiexMostChamp[a+1].get('assists'));
+        statiexMostChamp[a+1].set('CS', statiexMostChamp[a].get('CS')+statiexMostChamp[a+1].get('CS'));
+        statiexMostChamp[a+1].set('win', statiexMostChamp[a].get('win')+statiexMostChamp[a+1].get('win'));
+        statiexMostChamp[a+1].set('games', statiexMostChamp[a].get('games')+statiexMostChamp[a+1].get('games'));
+        statiexMostChamp[a] = null;
+      }
+    }
+  }
+  // console.log(statiexMostChamp);
+  var filteredArray = statiexMostChamp.filter((value) => value != null);
+  filteredArray.sort((a, b) => {
+    if(a.games == b.games){
+      return b.get('win') - a.get('win');
+    } else {
+      return b.get('games') - a.get('games');
+    }
+  });
+  return filteredArray;
+}
+
+function statiMostWholeChamp(){
+  //champ kda killrate cs win
+  let statiMostWholeChamp = new Array();
+  const Num = 4;
+  for(let i=0; i<Num; i++){
+    for(let finduser=0; finduser<10; finduser++){
+      if(dataSet.get('id') == match[i].get('matchData').participants[finduser].summonerId){
+        let owner = match[i].get('matchData').participants[finduser];
+        let statiexSet = new Map();
+        statiexSet.set('champname', owner.championName);
+        statiexSet.set('kills', owner.kills);
+        statiexSet.set('deaths', owner.deaths);
+        statiexSet.set('assists', owner.assists);
+        statiexSet.set('CS', (owner.totalMinionsKilled + owner.neutralMinionsKilled));
+        if(owner.win == true){
+          statiexSet.set('win', 1);
+        } else {
+          statiexSet.set('win', 0);
+        }
+        statiexSet.set('games', 1);
+        statiMostWholeChamp[i] = statiexSet;
+      }
+    }
+  }
+    for(let a=0; a<Num-1; a++){
+      statiMostWholeChamp[a+1].set('kills', statiMostWholeChamp[a].get('kills')+statiMostWholeChamp[a+1].get('kills'));
+      statiMostWholeChamp[a+1].set('deaths', statiMostWholeChamp[a].get('deaths')+statiMostWholeChamp[a+1].get('deaths'));
+      statiMostWholeChamp[a+1].set('assists', statiMostWholeChamp[a].get('assists')+statiMostWholeChamp[a+1].get('assists'));
+      statiMostWholeChamp[a+1].set('CS', statiMostWholeChamp[a].get('CS')+statiMostWholeChamp[a+1].get('CS'));
+      statiMostWholeChamp[a+1].set('win', statiMostWholeChamp[a].get('win')+statiMostWholeChamp[a+1].get('win'));
+      statiMostWholeChamp[a+1].set('games', statiMostWholeChamp[a].get('games')+statiMostWholeChamp[a+1].get('games'));
+    }
+  return statiMostWholeChamp[Num-1];
 }

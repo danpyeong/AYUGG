@@ -153,7 +153,7 @@
             </div>
           </div>
         </div>
-        <button class="reset">
+        <button class="reset" id="refreshButton">
           <img
             class="reset-icon"
             src="/images/reset-icon.svg"
@@ -166,7 +166,7 @@
       <!-- 전적 내용 -->
       <div class="bottom">
         <div class="match-type">
-          <button>전체</button>
+          <button class="whole">전체</button>
           <button>솔로랭크</button>
           <button>자유랭크</button>
           <button>일반</button>
@@ -213,89 +213,92 @@
                   <tr>
                     <td><span>전체</span></td>
                     <td>
-                      <span style="color: orange">KDA 2.0</span>
-                      <span style="font-size: 8px; color: #626367"
+                      <span id="SMWKDARate" style="color: orange">KDA 2.0</span>
+                      <span id="SMWKDA" style="font-size: 8px; color: #626367"
                         >11/11/11</span
                       >
                     </td>
                     <td>
-                      <span style="color: orange">CS 200</span>
+                      <span id="SMWCS" style="color: orange">CS 200</span>
                     </td>
                     <td>
-                      <span style="color: orange">50%</span>
-                      <span style="font-size: 8px; color: #626367">100전</span>
+                      <span id="SMWRate" style="color: orange">50%</span>
+                      <span id="SMWGames" style="font-size: 8px; color: #626367">100전</span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <img
+                      <img 
+                        id="SMChampIcon"
                         src="/images/example.webp"
                         alt="cham-icon"
                         width="15px"
                         height="15px"
                       />
-                      <span>가렌</span>
+                      <span id="SMChamp">가렌</span>
                     </td>
                     <td>
-                      <span style="color: orange">KDA 2.0</span>
-                      <span style="font-size: 8px; color: #626367"
+                      <span id="SMKDARate" style="color: orange">KDA 2.0</span>
+                      <span id="SMKDA" style="font-size: 8px; color: #626367"
                         >11/11/11</span
                       >
                     </td>
                     <td>
-                      <span style="color: orange">CS 200</span>
+                      <span id="SMCS" style="color: orange">CS 200</span>
                     </td>
-                    <td class="last">
-                      <span style="color: orange">50%</span>
-                      <span style="font-size: 8px; color: #626367">100전</span>
+                    <td>
+                      <span id="SMRate" style="color: orange">50%</span>
+                      <span id="SMGames" style="font-size: 8px; color: #626367">100전</span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <img
+                      <img 
+                        id="SMChampIcon1"
                         src="/images/example.webp"
                         alt="cham-icon"
                         width="15px"
                         height="15px"
                       />
-                      <span>갈리오</span>
+                      <span id="SMChamp1">가렌</span>
                     </td>
                     <td>
-                      <span style="color: orange">KDA 2.0</span>
-                      <span style="font-size: 8px; color: #626367"
+                      <span id="SMKDARate1" style="color: orange">KDA 2.0</span>
+                      <span id="SMKDA1" style="font-size: 8px; color: #626367"
                         >11/11/11</span
                       >
                     </td>
                     <td>
-                      <span style="color: orange">CS 200</span>
+                      <span id="SMCS1" style="color: orange">CS 200</span>
                     </td>
                     <td>
-                      <span style="color: orange">50%</span>
-                      <span style="font-size: 8px; color: #626367">100전</span>
+                      <span id="SMRate1" style="color: orange">50%</span>
+                      <span id="SMGames1" style="font-size: 8px; color: #626367">100전</span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <img
+                      <img 
+                        id="SMChampIcon2"
                         src="/images/example.webp"
                         alt="cham-icon"
                         width="15px"
                         height="15px"
                       />
-                      <span>갱플랭크</span>
+                      <span id="SMChamp2">가렌</span>
                     </td>
                     <td>
-                      <span style="color: orange">KDA 2.0</span>
-                      <span style="font-size: 8px; color: #626367"
+                      <span id="SMKDARate2" style="color: orange">KDA 2.0</span>
+                      <span id="SMKDA2" style="font-size: 8px; color: #626367"
                         >11/11/11</span
                       >
                     </td>
                     <td>
-                      <span style="color: orange">CS 200</span>
+                      <span id="SMCS2" style="color: orange">CS 200</span>
                     </td>
                     <td>
-                      <span style="color: orange">50%</span>
-                      <span style="font-size: 8px; color: #626367">100전</span>
+                      <span id="SMRate2" style="color: orange">50%</span>
+                      <span id="SMGames2" style="font-size: 8px; color: #626367">100전</span>
                     </td>
                   </tr>
                 </table>
@@ -516,26 +519,17 @@
                   <span class="font1">블루팀</span>
                 </span>
                 <span class="padding3">
-                  <img
-                    src="/images/example.webp"
-                    alt="포탑 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="포탑 아이콘" width="20px" height="20px">
+                    <path id="towerBluePath" d="M13.635 2.5V4.58333H11.1825V2.5H8.81752V4.58333H6.36496V2.5H4V8.75L5.83942 9.25V14.9167L4 15.4167V17.5H16V15.4167L14.073 14.9167V9.25L16 8.75V2.5H13.635ZM11.1825 13.9167H8.81752V10L9.9562 9.16667L11.0949 10V13.9167H11.1825Z">
+                  </svg>
                   <span class="font1" id="towerBlue">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="드레곤 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="드레곤 아이콘" width="20px" height="20px">
+                    <path id="dragonBluePath" d="M17.8697 7.08361L15.5522 7.42609C15.4132 7.42609 15.3205 7.38328 15.3205 7.25485L15.1351 3.61605C15.1351 3.48763 15.0424 3.48763 14.9497 3.57324L12.0297 6.27023C11.937 6.35585 11.8443 6.31304 11.7979 6.22742L10.1294 2.28896C10.083 2.16054 10.0367 2.07492 10.0367 2.03211C10.0367 1.9893 10.0367 1.9893 10.0367 2.03211C10.0367 2.03211 9.99032 2.16054 9.94398 2.28896L8.2754 6.22742C8.22905 6.35585 8.13635 6.35585 8.04366 6.27023L5.03096 3.57324C4.93826 3.48763 4.84556 3.53043 4.84556 3.65886L4.66016 7.29766C4.66016 7.42609 4.56746 7.51171 4.42842 7.4689L2.11095 7.12642C1.97191 7.12642 1.97191 7.16923 2.06461 7.25485L4.52111 9.39532C4.61381 9.48094 4.70651 9.65217 4.70651 9.73779L5.12365 12.6916C5.17 13.1625 5.4481 13.5906 5.86524 13.8475C6.60683 14.3612 9.38778 17.8288 9.38778 17.8288C9.48048 17.9144 9.61953 18 9.75858 18C9.89763 18 9.99032 18 9.99032 18C9.99032 18 10.1294 18 10.2221 18C10.3148 18 10.5002 17.9144 10.5929 17.8288C10.5929 17.8288 13.3275 14.3184 14.1154 13.8475C14.5325 13.5906 14.8106 13.1625 14.857 12.6916L15.2741 9.73779C15.2741 9.60936 15.3668 9.43813 15.4595 9.39532L17.916 7.25485C18.0551 7.12642 18.0087 7.08361 17.8697 7.08361ZM8.59985 12.4348C6.74588 11.5786 6.28239 9.43813 6.28239 9.43813L9.06334 11.5786C9.06334 11.5786 9.52683 12.4348 8.59985 12.4348ZM11.3808 12.4348C10.4538 12.4348 10.9173 11.5786 10.9173 11.5786L13.6983 9.43813C13.6983 9.43813 13.2348 11.5786 11.3808 12.4348Z">
+                  </svg>
                   <span class="font1" id="dragonBlue">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="바론 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="바론 아이콘" width="20px" height="20px">
+                    <path id="baronBluePath" d="M15.0357 8.73753L17 6.16463C17 6.16463 15.5848 4.08573 15.5543 4.01711C15.5543 4.01711 15.5542 4.01711 15.5481 4.01025L12.1625 1.99996C12.1564 1.99996 12.1442 2.00682 12.1503 2.01368C12.1503 2.01368 14.139 4.86789 14.139 4.87475C14.139 4.87475 14.139 6.14404 14.139 6.15091L12.3028 7.02912L10.0091 4.89533L7.70937 7.02912L5.861 6.15777C5.861 6.15091 5.861 4.88161 5.861 4.88161L7.84967 2.02055C7.85577 2.01368 7.84968 1.99996 7.83748 2.00682L4.45185 4.01711C4.45185 4.01711 4.45185 4.01711 4.44575 4.02398C4.41525 4.09259 3 6.17149 3 6.17149L4.96427 8.74439C4.96427 8.74439 4.57995 9.80099 4.44575 10.0823L3.00609 11.4476L6.44662 16.9091L8.61829 18L6.77603 14.6655L7.64226 14.8096L8.6427 15.9554V15.1663L9.04531 15.2075L9.99695 16.4356C9.99695 16.4356 10.9425 15.2075 10.9486 15.2075L11.3512 15.1663V15.9554L12.3516 14.8096L13.2179 14.6655L11.3756 18L13.5473 16.9091L16.9878 11.4476L15.5481 10.0823C15.4261 9.79413 15.0357 8.73753 15.0357 8.73753ZM7.45316 12.2641C6.98954 12.2641 6.61743 11.8387 6.61743 11.3241C6.61743 10.8027 6.98954 10.3842 7.45316 10.3842C7.91678 10.3842 8.28889 10.8027 8.28889 11.3241C8.28889 11.8456 7.91678 12.2641 7.45316 12.2641ZM10.0091 13.7667C9.55163 13.7598 9.18562 13.3413 9.18562 12.8267C9.18562 12.3121 9.55163 11.8936 10.0091 11.8868C10.4667 11.8936 10.8327 12.3121 10.8327 12.8267C10.8327 13.3482 10.4606 13.7598 10.0091 13.7667ZM10.0091 10.3293C9.46623 10.3293 9.02702 9.8353 9.02702 9.22466C9.02702 8.61403 9.46623 8.12003 10.0091 8.12003C10.5521 8.12003 10.9913 8.61403 10.9913 9.22466C10.9852 9.8353 10.546 10.3293 10.0091 10.3293ZM12.559 12.2641C12.0954 12.2641 11.7233 11.8456 11.7233 11.3241C11.7233 10.8027 12.0954 10.3842 12.559 10.3842C13.0227 10.3842 13.3948 10.8027 13.3948 11.3241C13.3948 11.8387 13.0227 12.2641 12.559 12.2641Z">
+                  </svg>
                   <span class="font1" id="baronBlue">0</span>
                 </span>
                 <span class="padding3">
@@ -560,26 +554,17 @@
                   <b class="font1" id="goldRed">00.0K</b>
                 </span>
                 <span class="padding3">
-                  <img
-                    src="/images/example.webp"
-                    alt="포탑 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="포탑 아이콘" width="20px" height="20px">
+                    <path id="towerRedPath" d="M13.635 2.5V4.58333H11.1825V2.5H8.81752V4.58333H6.36496V2.5H4V8.75L5.83942 9.25V14.9167L4 15.4167V17.5H16V15.4167L14.073 14.9167V9.25L16 8.75V2.5H13.635ZM11.1825 13.9167H8.81752V10L9.9562 9.16667L11.0949 10V13.9167H11.1825Z">
+                  </svg>
                   <span class="font1" id="towerRed">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="드레곤 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="드레곤 아이콘" width="20px" height="20px">
+                    <path id="dragonRedPath" d="M17.8697 7.08361L15.5522 7.42609C15.4132 7.42609 15.3205 7.38328 15.3205 7.25485L15.1351 3.61605C15.1351 3.48763 15.0424 3.48763 14.9497 3.57324L12.0297 6.27023C11.937 6.35585 11.8443 6.31304 11.7979 6.22742L10.1294 2.28896C10.083 2.16054 10.0367 2.07492 10.0367 2.03211C10.0367 1.9893 10.0367 1.9893 10.0367 2.03211C10.0367 2.03211 9.99032 2.16054 9.94398 2.28896L8.2754 6.22742C8.22905 6.35585 8.13635 6.35585 8.04366 6.27023L5.03096 3.57324C4.93826 3.48763 4.84556 3.53043 4.84556 3.65886L4.66016 7.29766C4.66016 7.42609 4.56746 7.51171 4.42842 7.4689L2.11095 7.12642C1.97191 7.12642 1.97191 7.16923 2.06461 7.25485L4.52111 9.39532C4.61381 9.48094 4.70651 9.65217 4.70651 9.73779L5.12365 12.6916C5.17 13.1625 5.4481 13.5906 5.86524 13.8475C6.60683 14.3612 9.38778 17.8288 9.38778 17.8288C9.48048 17.9144 9.61953 18 9.75858 18C9.89763 18 9.99032 18 9.99032 18C9.99032 18 10.1294 18 10.2221 18C10.3148 18 10.5002 17.9144 10.5929 17.8288C10.5929 17.8288 13.3275 14.3184 14.1154 13.8475C14.5325 13.5906 14.8106 13.1625 14.857 12.6916L15.2741 9.73779C15.2741 9.60936 15.3668 9.43813 15.4595 9.39532L17.916 7.25485C18.0551 7.12642 18.0087 7.08361 17.8697 7.08361ZM8.59985 12.4348C6.74588 11.5786 6.28239 9.43813 6.28239 9.43813L9.06334 11.5786C9.06334 11.5786 9.52683 12.4348 8.59985 12.4348ZM11.3808 12.4348C10.4538 12.4348 10.9173 11.5786 10.9173 11.5786L13.6983 9.43813C13.6983 9.43813 13.2348 11.5786 11.3808 12.4348Z">
+                  </svg>
                   <span class="font1" id="dragonRed">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="바론 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
+                  <svg alt="바론 아이콘" width="20px" height="20px">
+                    <path id="baronRedPath" d="M15.0357 8.73753L17 6.16463C17 6.16463 15.5848 4.08573 15.5543 4.01711C15.5543 4.01711 15.5542 4.01711 15.5481 4.01025L12.1625 1.99996C12.1564 1.99996 12.1442 2.00682 12.1503 2.01368C12.1503 2.01368 14.139 4.86789 14.139 4.87475C14.139 4.87475 14.139 6.14404 14.139 6.15091L12.3028 7.02912L10.0091 4.89533L7.70937 7.02912L5.861 6.15777C5.861 6.15091 5.861 4.88161 5.861 4.88161L7.84967 2.02055C7.85577 2.01368 7.84968 1.99996 7.83748 2.00682L4.45185 4.01711C4.45185 4.01711 4.45185 4.01711 4.44575 4.02398C4.41525 4.09259 3 6.17149 3 6.17149L4.96427 8.74439C4.96427 8.74439 4.57995 9.80099 4.44575 10.0823L3.00609 11.4476L6.44662 16.9091L8.61829 18L6.77603 14.6655L7.64226 14.8096L8.6427 15.9554V15.1663L9.04531 15.2075L9.99695 16.4356C9.99695 16.4356 10.9425 15.2075 10.9486 15.2075L11.3512 15.1663V15.9554L12.3516 14.8096L13.2179 14.6655L11.3756 18L13.5473 16.9091L16.9878 11.4476L15.5481 10.0823C15.4261 9.79413 15.0357 8.73753 15.0357 8.73753ZM7.45316 12.2641C6.98954 12.2641 6.61743 11.8387 6.61743 11.3241C6.61743 10.8027 6.98954 10.3842 7.45316 10.3842C7.91678 10.3842 8.28889 10.8027 8.28889 11.3241C8.28889 11.8456 7.91678 12.2641 7.45316 12.2641ZM10.0091 13.7667C9.55163 13.7598 9.18562 13.3413 9.18562 12.8267C9.18562 12.3121 9.55163 11.8936 10.0091 11.8868C10.4667 11.8936 10.8327 12.3121 10.8327 12.8267C10.8327 13.3482 10.4606 13.7598 10.0091 13.7667ZM10.0091 10.3293C9.46623 10.3293 9.02702 9.8353 9.02702 9.22466C9.02702 8.61403 9.46623 8.12003 10.0091 8.12003C10.5521 8.12003 10.9913 8.61403 10.9913 9.22466C10.9852 9.8353 10.546 10.3293 10.0091 10.3293ZM12.559 12.2641C12.0954 12.2641 11.7233 11.8456 11.7233 11.3241C11.7233 10.8027 12.0954 10.3842 12.559 10.3842C13.0227 10.3842 13.3948 10.8027 13.3948 11.3241C13.3948 11.8387 13.0227 12.2641 12.559 12.2641Z">
+                  </svg>
                   <span class="font1" id="baronRed">0</span>
                 </span>
                 <span>
@@ -591,10 +576,10 @@
                 <table class="detail-table blue"  id="dtPartiBlue">
                   <colgroup>
                     <col width="30%" />
+                    <col width="12%" />
                     <col width="10%" />
                     <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
+                    <col width="8%" />
                     <col width="30%" />
                   </colgroup>
                   <tr
@@ -1227,10 +1212,10 @@
                 <table class="detail-table red" id="dtPartiRed">
                   <colgroup>
                     <col width="30%" />
+                    <col width="12%" />
                     <col width="10%" />
                     <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
+                    <col width="8%" />
                     <col width="30%" />
                   </colgroup>
                   <tr
@@ -1239,7 +1224,7 @@
                       border-bottom: 2px solid #626367;
                     "
                   >
-                    <th>블루팀</th>
+                    <th>레드팀</th>
                     <th>딜량</th>
                     <th>KDA</th>
                     <th>CS</th>
@@ -1871,1566 +1856,6 @@
                       />
                     </td>
                   </tr> -->
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="game">
-            <div class="match win">
-              <!-- 종류, 시간, 플레이타임 -->
-              <div class="match-first">
-                <div class="font1">솔로랭크</div>
-                <div class="font2">1시간전</div>
-                <div class="font2">30:00</div>
-              </div>
-              <!-- 챔,스펠,룬 -->
-              <div class="match-second">
-                <img
-                  src="/images/example.webp"
-                  alt="챔피언 아이콘"
-                  width="45px"
-                  height="45px"
-                  style="padding-right: 10px; align-items: center"
-                />
-                <span>
-                  <div>
-                    <img
-                      src="/images/example.webp"
-                      alt="스펠 아이콘"
-                      width="20px"
-                      height="20px"
-                    />
-                    <img
-                      src="/images/example.webp"
-                      alt="스펠 아이콘"
-                      width="20px"
-                      height="20px"
-                    />
-                  </div>
-                  <div>
-                    <img
-                      src="/images/example.webp"
-                      alt="룬 아이콘"
-                      width="20px"
-                      height="20px"
-                    />
-                    <img
-                      src="/images/example.webp"
-                      alt="룬 아이콘"
-                      width="20px"
-                      height="20px"
-                    />
-                  </div>
-                </span>
-              </div>
-              <!-- kda 평균 -->
-              <div class="match-third">
-                <div class="font1">3/3/3</div>
-                <div class="font2">2.0</div>
-              </div>
-              <!-- 킬관여, cs, 아이템 -->
-              <div class="match-fourth">
-                <div style="padding-bottom: 5px">
-                  <span class="font2">킬관여 20%</span>
-                  <span class="font2">CS 200</span>
-                </div>
-                <span>
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <img
-                    src="/images/example.webp"
-                    alt="아이템 아이콘"
-                    width="20px"
-                    height="20px"
-                    style="border-radius: 50%"
-                  />
-                </span>
-              </div>
-              <!-- players -->
-              <div class="match-fifth">
-                <ul>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <img src="/images/example.webp" alt="챔피언 아이콘" />
-                      <span>닉네임닉네임</span>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div></div>
-            </div>
-            <div class="open">
-              <img
-                src="/images/down-arrow.svg"
-                alt="펼치는 아이콘"
-                width="30px"
-                height="30px"
-              />
-            </div>
-            <div class="detail">
-              <div class="detail-first">
-                <span>
-                  <b style="font-size: 20px; padding-right: 10px">승리</b>
-                  <span class="font1">블루팀</span>
-                </span>
-                <span class="padding3">
-                  <img
-                    src="/images/example.webp"
-                    alt="포탑 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="드레곤 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="바론 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                </span>
-                <span class="padding3">
-                  <img
-                    src="/images/yellow-coin-icon-original.svg"
-                    alt="골드 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <b class="font1">00.0K</b>
-                </span>
-                <b class="font1" style="font-size: 20px">00</b>
-                <b>VS</b>
-                <b class="font1" style="font-size: 20px">00</b>
-                <span class="padding3">
-                  <img
-                    src="/images/yellow-coin-icon-original.svg"
-                    alt="골드 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <b class="font1">00.0K</b>
-                </span>
-                <span class="padding3">
-                  <img
-                    src="/images/example.webp"
-                    alt="포탑 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="드레곤 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                  <img
-                    src="/images/example.webp"
-                    alt="바론 아이콘"
-                    width="20px"
-                    height="20px"
-                  />
-                  <span class="font1">0</span>
-                </span>
-                <span>
-                  <span>레드팀</span>
-                  <b style="font-size: 20px; padding-left: 10px">패배</b>
-                </span>
-              </div>
-              <div class="detail-second">
-                <table class="detail-table blue">
-                  <colgroup>
-                    <col width="30%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="30%" />
-                  </colgroup>
-                  <tr
-                    style="
-                      background: rgb(57, 58, 60);
-                      border-bottom: 2px solid #626367;
-                    "
-                  >
-                    <th>블루팀</th>
-                    <th>딜량</th>
-                    <th>KDA</th>
-                    <th>CS</th>
-                    <th>와드</th>
-                    <th>아이템</th>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                </table>
-                <table class="detail-table red">
-                  <colgroup>
-                    <col width="30%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="10%" />
-                    <col width="30%" />
-                  </colgroup>
-                  <tr
-                    style="
-                      background: rgb(57, 58, 60);
-                      border-bottom: 2px solid #626367;
-                    "
-                  >
-                    <th>블루팀</th>
-                    <th>딜량</th>
-                    <th>KDA</th>
-                    <th>CS</th>
-                    <th>와드</th>
-                    <th>아이템</th>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="dt-first">
-                      <div class="dt-first-first">
-                        <span class="c-l">
-                          <img
-                            class="champ-icon"
-                            src="/images/example.webp"
-                            alt="챔피언 아이콘"
-                            width="30px"
-                            height="30px"
-                          />
-                          <div class="level">00</div>
-                        </span>
-                        <span>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="스펠 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                            <img
-                              src="/images/example.webp"
-                              alt="룬 아이콘"
-                              width="15px"
-                              height="15px"
-                            />
-                          </div>
-                        </span>
-                      </div>
-                      <div
-                        style="
-                          margin-left: 15px;
-                          display: flex;
-                          align-items: center;
-                          flex-direction: column;
-                        "
-                      >
-                        <div>닉네임닉네임</div>
-                        <div class="font3">Gold</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>0000</div>
-                      <div>
-                        <img
-                          src="/images/example.webp"
-                          alt="딜량 그래프"
-                          width="30px"
-                          height="10px"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>3/3/3</div>
-                      <div class="font3">(2.0)</div>
-                    </td>
-                    <td>
-                      <div>200</div>
-                      <div class="font3">(10.0)</div>
-                    </td>
-                    <td>
-                      <div>00</div>
-                      <div class="font3">(0/0)</div>
-                    </td>
-                    <td>
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="아이템 아이콘"
-                        width="20px"
-                        height="20px"
-                      />
-                      <img
-                        src="/images/example.webp"
-                        alt="와드 아이콘"
-                        width="20px"
-                        height="20px"
-                        style="border-radius: 50%"
-                      />
-                    </td>
-                  </tr>
                 </table>
               </div>
             </div>
