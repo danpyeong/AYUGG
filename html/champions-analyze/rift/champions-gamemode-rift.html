@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/champions-analyze/line/line-top.css " />
     <link rel="stylesheet" href="/css/champions-analyze/rift/text-rift.css" />
     <script src="/jsp/champions-analyze.js"></script>
+    <script src="/jsp/championRate.js"></script>
     <title>AYU-GG</title>
   </head>
   <body>
@@ -141,7 +142,7 @@
           <ul id="champions-list" class="champions-list"></ul>
         </div>
         <!-- 챔피언 순위 -->
-        <div class="info-frame right-info">
+        <div id="championBox" class="info-frame right-info">
           <!-- 라인별 챔피언 -->
           <nav class="line-box flex">
             <button
@@ -176,68 +177,6 @@
             </button>
           </nav>
           <!-- 라인별 챔피언 랭킹 테이블 -->
-          <table class="champions-table">
-            <colgroup>
-              <col width="50px" />
-              <col width="150px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="150px" />
-            </colgroup>
-            <!-- 테이블 상단 -->
-            <thead>
-              <th align="left">순위</th>
-              <th align="left">챔피언</th>
-              <th align="middle">티어</th>
-              <th align="middle">승률</th>
-              <th align="middle">픽률</th>
-              <th align="middle">밴률</th>
-              <th align="middle">카운터</th>
-            </thead>
-            <!-- 테이블 내용 -->
-            <tbody>
-              <tr>
-                <!-- 순위 -->
-                <td class="first-child">
-                  <span>1</span>
-                  <span>=</span>
-                </td>
-                <!-- 챔피언 -->
-                <td>
-                  <div>
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <span>가렌</span>
-                  </div>
-                </td>
-                <!-- 티어 -->
-                <td>10%</td>
-                <!-- 승률 -->
-                <td>10%</td>
-                <!-- 픽률 -->
-                <td>10%</td>
-                <!-- 밴률 -->
-                <td>10%</td>
-                <!-- 카운터 -->
-                <td>
-                  <div>
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </article>
