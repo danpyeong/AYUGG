@@ -353,8 +353,6 @@ fetch(championUrl)
     //#region  > 픽률,  승률
     let champRateData = [];
 
-    console.log(userDataList);
-    console.log(champDataList);
     for (let i = 0; i < champDataList.length; i++) {
       //#region 변수
       // userDataList[j]의 챔피언 닉이 현재 챔피언과 동일하면 pickCount++
@@ -605,11 +603,11 @@ fetch(championUrl)
       };
       //#endregion 챔피언 마다 라인 별로 나누기
 
-      var laneTOP;
-      var laneJUG;
-      var laneMID;
-      var laneBOT;
-      var laneSUP;
+      var laneTOP = undefined;
+      var laneJUG = undefined;
+      var laneMID = undefined;
+      var laneBOT = undefined;
+      var laneSUP = undefined;
 
       //#region 라인 별 챔피언 RATE
       //#region   > 변수
@@ -655,7 +653,6 @@ fetch(championUrl)
         }
         // 해당 라인에서의 승률
         var winPer = ((win / top.data.length) * 100).toFixed(2);
-
         var detailRateData = {
           id: champDataList[i].id,
           name: champDataList[i].name,
@@ -870,31 +867,92 @@ fetch(championUrl)
 
       champRateData.push(data);
     }
-    console.log(champRateData);
     //#endregion 픽률, 승률
 
     //#region  > 라인 별 챔프
-    let allLane = [];
-    let topLane = [];
-    let jugLane = [];
-    let midLane = [];
-    let botLane = [];
-    let supLane = [];
+    let allLaneList = [];
+    let topLaneList = [];
+    let jugLaneList = [];
+    let midLaneList = [];
+    let botLaneList = [];
+    let supLaneList = [];
 
-    allLane.push(topLane);
-    allLane.push(jugLane);
-    allLane.push(midLane);
-    allLane.push(botLane);
-    allLane.push(supLane);
+    for (let i = 0; i < champRateData.length; i++) {
+      var lane = champRateData[i].lane;
+      if (lane.TOP != undefined) {
+        if (lane.TOP.winRate != "0.00") topLaneList.push(lane.TOP);
+      }
+      if (lane.JUNGLE != undefined) {
+        if (lane.JUNGLE.winRate != "0.00") jugLaneList.push(lane.JUNGLE);
+      }
+      if (lane.MIDDLE != undefined) {
+        if (lane.MIDDLE.winRate != "0.00") midLaneList.push(lane.MIDDLE);
+      }
+      if (lane.BOTTOM != undefined) {
+        if (lane.BOTTOM.winRate != "0.00") botLaneList.push(lane.BOTTOM);
+      }
+      if (lane.UTILITY != undefined) {
+        if (lane.UTILITY.winRate != "0.00") supLaneList.push(lane.UTILITY);
+      }
+    }
+
+    //#region   > 픽률로 내림차순 <
+    topLaneList.sort(function (a, b) {
+      var aNum = parseFloat(a.pickRate);
+      var bNum = parseFloat(b.pickRate);
+      return aNum - bNum;
+    });
+    var reverseTOP = topLaneList.reverse();
+    topLaneList = reverseTOP;
+
+    jugLaneList.sort(function (a, b) {
+      var aNum = parseFloat(a.pickRate) * 100;
+      var bNum = parseFloat(b.pickRate) * 100;
+      return aNum - bNum;
+    });
+    var reverseJUG = jugLaneList.reverse();
+    jugLaneList = reverseJUG;
+
+    midLaneList.sort(function (a, b) {
+      var aNum = parseFloat(a.pickRate) * 100;
+      var bNum = parseFloat(b.pickRate) * 100;
+      return aNum - bNum;
+    });
+    var reverseMID = midLaneList.reverse();
+    midLaneList = reverseMID;
+
+    botLaneList.sort(function (a, b) {
+      var aNum = parseFloat(a.pickRate) * 100;
+      var bNum = parseFloat(b.pickRate) * 100;
+      return aNum - bNum;
+    });
+    var reverseBOT = botLaneList.reverse();
+    botLaneList = reverseBOT;
+
+    supLaneList.sort(function (a, b) {
+      var aNum = parseFloat(a.pickRate) * 100;
+      var bNum = parseFloat(b.pickRate) * 100;
+      return aNum - bNum;
+    });
+    var reverseSUP = supLaneList.reverse();
+    supLaneList = reverseSUP;
+    //#endregion > 픽률로 내림차순 <
+
+    allLaneList.push(topLaneList);
+    allLaneList.push(jugLaneList);
+    allLaneList.push(midLaneList);
+    allLaneList.push(botLaneList);
+    allLaneList.push(supLaneList);
     //#endregion 라인 별 챔프
+    console.log(allLaneList);
 
-    //#region 결과 넣기
+    //#region  > 결과 넣기
 
-    //#region > table <
+    //#region   > table <
     const championTable = document.createElement("table");
     championTable.className = "champions-table";
 
-    //#region  >> colgroup <<
+    //#region    >> colgroup <<
     const colgroup = document.createElement("colgroup");
     championTable.appendChild(colgroup);
 
@@ -922,7 +980,7 @@ fetch(championUrl)
     colgroup.appendChild(col6);
     //#endregion colgroup
 
-    //#region  >> thead <<
+    //#region    >> thead <<
     const thead = document.createElement("thead");
     championTable.appendChild(thead);
 
@@ -957,134 +1015,83 @@ fetch(championUrl)
     thead.appendChild(theadTH6);
     //#endregion thead
 
-    //#region  >> tbody <<
+    //#region    >> tbody <<
     const tbody = document.createElement("tbody");
-    const tbodyTR = document.createElement("tr");
-
-    tbody.appendChild(tbodyTR);
-    championTable.appendChild(tbody);
-
-    // console.log(topLane);
 
     function laneStats(lane) {
-      // >>> 1) 순위 <<<
-      const rankTD = document.createElement("td");
-      rankTD.className = "first-child";
-      const rankSpan1 = document.createElement("span");
-      rankSpan1.id = "rankSpan1";
-      const rankSpan2 = document.createElement("span");
-      rankSpan1.id = "rankSpan2";
+      console.log(lane);
+      for (let i = 0; i < 1; i++) {
+        const tbodyTR = document.createElement("tr");
+        // >>> 1) 순위 <<<
+        const rankTD = document.createElement("td");
+        rankTD.className = "first-child";
+        const rankDiv1 = document.createElement("div");
+        rankDiv1.id = "rankDiv1";
+        rankDiv1.className = "first-child-div-1";
+        rankDiv1.innerText = i + 1;
+        const rankDiv2 = document.createElement("div");
+        rankDiv2.id = "rankDiv2";
+        rankDiv2.className = "first-child-div-2";
+        rankDiv2.innerText = "-";
 
-      rankTD.appendChild(rankSpan1);
-      rankTD.appendChild(rankSpan2);
+        rankTD.appendChild(rankDiv1);
+        rankTD.appendChild(rankDiv2);
 
-      tbodyTR.appendChild(rankTD);
+        tbodyTR.appendChild(rankTD);
 
-      // >>> 2) 챔피언 이미지 및 이름 <<<
-      const champTD = document.createElement("td");
-      const champDIV = document.createElement("div");
-      const champIMG = document.createElement("img");
-      const champNAME = document.createElement("span");
+        // >>> 2) 챔피언 이미지 및 이름 <<<
+        const champTD = document.createElement("td");
+        const champDIV = document.createElement("div");
+        const champIMG = document.createElement("img");
+        const champNAME = document.createElement("span");
 
-      champDIV.appendChild(champIMG);
-      champDIV.appendChild(champNAME);
-      champTD.appendChild(champDIV);
+        champDIV.appendChild(champIMG);
+        champDIV.appendChild(champNAME);
+        champTD.appendChild(champDIV);
 
-      tbodyTR.appendChild(champTD);
+        tbodyTR.appendChild(champTD);
 
-      // >>> 3~6) 티어, 승률, 픽률, 밴률 <<<
-      const tierTD = document.createElement("td");
-      const winRateTD = document.createElement("td");
-      const pickRateTD = document.createElement("td");
-      const banRateTD = document.createElement("td");
+        // >>> 3~6) 티어, 승률, 픽률, 밴률 <<<
+        const tierTD = document.createElement("td");
+        const winRateTD = document.createElement("td");
+        const pickRateTD = document.createElement("td");
+        const banRateTD = document.createElement("td");
 
-      tbodyTR.appendChild(tierTD);
-      tbodyTR.appendChild(winRateTD);
-      tbodyTR.appendChild(pickRateTD);
-      tbodyTR.appendChild(banRateTD);
+        tbodyTR.appendChild(tierTD);
+        tbodyTR.appendChild(winRateTD);
+        tbodyTR.appendChild(pickRateTD);
+        tbodyTR.appendChild(banRateTD);
 
-      // >>> 7) 카운터 <<<
-      const counterBOX = document.createElement("div");
-      counterBOX.style.display = "flex";
-      counterBOX.style.justifyContent = "center";
-      const counterIMG1 = document.createElement("img");
-      counterIMG1.style.marginRight = "10px";
-      const counterIMG2 = document.createElement("img");
-      counterIMG2.style.marginRight = "10px";
-      const counterIMG3 = document.createElement("img");
+        // >>> 7) 카운터 <<<
+        const counterBOX = document.createElement("div");
+        counterBOX.style.display = "flex";
+        counterBOX.style.justifyContent = "center";
+        const counterIMG1 = document.createElement("img");
+        counterIMG1.style.marginRight = "10px";
+        const counterIMG2 = document.createElement("img");
+        counterIMG2.style.marginRight = "10px";
+        const counterIMG3 = document.createElement("img");
 
-      counterBOX.appendChild(counterIMG1);
-      counterBOX.appendChild(counterIMG2);
-      counterBOX.appendChild(counterIMG3);
+        counterBOX.appendChild(counterIMG1);
+        counterBOX.appendChild(counterIMG2);
+        counterBOX.appendChild(counterIMG3);
 
-      tbodyTR.appendChild(counterBOX);
-
-      console.log(championTable);
-
-      const championDivBox = document.getElementById("championBox");
-      championDivBox.appendChild(championTable);
+        tbodyTR.appendChild(counterBOX);
+        tbody.appendChild(tbodyTR);
+      }
     }
+    laneStats(topLaneList);
+    championTable.appendChild(tbody);
+    console.log(championTable);
 
-    //#region ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ 원본 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-    // // >>> 1) 순위 <<<
-    // const rankTD = document.createElement("td");
-    // rankTD.className = "first-child";
-    // const rankSpan1 = document.createElement("span");
-    // rankSpan1.id = "rankSpan1";
-    // const rankSpan2 = document.createElement("span");
-    // rankSpan1.id = "rankSpan2";
-
-    // rankTD.appendChild(rankSpan1);
-    // rankTD.appendChild(rankSpan2);
-
-    // tbodyTR.appendChild(rankTD);
-
-    // // >>> 2) 챔피언 이미지 및 이름 <<<
-    // const champTD = document.createElement("td");
-    // const champDIV = document.createElement("div");
-    // const champIMG = document.createElement("img");
-    // const champNAME = document.createElement("span");
-
-    // champDIV.appendChild(champIMG);
-    // champDIV.appendChild(champNAME);
-    // champTD.appendChild(champDIV);
-
-    // tbodyTR.appendChild(champTD);
-
-    // // >>> 3~6) 티어, 승률, 픽률, 밴률 <<<
-    // const tierTD = document.createElement("td");
-    // const winRateTD = document.createElement("td");
-    // const pickRateTD = document.createElement("td");
-    // const banRateTD = document.createElement("td");
-
-    // tbodyTR.appendChild(tierTD);
-    // tbodyTR.appendChild(winRateTD);
-    // tbodyTR.appendChild(pickRateTD);
-    // tbodyTR.appendChild(banRateTD);
-
-    // // >>> 7) 카운터 <<<
-    // const counterBOX = document.createElement("div");
-    // counterBOX.style.display = "flex";
-    // counterBOX.style.justifyContent = "center";
-    // const counterIMG1 = document.createElement("img");
-    // counterIMG1.style.marginRight = "10px";
-    // const counterIMG2 = document.createElement("img");
-    // counterIMG2.style.marginRight = "10px";
-    // const counterIMG3 = document.createElement("img");
-
-    // counterBOX.appendChild(counterIMG1);
-    // counterBOX.appendChild(counterIMG2);
-    // counterBOX.appendChild(counterIMG3);
-
-    // tbodyTR.appendChild(counterBOX);
-
-    // console.log(championTable);
-
-    // const championDivBox = document.getElementById("championBox");
-    // championDivBox.appendChild(championTable);
-    //#endregion ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ 원본 ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+    const championDivBox = document.getElementById("championBox");
+    championDivBox.appendChild(championTable);
 
     //#endregion tbody
 
-    //#endregion
+    //#endregion table
+
+    //#endregion 결과 넣기
+
+    //#endregion 챔피언별 픽률, 승률, 라인, 카운터, 아이템
   });

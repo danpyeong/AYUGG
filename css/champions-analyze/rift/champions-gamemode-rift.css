@@ -149,6 +149,23 @@ a {
 /* 왼쪽 상자 (챔피언 종류) 끝*/
 
 /*시작 오른쪽 상자 (챔피언 분석) */
+.first-child {
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.first-child-div-1 {
+  width: 50%;
+  text-align: center;
+}
+
+.first-child-div-2 {
+  width: 50%;
+}
+
 .line-box {
   width: 100%;
   height: 40px;
