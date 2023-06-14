@@ -76,7 +76,7 @@ body {
   margin-bottom: 2px;
 }
 #tier-graph {
-  width: 100%;
+  width: auto;
   height: 100%;
 }
 .container .top .reset {
@@ -156,10 +156,6 @@ body {
   width: auto;
   max-height: 80px;
 }
-#tier-graph {
-  width: auto;
-  height: 100%;
-}
 .container .bottom .statistics .st-list .info .inline-text {
   position: absolute;
   top: 0px;
@@ -213,7 +209,7 @@ body {
   font-size: 10px;
 }
 .match-first {
-  text-align: left;
+  text-align: center;
 }
 .match-second {
   display: flex;

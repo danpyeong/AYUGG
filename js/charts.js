@@ -4,7 +4,9 @@ const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
 var exData = new Map();
 exData.set('wins', sessionStorage.getItem('wins'));
 exData.set('losses', sessionStorage.getItem('losses'));
-// console.log(exData);
+exData.set('tier', sessionStorage.getItem('tier'));// 정수로 변환
+var radarGraphData = sessionStorage.getItem('radarGraphData');
+var eex = radarGraphData.split(',');
 
 var data = {  
   datasets: [
@@ -17,8 +19,6 @@ var data = {
 };
 
 const rate = document.querySelector("#rate");
-
-
 
 setTimeout(function(){
   new Chart(rate, {
@@ -37,10 +37,10 @@ setTimeout(function(){
 
 //티어변화 그래프
 var tierGraphData = {
-  labels: ['1월', '2월', '3월', '4월'],
+  labels: ['S20', 'S21', 'S22'],
   datasets: [{
-    label: '판매량',
-    data: [20, 30, 25, 35],
+    label: '티어',
+    data: [20,20,20],
     borderColor: 'white',
     borderWidth: 0.2,
     fill: false
@@ -73,10 +73,10 @@ new Chart(tierGraph, {
 
 //레이더그래프
 var radarGraphData = {
-  labels: ['15분 골드차이', '생존', '시야', '성장', '전투'],
+  labels: ['KDA', 'CS', '시야', '성장', '전투'],
   datasets: [{
     label: '데이터셋',
-    data: [10, 5, 15, 7, 12],
+    data: eex,
     backgroundColor: 'rgba(255, 165, 0, 0.5)',
     borderColor: '#ffa500',
     pointBorderColor: '#fff',
@@ -102,9 +102,9 @@ new Chart(radarGraph, {
     scales: {
       r: {
         suggestedMin: 0,
-        suggestedMax: 20,
+        suggestedMax: 80,
         ticks: {
-          stepSize: 5,
+          stepSize: 20,
           display: false,
         },
       }
