@@ -8,24 +8,16 @@ label.addEventListener('click', () => {
     }
 });
 
-function toggleSelectBox(selectBox) {	
-    selectBox.classList.toggle("active");
-}	
-
-const selectBoxElements = document.querySelectorAll(".select");	
-const selectDetailBoxElements = document.querySelectorAll(".game"); 	
-
-selectBoxElements.forEach(selectBoxElement=> {	
-    selectBoxElement.addEventListener("click", function(e) {	
-        toggleSelectBox(selectBoxElement);	
-    });	
-});	
-
-selectDetailBoxElements.forEach(selectBoxElement=> {	
-    selectBoxElement.addEventListener("click", function(e) {	
-        toggleSelectBox(selectBoxElement);	
-    });	
-});
+setTimeout(() => {  
+    const selectBoxElements = document.querySelectorAll(".detail");
+    const selectDetailBoxElements = document.querySelectorAll(".game");
+  
+    for (let i = 0; i < selectDetailBoxElements.length; i++) {
+      selectDetailBoxElements[i].addEventListener("click", function (e) {
+        selectBoxElements[i].classList.toggle("active");
+      });
+    }
+  }, 1801);
 
 const refreshButton = document.getElementById('refreshButton');
 

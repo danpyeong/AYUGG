@@ -81,20 +81,24 @@ function loadingData() {
           matchUser[j] = userTier
 
           for(let i=0;i<10;i++){
-            let UidguestUrl =  TierUrl + appData.participants[i].summonerId + "?api_key=" + apiKey;
-            var example3 = fetch(UidguestUrl).then((response2) => {
-              return response2.json();
-            })
-            .then((rawData2)=>{
-              return (rawData2[0].tier+ " " + rawData2[0].rank);
-            })
-            getData3 = () => {
-              example3.then((appData1) => {
-                userTier[i] = appData1;
-                // console.log(userTier[i]);
-              });
-            };
-            getData3();       
+            if(dataSet.get('id') == appData.participants[i].summonerId){
+              userTier[i] = (dataSet.get('tier')+" "+dataSet.get('rank'));
+            }else{
+              let UidguestUrl =  TierUrl + appData.participants[i].summonerId + "?api_key=" + apiKey;
+              var example3 = fetch(UidguestUrl).then((response2) => {
+                return response2.json();
+              })
+              .then((rawData2)=>{
+                return (rawData2[0].tier+ " " + rawData2[0].rank);
+              })
+              getData3 = () => {
+                example3.then((appData1) => {
+                  userTier[i] = appData1;
+                  // console.log(userTier[i]);
+                });
+              };
+              getData3();
+            }       
             match[i].set('matchUser', matchUser[i]);
           }
         }
@@ -126,6 +130,8 @@ const runeUrl = version +"data/ko_KR/runesReforged.json";
 const itemUrl = version +"data/ko_KR/item.json";
   
 setTimeout(function(){
+  console.log(match);
+
   sessionStorage.setItem('wins', dataSet.get('wins'));
   sessionStorage.setItem('losses', dataSet.get('losses'));
   sessionStorage.setItem('tier', dataSet.get('tier') +" "+dataSet.get('rank'));
@@ -136,14 +142,8 @@ setTimeout(function(){
   var statitext2 = document.getElementById("statiWL");
   statitext2.innerHTML = dataSet.get('wins')+"승 "+dataSet.get('losses')+"패";
 
-  console.log(dataSet);
-  console.log(match);
-
   var statiMost = statiMostChamp();
   var statiMostWhole = statiMostWholeChamp();
-  
-  console.log(statiMost);
-  console.log(statiMostWhole);
 
   var statiKDAtext = document.getElementById("statiKDA");
   statiKDAtext.innerText = "KDA " + ((statiMostWhole.get('kills') + statiMostWhole.get('assists')) / statiMostWhole.get('deaths')).toFixed(2);
@@ -230,15 +230,24 @@ setTimeout(function(){
     var we2 = Object.values(champData);
     SMtext02.innerText = we2[0].name;
   })
-  
-  const radarGraphData = [
+
+  var exx =[];
+  var index=0;
+  var radarGraphData = [
     ((statiMostWhole.get('kills') + statiMostWhole.get('assists')) / statiMostWhole.get('deaths')*10).toFixed(2),
     (statiMostWhole.get('CS') / statiMostWhole.get('games')/3).toFixed(2),
     (statiMostWhole.get('visionScorePerMinute')/3*200).toFixed(2),
     (statiMostWhole.get('goldPerMinute')/16*5).toFixed(2),
     (statiMostWhole.get('damagePerMinute')/15).toFixed(2)
   ];//10 300 1.5 400 1500 ['KDA', 'CS', '시야', '성장', '전투']
-  sessionStorage.setItem('radarGraphData', radarGraphData);
+  radarGraphData.forEach(element => {
+    if(element>80){
+      element=80;
+    }
+    exx[index]=element;
+    index++;
+  });
+  sessionStorage.setItem('radarGraphData', exx);
   
   var text1 = document.getElementById("nickname");
   text1.innerHTML = dataSet.get('nickname');
@@ -266,7 +275,7 @@ setTimeout(function(){
     text4.innerHTML = "승률을 위한 데이터수 부족"
   }
   eta = new Date();
-  for(let k=0; k<1; k++){//match 1개
+  for(let k=0; k<2; k++){//match 1개
 
     //#region 
     const matchesDiv = document.getElementById('matches');
@@ -878,7 +887,7 @@ setTimeout(function(){
     gameDiv.appendChild(detailDiv);
     matchesDiv.appendChild(gameDiv);
   }
-}, 1500);
+}, 1800);
 
 
 function partiListMaking1(ul,k){

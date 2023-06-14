@@ -2,7 +2,15 @@ const DATA_COUNT = 5;
 const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
 
 var exData = new Map();
-exData.set('wins', sessionStorage.getItem('wins'));
+
+
+setTimeout(function(){
+
+  const rate = document.querySelector("#rate");
+  const tierGraph = document.getElementById('tier-graph').getContext('2d');
+  const radarGraph = document.getElementById('radar-graph').getContext('2d');
+  
+  exData.set('wins', sessionStorage.getItem('wins'));
 exData.set('losses', sessionStorage.getItem('losses'));
 exData.set('tier', sessionStorage.getItem('tier'));// 정수로 변환
 var radarGraphData = sessionStorage.getItem('radarGraphData');
@@ -18,23 +26,6 @@ var data = {
   ]
 };
 
-const rate = document.querySelector("#rate");
-
-setTimeout(function(){
-  new Chart(rate, {
-    type: 'doughnut',
-    data: data,
-    options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-    }
-  }
-});
-},1050);
-
 //티어변화 그래프
 var tierGraphData = {
   labels: ['S20', 'S21', 'S22'],
@@ -47,29 +38,6 @@ var tierGraphData = {
   }]
 };
 
-var tierGraph = document.getElementById('tier-graph').getContext('2d');
-
-new Chart(tierGraph, {
-  type: 'line',
-  data: tierGraphData,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      y: {
-        grid: {display: false},
-        display: false
-      },
-      x: {
-        grid: {display: false},
-      }
-    }
-  }
-});
 
 //레이더그래프
 var radarGraphData = {
@@ -87,27 +55,61 @@ var radarGraphData = {
   }]
 };
 
-var radarGraph = document.getElementById('radar-graph').getContext('2d');
-
-new Chart(radarGraph, {
-  type: 'radar',
-  data: radarGraphData,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false
-      },
-    },
-    scales: {
-      r: {
-        suggestedMin: 0,
-        suggestedMax: 80,
-        ticks: {
-          stepSize: 20,
-          display: false,
+  new Chart(rate, {
+    type: 'doughnut',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
         },
       }
     }
-  }
-});
+  });
+
+  new Chart(tierGraph, {
+    type: 'line',
+    data: tierGraphData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        y: {
+          grid: {display: false},
+          display: false
+        },
+        x: {
+          grid: {display: false},
+        }
+      }
+    }
+  });
+
+  new Chart(radarGraph, {
+    type: 'radar',
+    data: radarGraphData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+      },
+      scales: {
+        r: {
+          suggestedMin: 0,
+          suggestedMax: 80,
+          ticks: {
+            stepSize: 20,
+            display: false,
+          },
+        }
+      }
+    }
+  });
+},1800);
