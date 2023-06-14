@@ -351,79 +351,526 @@ fetch(championUrl)
     //#region 챔피언별 픽률, 승률, 라인, 카운터, 아이템
 
     //#region  > 픽률,  승률
-    let champPickData = [];
-    let champWinData = [];
+    let champRateData = [];
 
     console.log(userDataList);
-
+    console.log(champDataList);
     for (let i = 0; i < champDataList.length; i++) {
-      let pickCount = 0;
-      let winCount = 0;
-      let loseCount = 0;
-      let TOP = 0;
-      let verTOP = [];
-      let JUNGLE = 0;
-      let verJUNGLE = [];
-      let MIDDLE = 0;
-      let verMIDDLE = [];
-      let BOTTOM = 0;
-      let verBOTTOM = [];
-      let UTILITY = 0;
-      let verUTILITY = [];
+      //#region 변수
+      // userDataList[j]의 챔피언 닉이 현재 챔피언과 동일하면 pickCount++
+      let allPickCount = 0;
+      //#region  > 라인 카운트
+      let countTOP = 0;
+      let countJUG = 0;
+      let countMID = 0;
+      let countBOT = 0;
+      let countSUP = 0;
+      //#endregion  라인 카운트
 
-      let lane = [];
+      //#region  > 라인 별 상대 챔
+      let verTOP = [];
+      let verJUG = [];
+      let verMID = [];
+      let verBOT = [];
+      let verSUP = [];
+      //#endregion  라인 별 상대 챔
+      //#endregion 변수
+
+      //#region 챔피언 마다 라인 별로 나누기
       for (let j = 0; j < userDataList.length; j++) {
         if (champDataList[i].id == userDataList[j].championName) {
-          pickCount++;
-          if (!lane.includes(userDataList[j].lane)) {
-            lane.push(userDataList[j].lane);
+          allPickCount++;
+          if (userDataList[j].lane == "TOP") {
+            countTOP++;
+            var matchData = {
+              verName: userDataList[j].versus,
+              win: userDataList[j].win,
+              item: {
+                item0: userDataList[j].item.item0,
+                item1: userDataList[j].item.item1,
+                item2: userDataList[j].item.item2,
+                item3: userDataList[j].item.item3,
+                item4: userDataList[j].item.item4,
+                item5: userDataList[j].item.item5,
+                item6: userDataList[j].item.item6,
+              },
+              spell: {
+                spell1: userDataList[j].spell.spell1,
+                spell2: userDataList[j].spell.spell2,
+              },
+              rune: {
+                mainRune: {
+                  styleRune: userDataList[j].rune.mainRune.styleRune,
+                  titleRune: userDataList[j].rune.mainRune.titleRune,
+                  firstRune: userDataList[j].rune.mainRune.firstRune,
+                  secondRune: userDataList[j].rune.mainRune.secondRune,
+                  thirdRune: userDataList[j].rune.mainRune.thirdRune,
+                },
+                subRune: {
+                  styleRune: userDataList[j].rune.subRune.styleRune,
+                  firstRune: userDataList[j].rune.subRune.firstRune,
+                  secondRune: userDataList[j].rune.subRune.secondRune,
+                },
+                stats: {
+                  defense: userDataList[j].rune.stats.defense,
+                  flex: userDataList[j].rune.stats.flex,
+                  offense: userDataList[j].rune.stats.offense,
+                },
+              },
+            };
+            verTOP.push(matchData);
+          } else if (userDataList[j].lane == "JUNGLE") {
+            countJUG++;
+            var matchData = {
+              verName: userDataList[j].versus,
+              win: userDataList[j].win,
+              item: {
+                item0: userDataList[j].item.item0,
+                item1: userDataList[j].item.item1,
+                item2: userDataList[j].item.item2,
+                item3: userDataList[j].item.item3,
+                item4: userDataList[j].item.item4,
+                item5: userDataList[j].item.item5,
+                item6: userDataList[j].item.item6,
+              },
+              spell: {
+                spell1: userDataList[j].spell.spell1,
+                spell2: userDataList[j].spell.spell2,
+              },
+              rune: {
+                mainRune: {
+                  styleRune: userDataList[j].rune.mainRune.styleRune,
+                  titleRune: userDataList[j].rune.mainRune.titleRune,
+                  firstRune: userDataList[j].rune.mainRune.firstRune,
+                  secondRune: userDataList[j].rune.mainRune.secondRune,
+                  thirdRune: userDataList[j].rune.mainRune.thirdRune,
+                },
+                subRune: {
+                  styleRune: userDataList[j].rune.subRune.styleRune,
+                  firstRune: userDataList[j].rune.subRune.firstRune,
+                  secondRune: userDataList[j].rune.subRune.secondRune,
+                },
+                stats: {
+                  defense: userDataList[j].rune.stats.defense,
+                  flex: userDataList[j].rune.stats.flex,
+                  offense: userDataList[j].rune.stats.offense,
+                },
+              },
+            };
+            verJUG.push(matchData);
+          } else if (userDataList[j].lane == "MIDDLE") {
+            countMID++;
+            var matchData = {
+              verName: userDataList[j].versus,
+              win: userDataList[j].win,
+              item: {
+                item0: userDataList[j].item.item0,
+                item1: userDataList[j].item.item1,
+                item2: userDataList[j].item.item2,
+                item3: userDataList[j].item.item3,
+                item4: userDataList[j].item.item4,
+                item5: userDataList[j].item.item5,
+                item6: userDataList[j].item.item6,
+              },
+              spell: {
+                spell1: userDataList[j].spell.spell1,
+                spell2: userDataList[j].spell.spell2,
+              },
+              rune: {
+                mainRune: {
+                  styleRune: userDataList[j].rune.mainRune.styleRune,
+                  titleRune: userDataList[j].rune.mainRune.titleRune,
+                  firstRune: userDataList[j].rune.mainRune.firstRune,
+                  secondRune: userDataList[j].rune.mainRune.secondRune,
+                  thirdRune: userDataList[j].rune.mainRune.thirdRune,
+                },
+                subRune: {
+                  styleRune: userDataList[j].rune.subRune.styleRune,
+                  firstRune: userDataList[j].rune.subRune.firstRune,
+                  secondRune: userDataList[j].rune.subRune.secondRune,
+                },
+                stats: {
+                  defense: userDataList[j].rune.stats.defense,
+                  flex: userDataList[j].rune.stats.flex,
+                  offense: userDataList[j].rune.stats.offense,
+                },
+              },
+            };
+            verMID.push(matchData);
+          } else if (userDataList[j].lane == "BOTTOM") {
+            countBOT++;
+            var matchData = {
+              verName: userDataList[j].versus,
+              win: userDataList[j].win,
+              item: {
+                item0: userDataList[j].item.item0,
+                item1: userDataList[j].item.item1,
+                item2: userDataList[j].item.item2,
+                item3: userDataList[j].item.item3,
+                item4: userDataList[j].item.item4,
+                item5: userDataList[j].item.item5,
+                item6: userDataList[j].item.item6,
+              },
+              spell: {
+                spell1: userDataList[j].spell.spell1,
+                spell2: userDataList[j].spell.spell2,
+              },
+              rune: {
+                mainRune: {
+                  styleRune: userDataList[j].rune.mainRune.styleRune,
+                  titleRune: userDataList[j].rune.mainRune.titleRune,
+                  firstRune: userDataList[j].rune.mainRune.firstRune,
+                  secondRune: userDataList[j].rune.mainRune.secondRune,
+                  thirdRune: userDataList[j].rune.mainRune.thirdRune,
+                },
+                subRune: {
+                  styleRune: userDataList[j].rune.subRune.styleRune,
+                  firstRune: userDataList[j].rune.subRune.firstRune,
+                  secondRune: userDataList[j].rune.subRune.secondRune,
+                },
+                stats: {
+                  defense: userDataList[j].rune.stats.defense,
+                  flex: userDataList[j].rune.stats.flex,
+                  offense: userDataList[j].rune.stats.offense,
+                },
+              },
+            };
+            verBOT.push(matchData);
+          } else if (userDataList[j].lane == "UTILITY") {
+            countSUP++;
+            var matchData = {
+              verName: userDataList[j].versus,
+              win: userDataList[j].win,
+              item: {
+                item0: userDataList[j].item.item0,
+                item1: userDataList[j].item.item1,
+                item2: userDataList[j].item.item2,
+                item3: userDataList[j].item.item3,
+                item4: userDataList[j].item.item4,
+                item5: userDataList[j].item.item5,
+                item6: userDataList[j].item.item6,
+              },
+              spell: {
+                spell1: userDataList[j].spell.spell1,
+                spell2: userDataList[j].spell.spell2,
+              },
+              rune: {
+                mainRune: {
+                  styleRune: userDataList[j].rune.mainRune.styleRune,
+                  titleRune: userDataList[j].rune.mainRune.titleRune,
+                  firstRune: userDataList[j].rune.mainRune.firstRune,
+                  secondRune: userDataList[j].rune.mainRune.secondRune,
+                  thirdRune: userDataList[j].rune.mainRune.thirdRune,
+                },
+                subRune: {
+                  styleRune: userDataList[j].rune.subRune.styleRune,
+                  firstRune: userDataList[j].rune.subRune.firstRune,
+                  secondRune: userDataList[j].rune.subRune.secondRune,
+                },
+                stats: {
+                  defense: userDataList[j].rune.stats.defense,
+                  flex: userDataList[j].rune.stats.flex,
+                  offense: userDataList[j].rune.stats.offense,
+                },
+              },
+            };
+            verSUP.push(matchData);
           }
-          for (let i of KEY("TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY")) {
-            let list = `${"ver" + KEY}`;
-            if (userDataList[j].lane == KEY) {
-              key++;
-              if (userDataList[j].win == true) {
+        }
+      }
+      let laneDetailData = {
+        id: champDataList[i].id,
+        name: champDataList[i].name,
+        allCount: allPickCount,
+        top: {
+          count: countTOP,
+          data: verTOP,
+        },
+        jug: {
+          count: countJUG,
+          data: verJUG,
+        },
+        mid: {
+          count: countMID,
+          data: verMID,
+        },
+        bot: {
+          count: countBOT,
+          data: verBOT,
+        },
+        sup: {
+          count: countSUP,
+          data: verSUP,
+        },
+      };
+      //#endregion 챔피언 마다 라인 별로 나누기
+
+      var laneTOP;
+      var laneJUG;
+      var laneMID;
+      var laneBOT;
+      var laneSUP;
+
+      //#region 라인 별 챔피언 RATE
+      //#region   > 변수
+      var top = laneDetailData.top;
+      var jug = laneDetailData.jug;
+      var mid = laneDetailData.mid;
+      var bot = laneDetailData.bot;
+      var sup = laneDetailData.sup;
+      //#endregion 변수
+
+      //#region   > 탑
+      if (top.count != 0) {
+        // 해당 라인에서의 픽률
+        var pickPer = ((top.count / userDataList.length) * 100).toFixed(2);
+
+        var versus = [];
+        for (let k = 0; k < top.data.length; k++) {
+          if (!versus.includes(top.data[k].verName)) {
+            versus.push(top.data[k].verName);
+          }
+        }
+
+        var win = 0;
+        var versusDataList = [];
+        for (let k = 0; k < versus.length; k++) {
+          var versusCount = 0;
+          var winCount = 0;
+          for (let x = 0; x < top.data.length; x++) {
+            if (versus[k] == top.data[x].verName) {
+              versusCount++;
+              if (top.data[x].win == true) {
                 winCount++;
-                var data = {
-                  versus: userDataList[j].versus,
-                  win: true,
-                };
-                topVer.push(data);
-              }
-              if (userDataList[j].win == false) {
-                loseCount++;
-                var data = {
-                  versus: userDataList[j].versus,
-                  win: false,
-                };
-                topVer.push(data);
+                win++;
               }
             }
           }
-          if (userDataList[j].lane == "JUNGLE") jug++;
-          if (userDataList[j].lane == "MIDDLE") mid++;
-          if (userDataList[j].lane == "BOTTOM") bot++;
-          if (userDataList[j].lane == "TOPUTILITY") sup++;
+          var winRate = ((winCount / versusCount) * 100).toFixed(2);
+          var data = {
+            id: versus[k],
+            winRate: winRate,
+          };
+          versusDataList.push(data);
         }
+        // 해당 라인에서의 승률
+        var winPer = ((win / top.data.length) * 100).toFixed(2);
+
+        var detailRateData = {
+          id: champDataList[i].id,
+          name: champDataList[i].name,
+          pickRate: pickPer,
+          winRate: winPer,
+          counter: versusDataList,
+        };
+        laneTOP = detailRateData;
       }
-      var pickRate = ((pickCount / userDataList.length) * 100).toFixed(2);
+      //#endregion 탑
+
+      //#region   > 정글
+      if (jug.count != 0) {
+        // 해당 라인에서의 픽률
+        var pickPer = ((jug.count / userDataList.length) * 100).toFixed(2);
+
+        var win = 0;
+        var versus = [];
+        for (let k = 0; k < jug.data.length; k++) {
+          if (!versus.includes(jug.data[k].verName)) {
+            versus.push(jug.data[k].verName);
+          }
+        }
+
+        var versusDataList = [];
+        for (let k = 0; k < versus.length; k++) {
+          var versusCount = 0;
+          var winCount = 0;
+          for (let x = 0; x < jug.data.length; x++) {
+            if (versus[k] == jug.data[x].verName) {
+              versusCount++;
+              if (jug.data[x].win == true) {
+                winCount++;
+                win++;
+              }
+            }
+          }
+          var winRate = ((winCount / versusCount) * 100).toFixed(2);
+          var data = {
+            id: versus[k],
+            winRate: winRate,
+          };
+          versusDataList.push(data);
+        }
+        // 해당 라인에서의 승률
+        var winPer = ((win / jug.data.length) * 100).toFixed(2);
+
+        var detailRateData = {
+          id: champDataList[i].id,
+          name: champDataList[i].name,
+          pickRate: pickPer,
+          winRate: winPer,
+          counter: versusDataList,
+        };
+        laneJUG = detailRateData;
+      }
+      //#endregion 정글
+
+      //#region   > 미드
+      if (mid.count != 0) {
+        // 해당 라인에서의 픽률
+        var pickPer = ((mid.count / userDataList.length) * 100).toFixed(2);
+
+        var win = 0;
+        var versus = [];
+        for (let k = 0; k < mid.data.length; k++) {
+          if (!versus.includes(mid.data[k].verName)) {
+            versus.push(mid.data[k].verName);
+          }
+        }
+
+        var versusDataList = [];
+        for (let k = 0; k < versus.length; k++) {
+          var versusCount = 0;
+          var winCount = 0;
+          for (let x = 0; x < mid.data.length; x++) {
+            if (versus[k] == mid.data[x].verName) {
+              versusCount++;
+              if (mid.data[x].win == true) {
+                winCount++;
+                win++;
+              }
+            }
+          }
+          var winRate = ((winCount / versusCount) * 100).toFixed(2);
+          var data = {
+            id: versus[k],
+            winRate: winRate,
+          };
+          versusDataList.push(data);
+        }
+        // 해당 라인에서의 승률
+        var winPer = ((win / mid.data.length) * 100).toFixed(2);
+
+        var detailRateData = {
+          id: champDataList[i].id,
+          name: champDataList[i].name,
+          pickRate: pickPer,
+          winRate: winPer,
+          counter: versusDataList,
+        };
+        laneMID = detailRateData;
+      }
+      //#endregion 미드
+
+      //#region   > 원딜
+      if (bot.count != 0) {
+        // 해당 라인에서의 픽률
+        var pickPer = ((bot.count / userDataList.length) * 100).toFixed(2);
+
+        var win = 0;
+        var versus = [];
+        for (let k = 0; k < bot.data.length; k++) {
+          if (!versus.includes(bot.data[k].verName)) {
+            versus.push(bot.data[k].verName);
+          }
+        }
+
+        var versusDataList = [];
+        for (let k = 0; k < versus.length; k++) {
+          var versusCount = 0;
+          var winCount = 0;
+          for (let x = 0; x < bot.data.length; x++) {
+            if (versus[k] == bot.data[x].verName) {
+              versusCount++;
+              if (bot.data[x].win == true) {
+                winCount++;
+                win++;
+              }
+            }
+          }
+          var winRate = ((winCount / versusCount) * 100).toFixed(2);
+          var data = {
+            id: versus[k],
+            winRate: winRate,
+          };
+          versusDataList.push(data);
+        }
+        // 해당 라인에서의 승률
+        var winPer = ((win / bot.data.length) * 100).toFixed(2);
+
+        var detailRateData = {
+          id: champDataList[i].id,
+          name: champDataList[i].name,
+          pickRate: pickPer,
+          winRate: winPer,
+          counter: versusDataList,
+        };
+        laneBOT = detailRateData;
+      }
+      //#endregion 원딜
+
+      //#region   > 서폿
+      if (sup.count != 0) {
+        // 해당 라인에서의 픽률
+        var pickPer = ((sup.count / userDataList.length) * 100).toFixed(2);
+
+        var win = 0;
+        var versus = [];
+        for (let k = 0; k < sup.data.length; k++) {
+          if (!versus.includes(sup.data[k].verName)) {
+            versus.push(sup.data[k].verName);
+          }
+        }
+
+        var versusDataList = [];
+        for (let k = 0; k < versus.length; k++) {
+          var versusCount = 0;
+          var winCount = 0;
+          for (let x = 0; x < sup.data.length; x++) {
+            if (versus[k] == sup.data[x].verName) {
+              versusCount++;
+              if (sup.data[x].win == true) {
+                winCount++;
+                win++;
+              }
+            }
+          }
+          var winRate = ((winCount / versusCount) * 100).toFixed(2);
+          var data = {
+            id: versus[k],
+            winRate: winRate,
+          };
+          versusDataList.push(data);
+        }
+        // 해당 라인에서의 승률
+        var winPer = ((win / sup.data.length) * 100).toFixed(2);
+
+        var detailRateData = {
+          id: champDataList[i].id,
+          name: champDataList[i].name,
+          pickRate: pickPer,
+          winRate: winPer,
+          counter: versusDataList,
+        };
+        laneSUP = detailRateData;
+      }
+      //#endregion 서폿
+      //#endregion 라인 별 챔피언 RATE
 
       var data = {
         id: champDataList[i].id,
         name: champDataList[i].name,
         lane: {
-          top: "",
+          TOP: laneTOP,
+          JUNGLE: laneJUG,
+          MIDDLE: laneMID,
+          BOTTOM: laneBOT,
+          UTILITY: laneSUP,
         },
-        pickRate: pickRate,
-        top: top,
-        jug: jug,
-        mid: mid,
-        bot: bot,
-        sup: sup,
       };
 
-      champPickData.push(data);
+      champRateData.push(data);
     }
+    console.log(champRateData);
     //#endregion 픽률, 승률
 
     //#region  > 라인 별 챔프
@@ -434,59 +881,12 @@ fetch(championUrl)
     let botLane = [];
     let supLane = [];
 
-    for (let i = 0; i < champWinData.length; i++) {
-      let lane = champWinData[i].lane;
-      let name = champWinData[i].name;
-      let id = champWinData[i].id;
-      for (let j = 0; j < lane.length; j++) {
-        if (lane[j] == "TOP") {
-          var data = {
-            name: name,
-            id: id,
-          };
-          topLane.push(data);
-        }
-        if (lane[j] == "JUNGLE") {
-          var data = {
-            name: name,
-            id: id,
-          };
-          jugLane.push(data);
-        }
-        if (lane[j] == "MIDDLE") {
-          var data = {
-            name: name,
-            id: id,
-          };
-          midLane.push(data);
-        }
-        if (lane[j] == "BOTTOM") {
-          var data = {
-            name: name,
-            id: id,
-          };
-          botLane.push(data);
-        }
-        if (lane[j] == "UTILITY") {
-          var data = {
-            name: name,
-            id: id,
-          };
-          supLane.push(data);
-        }
-      }
-    }
     allLane.push(topLane);
     allLane.push(jugLane);
     allLane.push(midLane);
     allLane.push(botLane);
     allLane.push(supLane);
     //#endregion 라인 별 챔프
-
-    //#region  > 챔프 별 최종 정리
-    let statsData = [];
-
-    //#endregion 챔프 별 최종 정리
 
     //#region 결과 넣기
 
