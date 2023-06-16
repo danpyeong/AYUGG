@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/font.css" />
     <title>AYU-GG</title>
-    <script src="/jsp/main.js"></script>
     <script src="/jsp/select.js"></script>
   </head>
   <body>
@@ -112,7 +112,10 @@
               <div id="recent" class="recent-search">최근 검색</div>
               <div id="favorites" class="favorites">즐겨찾기</div>
             </nav>
-            <article class="option-box"></article>
+            <article id="option-box" class="option-box">
+              <div id="recentBox" class="option-box-on"></div>
+              <div id="favoritesBox" class="option-box-off"></div>
+            </article>
           </div>
         </div>
         <button id="main-button">
@@ -133,5 +136,6 @@
         </article>
       </div>
     </article>
+    <script src="/jsp/main.js"></script>
   </body>
 </html>

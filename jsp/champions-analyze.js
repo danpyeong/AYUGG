@@ -35,10 +35,6 @@ fetch(championUrl)
       childDiv.textContent = champDataList[i].name;
 
       childSpan.onclick = function () {
-        // fs.rename("details.html", champName + ".html", function (err) {
-        //   if (err) throw err;
-        //   console.log("File Renamed.");
-        // });
         window.location.href = champName + ".html";
       };
 
@@ -48,3 +44,16 @@ fetch(championUrl)
       champList.appendChild(childLi);
     }
   });
+
+const champSearch = document.getElementById("championSearch");
+champSearch.addEventListener("keyup", function () {
+  if (window.event.keyCode == 13) {
+    if (mainInput.value == "") {
+      return;
+    } else {
+      // window.location.href = mainInput.value + ".html";
+      // sessionStorage.setItem("nickname", mainInput.value);
+      // recentEvent(mainInput.value);
+    }
+  }
+});
