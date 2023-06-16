@@ -44,6 +44,80 @@ window.onload = function () {
   });
   //#endregion
 
+  //#region 최근 기록, 즐겨찾기
+  const optionBox = document.getElementById("option-box");
+  const recentList = document.getElementById("recent");
+  const favoritesList = document.getElementById("favorites");
+
+  var recent = JSON.parse(localStorage.getItem("recentSearch"));
+  console.log(recent);
+  if (recent) {
+    for (let i = 0; i < recent.length; i++) {
+      const divBox = document.createElement("div");
+      divBox.id = "recentBox";
+      divBox.style.display = "flex";
+      const imgBox1 = document.createElement("div");
+      const img1 = document.createElement("img");
+      const imgBox2 = document.createElement("div");
+      const img2 = document.createElement("img");
+      img2.src = "/images/bookMark-icon/icon-bookmark.svg";
+      img2.id = "bookMark" + i;
+      const imgBox3 = document.createElement("div");
+      const img3 = document.createElement("img");
+      img3.src = "/images/bookMark-icon/icon-close-small.svg";
+      img3.id = "close" + i;
+      const nickName = document.createElement("div");
+      nickName.id = "nickName" + i;
+      nickName.innerText = recent[i];
+      //nickName.textContent
+      var bookMarkIcon = document.getElementById("bookMark" + i);
+      var nickNameData = document.getElementById("nickName" + i);
+
+      bookMarkIcon.addEventListener("click", function (e) {
+        if (bookMarkIcon.src == "/images/bookMark-icon/icon-bookmark.svg") {
+          bookMarkIcon.src =
+            "/images/bookMark-icon/icon-bookmark-on-yellow.svg";
+          var bookMarkData = JSON.parse(localStorage.getItem("bookMark"));
+          var value = [];
+          if (!bookMarkData) {
+            value.push(nickNameData);
+            localStorage.setItem("bookMark", JSON.stringify(value));
+          } else {
+            bookMarkData.push(nickNameData);
+            localStorage.setItem("bookMark", JSON.stringify(bookMarkData));
+          }
+        } else {
+          bookMarkIcon.src = "/images/bookMark-icon/icon-bookmark.svg";
+          var bookMarkData = JSON.parse(localStorage.getItem("bookMark"));
+
+          for (var i = 0; i < bookMarkData.length; i++) {
+            if (bookMarkData[i] === 5) {
+              bookMarkData.splice(i, 1);
+              i--;
+            }
+          }
+          localStorage.setItem("bookMark", JSON.stringify(bookMarkData));
+        }
+      });
+
+      imgBox1.appendChild(img1);
+      imgBox2.appendChild(img2);
+      imgBox3.appendChild(img3);
+      divBox.appendChild(imgBox1);
+      divBox.appendChild(nickName);
+      divBox.appendChild(imgBox2);
+      divBox.appendChild(imgBox3);
+
+      optionBox.appendChild(divBox);
+    }
+  } else {
+    const divBox = document.createElement("div");
+    divBox.id = "recentBox";
+    divBox.innerText = "최근 검색한 소환사가 없습니다.";
+    optionBox.appendChild(divBox);
+  }
+  //#endregion
+
   //#region 소환사 이름 입력 이벤트
   const navInput = document.getElementById("nav-input");
   const mainInput = document.getElementById("main-input");
@@ -56,7 +130,7 @@ window.onload = function () {
         // window.location.href =
         //   "/html/player" + encodeURI(userInputBox.value) + ".html";
         window.location.href = "/html/player.html";
-        sessionStorage.setItem('nickname', mainInput.value);
+        sessionStorage.setItem("nickname", mainInput.value);
       }
     }
   });
@@ -69,7 +143,17 @@ window.onload = function () {
         // window.location.href =
         //   "/html/player/" + encodeURI(mainInput.value) + ".html";
         window.location.href = "/html/player.html";
-        sessionStorage.setItem('nickname', mainInput.value);
+        sessionStorage.setItem("nickname", mainInput.value);
+        localStorage.setItem("search", mainInput.value);
+        var value = [];
+        var recent = JSON.parse(localStorage.getItem("recentSearch"));
+        if (!recent) {
+          value.push(mainInput.value);
+          localStorage.setItem("recentSearch", JSON.stringify(value));
+        } else {
+          recent.push(mainInput.value);
+          localStorage.setItem("recentSearch", JSON.stringify(recent));
+        }
       }
     }
   });
@@ -82,7 +166,7 @@ window.onload = function () {
     } else {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-      window.location.href = "/html/summoners/player.html";
+      window.location.href = "/html/player.html";
     }
   });
   mainBtn.addEventListener("click", function () {
@@ -91,7 +175,15 @@ window.onload = function () {
     } else {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-      window.location.href = "/html/summoners/player.html";
+      window.location.href = "/html/player.html";
+      localStorage.setItem("recentSearch", mainInput.value);
+      if (!recent) {
+        value.push(mainInput.value);
+        localStorage.setItem("recentSearch", JSON.stringify(value));
+      } else {
+        recent.push(mainInput.value);
+        localStorage.setItem("recentSearch", JSON.stringify(recent));
+      }
     }
   });
   //#endregion
