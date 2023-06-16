@@ -36,12 +36,12 @@ function loadingData() {
     .then((response2) => {
       return response2.json();
     })
-    .then((rawData2)=>{
+    .then(async(rawData2)=>{
       let data2 = Object.values(rawData2);
       for(let i=0;i<10;i++){
         match[i] = new Map();
         match[i].set('matchId', data2[i]);
-        var ex = fetch("https://asia.api.riotgames.com/lol/match/v5/matches/"+data2[i]+"?api_key="+apiKey)
+        var ex = await fetch("https://asia.api.riotgames.com/lol/match/v5/matches/"+data2[i]+"?api_key="+apiKey)
         .then((response2) => {
           return response2.json();
         })
@@ -130,8 +130,6 @@ const runeUrl = version +"data/ko_KR/runesReforged.json";
 const itemUrl = version +"data/ko_KR/item.json";
   
 setTimeout(function(){
-  console.log(match);
-
   sessionStorage.setItem('wins', dataSet.get('wins'));
   sessionStorage.setItem('losses', dataSet.get('losses'));
   sessionStorage.setItem('tier', dataSet.get('tier') +" "+dataSet.get('rank'));
@@ -144,6 +142,7 @@ setTimeout(function(){
 
   var statiMost = statiMostChamp();
   var statiMostWhole = statiMostWholeChamp();
+  console.log(statiMost);
 
   var statiKDAtext = document.getElementById("statiKDA");
   statiKDAtext.innerText = "KDA " + ((statiMostWhole.get('kills') + statiMostWhole.get('assists')) / statiMostWhole.get('deaths')).toFixed(2);
@@ -303,7 +302,11 @@ setTimeout(function(){
 
     const matchDateDiv = document.createElement("div");
     matchDateDiv.classList.add("font2");
-    matchDateDiv.textContent = Math.floor((eta.getTime() - match[k].get('matchData').gameEndTimestamp)/3600000) + "시간전";
+    if(Math.floor((eta.getTime() - match[k].get('matchData').gameStartTimestamp)/3600000)<24){
+      matchDateDiv.textContent = Math.floor((eta.getTime() - match[k].get('matchData').gameStartTimestamp)/3600000) + "시간전";
+    } else {
+      matchDateDiv.textContent = Math.floor((eta.getTime() - match[k].get('matchData').gameStartTimestamp)/3600000/24) + "일전";
+    }
 
     const matchTimeDiv = document.createElement("div");
     matchTimeDiv.classList.add("font2");
@@ -610,8 +613,6 @@ setTimeout(function(){
     
     //#endregion
 
-
-
     for(let finduser=0; finduser<10; finduser++){
       if(dataSet.get('id') == match[k].get('matchData').participants[finduser].summonerId){
         let owner = match[k].get('matchData').participants[finduser];
@@ -887,7 +888,7 @@ setTimeout(function(){
     gameDiv.appendChild(detailDiv);
     matchesDiv.appendChild(gameDiv);
   }
-}, 1800);
+}, 2500);
 
 
 function partiListMaking1(ul,k){
@@ -1032,7 +1033,7 @@ function matchDtFirstBlue(Id,k){
       childImg4.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findRuneKey(match[k].get('matchData').participants[i].perks.styles[1].style);
       childImg4.classList.add('dt-small-img');
     })
-    
+    console.log(match);
     childDiv4.classList.add('nick-tier');
     childDiv5.textContent = match[k].get('matchData').participants[i].summonerName;
     childDiv6.textContent = match[k].get('matchUser')[i];
@@ -1365,7 +1366,7 @@ function mostDamage(k){
   return mostDamage;
 }
 
-const Num = 4;
+const Num = 7;
 function statiMostChamp(){
   //champ kda killrate cs win
   let statiexMostChamp = new Array();
@@ -1389,28 +1390,32 @@ function statiMostChamp(){
       }
     }
   }
+  console.log(statiexMostChamp);
   for(let b = 0; b<Num-1; b++){
-    for(let a=b; a<Num-1; a++){
-      if(statiexMostChamp[a].get('champname') == statiexMostChamp[a+1].get('champname')){
-        statiexMostChamp[a+1].set('kills', statiexMostChamp[a].get('kills')+statiexMostChamp[a+1].get('kills'));
-        statiexMostChamp[a+1].set('deaths', statiexMostChamp[a].get('deaths')+statiexMostChamp[a+1].get('deaths'));
-        statiexMostChamp[a+1].set('assists', statiexMostChamp[a].get('assists')+statiexMostChamp[a+1].get('assists'));
-        statiexMostChamp[a+1].set('CS', statiexMostChamp[a].get('CS')+statiexMostChamp[a+1].get('CS'));
-        statiexMostChamp[a+1].set('win', statiexMostChamp[a].get('win')+statiexMostChamp[a+1].get('win'));
-        statiexMostChamp[a+1].set('games', statiexMostChamp[a].get('games')+statiexMostChamp[a+1].get('games'));
-        statiexMostChamp[a] = null;
+    for(let a=b+1; a<Num; a++){
+      if(statiexMostChamp[a] != null &&  statiexMostChamp[b] != null){
+        if(statiexMostChamp[a].get('champname') == statiexMostChamp[b].get('champname')){
+          statiexMostChamp[b].set('kills', statiexMostChamp[a].get('kills')+statiexMostChamp[b].get('kills'));
+          statiexMostChamp[b].set('deaths', statiexMostChamp[a].get('deaths')+statiexMostChamp[b].get('deaths'));
+          statiexMostChamp[b].set('assists', statiexMostChamp[a].get('assists')+statiexMostChamp[b].get('assists'));
+          statiexMostChamp[b].set('CS', statiexMostChamp[a].get('CS')+statiexMostChamp[b].get('CS'));
+          statiexMostChamp[b].set('win', statiexMostChamp[a].get('win')+statiexMostChamp[b].get('win'));
+          statiexMostChamp[b].set('games', statiexMostChamp[a].get('games')+statiexMostChamp[b].get('games'));
+          statiexMostChamp[a] = null;
+        }
       }
     }
   }
-  // console.log(statiexMostChamp);
   var filteredArray = statiexMostChamp.filter((value) => value != null);
   filteredArray.sort((a, b) => {
-    if(a.games == b.games){
+    return b.get('games') - a.get('games');
+  });
+  filteredArray.sort((a, b) => {
+    if(a.get("games") == b.get("games")){
       return b.get('win') - a.get('win');
-    } else {
-      return b.get('games') - a.get('games');
     }
   });
+  console.log(filteredArray);
   // console.log(filteredArray);
   return filteredArray;
 }
@@ -1455,6 +1460,5 @@ function statiMostWholeChamp(){
     statiMostWholeChamp[a+1].set('games', statiMostWholeChamp[a].get('games')+statiMostWholeChamp[a+1].get('games'));
     statiMostWholeChamp[a+1].set('killsTeam', statiMostWholeChamp[a].get('killsTeam')+statiMostWholeChamp[a+1].get('killsTeam'));
   }
-  console.log(statiMostWholeChamp[Num-1]);
   return statiMostWholeChamp[Num-1];
 }

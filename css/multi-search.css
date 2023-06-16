@@ -56,16 +56,31 @@ body {
   padding: 5px 40px;
   cursor: pointer;
 }
-.container .context {
+.contextBox {
+  display: flex;
+}
+.context {
   font-size: 14px;
-  width: 300px;
-  height: 200px;
+  width: 180px;
   background: rgb(251, 190, 77);
   color: white;
-  text-align: start;
+  text-align: center;
   border-radius: 4px;
   padding: 10px;
   border-width: 1px;
   border-color: rgba(255, 255, 255, 0.6);
   border-style: solid;
+}
+.win-rate-graph {
+  background: #5383E8;
+  width: 130px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+}
+.win-rate-graph .bar{
+  background: #E84057;
+  height: 20px;
+  text-align: right;
 }

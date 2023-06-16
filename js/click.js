@@ -17,7 +17,7 @@ setTimeout(() => {
         selectBoxElements[i].classList.toggle("active");
       });
     }
-  }, 1801);
+  }, 2501);
 
 const refreshButton = document.getElementById('refreshButton');
 
