@@ -191,6 +191,14 @@ window.onload = function () {
           }
         }
         recentSearchBox.remove(divBox);
+        for (var j = 0; j < bookMark.length; j++) {
+          if (bookMark[j].nickName == nickName.textContent) {
+            bookMark.splice(j, 1);
+            j--;
+            localStorage.setItem("bookMark", JSON.stringify(bookMark));
+          }
+        }
+        favoritesBox.remove(divBox);
       });
       //#endregion 최근 기록 삭제
 
@@ -284,6 +292,26 @@ window.onload = function () {
   //#endregion 최근 기록, 즐겨찾기
 
   //#region 소환사 이름 입력 이벤트
+  function recentEvent(input) {
+    var value = [];
+    var recent = JSON.parse(localStorage.getItem("recentSearch"));
+    if (!recent) {
+      var data = {
+        nickName: input,
+        state: false,
+      };
+      value.push(data);
+      localStorage.setItem("recentSearch", JSON.stringify(value));
+    } else {
+      var data = {
+        nickName: input,
+        state: false,
+      };
+      recent.push(data);
+      localStorage.setItem("recentSearch", JSON.stringify(recent));
+    }
+  }
+
   const navInput = document.getElementById("nav-input");
   const mainInput = document.getElementById("main-input");
 
@@ -296,6 +324,7 @@ window.onload = function () {
         //   "/html/player" + encodeURI(userInputBox.value) + ".html";
         window.location.href = "/html/player.html";
         sessionStorage.setItem("nickname", mainInput.value);
+        recentEvent(navInput.value);
       }
     }
   });
@@ -309,24 +338,7 @@ window.onload = function () {
         //   "/html/player/" + encodeURI(mainInput.value) + ".html";
         window.location.href = "/html/player.html";
         sessionStorage.setItem("nickname", mainInput.value);
-        localStorage.setItem("search", mainInput.value);
-        var value = [];
-        var recent = JSON.parse(localStorage.getItem("recentSearch"));
-        if (!recent) {
-          var data = {
-            nickName: mainInput.value,
-            state: false,
-          };
-          value.push(data);
-          localStorage.setItem("recentSearch", JSON.stringify(value));
-        } else {
-          var data = {
-            nickName: mainInput.value,
-            state: false,
-          };
-          recent.push(data);
-          localStorage.setItem("recentSearch", JSON.stringify(recent));
-        }
+        recentEvent(mainInput.value);
       }
     }
   });
@@ -340,6 +352,8 @@ window.onload = function () {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
+      sessionStorage.setItem("nickname", mainInput.value);
+      recentEvent(navInput.value);
     }
   });
   mainBtn.addEventListener("click", function () {
@@ -349,14 +363,8 @@ window.onload = function () {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
-      localStorage.setItem("recentSearch", mainInput.value);
-      if (!recent) {
-        value.push(mainInput.value);
-        localStorage.setItem("recentSearch", JSON.stringify(value));
-      } else {
-        recent.push(mainInput.value);
-        localStorage.setItem("recentSearch", JSON.stringify(recent));
-      }
+      sessionStorage.setItem("nickname", mainInput.value);
+      recentEvent(navInput.value);
     }
   });
   //#endregion
