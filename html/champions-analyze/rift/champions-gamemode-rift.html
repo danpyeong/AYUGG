@@ -7,7 +7,6 @@
       href="/css/champions-analyze/rift/champions-gamemode-rift.css"
     />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/champions-analyze/line/line-top.css " />
     <link rel="stylesheet" href="/css/champions-analyze/rift/text-rift.css" />
     <script src="/jsp/champions-analyze.js"></script>
     <script src="/jsp/championRate.js"></script>
@@ -118,9 +117,9 @@
             <option value="na">NA</option>
           </select>
           <select name="version">
-            <option value="13_09" selected>v13.09</option>
-            <option value="13_08">v13.08</option>
-            <option value="13_07">v13.07</option>
+            <option value="13_11" selected>v13.11</option>
+            <option value="13_10">v13.09</option>
+            <option value="13_09">v13.08</option>
           </select>
         </div>
       </div>
@@ -145,36 +144,11 @@
         <div id="championBox" class="info-frame right-info">
           <!-- 라인별 챔피언 -->
           <nav class="line-box flex">
-            <button
-              id="line-top"
-              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
-            >
-              탑
-            </button>
-            <button
-              id="line-jg"
-              onclick="location.href='/html/champions-analyze/rift/rift-jg.html'"
-            >
-              정글
-            </button>
-            <button
-              id="line-mid"
-              onclick="location.href='/html/champions-analyze/rift/rift-mid.html'"
-            >
-              미드
-            </button>
-            <button
-              id="line-bot"
-              onclick="location.href='/html/champions-analyze/rift/rift-bot.html'"
-            >
-              바텀
-            </button>
-            <button
-              id="line-sup"
-              onclick="location.href='/html/champions-analyze/rift/rift-sup.html'"
-            >
-              서폿
-            </button>
+            <button id="line-top">탑</button>
+            <button id="line-jg">정글</button>
+            <button id="line-mid">미드</button>
+            <button id="line-bot">바텀</button>
+            <button id="line-sup">서폿</button>
           </nav>
           <!-- 라인별 챔피언 랭킹 테이블 -->
         </div>

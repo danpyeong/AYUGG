@@ -323,36 +323,22 @@ fetch(championUrl)
       for (let j = 0; j < banDataList.length; j++) {
         if (champDataList[i].key == banDataList[j]) bancount++;
       }
-      var pickRate = ((bancount / banDataList.length) * 100).toFixed(2);
+      var banRate = ((bancount / banDataList.length) * 100).toFixed(2);
 
       var data = {
         id: champDataList[i].id,
         name: champDataList[i].name,
-        count: pickRate,
+        banData: banRate,
       };
       banAllData.push(data);
     }
-
-    // no Ban
-    let banNoneCount = 0;
-    for (let i = 0; i < banDataList.length; i++) {
-      if (banDataList[i] == "-1") banNoneCount++;
-    }
-    var pickRate = ((banNoneCount / banDataList.length) * 100).toFixed(2);
-
-    var noBandata = {
-      id: "none",
-      name: "noBan",
-      count: pickRate,
-    };
-    banAllData.push(noBandata);
+    console.log(banAllData);
     //#endregion
 
     //#region 챔피언별 픽률, 승률, 라인, 카운터, 아이템
 
     //#region  > 픽률,  승률
     let champRateData = [];
-
     for (let i = 0; i < champDataList.length; i++) {
       //#region 변수
       // userDataList[j]의 챔피언 닉이 현재 챔피언과 동일하면 pickCount++
@@ -608,6 +594,7 @@ fetch(championUrl)
       var laneMID = undefined;
       var laneBOT = undefined;
       var laneSUP = undefined;
+      var banData = "";
 
       //#region 라인 별 챔피언 RATE
       //#region   > 변수
@@ -617,6 +604,22 @@ fetch(championUrl)
       var bot = laneDetailData.bot;
       var sup = laneDetailData.sup;
       //#endregion 변수
+
+      for (let k = 0; k < banAllData.length; k++) {
+        if (champDataList[i].id == banAllData[k].id) {
+          banData = banAllData[k].banData;
+          break;
+        }
+      }
+
+      function sortWinRateList(list) {
+        list.sort(function (a, b) {
+          var aNum = parseFloat(a.winRate);
+          var bNum = parseFloat(b.winRate);
+          return aNum - bNum;
+        });
+        return list;
+      }
 
       //#region   > 탑
       if (top.count != 0) {
@@ -645,18 +648,22 @@ fetch(championUrl)
             }
           }
           var winRate = ((winCount / versusCount) * 100).toFixed(2);
+
           var data = {
             id: versus[k],
             winRate: winRate,
           };
           versusDataList.push(data);
         }
+
+        sortWinRateList(versusDataList);
         // 해당 라인에서의 승률
         var winPer = ((win / top.data.length) * 100).toFixed(2);
         var detailRateData = {
           id: champDataList[i].id,
           name: champDataList[i].name,
           pickRate: pickPer,
+          banRate: banData,
           winRate: winPer,
           counter: versusDataList,
         };
@@ -697,6 +704,7 @@ fetch(championUrl)
           };
           versusDataList.push(data);
         }
+        sortWinRateList(versusDataList);
         // 해당 라인에서의 승률
         var winPer = ((win / jug.data.length) * 100).toFixed(2);
 
@@ -704,6 +712,7 @@ fetch(championUrl)
           id: champDataList[i].id,
           name: champDataList[i].name,
           pickRate: pickPer,
+          banRate: banData,
           winRate: winPer,
           counter: versusDataList,
         };
@@ -744,6 +753,7 @@ fetch(championUrl)
           };
           versusDataList.push(data);
         }
+        sortWinRateList(versusDataList);
         // 해당 라인에서의 승률
         var winPer = ((win / mid.data.length) * 100).toFixed(2);
 
@@ -751,6 +761,7 @@ fetch(championUrl)
           id: champDataList[i].id,
           name: champDataList[i].name,
           pickRate: pickPer,
+          banRate: banData,
           winRate: winPer,
           counter: versusDataList,
         };
@@ -791,6 +802,7 @@ fetch(championUrl)
           };
           versusDataList.push(data);
         }
+        sortWinRateList(versusDataList);
         // 해당 라인에서의 승률
         var winPer = ((win / bot.data.length) * 100).toFixed(2);
 
@@ -798,6 +810,7 @@ fetch(championUrl)
           id: champDataList[i].id,
           name: champDataList[i].name,
           pickRate: pickPer,
+          banRate: banData,
           winRate: winPer,
           counter: versusDataList,
         };
@@ -838,6 +851,7 @@ fetch(championUrl)
           };
           versusDataList.push(data);
         }
+        sortWinRateList(versusDataList);
         // 해당 라인에서의 승률
         var winPer = ((win / sup.data.length) * 100).toFixed(2);
 
@@ -845,6 +859,7 @@ fetch(championUrl)
           id: champDataList[i].id,
           name: champDataList[i].name,
           pickRate: pickPer,
+          banRate: banData,
           winRate: winPer,
           counter: versusDataList,
         };
@@ -870,13 +885,13 @@ fetch(championUrl)
     //#endregion 픽률, 승률
 
     //#region  > 라인 별 챔프
-    let allLaneList = [];
+    let allRateDataList = [];
     let topLaneList = [];
     let jugLaneList = [];
     let midLaneList = [];
     let botLaneList = [];
     let supLaneList = [];
-
+    console.log(champRateData);
     for (let i = 0; i < champRateData.length; i++) {
       var lane = champRateData[i].lane;
       if (lane.TOP != undefined) {
@@ -895,58 +910,32 @@ fetch(championUrl)
         if (lane.UTILITY.winRate != "0.00") supLaneList.push(lane.UTILITY);
       }
     }
+    //#endregion 라인 별 챔프
 
     //#region   > 픽률로 내림차순 <
-    topLaneList.sort(function (a, b) {
-      var aNum = parseFloat(a.pickRate);
-      var bNum = parseFloat(b.pickRate);
-      return aNum - bNum;
-    });
-    var reverseTOP = topLaneList.reverse();
-    topLaneList = reverseTOP;
+    function reverseList(list) {
+      list.sort(function (a, b) {
+        var aNum = parseFloat(a.pickRate);
+        var bNum = parseFloat(b.pickRate);
+        return aNum - bNum;
+      });
+      var reverse = list.reverse();
+      return reverse;
+    }
 
-    jugLaneList.sort(function (a, b) {
-      var aNum = parseFloat(a.pickRate) * 100;
-      var bNum = parseFloat(b.pickRate) * 100;
-      return aNum - bNum;
-    });
-    var reverseJUG = jugLaneList.reverse();
-    jugLaneList = reverseJUG;
-
-    midLaneList.sort(function (a, b) {
-      var aNum = parseFloat(a.pickRate) * 100;
-      var bNum = parseFloat(b.pickRate) * 100;
-      return aNum - bNum;
-    });
-    var reverseMID = midLaneList.reverse();
-    midLaneList = reverseMID;
-
-    botLaneList.sort(function (a, b) {
-      var aNum = parseFloat(a.pickRate) * 100;
-      var bNum = parseFloat(b.pickRate) * 100;
-      return aNum - bNum;
-    });
-    var reverseBOT = botLaneList.reverse();
-    botLaneList = reverseBOT;
-
-    supLaneList.sort(function (a, b) {
-      var aNum = parseFloat(a.pickRate) * 100;
-      var bNum = parseFloat(b.pickRate) * 100;
-      return aNum - bNum;
-    });
-    var reverseSUP = supLaneList.reverse();
-    supLaneList = reverseSUP;
+    reverseList(topLaneList);
+    reverseList(jugLaneList);
+    reverseList(midLaneList);
+    reverseList(botLaneList);
+    reverseList(supLaneList);
     //#endregion > 픽률로 내림차순 <
 
-    allLaneList.push(topLaneList);
-    allLaneList.push(jugLaneList);
-    allLaneList.push(midLaneList);
-    allLaneList.push(botLaneList);
-    allLaneList.push(supLaneList);
-    //#endregion 라인 별 챔프
-    console.log(allLaneList);
-
-    //#region  > 결과 넣기
+    allRateDataList.push(topLaneList);
+    allRateDataList.push(jugLaneList);
+    allRateDataList.push(midLaneList);
+    allRateDataList.push(botLaneList);
+    allRateDataList.push(supLaneList);
+    //#endregion 챔피언별 픽률, 승률, 라인, 카운터, 아이템
 
     //#region   > table <
     const championTable = document.createElement("table");
@@ -959,7 +948,7 @@ fetch(championUrl)
     const col0 = document.createElement("col");
     col0.width = "70px";
     const col1 = document.createElement("col");
-    col1.width = "150px";
+    col1.width = "200px";
     const col2 = document.createElement("col");
     col2.width = "60px";
     const col3 = document.createElement("col");
@@ -978,7 +967,7 @@ fetch(championUrl)
     colgroup.appendChild(col4);
     colgroup.appendChild(col5);
     colgroup.appendChild(col6);
-    //#endregion colgroup
+    //#endregion   >> colgroup
 
     //#region    >> thead <<
     const thead = document.createElement("thead");
@@ -988,7 +977,7 @@ fetch(championUrl)
     theadTH0.align = "middle";
     theadTH0.innerText = "순위";
     const theadTH1 = document.createElement("th");
-    theadTH1.align = "left";
+    theadTH1.align = "middle";
     theadTH1.innerText = "챔피언";
     const theadTH2 = document.createElement("th");
     theadTH2.align = "middle";
@@ -1013,14 +1002,13 @@ fetch(championUrl)
     thead.appendChild(theadTH4);
     thead.appendChild(theadTH5);
     thead.appendChild(theadTH6);
-    //#endregion thead
+    //#endregion   >> thead
 
     //#region    >> tbody <<
     const tbody = document.createElement("tbody");
 
     function laneStats(lane) {
-      console.log(lane);
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < lane.length; i++) {
         const tbodyTR = document.createElement("tr");
         // >>> 1) 순위 <<<
         const rankTD = document.createElement("td");
@@ -1043,7 +1031,13 @@ fetch(championUrl)
         const champTD = document.createElement("td");
         const champDIV = document.createElement("div");
         const champIMG = document.createElement("img");
+        champIMG.src =
+          "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/" +
+          lane[i].id +
+          ".png";
+        // champIMG.style.borderRadius = "50%";
         const champNAME = document.createElement("span");
+        champNAME.innerText = lane[i].name;
 
         champDIV.appendChild(champIMG);
         champDIV.appendChild(champNAME);
@@ -1053,9 +1047,13 @@ fetch(championUrl)
 
         // >>> 3~6) 티어, 승률, 픽률, 밴률 <<<
         const tierTD = document.createElement("td");
+        tierTD.innerText = "-";
         const winRateTD = document.createElement("td");
+        winRateTD.innerText = lane[i].winRate;
         const pickRateTD = document.createElement("td");
+        pickRateTD.innerText = lane[i].pickRate;
         const banRateTD = document.createElement("td");
+        banRateTD.innerText = lane[i].banRate;
 
         tbodyTR.appendChild(tierTD);
         tbodyTR.appendChild(winRateTD);
@@ -1063,35 +1061,130 @@ fetch(championUrl)
         tbodyTR.appendChild(banRateTD);
 
         // >>> 7) 카운터 <<<
+        const counterTD = document.createElement("td");
         const counterBOX = document.createElement("div");
+        counterBOX.className = "counter";
         counterBOX.style.display = "flex";
         counterBOX.style.justifyContent = "center";
         const counterIMG1 = document.createElement("img");
         counterIMG1.style.marginRight = "10px";
+        if (lane[i].counter.length > 0) {
+          counterIMG1.src =
+            "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/" +
+            lane[i].counter[0].id +
+            ".png";
+          counterIMG1.style.borderRadius = "50%";
+        }
         const counterIMG2 = document.createElement("img");
         counterIMG2.style.marginRight = "10px";
+        if (lane[i].counter.length > 1) {
+          counterIMG2.src =
+            "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/" +
+            lane[i].counter[1].id +
+            ".png";
+          counterIMG2.style.borderRadius = "50%";
+        }
         const counterIMG3 = document.createElement("img");
-
+        if (lane[i].counter.length > 2) {
+          counterIMG3.src =
+            "http://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/" +
+            lane[i].counter[2].id +
+            ".png";
+          counterIMG3.style.borderRadius = "50%";
+        }
         counterBOX.appendChild(counterIMG1);
         counterBOX.appendChild(counterIMG2);
         counterBOX.appendChild(counterIMG3);
+        counterTD.appendChild(counterBOX);
 
-        tbodyTR.appendChild(counterBOX);
+        tbodyTR.appendChild(counterTD);
         tbody.appendChild(tbodyTR);
       }
     }
+
+    function clearTBODY(table, tbody) {
+      let size = tbody.rows.length;
+      for (let i = 0; i < size; i++) {
+        tbody.deleteRow(tbody.rows[i]);
+      }
+      table.removeChild(tbody);
+    }
+
     laneStats(topLaneList);
     championTable.appendChild(tbody);
-    console.log(championTable);
 
     const championDivBox = document.getElementById("championBox");
     championDivBox.appendChild(championTable);
+    //#endregion   >> tbody
 
-    //#endregion tbody
+    //#endregion  > table
 
-    //#endregion table
+    const topButton = document.getElementById("line-top");
+    const jugButton = document.getElementById("line-jg");
+    const midButton = document.getElementById("line-mid");
+    const botButton = document.getElementById("line-bot");
+    const supButton = document.getElementById("line-sup");
+    let lineButton = [];
 
-    //#endregion 결과 넣기
+    lineButton.push(topButton);
+    lineButton.push(jugButton);
+    lineButton.push(midButton);
+    lineButton.push(botButton);
+    lineButton.push(supButton);
 
-    //#endregion 챔피언별 픽률, 승률, 라인, 카운터, 아이템
+    for (let i = 0; i < lineButton.length; i++) {
+      lineButton[i].addEventListener("click", function (e) {
+        clearTBODY(championTable, tbody);
+        laneStats(allRateDataList[i]);
+        championTable.appendChild(tbody);
+        championDivBox.appendChild(championTable);
+
+        for (let j = 0; j < lineButton.length; j++) {
+          if (lineButton[i] == lineButton[j]) {
+            // background-color: rgb(76, 76, 246);
+            // color: #fff;
+            lineButton[j].style.backgroundColor = "rgb(76, 76, 246)";
+            lineButton[j].style.color = "#fff";
+          } else {
+            lineButton[j].style.backgroundColor = "#fff";
+            lineButton[j].style.color = "#000000";
+          }
+        }
+      });
+    }
+
+    // topButton.addEventListener("click", function (e) {
+    //   clearTBODY(championTable, tbody);
+    //   laneStats(topLaneList);
+    //   championTable.appendChild(tbody);
+    //   championDivBox.appendChild(championTable);
+    // });
+
+    // jugButton.addEventListener("click", function (e) {
+    //   clearTBODY(championTable, tbody);
+    //   laneStats(jugLaneList);
+    //   championTable.appendChild(tbody);
+    //   championDivBox.appendChild(championTable);
+    // });
+
+    // midButton.addEventListener("click", function (e) {
+    //   clearTBODY(championTable, tbody);
+    //   laneStats(midLaneList);
+    //   championTable.appendChild(tbody);
+    //   championDivBox.appendChild(championTable);
+    // });
+
+    // botButton.addEventListener("click", function (e) {
+    //   clearTBODY(championTable, tbody);
+    //   laneStats(botLaneList);
+    //   championTable.appendChild(tbody);
+    //   championDivBox.appendChild(championTable);
+    // });
+
+    // supButton.addEventListener("click", function (e) {
+    //   clearTBODY(championTable, tbody);
+    //   laneStats(supLaneList);
+    //   championTable.appendChild(tbody);
+    //   championDivBox.appendChild(championTable);
+    // });
   });
