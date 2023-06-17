@@ -6,10 +6,8 @@ navInput.addEventListener("keyup", function () {
     if (navInput.value == "") {
       return;
     } else {
-      // window.location.href =
-      //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
-      sessionStorage.setItem("nickname", mainInput.value);
+      sessionStorage.setItem("nickname", navInput.value);
       recentEvent(navInput.value);
     }
   }
@@ -19,10 +17,8 @@ navBtn.addEventListener("click", function () {
   if (navInput.value == "") {
     return;
   } else {
-    // window.location.href =
-    //   "/html/player" + encodeURI(userInputBox.value) + ".html";
     window.location.href = "/html/player.html";
-    sessionStorage.setItem("nickname", mainInput.value);
+    sessionStorage.setItem("nickname", navInput.value);
     recentEvent(navInput.value);
   }
 });
@@ -30,7 +26,7 @@ navBtn.addEventListener("click", function () {
 function recentEvent(input) {
   var value = [];
   var recent = JSON.parse(localStorage.getItem("recentSearch"));
-  if (!recent) {
+  if (!recent || recent == null) {
     var data = {
       nickName: input,
       state: false,
@@ -42,7 +38,11 @@ function recentEvent(input) {
       nickName: input,
       state: false,
     };
-    recent.push(data);
-    localStorage.setItem("recentSearch", JSON.stringify(recent));
+    Object.entries(recent).forEach((key) => {
+      if (!key[1].nickName.includes(input)) {
+        recent.push(data);
+        localStorage.setItem("recentSearch", JSON.stringify(recent));
+      }
+    });
   }
 }
