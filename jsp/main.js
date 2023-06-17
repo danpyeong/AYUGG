@@ -1,4 +1,18 @@
-window.onload = function () {
+const iconUrl =
+  "https://ddragon.leagueoflegends.com/cdn/13.12.1/data/ko_KR/profileicon.json";
+
+window.onload = async function () {
+  var iconList = [];
+
+  await fetch(iconUrl)
+    .then((response) => response.json())
+    .then(function (rawData) {
+      var data = Object.values(rawData.data);
+      for (let i = 0; i < data.length; i++) {
+        iconList.push(data[i].id);
+      }
+    });
+
   //#region 입력창 이벤트
   const body = document.querySelector("body");
   const selectBox = document.querySelector("#select-box");
@@ -76,6 +90,7 @@ window.onload = function () {
 
   if (recent != "" && recent) {
     for (let i = 0; i < recent.length; i++) {
+      var random = Math.floor(Math.random() * 3756);
       const divBox = document.createElement("div");
       divBox.className = "data-box";
       divBox.id = "recentBox" + i;
@@ -85,9 +100,15 @@ window.onload = function () {
       const imgBox1 = document.createElement("div");
       imgBox1.className = "img-box";
       const img1 = document.createElement("img");
-      img1.src = "#";
+      img1.src =
+        "https://ddragon.leagueoflegends.com/cdn/13.12.1/img/profileicon/" +
+        iconList[random] +
+        ".png";
       img1.id = "svg-img" + i;
       img1.style.cursor = "initial";
+      img1.width = 24;
+      img1.height = 24;
+      img1.style.borderRadius = "50%";
 
       const imgBox2 = document.createElement("div");
       imgBox2.className = "img-box";
@@ -220,6 +241,7 @@ window.onload = function () {
 
   if (bookMark != "" && bookMark) {
     for (let i = 0; i < bookMark.length; i++) {
+      var random = Math.floor(Math.random() * 3756);
       const divBox = document.createElement("div");
       divBox.className = "data-box";
       divBox.id = "bookMarkBox" + i;
@@ -229,10 +251,15 @@ window.onload = function () {
       const imgBox1 = document.createElement("div");
       imgBox1.className = "img-box";
       const img1 = document.createElement("img");
-      img1.src = "#";
+      img1.src =
+        "https://ddragon.leagueoflegends.com/cdn/13.12.1/img/profileicon/" +
+        iconList[random] +
+        ".png";
       img1.id = "svg-img-bookMark" + i;
       img1.style.cursor = "initial";
-
+      img1.width = 24;
+      img1.height = 24;
+      img1.style.borderRadius = "50%";
       const imgBox3 = document.createElement("div");
       imgBox3.className = "img-box";
       const img3 = document.createElement("img");
@@ -292,10 +319,14 @@ window.onload = function () {
   //#endregion 최근 기록, 즐겨찾기
 
   //#region 소환사 이름 입력 이벤트
+  // 영어, 띄어쓰기 시 중복 문제 생기고
+  // 스크롤되게끔도 해야하고,
+  // 영어 대소문자 달라도 중복 검사 잘 안 걸리게 해야하고..
+  // 즐겨찾기, 최근검색 시 div박스가 바로바로 들어오게 끔도 해야하고,,
   function recentEvent(input) {
     var value = [];
     var recent = JSON.parse(localStorage.getItem("recentSearch"));
-    if (!recent) {
+    if (recent == "" || recent == null) {
       var data = {
         nickName: input,
         state: false,
@@ -307,35 +338,22 @@ window.onload = function () {
         nickName: input,
         state: false,
       };
-      recent.push(data);
-      localStorage.setItem("recentSearch", JSON.stringify(recent));
+      Object.entries(recent).forEach((key) => {
+        if (!key[1].nickName.includes(input)) {
+          recent.push(data);
+          localStorage.setItem("recentSearch", JSON.stringify(recent));
+        }
+      });
     }
   }
 
-  // const navInput = document.getElementById("nav-input");
   const mainInput = document.getElementById("main-input");
-
-  // navInput.addEventListener("keyup", function () {
-  //   if (window.event.keyCode == 13) {
-  //     if (navInput.value == "") {
-  //       return;
-  //     } else {
-  //       // window.location.href =
-  //       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-  //       window.location.href = "/html/player.html";
-  //       sessionStorage.setItem("nickname", mainInput.value);
-  //       recentEvent(navInput.value);
-  //     }
-  //   }
-  // });
 
   mainInput.addEventListener("keyup", function () {
     if (window.event.keyCode == 13) {
       if (mainInput.value == "") {
         return;
       } else {
-        // window.location.href =
-        //   "/html/player/" + encodeURI(mainInput.value) + ".html";
         window.location.href = "/html/player.html";
         sessionStorage.setItem("nickname", mainInput.value);
         recentEvent(mainInput.value);
@@ -343,25 +361,11 @@ window.onload = function () {
     }
   });
 
-  // const navBtn = document.getElementById("nav-button");
   const mainBtn = document.getElementById("main-button");
-  // navBtn.addEventListener("click", function () {
-  //   if (navInput.value == "") {
-  //     return;
-  //   } else {
-  //     // window.location.href =
-  //     //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-  //     window.location.href = "/html/player.html";
-  //     sessionStorage.setItem("nickname", mainInput.value);
-  //     recentEvent(navInput.value);
-  //   }
-  // });
   mainBtn.addEventListener("click", function () {
     if (mainInput.value == "") {
       return;
     } else {
-      // window.location.href =
-      //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
       sessionStorage.setItem("nickname", mainInput.value);
       recentEvent(mainInput.value);

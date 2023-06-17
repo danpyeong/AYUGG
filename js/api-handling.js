@@ -37,7 +37,7 @@ function loadingData() {
         .then((rawData1) => {
           return rawData1[0];
         });
-
+      console.log(example1);
       var example2 = fetch(MatchUrl)
         .then((response2) => {
           return response2.json();
