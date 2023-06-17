@@ -22,7 +22,18 @@
             <img src="/images/logo/navbar-logo.png" />
           </div>
           <div class="main">
-            <div class="navbar-border-box-main"></div>
+            <div
+              class="navbar-border-box-main"
+              style="
+                padding-left: 50%;
+                width: 50%;
+                position: absolute;
+                height: 1px;
+                background-color: #fff;
+                left: 0px;
+                bottom: -5px;
+              "
+            ></div>
             <button
               class="navbar-button"
               style="color: #fff"
@@ -74,8 +85,8 @@
             <option value="KR">KR</option>
             <option value="NA">NA</option>
           </select>
-          <input type="text" />
-          <button>
+          <input id="nav-input" type="text" />
+          <button id="nav-button">
             <img
               src="/images/search-icon/search-icon-16.svg"
               style="width: 12px; height: 12px"
@@ -118,9 +129,9 @@
             <option value="na">NA</option>
           </select>
           <select name="version">
-            <option value="13_11" selected>v13.11</option>
-            <option value="13_10">v13.09</option>
-            <option value="13_09">v13.08</option>
+            <option value="13_09" selected>v13.09</option>
+            <option value="13_08">v13.08</option>
+            <option value="13_07">v13.07</option>
           </select>
         </div>
       </div>
@@ -132,27 +143,113 @@
             <!-- 돋보기 이미지 -->
             <img />
             <!-- 챔피언 이름 입력창 -->
-            <!-- 아래 input placeholder="챔피언 검색 (가렌, 갱플랭크)" -->
             <input
-              id="championSearch"
               class="champions-search-box"
               type="text"
+              placeholder="챔피언 검색 (가렌, 갱플랭크)"
             />
           </div>
           <!-- 챔피언 종류 -->
           <ul id="champions-list" class="champions-list"></ul>
         </div>
         <!-- 챔피언 순위 -->
-        <div id="championBox" class="info-frame right-info">
+        <div class="info-frame right-info">
           <!-- 라인별 챔피언 -->
           <nav class="line-box flex">
-            <button id="line-top">탑</button>
-            <button id="line-jg">정글</button>
-            <button id="line-mid">미드</button>
-            <button id="line-bot">바텀</button>
-            <button id="line-sup">서폿</button>
+            <button
+              id="line-top"
+              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
+            >
+              탑
+            </button>
+            <button
+              id="line-jg"
+              onclick="location.href='/html/champions-analyze/rift/rift-jg.html'"
+            >
+              정글
+            </button>
+            <button
+              id="line-mid"
+              onclick="location.href='/html/champions-analyze/rift/rift-mid.html'"
+            >
+              미드
+            </button>
+            <button
+              id="line-bot"
+              onclick="location.href='/html/champions-analyze/rift/rift-bot.html'"
+            >
+              바텀
+            </button>
+            <button
+              id="line-sup"
+              onclick="location.href='/html/champions-analyze/rift/rift-sup.html'"
+            >
+              서폿
+            </button>
           </nav>
           <!-- 라인별 챔피언 랭킹 테이블 -->
+          <table class="champions-table">
+            <colgroup>
+              <col width="50px" />
+              <col width="150px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="60px" />
+              <col width="150px" />
+            </colgroup>
+            <!-- 테이블 상단 -->
+            <thead>
+              <th align="left">순위</th>
+              <th align="left">챔피언</th>
+              <th align="middle">티어</th>
+              <th align="middle">승률</th>
+              <th align="middle">픽률</th>
+              <th align="middle">밴률</th>
+              <th align="middle">카운터</th>
+            </thead>
+            <!-- 테이블 내용 -->
+            <tbody>
+              <tr>
+                <!-- 순위 -->
+                <td class="first-child">
+                  <span>1</span>
+                  <span>=</span>
+                </td>
+                <!-- 챔피언 -->
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <span>가렌</span>
+                  </div>
+                </td>
+                <!-- 티어 -->
+                <td>10%</td>
+                <!-- 승률 -->
+                <td>10%</td>
+                <!-- 픽률 -->
+                <td>10%</td>
+                <!-- 밴률 -->
+                <td>10%</td>
+                <!-- 카운터 -->
+                <td>
+                  <div>
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                    <img
+                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </article>
