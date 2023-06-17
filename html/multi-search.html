@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/multi-search.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <script src="/js/multi-search.js"></script>
+    <script src="/html/main.html"></script>
   </head>
   <body>
     <header>
@@ -79,7 +80,7 @@
     </header>
     <br>
     <div class="container">
-      <textarea
+      <textarea id="textarea"
         placeholder="~~~~~~~~~~~~~ 님이 방에 참가했습니다.
 
 ~~~~~~~~~~~~~ 님이 방에 참가했습니다.
@@ -98,7 +99,7 @@
           <option class="option" value="KR">KR</option>
           <option class="option" value="NA">NA</option>
         </select>
-        <button class="search">검색</button>
+        <button class="search" id="button" onclick="getValue()">검색</button>
       </div>
       <br />
     </div>

@@ -58,11 +58,12 @@ body {
 }
 .contextBox {
   display: flex;
+  justify-content: center;
 }
 .context {
   font-size: 14px;
   width: 180px;
-  background: rgb(251, 190, 77);
+  background: #626367;
   color: white;
   text-align: center;
   border-radius: 4px;
@@ -70,6 +71,7 @@ body {
   border-width: 1px;
   border-color: rgba(255, 255, 255, 0.6);
   border-style: solid;
+  margin-right: 10px;
 }
 .win-rate-graph {
   background: #5383E8;
@@ -78,9 +80,11 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: space-between;
+  padding-left: 8px;
 }
 .win-rate-graph .bar{
   background: #E84057;
   height: 20px;
   text-align: right;
+  padding-right: 7px;
 }

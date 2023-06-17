@@ -82,7 +82,8 @@ window.onload = function () {
     } else {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-      window.location.href = "/html/summoners/player.html";
+      window.location.href = "/html/player.html";
+      sessionStorage.setItem('nickname', mainInput.value);
     }
   });
   mainBtn.addEventListener("click", function () {
@@ -91,7 +92,8 @@ window.onload = function () {
     } else {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-      window.location.href = "/html/summoners/player.html";
+      window.location.href = "/html/player.html";
+      sessionStorage.setItem('nickname', mainInput.value);
     }
   });
   //#endregion

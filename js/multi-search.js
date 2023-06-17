@@ -2,11 +2,62 @@ const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const TierUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/";
 const version = "https://ddragon.leagueoflegends.com/cdn/13.11.1/";
-let textsample = "t1 zeus님이 방에 참가했습니다. 에휴휴휴휴휴님이 방에 참가했습니다. hideonbush님이 방에 참가했습니다. t1 gumayusi님이 방에 참가했습니다. 역천괴님이 방에 참가했습니다."
-let textList = textsample.split("님이 방에 참가했습니다.").filter(Boolean);
+// let textsample = "t1 zeus님이 방에 참가했습니다. 에휴휴휴휴휴님이 방에 참가했습니다. hideonbush님이 방에 참가했습니다. t1 gumayusi님이 방에 참가했습니다. 역천괴님이 방에 참가했습니다.";
+// textList = textsample.split("님이 방에 참가했습니다.").filter(Boolean);
+let textList;
 let encodedName = new Array();
 let matchEx = new Array();
 let dataList = new Array();
+let count = 0;
+
+function getValue() {
+    var parentDiv = document.getElementById("result");
+    var childDiv = parentDiv.querySelector("div");
+
+    if (childDiv !== null) {
+        parentDiv.innerHTML = "";   
+    }
+
+    var button = document.getElementById("button");
+    if (button == null) {
+        return;
+    } else {
+        var textareaValue = document.getElementById("textarea").value;
+        if (textareaValue.trim().length == 0) {
+            alert("문자를 입력해주세요.");
+            return;
+        } else {
+            // console.log("not null");
+            if(textareaValue.includes("\n")){
+                textList = textareaValue.split("\n").filter(Boolean);
+                for(let index = 0; index<textList.length; index++){
+                    if(textList[index].includes("님이 방에 참가했습니다.")){
+                        textList[index] = textList[index].split("님이 방에 참가했습니다.").filter(Boolean);
+                    }
+                }
+                textList = textList.flat();
+            } else {
+                textList = textareaValue.split("님이 방에 참가했습니다.").filter(Boolean);
+
+            }
+            // console.log(textList);
+
+            // if(count > 0){
+            //     location.reload();
+            // }
+            
+            loadingData().then(()=>{
+                const bottomDiv = document.getElementById("result");
+                // createBox(0,bottomDiv);
+                for(let i=0;i<textList.length;i++){
+                    createBox(i,bottomDiv);
+                }
+                count++;
+            });
+
+        }
+    }
+}
 
 async function loadingData() {
     for(let i=0;i<textList.length;i++){
@@ -93,14 +144,18 @@ function createBox(i,div){
 
     const tierImg = document.createElement("img");
     tierImg.src = tierImgMapping.get(dataList[i].tier);
-    tierImg.style.width = "30px";
     tierImg.style.height = "30px";
+    tierImg.style.transform = "scale(3)";
 
     const nicknameDiv = document.createElement("div");
     nicknameDiv.textContent = dataList[i].nickname;
+    nicknameDiv.style.paddingBottom = "2px";
+    nicknameDiv.style.color = "orange";
+    nicknameDiv.style.fontSize = "20px";
 
     const tiersDiv = document.createElement("div");
     tiersDiv.textContent = dataList[i].tiers;
+    tiersDiv.style.paddingBottom = "2px";
 
     const winsDiv = document.createElement("div");
     winsDiv.textContent = dataList[i].wins;
@@ -111,14 +166,15 @@ function createBox(i,div){
     const lossesDiv = document.createElement("div");
     lossesDiv.textContent = dataList[i].losses;
     lossesDiv.classList.add('bar');
-    lossesDiv.style.width = dataList[i].losses / (dataList[i].wins + dataList[i].losses)*130 +"px";
+    lossesDiv.style.width = dataList[i].losses / (dataList[i].wins + dataList[i].losses)*130-7 +"px";
 
     const rateDiv = document.createElement("div");
     rateDiv.textContent = Math.floor(dataList[i].wins / (dataList[i].wins + dataList[i].losses)*100) +"%";
 
     const WLDiv = document.createElement("div");
+    WLDiv.style.paddingBottom = "10px";
     WLDiv.style.display = "flex";
-    WLDiv.style.justifyContent = "space-around";
+    WLDiv.style.justifyContent = "space-between";
     WLDiv.style.alignItems = "center";
     
     winsDiv.appendChild(blankDiv);
@@ -144,33 +200,42 @@ function matchBoxCreate(i,j, div){
 
     const matchDiv = document.createElement("div");
     matchDiv.style.display = "flex";
-    matchDiv.style.justifyContent = "space-between";
-    matchDiv.style.alignItems = "center";
+    matchDiv.style.marginBottom = "2px";
 
     const champImg = document.createElement("img");
     champImg.src = version + "img/champion/" + JSON.parse(JSON.stringify(dataList[i])).matches[j].championName + ".png";
-    champImg.style.width = "10px";
-    champImg.style.height = "10px";
+    champImg.style.width = "18px";
+    champImg.style.height = "18px";
+    champImg.style.paddingRight = "22px";
+
+    const KDABoxDiv = document.createElement("div");
+    KDABoxDiv.style.width = "60px";
+    KDABoxDiv.style.borderRadius = "2px";
+    KDABoxDiv.style.textAlign = "center";
+
+    if((JSON.parse(JSON.stringify(dataList[i]))).matches[j].win){
+        KDABoxDiv.style.background = "#D5E3FF";
+        KDABoxDiv.style.color = "#4171D6";
+    } else {
+        KDABoxDiv.style.background = "#FFD8D9";
+        KDABoxDiv.style.color = "#D31A45";
+    }
 
     const KDADiv = document.createElement("div");
     KDADiv.textContent = dataList[i].matches[j].kills +"/"+ dataList[i].matches[j].deaths +"/"+ dataList[i].matches[j].assists;
 
     const timeDiv = document.createElement("div");
+    timeDiv.style.margin = "auto 0 auto auto";
     if(Math.floor((eta.getTime() - dataList[i].matches[j].gameStartTimestamp)/3600000)<24){
         timeDiv.textContent = Math.floor((eta.getTime() - dataList[i].matches[j].gameStartTimestamp)/3600000) + "시간전";
     } else {
         timeDiv.textContent = Math.floor((eta.getTime() - dataList[i].matches[j].gameStartTimestamp)/3600000/24) + "일전";
     }
     matchDiv.appendChild(champImg);
-    matchDiv.appendChild(KDADiv);
+    KDABoxDiv.appendChild(KDADiv);
+    matchDiv.appendChild(KDABoxDiv);
     matchDiv.appendChild(timeDiv);
 
     div.appendChild(matchDiv);
 }
-
-loadingData().then(()=>{
-    const bottomDiv = document.getElementById("result");
-    for(let i=0;i<textList.length;i++){
-        createBox(i,bottomDiv);
-    }
-});
+getValue();

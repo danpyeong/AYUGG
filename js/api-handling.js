@@ -1,6 +1,6 @@
 const apiKey = "RGAPI-6e1b716a-027f-4306-930b-458ee9fb0229";
-const testnick = "hideonbush";
-// const testnick = sessionStorage.getItem('nickname');
+// const testnick = "hideonbush";
+const testnick = sessionStorage.getItem('nickname');
 const encodedName = encodeURI(testnick);
 const SereachByNickStartUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 let UserUrl = SereachByNickStartUrl + encodedName + "?api_key=" + apiKey;
