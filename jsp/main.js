@@ -10,13 +10,39 @@ window.onload = function () {
 
   body.addEventListener("click", function (e) {
     var target = e.target;
+    var recent = JSON.parse(localStorage.getItem("recentSearch"));
 
     if (target == e.currentTarget.querySelector("#select-box")) return;
-    if (target == e.currentTarget.querySelector("#option-list")) return;
+    if (target == e.currentTarget.querySelector(".option-list")) return;
     if (target == e.currentTarget.querySelector(".recent-search")) return;
     if (target == e.currentTarget.querySelector(".favorites")) return;
     if (target == e.currentTarget.querySelector(".option-box")) return;
+    if (target == e.currentTarget.querySelector("#recentBox")) return;
+    if (target == e.currentTarget.querySelector("#favoritesBox")) return;
     if (target == e.currentTarget.querySelector(".user-input-box")) return;
+    if (recent) {
+      for (let i = 0; i < recent.length; i++) {
+        if (target == e.currentTarget.querySelector("#recentBox" + i)) return;
+        if (target == e.currentTarget.querySelector("#nickName" + i)) return;
+        if (target == e.currentTarget.querySelector("#bookMark" + i)) return;
+        if (target == e.currentTarget.querySelector("#close" + i)) return;
+        if (target == e.currentTarget.querySelector("#svg-img" + i)) return;
+        if (target == e.currentTarget.querySelector("#spanBox-recent")) return;
+      }
+    }
+    if (bookMark) {
+      for (let i = 0; i < recent.length; i++) {
+        if (target == e.currentTarget.querySelector("#bookMarkBox" + i)) return;
+        if (target == e.currentTarget.querySelector("#nickName-bookMark" + i))
+          return;
+        if (target == e.currentTarget.querySelector("#close-bookMark" + i))
+          return;
+        if (target == e.currentTarget.querySelector("#svg-img-bookMark" + i))
+          return;
+        if (target == e.currentTarget.querySelector("#spanBox-bookMark"))
+          return;
+      }
+    }
 
     option.style.display = "none";
   });
@@ -26,25 +52,266 @@ window.onload = function () {
   const recentSearch = document.getElementById("recent");
   const favorites = document.getElementById("favorites");
 
-  const recentSearchBox = document.getElementById("recent-box");
-  const favoritesBox = document.getElementById("favorites-box");
+  const recentSearchBox = document.getElementById("recentBox");
+  const favoritesBox = document.getElementById("favoritesBox");
 
   recentSearch.addEventListener("click", function () {
     favorites.style.backgroundColor = "rgb(137, 134, 134)";
+    favoritesBox.className = "option-box-off";
     recentSearch.style.backgroundColor = "#fff";
-    favoritesBox.style.display = "none";
-    recentSearchBox.style.display = "block";
+    recentSearchBox.className = "option-box-on";
   });
 
   favorites.addEventListener("click", function () {
     recentSearch.style.backgroundColor = "rgb(137, 134, 134)";
+    recentSearchBox.className = "option-box-off";
     favorites.style.backgroundColor = "#fff";
-    recentSearchBox.style.display = "none";
-    favoritesBox.style.display = "block";
+    favoritesBox.className = "option-box-on";
   });
   //#endregion
 
+  //#region 최근 기록, 즐겨찾기
+  //#region  > 최근 기록
+  var recent = JSON.parse(localStorage.getItem("recentSearch"));
+
+  if (recent != "" && recent) {
+    for (let i = 0; i < recent.length; i++) {
+      const divBox = document.createElement("div");
+      divBox.className = "data-box";
+      divBox.id = "recentBox" + i;
+      divBox.style.display = "flex";
+      divBox.style.height = "40px";
+
+      const imgBox1 = document.createElement("div");
+      imgBox1.className = "img-box";
+      const img1 = document.createElement("img");
+      img1.src = "#";
+      img1.id = "svg-img" + i;
+      img1.style.cursor = "initial";
+
+      const imgBox2 = document.createElement("div");
+      imgBox2.className = "img-box";
+      const img2 = document.createElement("img");
+      if (recent[i].state == true)
+        img2.src = "/images/bookMark-icon/icon-bookmark-on-yellow.svg";
+      else img2.src = "/images/bookMark-icon/icon-bookmark.svg";
+      img2.id = "bookMark" + i;
+
+      const imgBox3 = document.createElement("div");
+      imgBox3.className = "img-box";
+      const img3 = document.createElement("img");
+      img3.src = "/images/bookMark-icon/icon-close-small.svg";
+      img3.id = "close" + i;
+
+      const nickNameBox = document.createElement("div");
+      nickNameBox.className = "name-box";
+      const nickName = document.createElement("div");
+      nickName.id = "nickName" + i;
+      nickName.innerText = recent[i].nickName;
+      nickName.style.cursor = "pointer";
+      nickName.src = "";
+
+      imgBox1.appendChild(img1);
+      imgBox2.appendChild(img2);
+      imgBox3.appendChild(img3);
+      divBox.appendChild(imgBox1);
+      nickNameBox.appendChild(nickName);
+      divBox.appendChild(nickNameBox);
+      divBox.appendChild(imgBox2);
+      divBox.appendChild(imgBox3);
+
+      //#region  >> 즐겨찾기 추가 및 삭제
+      img2.addEventListener("click", function (e) {
+        const url = "http://127.0.0.1:5500";
+        if (img2.src == url + "/images/bookMark-icon/icon-bookmark.svg") {
+          img2.src = "/images/bookMark-icon/icon-bookmark-on-yellow.svg";
+
+          var bookMarkData = JSON.parse(localStorage.getItem("bookMark"));
+          var value = [];
+          var data = {
+            nickName: nickName.textContent,
+            state: true,
+          };
+
+          if (!bookMarkData) {
+            value.push(data);
+            localStorage.setItem("bookMark", JSON.stringify(value));
+            for (var j = 0; j < recent.length; j++) {
+              if (recent[j].nickName == nickName.textContent) {
+                recent[j] = data;
+                localStorage.setItem("recentSearch", JSON.stringify(recent));
+                return;
+              }
+            }
+            localStorage.setItem("recentSearch", JSON.stringify(recent));
+          } else {
+            bookMarkData.push(data);
+            localStorage.setItem("bookMark", JSON.stringify(bookMarkData));
+            for (var j = 0; j < recent.length; j++) {
+              if (recent[j].nickName == nickName.textContent) {
+                recent[j] = data;
+                localStorage.setItem("recentSearch", JSON.stringify(recent));
+                return;
+              }
+            }
+          }
+          favoritesBox.appendChild(divBox);
+        } else {
+          img2.src = "/images/bookMark-icon/icon-bookmark.svg";
+          var bookMarkData = JSON.parse(localStorage.getItem("bookMark"));
+          var data = {
+            nickName: nickName.textContent,
+            state: false,
+          };
+          for (var j = 0; j < bookMarkData.length; j++) {
+            if (bookMarkData[j].nickName == nickName.textContent) {
+              bookMarkData.splice(j, 1);
+              j--;
+              localStorage.setItem("bookMark", JSON.stringify(bookMarkData));
+            }
+          }
+          for (var j = 0; j < recent.length; j++) {
+            if (recent[j].nickName == nickName.textContent) {
+              recent[j] = data;
+              localStorage.setItem("recentSearch", JSON.stringify(recent));
+              return;
+            }
+          }
+        }
+      });
+      //#endregion 즐겨찾기 추가 및 삭제
+
+      //#region  >> 최근 기록 삭제
+      img3.addEventListener("click", function (e) {
+        for (var j = 0; j < recent.length; j++) {
+          if (recent[i].nickName == nickName.textContent) {
+            recent.splice(j, 1);
+            j--;
+            localStorage.setItem("recentSearch", JSON.stringify(recent));
+          }
+        }
+        recentSearchBox.remove(divBox);
+        for (var j = 0; j < bookMark.length; j++) {
+          if (bookMark[j].nickName == nickName.textContent) {
+            bookMark.splice(j, 1);
+            j--;
+            localStorage.setItem("bookMark", JSON.stringify(bookMark));
+          }
+        }
+        favoritesBox.remove(divBox);
+      });
+      //#endregion 최근 기록 삭제
+
+      recentSearchBox.appendChild(divBox);
+    }
+  } else {
+    const spanBox = document.createElement("span");
+    spanBox.className = "spanBox";
+    spanBox.innerText = "최근 검색한 소환사가 없습니다.";
+    spanBox.id = "spanBox-recent";
+    if (recentSearchBox.childElementCount == 0) {
+      recentSearchBox.appendChild(spanBox);
+    }
+  }
+  //#endregion  최근 기록
+
+  //#region  > 즐겨찾기
+  var bookMark = JSON.parse(localStorage.getItem("bookMark"));
+
+  if (bookMark != "" && bookMark) {
+    for (let i = 0; i < bookMark.length; i++) {
+      const divBox = document.createElement("div");
+      divBox.className = "data-box";
+      divBox.id = "bookMarkBox" + i;
+      divBox.style.display = "flex";
+      divBox.style.height = "40px";
+
+      const imgBox1 = document.createElement("div");
+      imgBox1.className = "img-box";
+      const img1 = document.createElement("img");
+      img1.src = "#";
+      img1.id = "svg-img-bookMark" + i;
+      img1.style.cursor = "initial";
+
+      const imgBox3 = document.createElement("div");
+      imgBox3.className = "img-box";
+      const img3 = document.createElement("img");
+      img3.src = "/images/bookMark-icon/icon-close-small.svg";
+      img3.id = "close-bookMark" + i;
+
+      const nickNameBox = document.createElement("div");
+      nickNameBox.className = "name-box2";
+      const nickName = document.createElement("div");
+      nickName.id = "nickName-bookMark" + i;
+      nickName.innerText = bookMark[i].nickName;
+      nickName.style.cursor = "pointer";
+      nickName.src = "";
+
+      imgBox1.appendChild(img1);
+      imgBox3.appendChild(img3);
+      divBox.appendChild(imgBox1);
+      nickNameBox.appendChild(nickName);
+      divBox.appendChild(nickNameBox);
+      divBox.appendChild(imgBox3);
+
+      //#region  >> 즐겨찾기 삭제
+      img3.addEventListener("click", function (e) {
+        for (var j = 0; j < bookMark.length; j++) {
+          if (bookMark[j].nickName == nickName.textContent) {
+            bookMark.splice(j, 1);
+            j--;
+            localStorage.setItem("bookMark", JSON.stringify(bookMark));
+          }
+        }
+        for (var j = 0; j < recent.length; j++) {
+          if (recent[j].nickName == nickName.textContent) {
+            var data = {
+              nickName: nickName.textContent,
+              state: false,
+            };
+            recent[j] = data;
+            localStorage.setItem("recentSearch", JSON.stringify(recent));
+          }
+        }
+        favoritesBox.remove(divBox);
+      });
+      //#endregion 즐겨찾기 삭제
+
+      favoritesBox.appendChild(divBox);
+    }
+  } else {
+    const spanBox = document.createElement("span");
+    spanBox.className = "spanBox";
+    spanBox.id = "spanBox-bookMark";
+    spanBox.innerText = "즐겨찾기 내역이 없습니다.";
+    if (favoritesBox.childElementCount == 0) {
+      favoritesBox.appendChild(spanBox);
+    }
+  }
+  //#endregion  즐겨찾기
+  //#endregion 최근 기록, 즐겨찾기
+
   //#region 소환사 이름 입력 이벤트
+  function recentEvent(input) {
+    var value = [];
+    var recent = JSON.parse(localStorage.getItem("recentSearch"));
+    if (!recent) {
+      var data = {
+        nickName: input,
+        state: false,
+      };
+      value.push(data);
+      localStorage.setItem("recentSearch", JSON.stringify(value));
+    } else {
+      var data = {
+        nickName: input,
+        state: false,
+      };
+      recent.push(data);
+      localStorage.setItem("recentSearch", JSON.stringify(recent));
+    }
+  }
+
   const navInput = document.getElementById("nav-input");
   const mainInput = document.getElementById("main-input");
 
@@ -56,7 +323,8 @@ window.onload = function () {
         // window.location.href =
         //   "/html/player" + encodeURI(userInputBox.value) + ".html";
         window.location.href = "/html/player.html";
-        sessionStorage.setItem('nickname', mainInput.value);
+        sessionStorage.setItem("nickname", mainInput.value);
+        recentEvent(navInput.value);
       }
     }
   });
@@ -69,7 +337,8 @@ window.onload = function () {
         // window.location.href =
         //   "/html/player/" + encodeURI(mainInput.value) + ".html";
         window.location.href = "/html/player.html";
-        sessionStorage.setItem('nickname', mainInput.value);
+        sessionStorage.setItem("nickname", mainInput.value);
+        recentEvent(mainInput.value);
       }
     }
   });
@@ -83,7 +352,8 @@ window.onload = function () {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
-      sessionStorage.setItem('nickname', mainInput.value);
+      sessionStorage.setItem("nickname", mainInput.value);
+      recentEvent(navInput.value);
     }
   });
   mainBtn.addEventListener("click", function () {
@@ -93,7 +363,8 @@ window.onload = function () {
       // window.location.href =
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
-      sessionStorage.setItem('nickname', mainInput.value);
+      sessionStorage.setItem("nickname", mainInput.value);
+      recentEvent(navInput.value);
     }
   });
   //#endregion
