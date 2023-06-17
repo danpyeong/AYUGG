@@ -142,7 +142,7 @@ setTimeout(function(){
 
   var statiMost = statiMostChamp();
   var statiMostWhole = statiMostWholeChamp();
-  console.log(statiMost);
+  // console.log(statiMost);
 
   var statiKDAtext = document.getElementById("statiKDA");
   statiKDAtext.innerText = "KDA " + ((statiMostWhole.get('kills') + statiMostWhole.get('assists')) / statiMostWhole.get('deaths')).toFixed(2);
@@ -1033,7 +1033,7 @@ function matchDtFirstBlue(Id,k){
       childImg4.src = "https://ddragon.leagueoflegends.com/cdn/img/" + findRuneKey(match[k].get('matchData').participants[i].perks.styles[1].style);
       childImg4.classList.add('dt-small-img');
     })
-    console.log(match);
+    // console.log(match);
     childDiv4.classList.add('nick-tier');
     childDiv5.textContent = match[k].get('matchData').participants[i].summonerName;
     childDiv6.textContent = match[k].get('matchUser')[i];
@@ -1390,7 +1390,7 @@ function statiMostChamp(){
       }
     }
   }
-  console.log(statiexMostChamp);
+  // console.log(statiexMostChamp);
   for(let b = 0; b<Num-1; b++){
     for(let a=b+1; a<Num; a++){
       if(statiexMostChamp[a] != null &&  statiexMostChamp[b] != null){
@@ -1415,7 +1415,7 @@ function statiMostChamp(){
       return b.get('win') - a.get('win');
     }
   });
-  console.log(filteredArray);
+  // console.log(filteredArray);
   // console.log(filteredArray);
   return filteredArray;
 }
