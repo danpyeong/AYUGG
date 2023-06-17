@@ -1,34 +1,26 @@
-const label = document.querySelector(".label");
+const label = document.querySelector('.label');
 
-label.addEventListener("click", () => {
-  if (label.parentNode.classList.contains("active")) {
-    label.parentNode.classList.remove("active");
-  } else {
-    label.parentNode.classList.add("active");
-  }
+label.addEventListener('click', () => {
+    if(label.parentNode.classList.contains('active')) {
+        label.parentNode.classList.remove('active');
+    } else {
+        label.parentNode.classList.add('active');
+    }
 });
 
-function toggleSelectBox(selectBox) {
-  selectBox.classList.toggle("active");
-}
+setTimeout(() => {  
+    const selectBoxElements = document.querySelectorAll(".detail");
+    const selectDetailBoxElements = document.querySelectorAll(".game");
+  
+    for (let i = 0; i < selectDetailBoxElements.length; i++) {
+      selectDetailBoxElements[i].addEventListener("click", function (e) {
+        selectBoxElements[i].classList.toggle("active");
+      });
+    }
+  }, 2501);
 
-const selectBoxElements = document.querySelectorAll(".select");
-const selectDetailBoxElements = document.querySelectorAll(".game");
+const refreshButton = document.getElementById('refreshButton');
 
-selectBoxElements.forEach((selectBoxElement) => {
-  selectBoxElement.addEventListener("click", function (e) {
-    toggleSelectBox(selectBoxElement);
-  });
-});
-
-selectDetailBoxElements.forEach((selectBoxElement) => {
-  selectBoxElement.addEventListener("click", function (e) {
-    toggleSelectBox(selectBoxElement);
-  });
-});
-
-const refreshButton = document.getElementById("refreshButton");
-
-refreshButton.addEventListener("click", function () {
+refreshButton.addEventListener('click', function() {
   location.reload();
 });

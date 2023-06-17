@@ -245,7 +245,7 @@ body {
 .detail {
   display: none;
 }
-.game.active .detail {
+.active {
   display: initial;
 }
 .detail-first {
