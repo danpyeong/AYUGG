@@ -1,10 +1,10 @@
 window.onload = function () {
   //#region 입력창 이벤트
   const body = document.querySelector("body");
-  const select = document.querySelector("#select-box");
+  const selectBox = document.querySelector("#select-box");
   const option = document.querySelector("#option-list");
 
-  select.addEventListener("click", function (e) {
+  selectBox.addEventListener("click", function (e) {
     e.currentTarget.querySelector("#option-list").style.display = "block";
   });
 
@@ -312,22 +312,22 @@ window.onload = function () {
     }
   }
 
-  const navInput = document.getElementById("nav-input");
+  // const navInput = document.getElementById("nav-input");
   const mainInput = document.getElementById("main-input");
 
-  navInput.addEventListener("keyup", function () {
-    if (window.event.keyCode == 13) {
-      if (navInput.value == "") {
-        return;
-      } else {
-        // window.location.href =
-        //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-        window.location.href = "/html/player.html";
-        sessionStorage.setItem("nickname", mainInput.value);
-        recentEvent(navInput.value);
-      }
-    }
-  });
+  // navInput.addEventListener("keyup", function () {
+  //   if (window.event.keyCode == 13) {
+  //     if (navInput.value == "") {
+  //       return;
+  //     } else {
+  //       // window.location.href =
+  //       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
+  //       window.location.href = "/html/player.html";
+  //       sessionStorage.setItem("nickname", mainInput.value);
+  //       recentEvent(navInput.value);
+  //     }
+  //   }
+  // });
 
   mainInput.addEventListener("keyup", function () {
     if (window.event.keyCode == 13) {
@@ -343,19 +343,19 @@ window.onload = function () {
     }
   });
 
-  const navBtn = document.getElementById("nav-button");
+  // const navBtn = document.getElementById("nav-button");
   const mainBtn = document.getElementById("main-button");
-  navBtn.addEventListener("click", function () {
-    if (navInput.value == "") {
-      return;
-    } else {
-      // window.location.href =
-      //   "/html/player" + encodeURI(userInputBox.value) + ".html";
-      window.location.href = "/html/player.html";
-      sessionStorage.setItem("nickname", mainInput.value);
-      recentEvent(navInput.value);
-    }
-  });
+  // navBtn.addEventListener("click", function () {
+  //   if (navInput.value == "") {
+  //     return;
+  //   } else {
+  //     // window.location.href =
+  //     //   "/html/player" + encodeURI(userInputBox.value) + ".html";
+  //     window.location.href = "/html/player.html";
+  //     sessionStorage.setItem("nickname", mainInput.value);
+  //     recentEvent(navInput.value);
+  //   }
+  // });
   mainBtn.addEventListener("click", function () {
     if (mainInput.value == "") {
       return;
@@ -364,7 +364,7 @@ window.onload = function () {
       //   "/html/player" + encodeURI(userInputBox.value) + ".html";
       window.location.href = "/html/player.html";
       sessionStorage.setItem("nickname", mainInput.value);
-      recentEvent(navInput.value);
+      recentEvent(mainInput.value);
     }
   });
   //#endregion
