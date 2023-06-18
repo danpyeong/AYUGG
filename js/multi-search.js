@@ -16,7 +16,7 @@ function getValue() {
   var parentDiv = document.getElementById("result");
   var childDiv = parentDiv.querySelector("div");
 
-  if (childDiv !== null) {
+  if (childDiv != null) {
     parentDiv.innerHTML = "";
   }
 

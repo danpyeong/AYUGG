@@ -25,7 +25,6 @@
             <div class="navbar-border-box-main"></div>
             <button
               class="navbar-button"
-              style="color: #fff"
               onclick="location.href='/html/main.html'"
             >
               홈
@@ -145,100 +144,14 @@
         <div class="info-frame right-info">
           <!-- 라인별 챔피언 -->
           <nav class="line-box flex">
-            <button
-              id="line-top"
-              onclick="location.href='/html/champions-analyze/rift/champions-gamemode-rift.html'"
-            >
-              탑
-            </button>
-            <button
-              id="line-jg"
-              onclick="location.href='/html/champions-analyze/rift/rift-jg.html'"
-            >
-              정글
-            </button>
-            <button
-              id="line-mid"
-              onclick="location.href='/html/champions-analyze/rift/rift-mid.html'"
-            >
-              미드
-            </button>
-            <button
-              id="line-bot"
-              onclick="location.href='/html/champions-analyze/rift/rift-bot.html'"
-            >
-              바텀
-            </button>
-            <button
-              id="line-sup"
-              onclick="location.href='/html/champions-analyze/rift/rift-sup.html'"
-            >
-              서폿
-            </button>
+            <button id="line-top">탑</button>
+            <button id="line-jg">정글</button>
+            <button id="line-mid">미드</button>
+            <button id="line-bot">바텀</button>
+            <button id="line-sup">서폿</button>
           </nav>
           <!-- 라인별 챔피언 랭킹 테이블 -->
-          <table class="champions-table">
-            <colgroup>
-              <col width="50px" />
-              <col width="150px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="60px" />
-              <col width="150px" />
-            </colgroup>
-            <!-- 테이블 상단 -->
-            <thead>
-              <th align="left">순위</th>
-              <th align="left">챔피언</th>
-              <th align="middle">티어</th>
-              <th align="middle">승률</th>
-              <th align="middle">픽률</th>
-              <th align="middle">밴률</th>
-              <th align="middle">카운터</th>
-            </thead>
-            <!-- 테이블 내용 -->
-            <tbody>
-              <tr>
-                <!-- 순위 -->
-                <td class="first-child">
-                  <span>1</span>
-                  <span>=</span>
-                </td>
-                <!-- 챔피언 -->
-                <td>
-                  <div>
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <span>가렌</span>
-                  </div>
-                </td>
-                <!-- 티어 -->
-                <td>10%</td>
-                <!-- 승률 -->
-                <td>10%</td>
-                <!-- 픽률 -->
-                <td>10%</td>
-                <!-- 밴률 -->
-                <td>10%</td>
-                <!-- 카운터 -->
-                <td>
-                  <div>
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                    <img
-                      src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_92&v=1684072072534"
-                    />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div id="championBox"></div>
         </div>
       </div>
     </article>
