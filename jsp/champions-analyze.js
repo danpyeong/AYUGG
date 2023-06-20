@@ -45,15 +45,15 @@ fetch(championUrl)
     }
   });
 
-const champSearch = document.getElementById("championSearch");
-champSearch.addEventListener("keyup", function () {
-  if (window.event.keyCode == 13) {
-    if (mainInput.value == "") {
-      return;
-    } else {
-      // window.location.href = mainInput.value + ".html";
-      // sessionStorage.setItem("nickname", mainInput.value);
-      // recentEvent(mainInput.value);
-    }
-  }
-});
+// const champSearch = document.getElementById("championSearch");
+// champSearch.addEventListener("keyup", function () {
+//   if (window.event.keyCode == 13) {
+//     if (mainInput.value == "") {
+//       return;
+//     } else {
+//       // window.location.href = mainInput.value + ".html";
+//       // sessionStorage.setItem("nickname", mainInput.value);
+//       // recentEvent(mainInput.value);
+//     }
+//   }
+// });

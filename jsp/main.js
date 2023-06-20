@@ -141,6 +141,14 @@ window.onload = async function () {
       divBox.appendChild(imgBox2);
       divBox.appendChild(imgBox3);
 
+      //#region  >> 최근 기록 클릭시 전적 결과 페이지로 넘어가기
+      nickName.addEventListener("click", function (e) {
+        var recent = JSON.parse(localStorage.getItem("recentSearch"));
+        window.location.href = "/html/player.html";
+        sessionStorage.setItem("nickname", nickName.textContent);
+      });
+      //#endregion 최근 기록 클릭시 전적 결과 페이지로 넘어가기
+
       //#region  >> 즐겨찾기 추가 및 삭제
       img2.addEventListener("click", function (e) {
         const url = "http://127.0.0.1:5500";
